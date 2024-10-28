@@ -127,6 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="character.h" />
+    <ClInclude Include="drawStage.h" />
+    <ClInclude Include="drawStage1.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +140,9 @@
     <Image Include="stage1.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="character.cpp" />
+    <ClCompile Include="drawStage.cpp" />
+    <ClCompile Include="drawStage1.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
