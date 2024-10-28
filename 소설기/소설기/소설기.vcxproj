@@ -133,6 +133,7 @@
     <ResourceCompile Include="소설기.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="character.bmp" />
     <Image Include="stage1.bmp" />
   </ItemGroup>
   <ItemGroup>

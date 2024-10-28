@@ -28,6 +28,9 @@
     <Image Include="stage1.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="character.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
