@@ -5,5 +5,5 @@ class character
 	int y;
 
 	character();
+	void characterMove(int key);
 };
-
