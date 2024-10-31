@@ -116,10 +116,21 @@ void drawBitmap(const char* filename) {
     int scaledWidth = static_cast<int>(bmpWidth * scale);
     int scaledHeight = static_cast<int>(bmpHeight * scale);
 
+<<<<<<< HEAD
     std::vector<uint8_t> bitmapData(bmpWidth * bmpHeight * 3);
     file.seekg(fileHeader.offsetData, file.beg);
     file.read(reinterpret_cast<char*>(bitmapData.data()), bitmapData.size());
     file.close();
+=======
+			// 콘솔에서는 색을 표시하기 어렵기 때문에 간단히 밝기로 표현
+			unsigned char brightness = static_cast<unsigned char>(0.3 * red + 0.59 * green + 0.11 * blue);
+			buffer += getASCIIChar(brightness);
+			buffer += getASCIIChar(brightness);
+		}
+		buffer += "\n";  // 한 줄 완료 후 개행
+
+	}
+>>>>>>> a40d0ad48bd79fe958d0b8f84e0cb91f34c539bd
 
     std::string buffer;
 
@@ -143,6 +154,7 @@ void drawBitmap(const char* filename) {
     std::cout << buffer << std::endl;
 }
 
+<<<<<<< HEAD
 
 
 int main() {
@@ -156,4 +168,19 @@ int main() {
 
     getchar();
     return 0;
+=======
+int main() {
+	SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	SetConsoleBufferSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	SetConsoleFontSize(1);
+
+	SetConsoleTitle(L"잃어버린 낙원");
+	
+	for (int i = 0; i < 15; i++) { 
+		drawBitmap("block.bmp");  // 여기에 비트맵 파일 경로 넣기
+	}
+
+	getchar();
+	return 0;
+>>>>>>> a40d0ad48bd79fe958d0b8f84e0cb91f34c539bd
 }

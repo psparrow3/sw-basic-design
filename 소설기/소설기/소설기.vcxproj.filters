@@ -34,6 +34,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Image Include="block.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
@@ -45,6 +46,8 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
+=======
+>>>>>>> a40d0ad48bd79fe958d0b8f84e0cb91f34c539bd
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -57,5 +60,13 @@
     <ClCompile Include="character.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="block.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="KakaoTalk_20241030_165940874.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>
