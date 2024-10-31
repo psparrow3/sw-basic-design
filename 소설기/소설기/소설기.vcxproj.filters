@@ -34,10 +34,13 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="stage1.bmp">
+    <Image Include="block.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="character.bmp">
+    <Image Include="character_original.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="character_sword.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

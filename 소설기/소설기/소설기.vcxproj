@@ -136,13 +136,20 @@
     <ResourceCompile Include="소설기.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="character.bmp" />
-    <Image Include="stage1.bmp" />
+    <Image Include="block.bmp" />
+    <Image Include="character_original.bmp" />
+    <Image Include="character_sword.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="character.cpp" />
-    <ClCompile Include="drawStage.cpp" />
-    <ClCompile Include="drawStage1.cpp" />
+    <ClCompile Include="character.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="drawStage.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="drawStage1.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
