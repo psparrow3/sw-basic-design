@@ -136,10 +136,10 @@
     <ResourceCompile Include="소설기.rc" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Image Include="block.bmp" />
     <Image Include="character_original.bmp" />
     <Image Include="character_sword.bmp" />
+    <Image Include="KakaoTalk_20241030_165940874.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="character.cpp">
@@ -147,18 +147,6 @@
     </ClCompile>
     <ClCompile Include="drawStage.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="drawStage1.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="main.cpp" />
-=======
-    <ClCompile Include="character.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="drawStage.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="drawStage1.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -166,11 +154,6 @@
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="block.bmp" />
-    <Image Include="KakaoTalk_20241030_165940874.bmp" />
->>>>>>> a40d0ad48bd79fe958d0b8f84e0cb91f34c539bd
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
