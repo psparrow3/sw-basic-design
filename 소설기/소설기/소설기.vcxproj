@@ -152,7 +152,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="block.bmp" />
-    <Image Include="KakaoTalk_20241030_165940874.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

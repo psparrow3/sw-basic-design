@@ -51,8 +51,5 @@
     <Image Include="block.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="KakaoTalk_20241030_165940874.bmp">
-      <Filter>리소스 파일</Filter>
-    </Image>
   </ItemGroup>
 </Project>
