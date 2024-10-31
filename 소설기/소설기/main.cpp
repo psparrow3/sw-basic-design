@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include <stdexcept>
 
-#define SCREEN_WIDTH 1802
+#define SCREEN_WIDTH 1902
 #define SCREEN_HEIGHT 500
 
 void SetConsoleSize(int width, int height) {
@@ -143,33 +143,24 @@ void drawBitmap(const char* filename) {
 			buffer += getASCIIChar(brightness);
 		}
 		buffer += "\n";  // 한 줄 완료 후 개행
+
 	}
 
 	// 모은 버퍼 한 번에 출력
 	std::cout << buffer << std::endl;
 }
 
-void setConsoleColor() {
-	// Set background to white and text to black
-	std::cout << "\033[47m\033[30m"; // White background, black text
-}
-
-void resetConsoleColor() {
-	// Reset to default colors
-	std::cout << "\033[0m"; // Reset colors
-}
-
 int main() {
 	SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	SetConsoleBufferSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	SetConsoleFontSize(1);
-	setConsoleColor(); // Set console colors
 
 	SetConsoleTitle(L"잃어버린 낙원");
+	
+	for (int i = 0; i < 15; i++) { 
+		drawBitmap("block.bmp");  // 여기에 비트맵 파일 경로 넣기
+	}
 
-	drawBitmap("stage1.bmp");  // 여기에 비트맵 파일 경로 넣기
-
-	resetConsoleColor();
 	getchar();
 	return 0;
 }
