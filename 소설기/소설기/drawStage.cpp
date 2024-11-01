@@ -5,7 +5,8 @@
 #include <stdexcept>
 #include "drawStage.h"
 
-void drawStage::SetConsoleSize(int width, int height) {
+void drawStage::SetConsoleSize(int width, int height)
+{
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
     COORD bufferSize;
@@ -21,7 +22,8 @@ void drawStage::SetConsoleSize(int width, int height) {
     SetConsoleWindowInfo(hConsole, TRUE, &windowSize);
 }
 
-void drawStage::SetConsoleFontSize(int fontSize) {
+void drawStage::SetConsoleFontSize(int fontSize)
+{
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_FONT_INFOEX cfi;
     cfi.cbSize = sizeof(cfi);
@@ -33,7 +35,8 @@ void drawStage::SetConsoleFontSize(int fontSize) {
     SetCurrentConsoleFontEx(hConsole, FALSE, &cfi);
 }
 
-char drawStage::getASCIIChar(unsigned char brightness) {
+char drawStage::getASCIIChar(unsigned char brightness)
+{
     if (brightness > 240) return ' ';
     else if (brightness > 230) return '.';
     else if (brightness > 220) return ',';
@@ -54,10 +57,12 @@ char drawStage::getASCIIChar(unsigned char brightness) {
     else return '@';  // For very low brightness
 }
 
-void drawStage::drawBitmap(const char* filename, std::vector<char>&buffer, int startX, int startY, int screenWidth) {
+void drawStage::drawBitmap(const char* filename, std::vector<char>&buffer, int startX, int startY, int screenWidth)
+{
     std::ifstream file(filename, std::ios::binary);
 
-    if (!file) {
+    if (!file)
+    {
         std::cerr << "Error opening file!" << std::endl;
         return;
     }
@@ -68,7 +73,8 @@ void drawStage::drawBitmap(const char* filename, std::vector<char>&buffer, int s
     file.read(reinterpret_cast<char*>(&fileHeader), sizeof(fileHeader));
     file.read(reinterpret_cast<char*>(&infoHeader), sizeof(infoHeader));
 
-    if (fileHeader.fileType != 0x4D42) {
+    if (fileHeader.fileType != 0x4D42)
+    {
         std::cerr << "Not a BMP file!" << std::endl;
         return;
     }
@@ -82,8 +88,10 @@ void drawStage::drawBitmap(const char* filename, std::vector<char>&buffer, int s
     file.close();
 
     // Buffer에 모든 픽셀을 그립니다.
-    for (int y = 0; y < infoHeader.height; ++y) {
-        for (int x = 0; x < infoHeader.width; ++x) {
+    for (int y = 0; y < infoHeader.height; ++y)
+    {
+        for (int x = 0; x < infoHeader.width; ++x)
+        {
             int index = (x + (infoHeader.height - 1 - y) * infoHeader.width) * 3;
             unsigned char blue = bitmapData[index];
             unsigned char green = bitmapData[index + 1];
@@ -97,11 +105,14 @@ void drawStage::drawBitmap(const char* filename, std::vector<char>&buffer, int s
     }
 }
 
-void drawStage::flushBuffer(const std::vector<char>& buffer, int width, int height) {
+void drawStage::flushBuffer(const std::vector<char>& buffer, int width, int height)
+{
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD pos = { 0, 0 };
     SetConsoleCursorPosition(hConsole, pos);
-    for (int y = 0; y < height; ++y) {
+
+    for (int y = 0; y < height; ++y)
+    {
         std::cout.write(&buffer[y * width], width);
     }
 }
