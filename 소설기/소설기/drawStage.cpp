@@ -146,11 +146,11 @@ int main() {
 
     // 버퍼 생성
     std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
-
-    for (int x = 0; x < SCREEN_WIDTH - BLOCK_SIZE * 8; x += BLOCK_SIZE * 2) {
-        drawBitmap("block.bmp", buffer, x, 0, SCREEN_WIDTH);
+    int x;
+    for (x = 0; x < SCREEN_WIDTH - BLOCK_SIZE * 7; x += BLOCK_SIZE * 2) {
+        drawBitmap("block.bmp", buffer, x, SCREEN_HEIGHT- BLOCK_SIZE*3, SCREEN_WIDTH);
     }
-
+  
     // 버퍼 내용을 출력합니다.
     flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
