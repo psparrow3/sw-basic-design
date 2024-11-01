@@ -3,12 +3,9 @@
 #include <vector>
 #include <Windows.h>
 #include <stdexcept>
+#include "drawStage.h"
 
-#define SCREEN_WIDTH 1902
-#define SCREEN_HEIGHT 500
-#define BLOCK_SIZE 40
-
-void SetConsoleSize(int width, int height) {
+void drawStage::SetConsoleSize(int width, int height) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
     COORD bufferSize;
@@ -24,7 +21,7 @@ void SetConsoleSize(int width, int height) {
     SetConsoleWindowInfo(hConsole, TRUE, &windowSize);
 }
 
-void SetConsoleFontSize(int fontSize) {
+void drawStage::SetConsoleFontSize(int fontSize) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_FONT_INFOEX cfi;
     cfi.cbSize = sizeof(cfi);
@@ -36,31 +33,7 @@ void SetConsoleFontSize(int fontSize) {
     SetCurrentConsoleFontEx(hConsole, FALSE, &cfi);
 }
 
-#pragma pack(push, 1)
-struct BitmapFileHeader {
-    uint16_t fileType;
-    uint32_t fileSize;
-    uint16_t reserved1;
-    uint16_t reserved2;
-    uint32_t offsetData;
-};
-
-struct BitmapInfoHeader {
-    uint32_t size;
-    int32_t width;
-    int32_t height;
-    uint16_t planes;
-    uint16_t bitCount;
-    uint32_t compression;
-    uint32_t sizeImage;
-    int32_t xPixelsPerMeter;
-    int32_t yPixelsPerMeter;
-    uint32_t colorsUsed;
-    uint32_t colorsImportant;
-};
-#pragma pack(pop)
-
-char getASCIIChar(unsigned char brightness) {
+char drawStage::getASCIIChar(unsigned char brightness) {
     if (brightness > 240) return ' ';
     else if (brightness > 230) return '.';
     else if (brightness > 220) return ',';
@@ -81,7 +54,7 @@ char getASCIIChar(unsigned char brightness) {
     else return '@';  // For very low brightness
 }
 
-void drawBitmap(const char* filename, std::vector<char>& buffer, int startX, int startY, int screenWidth) {
+void drawStage::drawBitmap(const char* filename, std::vector<char>&buffer, int startX, int startY, int screenWidth) {
     std::ifstream file(filename, std::ios::binary);
 
     if (!file) {
@@ -124,36 +97,11 @@ void drawBitmap(const char* filename, std::vector<char>& buffer, int startX, int
     }
 }
 
-void flushBuffer(const std::vector<char>& buffer, int width, int height) {
+void drawStage::flushBuffer(const std::vector<char>& buffer, int width, int height) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD pos = { 0, 0 };
     SetConsoleCursorPosition(hConsole, pos);
     for (int y = 0; y < height; ++y) {
         std::cout.write(&buffer[y * width], width);
     }
-}
-
-int main() {
-    SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-    SetConsoleFontSize(1);
-    SetConsoleTitle(L"잃어버린 낙원");
-
-    HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_CURSOR_INFO curCursorInfo;
-    GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
-    curCursorInfo.bVisible = 0; // 커서 숨기기
-    SetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
-
-    // 버퍼 생성
-    std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
-    int x;
-    for (x = 0; x < SCREEN_WIDTH - BLOCK_SIZE * 7; x += BLOCK_SIZE * 2) {
-        drawBitmap("block.bmp", buffer, x, SCREEN_HEIGHT- BLOCK_SIZE*3, SCREEN_WIDTH);
-    }
-  
-    // 버퍼 내용을 출력합니다.
-    flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-    getchar();
-    return 0;
 }

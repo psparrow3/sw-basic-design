@@ -5,6 +5,10 @@
 #include <Windows.h>
 #include <stdexcept>
 
+#define SCREEN_WIDTH 1902
+#define SCREEN_HEIGHT 500
+#define BLOCK_SIZE 40
+
 #pragma pack(push, 1)
 struct BitmapFileHeader {
 	uint16_t fileType;
@@ -31,7 +35,11 @@ struct BitmapInfoHeader {
 
 class drawStage
 {
+public:
 	char getASCIIChar(unsigned char brightness);
-	void drawBitmap(const char* filename);
+	void drawBitmap(const char* filename, std::vector<char>& buffer, int startX, int startY, int screenWidth);
+	void SetConsoleSize(int width, int height);
+	void SetConsoleFontSize(int fontSize);
+	void flushBuffer(const std::vector<char>& buffer, int width, int height);
 };
 
