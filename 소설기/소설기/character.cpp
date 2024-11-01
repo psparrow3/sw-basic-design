@@ -7,7 +7,6 @@
 character::character()
 {
 	x = 0, y = 0;
-	
 }
 
 void character::characterMove(int key)
@@ -15,9 +14,6 @@ void character::characterMove(int key)
 
 	if (key == 32)
 	{
-		
-	
-		
 		y += blockSize + 10;
 		if (collision() == 3) {
 			
@@ -35,23 +31,20 @@ void character::characterMove(int key)
 			break;
 		case 75:
 			if (collision() == 2) {
-				int next_x = x - blockSize;
+				int next_x = x - blockSize / 10;
 				if (next_x <0)
 					break;
 			}
-
-
-			
-			x -= blockSize;
+=			x -= blockSize / 10;
 			break;
 		case 77:
 			if (collision() == 2) {
-				int next_x = x + blockSize;
+				int next_x = x + blockSize / 10;
 				if (next_x > 1800)
 					break;
 			}
 
-			x += blockSize;
+			x += blockSize / 10;
 			break;
 		default:
 			break;
