@@ -78,9 +78,9 @@ void character::gravity()
 
 int character::collision()
 {
-	for (int i = 0; i < 1900; i++)
+	for (int i = 0; i < character_Width; i++)
 	{
-		for (int j = 0; j < 500; j++)
+		for (int j = 0; j < character_Height; j++)
 		{
 			if (player[j][i] == 1)
 			{

@@ -1,7 +1,8 @@
 #pragma once
 
 #define blockSize 40
-
+#define character_Height 10
+#define character_Width 4
 class character
 {
 	int x;
