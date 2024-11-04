@@ -111,8 +111,8 @@ void drawStage::flushBuffer(const std::vector<char>& buffer, int width, int heig
     COORD pos = { 0, 0 };
     SetConsoleCursorPosition(hConsole, pos);
 
-    for (int y = 0; y < height; ++y)
+    for (int x = 0; x < width; ++x)
     {
-        std::cout.write(&buffer[y * width], width);
+        std::cout.write(&buffer[x * height], height);
     }
 }

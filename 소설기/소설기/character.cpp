@@ -164,7 +164,7 @@ void character::gravity()
 	
 	while (1)
 	{
-		if (collision() == 2)
+		if (collision() == 2 || collision()==10)
 		{
 			break;
 		}
@@ -208,7 +208,15 @@ int character::collision()
 					//gameOver();				// 즉사기를 맞았을 때
 					//return 7;				
 				}
-
+				else if (screen[newX][newY] == 8)
+				{
+					return 8;					//씨앗 심는 부분
+				}
+				else if (screen[newX][newY] == 10)
+				{
+												// 도움말 부분
+					return 10;
+				}
 					
 			}
 		}

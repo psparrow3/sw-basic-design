@@ -20,8 +20,9 @@ int main() {
     // 버퍼 생성
     std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
     int x;
-    for (x = 0; x < SCREEN_WIDTH - BLOCK_SIZE * 7; x += BLOCK_SIZE * 2) {
-        a.drawBitmap("block.bmp", buffer, x, SCREEN_HEIGHT - BLOCK_SIZE * 3, SCREEN_WIDTH);
+    int y;
+    for (y = 0; y < SCREEN_HEIGHT - BLOCK_SIZE; y += BLOCK_SIZE) {
+        a.drawBitmap("block.bmp", buffer, SCREEN_HEIGHT - BLOCK_SIZE, y, SCREEN_WIDTH);
     }
 
     // 버퍼 내용을 출력합니다.

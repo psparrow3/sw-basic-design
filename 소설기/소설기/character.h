@@ -1,9 +1,13 @@
 #pragma once
 #include "Windows.h"
 
+
+
 #define blockSize 40
-#define player_Height 10
-#define player_Width 4
+#define player_Height 60
+#define player_Width 40
+
+
 class character
 {
 
@@ -14,11 +18,11 @@ class character
 	bool future;
 	bool invincible;
 	int invincibilityDuration;
-	
 	int attackRange;
 	int attackCoolTime;
 	int player[500][1900];
 	int screen[500][1900];
+
 	character();
 	void characterMove(int key);
 	int collision();
@@ -30,4 +34,7 @@ class character
 	void drawFutureMap();
 	void drawPastMap();
 	void gameOver();
+	void drawCharacter();
+
+
 };
