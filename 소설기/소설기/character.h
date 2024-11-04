@@ -1,7 +1,10 @@
 #pragma once
 #include "Windows.h"
+#include "drawCharacter.h"
 
 
+#define SCREEN_WIDTH 1902
+#define SCREEN_HEIGHT 500
 
 #define blockSize 40
 #define player_Height 60
@@ -24,7 +27,7 @@ class character
 	int screen[500][1900];
 
 	character();
-	void characterMove(int key);
+	void characterMove(int key,HDC hdc);
 	int collision();
 	void gravity();
 	void attack();
@@ -34,7 +37,7 @@ class character
 	void drawFutureMap();
 	void drawPastMap();
 	void gameOver();
-	void drawCharacter();
+	
 
 
 };

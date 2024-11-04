@@ -1,10 +1,11 @@
 #include "character.h"
 #include "conio.h"
 #include "Windows.h"
+#include "drawCharacter.h"
 
 character::character()
 {
-	x = 0, y = 0, facingRight = 1, future = 1;
+	x = 0, y = SCREEN_HEIGHT - blockSize, facingRight = 1, future = 1;
 	playerHeart = 3;
 	invincible = false;			//무적 상태
 	invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
@@ -92,8 +93,10 @@ void character::attack()
 	
 }
 
-void character::characterMove(int key)
+void character::characterMove(int key,HDC hdc)
 {
+	
+	gravity();
 	if (key == 's') {
 		switchMap();
 	}
@@ -113,7 +116,7 @@ void character::characterMove(int key)
 			
 		}
 	}
-
+	
 	if (key == 224)
 	{
 		key = _kbhit();
@@ -157,6 +160,7 @@ void character::characterMove(int key)
 			break;
 		}
 	}
+	
 }
 
 void character::gravity()

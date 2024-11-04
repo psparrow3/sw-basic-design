@@ -128,12 +128,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
-    <ClInclude Include="drawStage.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="drawStage1.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="drawCharacter.h" />
+    <ClInclude Include="drawStage.h" />
+    <ClInclude Include="drawStage1.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -143,15 +140,16 @@
     <Image Include="block.bmp" />
     <Image Include="character_original.bmp" />
     <Image Include="character_sword.bmp" />
-    <Image Include="door.bmp" />
     <Image Include="KakaoTalk_20241030_165940874.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="character.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="drawCharacter.cpp" />
     <ClCompile Include="drawStage.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="drawStage1.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
