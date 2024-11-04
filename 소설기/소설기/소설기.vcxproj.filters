@@ -20,5 +20,6 @@
     <Image Include="character_original.bmp" />
     <Image Include="character_sword.bmp" />
     <Image Include="KakaoTalk_20241030_165940874.bmp" />
+    <Image Include="door.bmp" />
   </ItemGroup>
 </Project>
