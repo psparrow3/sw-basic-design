@@ -21,7 +21,7 @@ int main() {
     std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
     int x;
     for (x = 0; x < SCREEN_WIDTH - BLOCK_SIZE * 7; x += BLOCK_SIZE * 2) {
-        a.drawBitmap("block.bmp", buffer, x, SCREEN_HEIGHT - BLOCK_SIZE * 3, SCREEN_WIDTH);
+        a.drawBitmap("door.bmp", buffer, x, SCREEN_HEIGHT - BLOCK_SIZE * 3, SCREEN_WIDTH);
     }
 
     // 버퍼 내용을 출력합니다.
