@@ -1,6 +1,5 @@
 #pragma once
 #include "Windows.h"
-#include "drawCharacter.h"
 
 
 #define SCREEN_WIDTH 1902
@@ -13,9 +12,12 @@
 
 class character
 {
-
+public:
 	int x;
 	int y;
+	character();
+
+private:
 	int playerHeart;
 	bool facingRight;
 	bool future;
@@ -26,7 +28,7 @@ class character
 	int player[500][1900];
 	int screen[500][1900];
 
-	character();
+	
 	void characterMove(int key,HDC hdc);
 	int collision();
 	void gravity();
