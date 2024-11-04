@@ -8,9 +8,9 @@ character::character()
 	playerHeart = 3;
 	invincible = false;			//무적 상태
 	invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
-	lastHitTime = 0;
+	
 	attackCoolTime = 1000;		//공격 쿨타임 (밀리초,1초)
-	lastAttackTime = 0;
+	
 	attackRange = player_Width;
 }
 void gameOver() 
@@ -25,20 +25,20 @@ void character::getItem()
 
 void character::takeDamage()
 {
-	ULONGLONG currentTime = GetTickCount64();
-	if (!invincible || currentTime - lastHitTime > invincibilityDuration)
-	{
-		lastHitTime = currentTime;
-		invincible = true;
 
-		// 데미지 처리
+	if (!invincible) {  // 이미 무적 상태가 아니라면 데미지 적용
 		playerHeart -= 1;
-		/*if (playerHeart == 0)
-			gameOver();*/
-		// 무적 상태 설정 후 일정 시간 후 해제
-		invincible = true;
-	}
 
+		// 플레이어가 생명력을 다 소모했을 경우
+	/*	if (playerHeart == 0) {
+			gameOver();
+			return;
+		}*/
+
+		invincible = true;          // 무적 상태로 전환
+		Sleep(invincibilityDuration); // 2초 동안 대기
+		invincible = false;         // 무적 상태 해제
+	}
 
 	
 }
@@ -66,13 +66,7 @@ void character::switchMap()
 
 void character::attack()
 {
-	ULONGLONG currenTime = GetTickCount64();
-	if (currenTime - lastAttackTime < attackCoolTime) 
-	{
-		// 공격 쿨타임 동안이라 공격 X
-		return;
-	}
-	lastAttackTime = currenTime;
+
 	for (int i = 0; i < player_Height; i++) 
 	{
 

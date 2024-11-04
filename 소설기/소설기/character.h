@@ -14,8 +14,7 @@ class character
 	bool future;
 	bool invincible;
 	int invincibilityDuration;
-	ULONGLONG lastHitTime;
-	ULONGLONG lastAttackTime;
+	
 	int attackRange;
 	int attackCoolTime;
 	int player[500][1900];
