@@ -3,10 +3,10 @@
 #include <vector>
 #include <Windows.h>
 #include <stdexcept>
-#include "drawStage.h"
+#include "draw.h"
 
 int main() {
-    drawStage a;
+    draw a;
     a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     a.SetConsoleFontSize(1);
     SetConsoleTitle(L"잃어버린 낙원");
@@ -19,12 +19,15 @@ int main() {
 
     // 버퍼 생성
     std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
+    a.drawBitmap("character_origianl.bmp", buffer, 50, 50, SCREEN_WIDTH);
     int x;
     int y;
     for (x = 0; x < SCREEN_WIDTH - BLOCK_SIZE * 7; x += BLOCK_SIZE * 2) {
         a.drawBitmap("block.bmp", buffer, x, SCREEN_HEIGHT- BLOCK_SIZE, SCREEN_WIDTH);
     }
-
+    
+    
+    
     // 버퍼 내용을 출력합니다.
     a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 

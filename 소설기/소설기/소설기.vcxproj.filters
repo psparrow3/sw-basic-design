@@ -6,6 +6,7 @@
     <ClCompile Include="drawStage1.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="drawCharacter.cpp" />
+    <ClCompile Include="draw.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
@@ -13,6 +14,7 @@
     <ClInclude Include="drawStage1.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="drawCharacter.h" />
+    <ClInclude Include="draw.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="소설기.rc" />
