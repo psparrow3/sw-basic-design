@@ -143,7 +143,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </ExcludedFromBuild>
     </Image>
-    <Image Include="character_sword.bmp" />
     <Image Include="door.bmp" />
     <Image Include="tutorial_building.bmp" />
   </ItemGroup>

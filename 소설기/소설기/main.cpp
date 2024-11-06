@@ -6,7 +6,7 @@
 #include "draw.h"
 #include "drawCharacter.h"
 #include "conio.h"
-
+#include "character.h"
 int main() {
     draw a;
     a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -32,14 +32,12 @@ int main() {
         a.drawBitmap("block.bmp", buffer, x, y, SCREEN_WIDTH);
     }
     a.drawBitmap("tutorial_building.bmp", buffer, x-383, SCREEN_HEIGHT - BLOCK_SIZE*10, SCREEN_WIDTH);
-   
-    while (1)
-    {
-        int key = _getch();
 
-        drawCharacter a;
-    }
-    
+
+  
+    a.drawBitmap("character_original.bmp", buffer, 40, SCREEN_HEIGHT - BLOCK_SIZE-60, SCREEN_WIDTH);
+
+        
     
     // 버퍼 내용을 출력합니다.
     a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);

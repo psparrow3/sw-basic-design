@@ -22,7 +22,6 @@
   <ItemGroup>
     <Image Include="block.bmp" />
     <Image Include="character_original.bmp" />
-    <Image Include="character_sword.bmp" />
     <Image Include="tutorial_building.bmp" />
     <Image Include="door.bmp" />
   </ItemGroup>
