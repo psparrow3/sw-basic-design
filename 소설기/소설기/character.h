@@ -9,7 +9,6 @@
 #define player_Height 40
 #define player_Width 40
 
-
 class character
 {
 public:

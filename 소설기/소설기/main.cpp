@@ -8,58 +8,64 @@
 #include "conio.h"
 #include "character.h"
 
+int stage1_pre[12][20] =
+{
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,1,1},
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0},
+    {0,0,0,0,1,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0},
+    {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
+    {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0},
+    {1,0,0,0,1,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0},
+    {0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1},
+    {0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+};
+
 int main()
 {
-	draw a;
-	character ac;
-	a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-	a.SetConsoleFontSize(1);
-	SetConsoleTitle(L"잃어버린 낙원");
+    draw a;
+    character ac;
+    a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+    a.SetConsoleFontSize(1);
+    SetConsoleTitle(L"잃어버린 낙원");
 
-	HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_CURSOR_INFO curCursorInfo;
-	GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
-	curCursorInfo.bVisible = 0; // 커서 숨기기
-	SetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
+    HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO curCursorInfo;
+    GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
+    curCursorInfo.bVisible = 0; // 커서 숨기기
+    SetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
 
-	// 버퍼 생성
-	std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
-  
-	int x;
+    // 버퍼 생성 (힙 메모리에 할당)
+    std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
 
-	int y;
-	
-	for (x = 0; x < SCREEN_WIDTH - BLOCK_SIZE * 10; x += BLOCK_SIZE * 2)
-	{
-		a.drawBitmap("block.bmp", buffer, x, SCREEN_HEIGHT - BLOCK_SIZE, SCREEN_WIDTH);
-	}
+    // 바닥과 벽 초기 설정
+    int x, y;
 
-	for (y = SCREEN_HEIGHT - BLOCK_SIZE; y > 0; y -= BLOCK_SIZE)
-	{
-		a.drawBitmap("block.bmp", buffer, x, y, SCREEN_WIDTH);
-	}
+    // 맨 밑 y좌표 460
+    for (y = 0; y < 12; y++)
+    {
+        for (x = 0; x < 20; x++)
+        {
+            if (stage1_pre[y][x] == 1)
+            {
+                int posX = x * BLOCK_SIZE;
+                int posY = 460 - y * BLOCK_SIZE;
 
-	a.drawBitmap("tutorial_building.bmp", buffer, x - 383, SCREEN_HEIGHT - BLOCK_SIZE * 10, SCREEN_WIDTH);
+                // 위치가 유효한지 확인
+                if (posX >= 0 && posX < SCREEN_WIDTH && posY >= 0 && posY < SCREEN_HEIGHT)
+                {
+                    a.drawBitmap("block.bmp", buffer, posX, posY, SCREEN_WIDTH);
+                }
+            }
+        }
+    }
 
-	while (1)
-	{
-		if (_kbhit())
-		{
-			int key = _getch();
+    a.drawBitmap("character_original.bmp", buffer, 40, 400, SCREEN_WIDTH);
 
-			ac.characterMove(key);
-		}
+    a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-		int previousX = ac.x;
-		int previousY = ac.y;
-		a.drawBitmap("empty_character.bmp", buffer, previousX, previousY, SCREEN_WIDTH);
-
-		Sleep(1000);
-
-		a.drawBitmap("character_original.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
-		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-	}
-
-	getchar();
-	return 0;
+    return 0;
 }
