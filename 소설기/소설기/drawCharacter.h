@@ -6,8 +6,6 @@ class drawCharacter : public character
 {
 public:
 	drawCharacter();
-	
-	
-	
+	void eraseCharacter();
 };
 

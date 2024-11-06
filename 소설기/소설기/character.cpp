@@ -5,7 +5,7 @@
 
 character::character()
 {
-	x = 10, y = SCREEN_HEIGHT - blockSize - player_Height, facingRight = 1, future = 1;
+	x = 40, y = 400, facingRight = 1, future = 1;
 	playerHeart = 3;
 	invincible = false;			//무적 상태
 	invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
@@ -95,8 +95,6 @@ void character::attack()
 
 void character::characterMove(int key)
 {
-	
-	
 	if (key == 's') {
 		switchMap();
 	}

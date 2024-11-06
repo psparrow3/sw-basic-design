@@ -24,5 +24,6 @@
     <Image Include="character_original.bmp" />
     <Image Include="tutorial_building.bmp" />
     <Image Include="door.bmp" />
+    <Image Include="empty_character.bmp" />
   </ItemGroup>
 </Project>

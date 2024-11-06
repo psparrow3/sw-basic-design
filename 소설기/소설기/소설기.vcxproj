@@ -138,6 +138,7 @@
     <ResourceCompile Include="소설기.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="empty_character.bmp" />
     <Image Include="block.bmp" />
     <Image Include="character_original.bmp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
