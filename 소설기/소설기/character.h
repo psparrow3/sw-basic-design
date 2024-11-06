@@ -6,7 +6,7 @@
 #define SCREEN_HEIGHT 500
 
 #define blockSize 40
-#define player_Height 60
+#define player_Height 40
 #define player_Width 40
 
 
@@ -16,7 +16,7 @@ public:
 	int x;
 	int y;
 	character();
-
+	void characterMove(int key);
 private:
 	int playerHeart;
 	bool facingRight;
@@ -29,7 +29,7 @@ private:
 	int screen[500][1900];
 
 	
-	void characterMove(int key,HDC hdc);
+	
 	int collision();
 	void gravity();
 	void attack();

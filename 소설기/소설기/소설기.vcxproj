@@ -139,9 +139,13 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="block.bmp" />
-    <Image Include="character_original.bmp" />
+    <Image Include="character_original.bmp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </Image>
     <Image Include="character_sword.bmp" />
-    <Image Include="KakaoTalk_20241030_165940874.bmp" />
+    <Image Include="door.bmp" />
+    <Image Include="tutorial_building.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="character.cpp">

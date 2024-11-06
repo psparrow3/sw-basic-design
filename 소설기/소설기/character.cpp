@@ -5,7 +5,7 @@
 
 character::character()
 {
-	x = 0, y = SCREEN_HEIGHT - blockSize - player_Height, facingRight = 1, future = 1;
+	x = 10, y = SCREEN_HEIGHT - blockSize - player_Height, facingRight = 1, future = 1;
 	playerHeart = 3;
 	invincible = false;			//무적 상태
 	invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
@@ -93,10 +93,10 @@ void character::attack()
 	
 }
 
-void character::characterMove(int key,HDC hdc)
+void character::characterMove(int key)
 {
 	
-	gravity();
+	
 	if (key == 's') {
 		switchMap();
 	}
@@ -119,8 +119,8 @@ void character::characterMove(int key,HDC hdc)
 	
 	if (key == 224)
 	{
-		key = _kbhit();
-
+		key = _getch(); // 방향키 실제 값 받기
+	
 		switch (key)
 		{
 		case 72:
@@ -160,7 +160,7 @@ void character::characterMove(int key,HDC hdc)
 			break;
 		}
 	}
-
+	
 }
 
 void character::gravity()
