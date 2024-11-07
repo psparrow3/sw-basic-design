@@ -7,7 +7,7 @@
 
 character::character()
 {
-<<<<<<< HEAD
+
 	x = 10, y = SCREEN_HEIGHT-blockSize-character_Height, facingRight = 1, future = 1;
 	playerHeart = 3;
 	invincible = false;			//무적 상태
@@ -20,7 +20,6 @@ character::character()
 	
 
 	
-=======
     x = 10, y = SCREEN_HEIGHT - character_Height - 21 , facingRight = 1, future = 1;
     playerHeart = 3;
     invincible = false;         //무적 상태
@@ -29,7 +28,7 @@ character::character()
     attackCoolTime = 1000;      //공격 쿨타임 (밀리초,1초)
 
     attackRange = character_Width / 2;
->>>>>>> f32f47c4da7f569eda8d32ad9e96d075d4c1bd3b
+
 }
 void gameOver()
 {
@@ -112,55 +111,10 @@ void character::attack()
 
 void character::characterMove(std::vector<char>& buffer)
 {
-<<<<<<< HEAD
+
 	drawCharacter ac;
 
 	
-	int key = _getch();
-	
-	if (y >= SCREEN_HEIGHT - blockSize - character_Height)
-	{
-		isJumping = 0; 
-	}
-	
-	if (key == 's') {
-		switchMap();
-	}
-
-	if (key == 'a')
-	{
-		
-		attack();
-	}
-	
-	if (key == ' ' && !isJumping)
-	{
-		isJumping = 1;
-		y -= blockSize+10;
-
-		if (collision() == 4)
-		{
-			
-		}
-	
-	}
-	
-	if (key == 224)
-	{
-		key = _getch(); // 방향키 실제 값 받기
-	
-		switch (key)
-		{
-		case 72:
-			// 문에서 들어가기;
-			break;
-		case 75:
-			facingRight = !facingRight;
-			if (collision() == 3)
-			{
-				int next_x = x - blockSize / 10;
-=======
-    drawCharacter ac;
     if (y < SCREEN_HEIGHT - character_Height - 21)
         gravity();
 
@@ -172,48 +126,30 @@ void character::characterMove(std::vector<char>& buffer)
     if (key == 's') {
         switchMap();
     }
->>>>>>> f32f47c4da7f569eda8d32ad9e96d075d4c1bd3b
 
     if (key == 'a')
     {
 
-<<<<<<< HEAD
-			x -= blockSize;
-			
-			break;
-		case 77:
-			facingRight = 1;
-			if (collision() == 3)
-			{
-				int next_x = x + blockSize / 10;
-=======
+
+
         attack();
     }
 
     if (key == ' ')
     {
         y -= blockSize + 10;
->>>>>>> f32f47c4da7f569eda8d32ad9e96d075d4c1bd3b
+
 
         if (collision() == 4)
         {
 
-<<<<<<< HEAD
-			x += blockSize;
-			
-			break;
-		case 80:
-			// 씨앗 심기
-		default:
-			break;
+
+		
 		}
 	}
 	
 	
 	
-=======
-        }
-    }
 
     if (key == 224)
     {
@@ -262,26 +198,24 @@ void character::characterMove(std::vector<char>& buffer)
     }
     ac.characterEraese(previousX, previousY, buffer);
     ac.characterDraw(x, y, buffer);
->>>>>>> f32f47c4da7f569eda8d32ad9e96d075d4c1bd3b
+
 }
 
 void character::gravity()
 {
-<<<<<<< HEAD
+
 	
 	if (y >= SCREEN_HEIGHT - blockSize - character_Height) {
 		return;
 	}
 	y += 10;
 	
-=======
 
     if (y > SCREEN_HEIGHT - character_Height - 21) {
         return;
     }
     y += 10;
 
->>>>>>> f32f47c4da7f569eda8d32ad9e96d075d4c1bd3b
 }
 
 int character::collision()
