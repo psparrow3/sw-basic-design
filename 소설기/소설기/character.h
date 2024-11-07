@@ -3,6 +3,9 @@
 #include<iostream>
 #include "draw.h"
 
+#define SCREEN_WIDTH 1902
+#define SCREEN_HEIGHT 501
+
 #define blockSize 40
 #define character_Height 60
 #define character_Width 40
@@ -14,19 +17,24 @@ public:
 	int y;
 	character();
 	void characterMove(std::vector<char>& buffer);
+
+	void gravity();
+
 private:
 	int playerHeart;
 	bool facingRight;
 	bool future;
 	bool invincible;
+
 	int invincibilityDuration;
 	int attackRange;
 	int attackCoolTime;
-	
-	
-	
+	bool isJumping;
+
+
+
 	int collision();
-	void gravity();
+
 	void attack();
 	void switchMap();
 	void takeDamage();
