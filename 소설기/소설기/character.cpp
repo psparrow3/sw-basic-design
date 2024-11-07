@@ -254,6 +254,10 @@ int character::collision()
     //         {
     //            return 8;               //씨앗 심는 부분
     //         }
+    //         else if (screen[newX][newY]==9)
+    //         {
+    //            return 9;
+    //         }
     //         else if (screen[newX][newY] == 10)
     //         {
     //                                 // 도움말 부분
