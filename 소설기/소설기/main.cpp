@@ -7,11 +7,8 @@
 #include "drawCharacter.h"
 #include "conio.h"
 
-int stage1_pre[12][20] =
+int stage1_pre[12][20]
 {
-<<<<<<< HEAD
-    draw a;
-=======
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,1,1},
@@ -31,14 +28,14 @@ int main() {
 	a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	a.SetConsoleFontSize(1);
 	SetConsoleTitle(L"잃어버린 낙원");
->>>>>>> 626dd539c8e70e552ec12d24826020842a09a272
+
 
     // 콘솔 창 설정
     a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     a.SetConsoleFontSize(1);
     SetConsoleTitle(L"잃어버린 낙원");
 
-<<<<<<< HEAD
+
     HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO curCursorInfo;
     GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
@@ -59,44 +56,55 @@ int main() {
     a.drawBitmap("tutorial_building.bmp", buffer, x - 383, SCREEN_HEIGHT - BLOCK_SIZE * 10, SCREEN_WIDTH);
 
     // 맵을 한 번에 출력 (루프 시작 전)
-    a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-    character ac;
    
-    while (1) {
-      
-       
-        ac.characterMove(buffer);
-          
-        a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-    }
-  
-    return 0;
-=======
-	// 버퍼 생성
-	std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
 
-	int x;
+    
 
-	int y;
+	drawCharacter ac;
 
-	for (y = 0; y < 12; y++)
-	{
-		for (x = 0; x < 20; x++)
-		{
-			if (stage1_pre[y][x])
-			{
-				a.drawBitmap("block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-			}
-		}
-	}
-
-	a.drawBitmap("door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 10, SCREEN_WIDTH);
-
-	// 버퍼 내용을 출력합니다.
+	
+	
 	a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-	getchar();
+    while (1) {
+		int preX = ac.x;
+		int preY = ac.y;
+		ac.gravity();
+		
+		
+	
+		if (_kbhit()) {
+
+			ac.characterMove(buffer);
+		}
+		
+
+		ac.characterEraese(preX, preY, buffer);
+		ac.characterDraw(ac.x, ac.y, buffer);
+
+        a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+    }
+  
+   
+
+	//for (y = 0; y < 12; y++)
+	//{
+	//	for (x = 0; x < 20; x++)
+	//	{
+	//		if (stage1_pre[y][x])
+	//		{
+	//			a.drawBitmap("block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+	//		}
+	//	}
+	//}
+
+	//a.drawBitmap("door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 10, SCREEN_WIDTH);
+
+	//// 버퍼 내용을 출력합니다.
+	//a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+	
 	return 0;
->>>>>>> 626dd539c8e70e552ec12d24826020842a09a272
+
 }

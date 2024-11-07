@@ -11,9 +11,12 @@ character::character()
 	invincible = false;			//무적 상태
 	invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
 	
+	isJumping = 0;				// 점프상태
 	attackCoolTime = 1000;		//공격 쿨타임 (밀리초,1초)
 	
 	attackRange = character_Width/2;
+	
+
 	
 }
 void gameOver() 
@@ -98,12 +101,14 @@ void character::attack()
 void character::characterMove(std::vector<char>& buffer)
 {
 	drawCharacter ac;
-	gravity();
-	ac.characterDraw(x, y, buffer);
-	int key = _getch();
-	int previousX = x;
-	int previousY = y;
+
 	
+	int key = _getch();
+	
+	if (y >= SCREEN_HEIGHT - blockSize - character_Height)
+	{
+		isJumping = 0; 
+	}
 	
 	if (key == 's') {
 		switchMap();
@@ -114,15 +119,17 @@ void character::characterMove(std::vector<char>& buffer)
 		
 		attack();
 	}
-
-	if (key == ' ')
+	
+	if (key == ' ' && !isJumping)
 	{
-		y -= blockSize + 10;
+		isJumping = 1;
+		y -= blockSize+10;
 
 		if (collision() == 4)
 		{
 			
 		}
+	
 	}
 	
 	if (key == 224)
@@ -147,7 +154,7 @@ void character::characterMove(std::vector<char>& buffer)
 			}
 
 			x -= blockSize;
-
+			
 			break;
 		case 77:
 			facingRight = 1;
@@ -162,7 +169,7 @@ void character::characterMove(std::vector<char>& buffer)
 			}
 
 			x += blockSize;
-
+			
 			break;
 		case 80:
 			// 씨앗 심기
@@ -170,16 +177,17 @@ void character::characterMove(std::vector<char>& buffer)
 			break;
 		}
 	}
-
-	ac.characterEraese(previousX, previousY,buffer);
+	
+	
 	
 }
 
 void character::gravity()
 {
 	
-	
-		
+	if (y >= SCREEN_HEIGHT - blockSize - character_Height) {
+		return;
+	}
 	y += 10;
 	
 }
