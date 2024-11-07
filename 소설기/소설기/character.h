@@ -18,7 +18,9 @@ public:
 	character();
 	void characterMove(std::vector<char>& buffer);
 
+	
 	void gravity();
+	
 
 private:
 	int playerHeart;
@@ -31,10 +33,9 @@ private:
 	int attackCoolTime;
 	bool isJumping;
 
-
-
+	
+	
 	int collision();
-
 	void attack();
 	void switchMap();
 	void takeDamage();

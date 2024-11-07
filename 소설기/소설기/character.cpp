@@ -6,7 +6,10 @@
 #include "draw.h"
 character::character()
 {
+
+	
     x = 10, y = 380, facingRight = 1, future = 1;
+
     playerHeart = 3;
     invincible = false;         //무적 상태
     invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
@@ -15,8 +18,6 @@ character::character()
     attackCoolTime = 1000;      //공격 쿨타임 (밀리초,1초)
 
     attackRange = character_Width / 2;
-
-
 
 }
 void gameOver()
@@ -100,7 +101,16 @@ void character::attack()
 
 void character::characterMove(std::vector<char>& buffer)
 {
-    drawCharacter ac;
+
+	drawCharacter ac;
+
+	
+    if (y < SCREEN_HEIGHT - character_Height - 21)
+        gravity();
+
+    
+    int preX = x;
+    int preY = y;
 
 
     int key = _getch();
@@ -117,6 +127,8 @@ void character::characterMove(std::vector<char>& buffer)
     if (key == 'a')
     {
 
+
+
         attack();
     }
 
@@ -125,12 +137,18 @@ void character::characterMove(std::vector<char>& buffer)
         isJumping = 1;
         y -= blockSize + 10;
 
+
         if (collision() == 4)
         {
 
-        }
 
-    }
+		
+		}
+	}
+	
+	
+	
+      
 
     if (key == 224)
     {
@@ -177,7 +195,8 @@ void character::characterMove(std::vector<char>& buffer)
             break;
         }
     }
-
+    ac.characterEraese(preX, preY, buffer);
+    ac.characterDraw(x, y, buffer);
 
 
 }
@@ -185,7 +204,11 @@ void character::characterMove(std::vector<char>& buffer)
 void character::gravity()
 {
 
+	
+	
+
     if (y >= 380) {
+
         return;
     }
     y += 10;
@@ -230,6 +253,10 @@ int character::collision()
     //         else if (screen[newX][newY] == 8)
     //         {
     //            return 8;               //씨앗 심는 부분
+    //         }
+    //         else if (screen[newX][newY]==9)
+    //         {
+    //            return 9;
     //         }
     //         else if (screen[newX][newY] == 10)
     //         {
