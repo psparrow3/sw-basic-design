@@ -6,7 +6,7 @@
 #include "draw.h"
 character::character()
 {
-    x = 10, y = SCREEN_HEIGHT - blockSize - character_Height, facingRight = 1, future = 1;
+    x = 10, y = 380, facingRight = 1, future = 1;
     playerHeart = 3;
     invincible = false;         //무적 상태
     invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
@@ -105,7 +105,7 @@ void character::characterMove(std::vector<char>& buffer)
 
     int key = _getch();
 
-    if (y >= SCREEN_HEIGHT - blockSize - character_Height)
+    if (y >= 380)
     {
         isJumping = 0;
     }
@@ -153,7 +153,7 @@ void character::characterMove(std::vector<char>& buffer)
                 }
             }
 
-            x -= blockSize;
+            x -= 15;
 
             break;
         case 77:
@@ -168,7 +168,7 @@ void character::characterMove(std::vector<char>& buffer)
                 }
             }
 
-            x += blockSize;
+            x += 20;
 
             break;
         case 80:
@@ -185,7 +185,7 @@ void character::characterMove(std::vector<char>& buffer)
 void character::gravity()
 {
 
-    if (y >= SCREEN_HEIGHT - blockSize - character_Height) {
+    if (y >= 380) {
         return;
     }
     y += 10;
