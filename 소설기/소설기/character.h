@@ -1,13 +1,14 @@
 #pragma once
 #include "Windows.h"
-
+#include<iostream>
+#include "draw.h"
 
 #define SCREEN_WIDTH 1902
 #define SCREEN_HEIGHT 500
 
 #define blockSize 40
-#define player_Height 40
-#define player_Width 40
+#define character_Height 60
+#define character_Width 40
 
 
 class character
@@ -16,7 +17,7 @@ public:
 	int x;
 	int y;
 	character();
-	void characterMove(int key);
+	void characterMove(std::vector<char>& buffer);
 private:
 	int playerHeart;
 	bool facingRight;
@@ -25,9 +26,7 @@ private:
 	int invincibilityDuration;
 	int attackRange;
 	int attackCoolTime;
-	int player[500][1900];
-	int screen[500][1900];
-
+	
 	
 	
 	int collision();
@@ -39,7 +38,6 @@ private:
 	void drawFutureMap();
 	void drawPastMap();
 	void gameOver();
-	
 
 
 };
