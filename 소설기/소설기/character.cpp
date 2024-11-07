@@ -7,7 +7,7 @@
 
 character::character()
 {
-    x = 10, y = SCREEN_HEIGHT - character_Height - 20 , facingRight = 1, future = 1;
+    x = 10, y = SCREEN_HEIGHT - character_Height - 21 , facingRight = 1, future = 1;
     playerHeart = 3;
     invincible = false;         //무적 상태
     invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
@@ -98,7 +98,7 @@ void character::attack()
 void character::characterMove(std::vector<char>& buffer)
 {
     drawCharacter ac;
-    if (y < SCREEN_HEIGHT - blockSize - character_Height)
+    if (y < SCREEN_HEIGHT - character_Height - 21)
         gravity();
 
     int key = _getch();
@@ -178,7 +178,7 @@ void character::characterMove(std::vector<char>& buffer)
 void character::gravity()
 {
 
-    if (y > SCREEN_HEIGHT - blockSize - character_Height) {
+    if (y > SCREEN_HEIGHT - character_Height - 21) {
         return;
     }
     y += 10;

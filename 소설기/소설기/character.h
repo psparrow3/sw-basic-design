@@ -3,9 +3,6 @@
 #include<iostream>
 #include "draw.h"
 
-#define SCREEN_WIDTH 1902
-#define SCREEN_HEIGHT 500
-
 #define blockSize 40
 #define character_Height 60
 #define character_Width 40
