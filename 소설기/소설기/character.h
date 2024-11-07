@@ -10,7 +10,6 @@
 #define character_Height 60
 #define character_Width 40
 
-
 class character
 {
 public:
