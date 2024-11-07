@@ -98,11 +98,13 @@ void character::attack()
 void character::characterMove(std::vector<char>& buffer)
 {
 	drawCharacter ac;
+	gravity();
+	ac.characterDraw(x, y, buffer);
 	int key = _getch();
 	int previousX = x;
 	int previousY = y;
 	
-	gravity();
+	
 	if (key == 's') {
 		switchMap();
 	}
@@ -168,9 +170,8 @@ void character::characterMove(std::vector<char>& buffer)
 			break;
 		}
 	}
-	ac.characterDraw(x, y, buffer);
+
 	ac.characterEraese(previousX, previousY,buffer);
-	ac.characterDraw(x, y, buffer);
 	
 }
 
