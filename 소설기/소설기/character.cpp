@@ -4,27 +4,17 @@
 #include "drawCharacter.h"
 #include <iostream>
 #include "draw.h"
-
 character::character()
 {
 
-	x = 10, y = SCREEN_HEIGHT-blockSize-character_Height, facingRight = 1, future = 1;
-	playerHeart = 3;
-	invincible = false;			//무적 상태
-	invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
 	
-	isJumping = 0;				// 점프상태
-	attackCoolTime = 1000;		//공격 쿨타임 (밀리초,1초)
-	
-	attackRange = character_Width/2;
-	
+    x = 10, y = 380, facingRight = 1, future = 1;
 
-	
-    x = 10, y = SCREEN_HEIGHT - character_Height - 21 , facingRight = 1, future = 1;
     playerHeart = 3;
     invincible = false;         //무적 상태
     invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
 
+    isJumping = 0;            // 점프상태
     attackCoolTime = 1000;      //공격 쿨타임 (밀리초,1초)
 
     attackRange = character_Width / 2;
@@ -118,10 +108,17 @@ void character::characterMove(std::vector<char>& buffer)
     if (y < SCREEN_HEIGHT - character_Height - 21)
         gravity();
 
-    int key = _getch();
-    int previousX = x;
-    int previousY = y;
+    
+    int preX = x;
+    int preY = y;
 
+
+    int key = _getch();
+
+    if (y >= 380)
+    {
+        isJumping = 0;
+    }
 
     if (key == 's') {
         switchMap();
@@ -135,8 +132,9 @@ void character::characterMove(std::vector<char>& buffer)
         attack();
     }
 
-    if (key == ' ')
+    if (key == ' ' && !isJumping)
     {
+        isJumping = 1;
         y -= blockSize + 10;
 
 
@@ -150,6 +148,7 @@ void character::characterMove(std::vector<char>& buffer)
 	
 	
 	
+      
 
     if (key == 224)
     {
@@ -187,7 +186,7 @@ void character::characterMove(std::vector<char>& buffer)
                 }
             }
 
-            x += 15;
+            x += 20;
 
             break;
         case 80:
@@ -196,8 +195,9 @@ void character::characterMove(std::vector<char>& buffer)
             break;
         }
     }
-    ac.characterEraese(previousX, previousY, buffer);
+    ac.characterEraese(preX, preY, buffer);
     ac.characterDraw(x, y, buffer);
+
 
 }
 
@@ -205,13 +205,10 @@ void character::gravity()
 {
 
 	
-	if (y >= SCREEN_HEIGHT - blockSize - character_Height) {
-		return;
-	}
-	y += 10;
 	
 
-    if (y > SCREEN_HEIGHT - character_Height - 21) {
+    if (y >= 380) {
+
         return;
     }
     y += 10;
