@@ -138,6 +138,12 @@
     <ResourceCompile Include="소설기.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="bottom.bmp" />
+    <Image Include="broken_block.bmp" />
+    <Image Include="broken_door.bmp" />
+    <Image Include="button1.bmp" />
+    <Image Include="button2.bmp" />
+    <Image Include="cold_lava.bmp" />
     <Image Include="empty_character.bmp" />
     <Image Include="block.bmp" />
     <Image Include="character_original.bmp">
@@ -145,6 +151,15 @@
       </ExcludedFromBuild>
     </Image>
     <Image Include="door.bmp" />
+    <Image Include="key.bmp" />
+    <Image Include="laser1.bmp" />
+    <Image Include="lava.bmp" />
+    <Image Include="lava2.bmp" />
+    <Image Include="lever_left.bmp" />
+    <Image Include="lever_right.bmp" />
+    <Image Include="movable_block.bmp" />
+    <Image Include="seed.bmp" />
+    <Image Include="triangle_block.bmp" />
     <Image Include="tutorial_building.bmp" />
   </ItemGroup>
   <ItemGroup>
