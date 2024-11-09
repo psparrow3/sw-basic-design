@@ -131,7 +131,11 @@
     <ClInclude Include="draw.h" />
     <ClInclude Include="drawCharacter.h" />
     <ClInclude Include="drawStage.h" />
-    <ClInclude Include="drawStage1.h" />
+    <ClInclude Include="drawStage1.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="drawStage_prologue.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -176,8 +180,14 @@
       </ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="drawStage1.cpp">
+<<<<<<< HEAD
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+=======
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+>>>>>>> e3383e25dcb0cc0b15786ad9f34fbf609d48afd2
     </ClCompile>
+    <ClCompile Include="drawStage_prologue.cpp" />
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>

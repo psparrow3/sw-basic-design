@@ -53,5 +53,12 @@ void drawStage1::stage1Draw(std::vector<char> buffer) {
 
 
 
+<<<<<<< HEAD
 	
+=======
+	while (1) {
+		//ac.characterMove(stage1_pre, buffer);
+		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+	}
+>>>>>>> e3383e25dcb0cc0b15786ad9f34fbf609d48afd2
 }

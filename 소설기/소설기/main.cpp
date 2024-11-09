@@ -50,10 +50,18 @@ int main() {
     curCursorInfo.bVisible = 0;
     SetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
 
+<<<<<<< HEAD
     // 더블 버퍼링을 위한 두 개의 버퍼 생성
+=======
+    // 백그라운드(맵) 버퍼 생성
+>>>>>>> e3383e25dcb0cc0b15786ad9f34fbf609d48afd2
     std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
     std::vector<char> backBuffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e3383e25dcb0cc0b15786ad9f34fbf609d48afd2
     // 맵 그리기 - 맵은 고정되어 있으므로 초기화 후 다시 그리지 않음
     int x, y;
     for (x = 0; x < SCREEN_WIDTH - BLOCK_SIZE * 10; x += BLOCK_SIZE * 2) {
@@ -73,14 +81,19 @@ int main() {
         // backBuffer를 초기화하고 buffer의 내용을 복사
         backBuffer = buffer;
 
+<<<<<<< HEAD
         // 캐릭터 이전 위치 지우기
         ac.characterErase(ac.x, ac.y, backBuffer);
+=======
+    while (1) {
+>>>>>>> e3383e25dcb0cc0b15786ad9f34fbf609d48afd2
 
         // 캐릭터 위치 업데이트
         if (ac.collision(stage_prologue, ac.x, ac.y) != 2 || ac.collision(stage_prologue, ac.x, ac.y) != 9) {
             ac.gravity(stage_prologue, ac.x, ac.y);
         }
 
+<<<<<<< HEAD
         // 캐릭터 이동
         ac.characterMove(stage_prologue, backBuffer);
 
@@ -93,9 +106,37 @@ int main() {
 
         // 변경된 backBuffer를 화면에 출력
         a.flushBuffer(backBuffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+=======
+        if (ac.nextStage)
+            break;
+
+        int preX = ac.x;
+        int preY = ac.y;
+        ac.characterErase(ac.x, ac.y, buffer);
+        // 캐릭터 위치 업데이트
+        if (ac.collision(stage_prologue, ac.x, ac.y) != 2 || ac.collision(stage_prologue, ac.x, ac.y) != 9) {
+            ac.gravity(stage_prologue, ac.x, ac.y);
+        }
+
+
+        // 캐릭터 이동
+        ac.characterMove(stage_prologue, buffer);
+        if (ac.facingRight)
+            ac.characterRightDraw(ac.x, ac.y, buffer);
+
+        else
+            ac.characterLeftDraw(ac.x, ac.y, buffer);
+
+        // 변경된 버퍼 내용만 화면에 출력
+        a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+>>>>>>> e3383e25dcb0cc0b15786ad9f34fbf609d48afd2
 
       
     }
+<<<<<<< HEAD
    
+=======
+
+>>>>>>> e3383e25dcb0cc0b15786ad9f34fbf609d48afd2
     return 0;
 }
