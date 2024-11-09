@@ -1,22 +1,15 @@
 #include "drawStage1.h"
 #include "drawStage.h"
+#include "draw.h"
 
 drawStage1::drawStage1()
 {
+	
+	 
+}
+void drawStage1::stage1Draw(std::vector<char> buffer) {
 	draw a;
-	a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-	a.SetConsoleFontSize(1);
-	SetConsoleTitle(L"잃어버린 낙원");
-
-	// 콘솔 커서 숨기기
-	HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_CURSOR_INFO curCursorInfo;
-	GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
-	curCursorInfo.bVisible = 0;
-	SetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
-
-	// 화면 버퍼 생성
-	std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
+	
 
 	// stage1_pre 배열 기반으로 맵을 그림
 	for (int y = 0; y < 12; y++) {
@@ -53,15 +46,12 @@ drawStage1::drawStage1()
 	a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
 
 	// 맵 출력
-	a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+	
 
-	// 캐릭터 이동 루프
-	character ac;
+	
+	
 
 
 
-	while (1) {
-		ac.characterMove(buffer);
-		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-	}
+	
 }

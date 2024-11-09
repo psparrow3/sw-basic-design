@@ -1,9 +1,12 @@
 #pragma once
-
+#include "draw.h"
+#include "drawStage.h"
 class drawStage1 : public drawStage
 {
+public:
 	drawStage1();
 
+	void stage1Draw(std::vector<char> buffer);
 	int stage1_pre[12][20] =
 	{
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},

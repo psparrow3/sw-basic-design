@@ -10,14 +10,19 @@ drawCharacter::drawCharacter()
 {
 
 }
-void drawCharacter::characterDraw(int x, int y, std::vector<char>& buffer)
+void drawCharacter::characterRightDraw(int x, int y, std::vector<char>& buffer)
 {
     draw a;
     a.drawBitmap("character_original.bmp", buffer, x, y, SCREEN_WIDTH);
 }
 
+void drawCharacter::characterLeftDraw(int x, int y, std::vector<char>& buffer)
+{
+    draw a;
+    a.drawBitmap("character_original.bmp", buffer, x, y, SCREEN_WIDTH);
+}
 
-void drawCharacter::characterEraese(int x,int y, std::vector<char>& buffer)
+void drawCharacter::characterErase(int x,int y, std::vector<char>& buffer)
 {
     draw a;
   
