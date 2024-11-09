@@ -7,14 +7,17 @@
 character::character()
 {
 
-	
-    x = 10, y = 380, facingRight = 1, future = 1;
+
+    x = 40, y = 400, facingRight = 1, future = 1;
 
     playerHeart = 3;
     invincible = false;         //무적 상태
     invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
-
+    nextStage = 0;
     isJumping = 0;            // 점프상태
+    movingLeft = 0;
+    movingRight = 0;
+    jumping = 0;
     attackCoolTime = 1000;      //공격 쿨타임 (밀리초,1초)
 
     attackRange = character_Width / 2;
@@ -23,6 +26,36 @@ character::character()
 void gameOver()
 {
 
+}
+
+void character::characterLocation(int stage[24][40], int newX, int newY)
+{
+
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+
+            int posX = newX / 40 + i;
+            int posY = newY / 20 + j;
+
+            if (posX >= 0 && posX < SCREEN_WIDTH && posY >= 0 && posY < SCREEN_HEIGHT)
+            {
+                stage[posY][posX] = 1;
+            }
+        }
+    }
+}
+
+void character::eraseCharacterLocation(int stage[24][40], int preX, int preY)
+{
+    for (int i = 0; i < 40; i++) {
+        for (int j = 0; j < 24; j++) {
+            if (stage[j][i] == 1) {
+                stage[j][i] = 0;
+            }
+        }
+    }
 }
 
 void character::getItem()
@@ -79,7 +112,7 @@ void character::attack()
 
         for (int j = 0; j < attackRange; j++)
         {
-            //if (character[j][i] == 1)
+            //if (player[j][i] == 1)
             //{
             //   int newX;
             //   int newY = y + i;
@@ -99,174 +132,158 @@ void character::attack()
 
 }
 
-void character::characterMove(std::vector<char>& buffer)
+void character::characterMove(int stage[24][40], std::vector<char>& buffer)
 {
 
-	drawCharacter ac;
+    drawCharacter ac;
 
-	
-    if (y < SCREEN_HEIGHT - character_Height - 21)
-        gravity();
 
-    
+
     int preX = x;
     int preY = y;
 
+    bool movingLeft = GetAsyncKeyState(VK_LEFT) & 0x8000;
+    bool movingRight = GetAsyncKeyState(VK_RIGHT) & 0x8000;
+    bool jumping = GetAsyncKeyState(VK_SPACE) & 0x8000;
 
-    int key = _getch();
 
-    if (y >= 380)
+    if (collision(stage, x, y) == 2 || collision(stage, x, y) == 9)
     {
         isJumping = 0;
     }
 
-    if (key == 's') {
+    if (GetAsyncKeyState('S') & 0x8000)
+    {
         switchMap();
     }
 
-    if (key == 'a')
+    if (GetAsyncKeyState('A') & 0x8000)
     {
-
-
-
         attack();
     }
 
-    if (key == ' ' && !isJumping)
+    if (jumping && !isJumping)
     {
         isJumping = 1;
-        y -= blockSize + 10;
+        y -= blockSize + 20;
 
 
-        if (collision() == 4)
+        if (collision(stage, x, y) == 4)
         {
 
+            y = preY;
 
-		
-		}
-	}
-	
-	
-	
-      
-
-    if (key == 224)
-    {
-        key = _getch(); // 방향키 실제 값 받기
-
-        switch (key)
-        {
-        case 72:
-            // 문에서 들어가기;
-            break;
-        case 75:
-            facingRight = !facingRight;
-            if (collision() == 3)
-            {
-                int next_x = x - blockSize / 10;
-
-                if (next_x < 0)
-                {
-                    break;
-                }
-            }
-
-            x -= 15;
-
-            break;
-        case 77:
-            facingRight = 1;
-            if (collision() == 3)
-            {
-                int next_x = x + blockSize / 10;
-
-                if (next_x > 1900)
-                {
-                    break;
-                }
-            }
-
-            x += 20;
-
-            break;
-        case 80:
-            // 씨앗 심기
-        default:
-            break;
         }
     }
-    ac.characterEraese(preX, preY, buffer);
-    ac.characterDraw(x, y, buffer);
+
+    if (GetAsyncKeyState(VK_UP) & 0x8000) {
+
+        if (collision(stage, x, y + 20) == 9) {
+            nextStage = 1;
+            system("cls");
+        }
+
+        // 문에서 들어가기;
+    }
+    if (movingLeft) {
+
+        facingRight = !facingRight;
+        x -= 20;
+        if (collision(stage, x, y) == 3)
+        {
+            x = preX;
+        }
+
+
+    }
+    if (movingRight) {
+        facingRight = 1;
+        x += 20;
+
+        if (collision(stage, x, y) == 3)
+        {
+            x = preX;
+        }
+    }
+    if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
+
+        // 씨앗 심기
+    }
+
 
 
 }
 
-void character::gravity()
+void character::gravity(int stage[24][40], int newX, int newY)
 {
 
-	
-	
 
-    if (y >= 380) {
+    y += 20;
 
+    if (collision(stage, newX, y) == 2 || collision(stage, newX, y) == 9) {
+        y = newY;
+        isJumping = 0;
         return;
     }
-    y += 10;
+
+
+
+
+
 
 }
 
-int character::collision()
+int character::collision(int stage[24][40], int newX, int newY)
 {
-    //for (int i = 0; i < character_Width; i++)
-    //{
-    //   for (int j = 0; j < character_Height; j++)
-    //   {
-    //      if (character[j][i] == 1)
-    //      {
-    //         int newX = x + i;
-    //         int newY = y + j;
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
 
-    //         if (screen[newY][newX] == 2)
-    //         {
-    //            return 2;      //바닥에 충돌
-    //         }
-    //         else if (screen[newY][newX] == 3)
-    //            return 3;      //벽에 충돌
-    //         else if (screen[newY][newX] == 4)
-    //            return 4;      //천장에 충돌
-    //         else if (screen[newX][newY] == 5)
-    //         {
-    //            getItem();            //아이템 흭득
-    //            return 5;            //아이템 지우기 구현필요
-    //         }
-    //         else if (screen[newX][newY] == 6)
-    //         {
-    //            
-    //            takeDamage();         //일반 공격을 맞았을 때
-    //            return 6;            //공격 지우기 구현필요
-    //         }
-    //         else if (screen[newX][newY] == 7)
-    //         {
-    //            //gameOver();            // 즉사기를 맞았을 때
-    //            //return 7;            
-    //         }
-    //         else if (screen[newX][newY] == 8)
-    //         {
-    //            return 8;               //씨앗 심는 부분
-    //         }
-    //         else if (screen[newX][newY]==9)
-    //         {
-    //            return 9;
-    //         }
-    //         else if (screen[newX][newY] == 10)
-    //         {
-    //                                 // 도움말 부분
-    //            return 10;
-    //         }
-    //            
-    //      }
-    //   }
-    //}
+            int posX = newX / 40 + i;
+            int posY = newY / 20 + j;
 
-    return 2;
+            if (stage[posY][posX] == 2)
+            {
+                return 2;      //바닥에 충돌
+            }
+            else if (stage[posY][posX] == 3)
+                return 3;      //벽에 충돌
+            else if (stage[posY][posX] == 4)
+                return 4;      //천장에 충돌
+            else if (stage[posY][posX] == 5)
+            {
+                getItem();            //아이템 흭득
+                return 5;            //아이템 지우기 구현필요
+            }
+            else if (stage[posY][posX] == 6)
+            {
+
+                takeDamage();         //일반 공격을 맞았을 때
+                return 6;            //공격 지우기 구현필요
+            }
+            else if (stage[posY][posX] == 7)
+            {
+                //gameOver();            // 즉사기를 맞았을 때
+                //return 7;            
+            }
+            else if (stage[posY][posX] == 8)
+            {
+                return 8;               //씨앗 심는 부분
+            }
+            else if (stage[posY][posX] == 9)
+            {
+                return 9;               // 문 들어가기
+            }
+            else if (stage[posY][posX] == 10)
+            {
+                // 도움말 
+                return 10;
+            }
+
+        }
+    }
+    return 0;
+
+
 }
