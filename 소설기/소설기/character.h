@@ -16,7 +16,7 @@ public:
 	int x;
 	int y;
 	bool nextStage;
-<<<<<<< HEAD
+	bool future;
 	bool isJumping;
 	bool facingRight;
 
@@ -31,45 +31,19 @@ public:
 
 private:
 	int playerHeart;
+	int progress;
+
 	
-=======
-
-	bool facingRight;
-
-	character();
-	void characterMove(int stage[24][40], std::vector<char>& buffer);
-
-	void gravity(int stage[24][40], int newX, int newY);
-	int collision(int stage[24][40], int newX, int newY);
-	void characterLocation(int stage[24][40], int newX, int newY);
-	void eraseCharacterLocation(int stage[24][40], int preX, int preY);
-
-
-private:
-	int playerHeart;
-
->>>>>>> e3383e25dcb0cc0b15786ad9f34fbf609d48afd2
-	bool future;
 	bool invincible;
 	
-	int invincibilityDuration;
+	bool jumping;
+	bool movingLeft;
+	bool movingRight;
 	int attackRange;
 	int attackCoolTime;
-<<<<<<< HEAD
-	
-	bool jumping;
-	bool movingLeft;
-	bool movingRight;
-	
-	
-=======
-	bool isJumping;
-	bool jumping;
-	bool movingLeft;
-	bool movingRight;
+	int invincibilityDuration;
 
 
->>>>>>> e3383e25dcb0cc0b15786ad9f34fbf609d48afd2
 	void attack();
 	void switchMap();
 	void takeDamage();

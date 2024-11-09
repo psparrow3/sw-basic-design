@@ -132,8 +132,7 @@
     <ClInclude Include="drawCharacter.h" />
     <ClInclude Include="drawStage.h" />
     <ClInclude Include="drawStage1.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
     </ClInclude>
     <ClInclude Include="drawStage_prologue.h" />
     <ClInclude Include="resource.h" />
@@ -151,10 +150,10 @@
     <Image Include="empty_character.bmp" />
     <Image Include="block.bmp" />
     <Image Include="character_original.bmp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
     </Image>
     <Image Include="door.bmp" />
+    <Image Include="empty_map.bmp" />
     <Image Include="key.bmp" />
     <Image Include="laser1.bmp" />
     <Image Include="lava.bmp" />
@@ -172,25 +171,15 @@
     </ClCompile>
     <ClCompile Include="draw.cpp" />
     <ClCompile Include="drawCharacter.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
     </ClCompile>
-    <ClCompile Include="drawStage.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="drawStage1.cpp">
-<<<<<<< HEAD
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-=======
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </ExcludedFromBuild>
->>>>>>> e3383e25dcb0cc0b15786ad9f34fbf609d48afd2
-    </ClCompile>
+    <ClCompile Include="drawStage.cpp" />
+    <ClCompile Include="drawStage1.cpp" />
     <ClCompile Include="drawStage_prologue.cpp" />
-    <ClCompile Include="main.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="소설기.vcxproj.filters" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
