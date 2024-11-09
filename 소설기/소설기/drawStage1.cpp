@@ -61,7 +61,7 @@ drawStage1::drawStage1()
 
 
 	while (1) {
-		ac.characterMove(buffer);
+		//ac.characterMove(stage1_pre, buffer);
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 	}
 }
