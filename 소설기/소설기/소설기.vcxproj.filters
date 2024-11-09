@@ -7,6 +7,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="drawCharacter.cpp" />
     <ClCompile Include="draw.cpp" />
+    <ClCompile Include="drawStage_prologue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
@@ -15,6 +16,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="drawCharacter.h" />
     <ClInclude Include="draw.h" />
+    <ClInclude Include="drawStage_prologue.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="소설기.rc" />
@@ -25,5 +27,20 @@
     <Image Include="tutorial_building.bmp" />
     <Image Include="door.bmp" />
     <Image Include="empty_character.bmp" />
+    <Image Include="bottom.bmp" />
+    <Image Include="broken_block.bmp" />
+    <Image Include="broken_door.bmp" />
+    <Image Include="button1.bmp" />
+    <Image Include="button2.bmp" />
+    <Image Include="cold_lava.bmp" />
+    <Image Include="key.bmp" />
+    <Image Include="laser1.bmp" />
+    <Image Include="lava.bmp" />
+    <Image Include="lava2.bmp" />
+    <Image Include="lever_left.bmp" />
+    <Image Include="lever_right.bmp" />
+    <Image Include="movable_block.bmp" />
+    <Image Include="seed.bmp" />
+    <Image Include="triangle_block.bmp" />
   </ItemGroup>
 </Project>

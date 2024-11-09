@@ -6,7 +6,7 @@ class drawCharacter : public character
 {
 public:
 	drawCharacter();
-	void characterDraw(int x,int y, std::vector<char>& buffer);
-	void characterEraese(int x,int y, std::vector<char>& buffer);
+	void characterRightDraw(int x, int y, std::vector<char>& buffer);
+	void characterErase(int x, int y, std::vector<char>& buffer);
+	void characterLeftDraw(int x, int y, std::vector<char>& buffer);
 };
-
