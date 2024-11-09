@@ -1,10 +1,12 @@
 #pragma once
+#include "drawStage.h"
 
-class drawStage1 : public drawStage
+class drawStage1
 {
+public:
 	drawStage1();
 
-	int stage1_pre[12][20] =
+	int stage1_pre[12][20] =							// ÇöÀç ¸Ê
 	{
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 		{0,0,2,0,0,0,0,0,3,0,3,0,0,0,0,0,0,0,0,0},
@@ -20,7 +22,7 @@ class drawStage1 : public drawStage
 		{0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	};
 
-	int stage1_past[12][20] =
+	int stage1_past[12][20] =							// °ú°Å ¸Ê
 	{
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 		{0,0,2,0,0,0,0,0,3,0,3,0,0,0,0,0,0,0,0,0},
