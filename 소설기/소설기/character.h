@@ -16,7 +16,7 @@ public:
 	int x;
 	int y;
 	bool nextStage;
-	
+	bool isJumping;
 	bool facingRight;
 
 	character();
@@ -37,7 +37,7 @@ private:
 	int invincibilityDuration;
 	int attackRange;
 	int attackCoolTime;
-	bool isJumping;
+	
 	bool jumping;
 	bool movingLeft;
 	bool movingRight;

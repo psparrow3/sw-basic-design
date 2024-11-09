@@ -37,7 +37,6 @@ int stage_prologue[24][40]
    {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0},
    {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,9,9,2,2,2,2,2,2,2}
 };
-
 int main() {
     draw a;
     a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -51,9 +50,9 @@ int main() {
     curCursorInfo.bVisible = 0;
     SetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
 
-    // 백그라운드(맵) 버퍼 생성
+    // 더블 버퍼링을 위한 두 개의 버퍼 생성
     std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
-   
+    std::vector<char> backBuffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
 
     // 맵 그리기 - 맵은 고정되어 있으므로 초기화 후 다시 그리지 않음
     int x, y;
@@ -66,35 +65,37 @@ int main() {
     a.drawBitmap("tutorial_building.bmp", buffer, x - 383, SCREEN_HEIGHT - BLOCK_SIZE * 10, SCREEN_WIDTH);
 
     drawCharacter ac;
-   
-    
-    while (1) {
-      
 
+    while (1) {
         if (ac.nextStage)
             break;
+        Sleep(50);
+        // backBuffer를 초기화하고 buffer의 내용을 복사
+        backBuffer = buffer;
 
-        int preX = ac.x;
-        int preY = ac.y;
-        ac.characterErase(ac.x, ac.y, buffer);
+        // 캐릭터 이전 위치 지우기
+        ac.characterErase(ac.x, ac.y, backBuffer);
+
         // 캐릭터 위치 업데이트
         if (ac.collision(stage_prologue, ac.x, ac.y) != 2 || ac.collision(stage_prologue, ac.x, ac.y) != 9) {
             ac.gravity(stage_prologue, ac.x, ac.y);
         }
 
-        
         // 캐릭터 이동
-        ac.characterMove(stage_prologue, buffer);
-        if (ac.facingRight) 
-            ac.characterRightDraw(ac.x, ac.y, buffer);
-        
+        ac.characterMove(stage_prologue, backBuffer);
+
+        if (ac.facingRight)
+            ac.characterRightDraw(ac.x, ac.y, backBuffer);
         else
-            ac.characterLeftDraw(ac.x, ac.y, buffer);
-       
-        // 변경된 버퍼 내용만 화면에 출력
-        a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+            ac.characterLeftDraw(ac.x, ac.y, backBuffer);
+    
+      
 
+        // 변경된 backBuffer를 화면에 출력
+        a.flushBuffer(backBuffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+      
     }
-
+   
     return 0;
 }

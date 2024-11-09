@@ -165,13 +165,16 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
     if (jumping && !isJumping)
     {
         isJumping = 1;
-        y -= blockSize + 20;
-
-
-        if (collision(stage, x, y) == 4)
-        {
-
-            y = preY;
+        for (int i = 0; i < 3; i++) {
+            preY = y;
+            
+        
+            y -= 20;
+            if (collision(stage, x, y) == 4) {
+                y=preY;
+                break;
+            }
+           
 
         }
     }
@@ -225,11 +228,6 @@ void character::gravity(int stage[24][40], int newX, int newY)
         isJumping = 0;
         return;
     }
-    
-
-
-   
-   
 
 }
 
