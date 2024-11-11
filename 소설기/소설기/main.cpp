@@ -97,9 +97,9 @@ int main() {
     draw a;
     a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     a.SetConsoleFontSize(1);
-    SetConsoleTitle(L"ÀÒ¾î¹ö¸° ³«¿ø");
+    SetConsoleTitle(L"ìƒì–´ë²„ë¦° ë‚™ì›");
 
-    // Ä¿¼­ ¼û±â±â
+    // ì»¤ì„œ ìˆ¨ê¸°ê¸°
     HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO curCursorInfo;
     GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
@@ -126,14 +126,14 @@ int main() {
     //    }
     //    a.drawBitmap("tutorial_building.bmp", buffer, x - 700, 80, SCREEN_WIDTH);
     //   
-    //    // Ä³¸¯ÅÍ ÀÌÀü À§Ä¡ Áö¿ì±â
+    //    // ìºë¦­í„° ì´ì „ ìœ„ì¹˜ ì§€ìš°ê¸°
     //    ac.characterErase(ac.x, ac.y, buffer);
     //    
-    //    // Ä³¸¯ÅÍ À§Ä¡ ¾÷µ¥ÀÌÆ®
+    //    // ìºë¦­í„° ìœ„ì¹˜ ì—…ë°ì´íŠ¸
     //    if (ac.collision(stage_prologue, ac.x, ac.y) != 2 || ac.collision(stage_prologue, ac.x, ac.y) != 9) {
     //        ac.gravity(stage_prologue, ac.x, ac.y);
     //    }
-    //    // Ä³¸¯ÅÍ ÀÌµ¿
+    //    // ìºë¦­í„° ì´ë™
     //    ac.characterMove(stage_prologue,buffer);
     //    if (ac.facingRight)
     //    {
@@ -147,7 +147,7 @@ int main() {
     //    }
     //
     //  
-    //    // º¯°æµÈ backBuffer¸¦ È­¸é¿¡ Ãâ·Â
+    //    // ë³€ê²½ëœ backBufferë¥¼ í™”ë©´ì— ì¶œë ¥
     //    a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
     //   
     //   
@@ -184,7 +184,7 @@ int main() {
       
 
 
-        // Ä³¸¯ÅÍ ÀÌÀü À§Ä¡ Áö¿ì±â
+        // ìºë¦­í„° ì´ì „ ìœ„ì¹˜ ì§€ìš°ê¸°
         ac.characterErase(ac.x, ac.y, buffer);
         
       
@@ -194,7 +194,7 @@ int main() {
             
            
         }
-        // Ä³¸¯ÅÍ ÀÌµ¿
+        // ìºë¦­í„° ì´ë™
         ac.characterMove(stage, buffer);
         if (ac.future) {
             memcpy(stage, stage1_Future, sizeof(stage1_Future));
