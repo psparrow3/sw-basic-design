@@ -8,8 +8,9 @@ character::character()
 {
 
 
-    x = 40, y = 400, facingRight = 1, future = 1;
+    x = 50, y = 420, facingRight = 1, future = 1;
 
+    progress = 0;               // 진행상황
     playerHeart = 3;
     invincible = false;         //무적 상태
     invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
@@ -19,7 +20,7 @@ character::character()
     movingRight = 0;
     jumping = 0;
     attackCoolTime = 1000;      //공격 쿨타임 (밀리초,1초)
-
+  
     attackRange = character_Width / 2;
 
 }
@@ -27,19 +28,20 @@ void gameOver()
 {
 
 }
-
 void character::characterLocation(int stage[24][40], int newX, int newY)
 {
-
     for (int i = 0; i < 2; i++)
     {
         for (int j = 0; j < 3; j++)
         {
 
-            int posX = newX / 40 + i;
-            int posY = newY / 20 + j;
+            int posX = newX/40 + i;
+            int posY = newY/20 + j;
+
+         
 
             if (posX >= 0 && posX < SCREEN_WIDTH && posY >= 0 && posY < SCREEN_HEIGHT)
+
             {
                 stage[posY][posX] = 1;
             }
@@ -95,7 +97,7 @@ void drawPastMap()
 
 void character::switchMap()
 {
-    system("cls");
+    
 
     future = !future;
     /*if (future)
@@ -135,8 +137,7 @@ void character::attack()
 void character::characterMove(int stage[24][40], std::vector<char>& buffer)
 {
 
-    drawCharacter ac;
-
+   
 
 
     int preX = x;
@@ -146,13 +147,13 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
     bool movingRight = GetAsyncKeyState(VK_RIGHT) & 0x8000;
     bool jumping = GetAsyncKeyState(VK_SPACE) & 0x8000;
 
-
     if (collision(stage, x, y) == 2 || collision(stage, x, y) == 9)
     {
         isJumping = 0;
     }
 
-    if (GetAsyncKeyState('S') & 0x8000)
+    if (GetAsyncKeyState('S') & 0x8000) 
+
     {
         switchMap();
     }
@@ -165,38 +166,42 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
     if (jumping && !isJumping)
     {
         isJumping = 1;
-        y -= blockSize + 20;
+
+        for (int i = 0; i < 8; i++) {
+            preY = y;
 
 
-        if (collision(stage, x, y) == 4)
-        {
+            y -= 20;
+            if (collision(stage, x, y) == 4) {
+                y = preY;
+                break;
+            }
 
-            y = preY;
 
         }
     }
 
     if (GetAsyncKeyState(VK_UP) & 0x8000) {
 
-        if (collision(stage, x, y + 20) == 9) {
+        if (collision(stage, x, y+20) == 9) {
             nextStage = 1;
-            system("cls");
+            x = 60;
+            y = 420;
         }
+        progress++;
 
         // 문에서 들어가기;
     }
     if (movingLeft) {
 
-        facingRight = !facingRight;
+        facingRight = 0;
         x -= 20;
         if (collision(stage, x, y) == 3)
         {
             x = preX;
         }
-
-
     }
-    if (movingRight) {
+    if (movingRight) { 
         facingRight = 1;
         x += 20;
 
@@ -209,28 +214,20 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
 
         // 씨앗 심기
     }
-
-
-
 }
 
 void character::gravity(int stage[24][40], int newX, int newY)
 {
-
-
-    y += 20;
+  
+   
+     y += 20;
 
     if (collision(stage, newX, y) == 2 || collision(stage, newX, y) == 9) {
         y = newY;
         isJumping = 0;
         return;
     }
-
-
-
-
-
-
+   
 }
 
 int character::collision(int stage[24][40], int newX, int newY)
@@ -240,8 +237,8 @@ int character::collision(int stage[24][40], int newX, int newY)
         for (int j = 0; j < 3; j++)
         {
 
-            int posX = newX / 40 + i;
-            int posY = newY / 20 + j;
+            int posX = newX/40 + i;
+            int posY = newY/20 + j;
 
             if (stage[posY][posX] == 2)
             {

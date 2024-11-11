@@ -1,107 +1,88 @@
 #include "drawStage1.h"
 #include "drawStage.h"
+#include "draw.h"
 
-drawStage1::drawStage1()
-{
-	draw a;
-	a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-	a.SetConsoleFontSize(1);
-	SetConsoleTitle(L"ÀÒ¾î¹ö¸° ³«¿ø");
+drawStage1::drawStage1() {}
 
-	// ÄÜ¼Ö Ä¿¼­ ¼û±â±â
-	HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_CURSOR_INFO curCursorInfo;
-	GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
-	curCursorInfo.bVisible = 0;
-	SetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
+void drawStage1::drawStage1Future(std::vector<char>& buffer) {
+    draw a;
 
-	// È­¸é ¹öÆÛ »ı¼º
-	std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
+    // stage1_pre ë°°ì—´ ê¸°ë°˜ìœ¼ë¡œ ë§µì„ ê·¸ë¦¼
+    for (int y = 0; y < 12; y++) {
+        for (int x = 0; x < 20; x++) {
+            switch (stage1_pre[y][x]) {
+                case 1:
+                    a.drawBitmap("block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
+                case 2:
+                    a.drawBitmap("cold_lava.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
+                case 3:
+                    a.drawBitmap("movable_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
+                case 4:
+                    a.drawBitmap("key.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
+                case 5:
+                    a.drawBitmap("button2.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE + 20, SCREEN_WIDTH);
+                    break;
+                case 6:
+                    a.drawBitmap("laser1.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
+                case 7:
+                    a.drawBitmap("triangle_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
+            }
+        }
+    }
 
-	// stage1_pre ¹è¿­ ±â¹İÀ¸·Î ¸ÊÀ» ±×¸²
-	for (int y = 0; y < 12; y++) {
-		for (int x = 0; x < 20; x++) {
-			switch (stage1_pre[y][x]) {
-			case 1:
-				a.drawBitmap("block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-				break;
-			case 2:
-				a.drawBitmap("cold_lava.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-				break;
-			case 3:
-				a.drawBitmap("movable_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-				break;
-			case 4:
-				a.drawBitmap("key.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-				break;
-			case 5:
-				a.drawBitmap("button2.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE + 20, SCREEN_WIDTH);
-				break;
-			case 6:
-				a.drawBitmap("laser1.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-				break;
-			case 7:
-				a.drawBitmap("triangle_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-				break;
-			}
-		}
-	}
-
-	// µµ¾î ±×¸®±â
-	a.drawBitmap("broken_door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
-
-	a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
-
-	// ¸Ê Ãâ·Â
-	a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-	// Ä³¸¯ÅÍ ÀÌµ¿ ·çÇÁ
-	character ac;
-
-
-
-	while (1) {
-		//ac.characterMove(stage1_pre, buffer);
-		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-	}
+    // ë„ì–´ ê·¸ë¦¬ê¸°
+    a.drawBitmap("broken_door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
+    a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
 }
 
+void drawStage1::drawStage1Past(std::vector<char>& buffer) {
+    draw a;
 
+    // stage1_past ë°°ì—´ ê¸°ë°˜ìœ¼ë¡œ ë§µì„ ê·¸ë¦¼
+    for (int y = 0; y < 12; y++) {
+        for (int x = 0; x < 20; x++) {
+            switch (stage1_past[y][x]) {
+                case 1:
+                    a.drawBitmap("block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
+                case 2:
+                    a.drawBitmap("lava2.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
+                case 3:
+                    a.drawBitmap("movable_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
+                case 4:
+                    a.drawBitmap("key.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
+                case 5:
+                    a.drawBitmap("button1.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE + 20, SCREEN_WIDTH);
+                    break;
+                case 6:
+                    a.drawBitmap("laser1.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
+                case 7:
+                    a.drawBitmap("triangle_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
+                case 8:
+                    a.drawBitmap("seed.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
+            }
+        }
+    }
 
-/*
-// stage1_past ¹è¿­ ±â¹İÀ¸·Î ¸ÊÀ» ±×¸²
-	for (int y = 0; y < 12; y++) {
-		for (int x = 0; x < 20; x++) {
-			switch (stage1_past[y][x]) {
-			case 1:
-				a.drawBitmap("block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-				break;
-			case 2:
-				a.drawBitmap("lava2.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-				break;
-			case 3:
-				a.drawBitmap("movable_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-				break;
-			case 4:
-				a.drawBitmap("key.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-				break;
-			case 5:
-				a.drawBitmap("button1.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE + 20, SCREEN_WIDTH);
-				break;
-			case 6:
-				a.drawBitmap("laser1.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-				break;
-			case 7:
-				a.drawBitmap("triangle_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-				break;
-			case 8:
-				a.drawBitmap("seed.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
-				break;
-			}
-		}
-	}
+    // ë„ì–´ ê·¸ë¦¬ê¸°
+    a.drawBitmap("door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
+}
 
-	// µµ¾î ±×¸®±â
-	a.drawBitmap("door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
-
-*/
+void drawStage1::run(std::vector<char>& buffer) {
+    draw a;
+    while (1) {
+        a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+    }
+}
