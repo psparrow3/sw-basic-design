@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 
 #include <fstream>
 #include <vector>
@@ -9,7 +10,34 @@
 #include "conio.h"
 #include "drawStage1.h"
 
-int stage_1[24][40]
+int stage1_Future[24][40]
+{
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
+   {0,0,0,0,0,2,2,2,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+   {0,0,0,0,0,2,2,2,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2}
+};
+int stage1_Past[24][40]
 {
    {3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
    {3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
@@ -33,8 +61,8 @@ int stage_1[24][40]
    {3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
    {3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
    {3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
-   {3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,9,9,2,2,2,2},
-   {3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,9,9,2,2,2,2}
+   {3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+   {3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 };
 int stage_prologue[24][40]
 {
@@ -78,57 +106,113 @@ int main() {
 
     std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
    
-   
- 
-   
+  
 
     drawCharacter ac;
    
-    while (1) {
-      
-        Sleep(50);
-        int x, y;
-        for (x = 0; x < 20; x++) {
-            a.drawBitmap("block.bmp", buffer, x * 80, 440, SCREEN_WIDTH);
-        }
-        a.drawBitmap("tutorial_building.bmp", buffer, x - 700, 80, SCREEN_WIDTH);
-        // 캐릭터 이전 위치 지우기
-        ac.characterErase(ac.x, ac.y, buffer);
-        
-        // 캐릭터 위치 업데이트
-        if (ac.collision(stage_prologue, ac.x, ac.y) != 2 || ac.collision(stage_prologue, ac.x, ac.y) != 9) {
-            ac.gravity(stage_prologue, ac.x, ac.y);
-        }
-        // 캐릭터 이동
-        ac.characterMove(stage_prologue,buffer);
-        if (ac.facingRight)
-            ac.characterRightDraw(ac.x, ac.y, buffer);
-        else
-            ac.characterLeftDraw(ac.x, ac.y, buffer);
+    //while (1) {
+    //  
+    //    if (ac.nextStage)
+    //    {
+    //        a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+    //        break;
+    //    }
+    //   
+    //    int x, y;
+    //    for (x = 0; x < 20; x++) {
+    //        a.drawBitmap("block.bmp", buffer, x * 80, 440, SCREEN_WIDTH);
+    //    }
+    //    a.drawBitmap("tutorial_building.bmp", buffer, x - 700, 80, SCREEN_WIDTH);
+    //   
+    //    // 캐릭터 이전 위치 지우기
+    //    ac.characterErase(ac.x, ac.y, buffer);
+    //    
+    //    // 캐릭터 위치 업데이트
+    //    if (ac.collision(stage_prologue, ac.x, ac.y) != 2 || ac.collision(stage_prologue, ac.x, ac.y) != 9) {
+    //        ac.gravity(stage_prologue, ac.x, ac.y);
+    //    }
+    //    // 캐릭터 이동
+    //    ac.characterMove(stage_prologue,buffer);
+    //    if (ac.facingRight)
+    //    {
+    //        
+    //        ac.characterRightDraw(ac.x, ac.y, buffer);
+    //    }
+    //    else 
+    //    {
+    //        
+    //        ac.characterLeftDraw(ac.x, ac.y, buffer);
+    //    }
+    //
+    //  
+    //    // 변경된 backBuffer를 화면에 출력
+    //    a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+    //   
+    //   
+    //}
+    //
+    ac.nextStage = 0;
+    drawStage1 bc;
+   
+    if (ac.facingRight)
+        ac.characterRightDraw(ac.x, ac.y, buffer);
+    else
+        ac.characterLeftDraw(ac.x, ac.y, buffer);
     
-      
-        // 변경된 backBuffer를 화면에 출력
-        a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+    int stage[24][40];
+    if (ac.future) {
+        memcpy(stage, stage1_Future, sizeof(stage1_Future));
+        a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+        bc.drawStage1Future(buffer);
+    }
+    else {
+        memcpy(stage, stage1_Past, sizeof(stage1_Future));
+        a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+        bc.drawStage1Past(buffer);
+    }
+
+    
+    while (1) {
+       
         if (ac.nextStage)
         {
             a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
             break;
         }
-       
-    }
-    
-    ac.nextStage = 0;
-    drawStage1 bc;
-    bc.drawStage1Future(buffer);
-    while (1) {
-        ac.x = 40;
-        ac.y = 380;
+      
 
-        if (ac.future)
+
+        // 캐릭터 이전 위치 지우기
+        ac.characterErase(ac.x, ac.y, buffer);
+        
+      
+        if (ac.collision(stage, ac.x, ac.y) != 2 || ac.collision(stage, ac.x, ac.y) != 9) {
+            if (ac.y < 420)
+            {
+                ac.gravity(stage, ac.x, ac.y);
+            }
+           
+        }
+        // 캐릭터 이동
+        ac.characterMove(stage, buffer);
+        if (ac.future) {
+            memcpy(stage, stage1_Future, sizeof(stage1_Future));
+            a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
             bc.drawStage1Future(buffer);
+        }
         else {
+            memcpy(stage, stage1_Future, sizeof(stage1_Past));
+            a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
             bc.drawStage1Past(buffer);
         }
+        if (ac.facingRight) 
+        {
+            ac.characterRightDraw(ac.x, ac.y, buffer);
+        }
+        else
+            ac.characterLeftDraw(ac.x, ac.y, buffer);
+
+     
         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
     }
     return 0;

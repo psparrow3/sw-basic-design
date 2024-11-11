@@ -23,7 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="block.bmp" />
-    <Image Include="character_original.bmp" />
     <Image Include="tutorial_building.bmp" />
     <Image Include="door.bmp" />
     <Image Include="empty_character.bmp" />
@@ -42,5 +41,13 @@
     <Image Include="movable_block.bmp" />
     <Image Include="seed.bmp" />
     <Image Include="triangle_block.bmp" />
+    <Image Include="empty_map.bmp" />
+    <Image Include="character_right_original.bmp" />
+    <Image Include="character_left_original.bmp" />
+    <Image Include="character_original.bmp" />
+    <Image Include="bitmap24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="소설기.vcxproj.filters" />
   </ItemGroup>
 </Project>

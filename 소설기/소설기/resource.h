@@ -3,7 +3,6 @@
 // 소설기.rc에서 사용되고 있습니다.
 //
 #define IDB_BITMAP4                     104
-#define IDB_BITMAP5                     106
 #define IDB_BITMAP6                     107
 #define IDB_BITMAP1                     108
 #define IDB_BITMAP3                     110
@@ -25,12 +24,16 @@
 #define IDB_BITMAP22                    127
 #define IDB_BITMAP21                    128
 #define IDB_BITMAP23                    129
+#define IDB_BITMAP24                    130
+#define IDB_BITMAP25                    131
+#define IDB_BITMAP26                    132
+#define IDB_BITMAP5                     133
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        130
+#define _APS_NEXT_RESOURCE_VALUE        134
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

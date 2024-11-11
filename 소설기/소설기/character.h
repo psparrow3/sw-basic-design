@@ -16,10 +16,10 @@ public:
 	int x;
 	int y;
 	bool nextStage;
-	bool future;
+	bool future; 
 	bool isJumping;
 	bool facingRight;
-
+	
 	character();
 	void characterMove(int stage[24][40],std::vector<char>& buffer);
 	
@@ -36,8 +36,8 @@ private:
 	
 	bool invincible;
 	
-	bool jumping;
 	bool movingLeft;
+	bool jumping;
 	bool movingRight;
 	int attackRange;
 	int attackCoolTime;

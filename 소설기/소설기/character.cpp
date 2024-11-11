@@ -8,7 +8,7 @@ character::character()
 {
 
 
-    x = 40, y = 380, facingRight = 1, future = 1;
+    x = 60, y = 420, facingRight = 1, future = 1;
 
     progress = 0;               // ÁøÇà»óÈ²
     playerHeart = 3;
@@ -97,7 +97,7 @@ void drawPastMap()
 
 void character::switchMap()
 {
-    system("cls");
+    
 
     future = !future;
     /*if (future)
@@ -137,8 +137,7 @@ void character::attack()
 void character::characterMove(int stage[24][40], std::vector<char>& buffer)
 {
 
-    drawCharacter ac;
-
+   
 
 
     int preX = x;
@@ -168,28 +167,26 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
     {
         isJumping = 1;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 8; i++) {
             preY = y;
-            
-        
+
+
             y -= 20;
             if (collision(stage, x, y) == 4) {
-                y=preY;
+                y = preY;
                 break;
             }
-           
+
 
         }
     }
-
-       
-    
 
     if (GetAsyncKeyState(VK_UP) & 0x8000) {
 
         if (collision(stage, x, y+20) == 9) {
             nextStage = 1;
-            system("cls");
+            x = 60;
+            y = 420;
         }
         progress++;
 
@@ -197,20 +194,18 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
     }
     if (movingLeft) {
 
-        facingRight = !facingRight;
+        facingRight = 0;
         x -= 20;
-        if (collision(stage, x, y) == 3)
+        if (collision(stage, x, y) == 3 || collision(stage, x, y) == 2)
         {
             x = preX;
         }
-
-
     }
-    if (movingRight) {
+    if (movingRight) { 
         facingRight = 1;
         x += 20;
 
-        if (collision(stage, x, y) == 3)
+        if (collision(stage, x, y) == 3 || collision(stage, x, y) == 2)
         {
             x = preX;
         }
@@ -219,25 +214,20 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
 
         // ¾¾¾Ñ ½É±â
     }
-
-
-   
-   
-
 }
 
 void character::gravity(int stage[24][40], int newX, int newY)
 {
   
-    y += 20;
-     
+   
+     y += 20;
 
     if (collision(stage, newX, y) == 2 || collision(stage, newX, y) == 9) {
         y = newY;
         isJumping = 0;
         return;
     }
-
+   
 }
 
 int character::collision(int stage[24][40], int newX, int newY)
