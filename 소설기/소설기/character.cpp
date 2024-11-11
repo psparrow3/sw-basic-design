@@ -8,7 +8,7 @@ character::character()
 {
 
 
-    x = 60, y = 420, facingRight = 1, future = 1;
+    x = 50, y = 420, facingRight = 1, future = 1;
 
     progress = 0;               // 진행상황
     playerHeart = 3;
@@ -196,7 +196,7 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
 
         facingRight = 0;
         x -= 20;
-        if (collision(stage, x, y) == 3 || collision(stage, x, y) == 2)
+        if (collision(stage, x, y) == 3)
         {
             x = preX;
         }
@@ -205,7 +205,7 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
         facingRight = 1;
         x += 20;
 
-        if (collision(stage, x, y) == 3 || collision(stage, x, y) == 2)
+        if (collision(stage, x, y) == 3)
         {
             x = preX;
         }
