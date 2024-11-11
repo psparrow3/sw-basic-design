@@ -79,10 +79,3 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
     // 도어 그리기
     a.drawBitmap("door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
 }
-
-void drawStage1::run(std::vector<char>& buffer) {
-    draw a;
-    while (1) {
-        a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-    }
-}
