@@ -13,8 +13,8 @@
 class character
 {
 public:
-	int x;
-	int y;
+	static int x;
+	static int y;
 	bool nextStage;
 	bool future; 
 	bool isJumping;

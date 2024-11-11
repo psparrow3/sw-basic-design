@@ -72,6 +72,9 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
                 case 8:
                     a.drawBitmap("seed.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                     break;
+                case 9:
+                    a.drawBitmap("lever_right.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
             }
         }
     }

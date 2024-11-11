@@ -4,9 +4,13 @@
 #include "drawCharacter.h"
 #include <iostream>
 #include "draw.h"
+
+int character::x = 40;
+int character::y = 420;
+
 character::character()
 {
-	x = 40, y = 420, facingRight = 1, future = 1;
+	facingRight = 1, future = 1;
 
 	progress = 0;               // 진행상황
 	playerHeart = 3;
