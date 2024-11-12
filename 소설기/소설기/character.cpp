@@ -4,11 +4,16 @@
 #include "drawCharacter.h"
 #include <iostream>
 #include "draw.h"
+
+int character::x = 40;
+int character::y = 420;
+
+
 character::character()
 {
 
 
-    x = 50, y = 420, facingRight = 1, future = 1;
+    facingRight = 1, future = 1;
 
     progress = 0;               // 진행상황
     playerHeart = 3;
@@ -20,7 +25,10 @@ character::character()
     movingRight = 0;
     jumping = 0;
     attackCoolTime = 1000;      //공격 쿨타임 (밀리초,1초)
-  
+
+    getKey = 0;
+    getSeed = 0;
+    getSeedPiece = 0;
     attackRange = character_Width / 2;
 
 }
@@ -28,7 +36,7 @@ void gameOver()
 {
 
 }
-void character::characterLocation(int stage[24][40], int newX, int newY)
+void character::characterLocation(int stage[25][40], int newX, int newY)
 {
     for (int i = 0; i < 2; i++)
     {
@@ -49,10 +57,10 @@ void character::characterLocation(int stage[24][40], int newX, int newY)
     }
 }
 
-void character::eraseCharacterLocation(int stage[24][40], int preX, int preY)
+void character::eraseCharacterLocation(int stage[25][40], int preX, int preY)
 {
     for (int i = 0; i < 40; i++) {
-        for (int j = 0; j < 24; j++) {
+        for (int j = 0; j < 25; j++) {
             if (stage[j][i] == 1) {
                 stage[j][i] = 0;
             }
@@ -134,7 +142,7 @@ void character::attack()
 
 }
 
-void character::characterMove(int stage[24][40], std::vector<char>& buffer)
+void character::characterMove(int stage[25][40], std::vector<char>& buffer)
 {
 
    
@@ -147,11 +155,11 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
     bool movingRight = GetAsyncKeyState(VK_RIGHT) & 0x8000;
     bool jumping = GetAsyncKeyState(VK_SPACE) & 0x8000;
 
-    if (collision(stage, x, y) == 2 || collision(stage, x, y) == 9)
+    if (collision(stage, x, y) == 2 || collision(stage, x, y) == 10 || collision(stage, x, y)==11)
     {
         isJumping = 0;
     }
-
+   
     if (GetAsyncKeyState('S') & 0x8000) 
 
     {
@@ -165,14 +173,14 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
 
     if (jumping && !isJumping)
     {
-        isJumping = 1;
+        isJumping = 0;
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 3; i++) {
             preY = y;
 
 
             y -= 20;
-            if (collision(stage, x, y) == 4) {
+            if (collision(stage, x, y) == 2 || y < 0) {
                 y = preY;
                 break;
             }
@@ -183,9 +191,9 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
 
     if (GetAsyncKeyState(VK_UP) & 0x8000) {
 
-        if (collision(stage, x, y+20) == 9) {
+        if (collision(stage, x, y+20) == 10) {
             nextStage = 1;
-            x = 60;
+            x = 40;
             y = 420;
         }
         progress++;
@@ -196,7 +204,7 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
 
         facingRight = 0;
         x -= 20;
-        if (collision(stage, x, y) == 3)
+        if (collision(stage, x, y) == 2 || x<0)
         {
             x = preX;
         }
@@ -205,24 +213,27 @@ void character::characterMove(int stage[24][40], std::vector<char>& buffer)
         facingRight = 1;
         x += 20;
 
-        if (collision(stage, x, y) == 3)
+        if (collision(stage, x, y) == 2 || x>=1560)
         {
             x = preX;
         }
     }
     if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
+        
+        if (getSeed == 1) {
 
-        // 씨앗 심기
+        }
+        getSeed = 0;
     }
 }
 
-void character::gravity(int stage[24][40], int newX, int newY)
+void character::gravity(int stage[25][40], int newX, int newY)
 {
   
    
      y += 20;
 
-    if (collision(stage, newX, y) == 2 || collision(stage, newX, y) == 9) {
+    if (collision(stage, newX, y) == 2 || collision(stage, x, y) == 10 || collision(stage, x, y) == 11) {
         y = newY;
         isJumping = 0;
         return;
@@ -230,7 +241,7 @@ void character::gravity(int stage[24][40], int newX, int newY)
    
 }
 
-int character::collision(int stage[24][40], int newX, int newY)
+int character::collision(int stage[25][40], int newX, int newY)
 {
     for (int i = 0; i < 2; i++)
     {
@@ -242,40 +253,58 @@ int character::collision(int stage[24][40], int newX, int newY)
 
             if (stage[posY][posX] == 2)
             {
-                return 2;      //바닥에 충돌
+                return 2;      //바닥,천장,벽 충돌
             }
+          
             else if (stage[posY][posX] == 3)
-                return 3;      //벽에 충돌
+                return 3;      // 미는 블럭
             else if (stage[posY][posX] == 4)
-                return 4;      //천장에 충돌
+            {
+                          
+                return 4;           // 열쇠 흭득
+            }
             else if (stage[posY][posX] == 5)
             {
-                getItem();            //아이템 흭득
-                return 5;            //아이템 지우기 구현필요
+                return 5;               // 씨앗 흭득
             }
             else if (stage[posY][posX] == 6)
             {
-
-                takeDamage();         //일반 공격을 맞았을 때
-                return 6;            //공격 지우기 구현필요
+                return 6;               // 씨앗 조각 흭득
             }
+
             else if (stage[posY][posX] == 7)
             {
-                //gameOver();            // 즉사기를 맞았을 때
-                //return 7;            
+
+                takeDamage();         //일반 공격을 맞았을 때
+                return 7;            //공격 지우기 구현필요
             }
             else if (stage[posY][posX] == 8)
             {
-                return 8;               //씨앗 심는 부분
+              /*  gameOver();*/            // 즉사기를 맞았을 때
+                return 8;            
             }
             else if (stage[posY][posX] == 9)
             {
-                return 9;               // 문 들어가기
+                return 9;               //씨앗 심는 부분
             }
             else if (stage[posY][posX] == 10)
             {
-                // 도움말 
-                return 10;
+                return 10;               // 문 들어가기
+            }
+           
+            else if (stage[posY][posX] == 11 && getKey==1)
+            {
+                return 11;               // 잠긴 문 들어가기
+            }
+            
+            else if (stage[posY][posX] == 12)
+            {
+                return 12;               // 버튼 누르기
+            }
+
+            else if (stage[posY][posX] == 13)
+            {
+                return 13;               // 레버 당기기
             }
 
         }

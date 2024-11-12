@@ -148,7 +148,6 @@
     <Image Include="button1.bmp" />
     <Image Include="button2.bmp" />
     <Image Include="character_left_original.bmp" />
-    <Image Include="character_original.bmp" />
     <Image Include="character_right_original.bmp" />
     <Image Include="cold_lava.bmp" />
     <Image Include="empty_character.bmp" />

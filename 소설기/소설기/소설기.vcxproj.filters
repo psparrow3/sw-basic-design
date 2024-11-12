@@ -44,7 +44,6 @@
     <Image Include="empty_map.bmp" />
     <Image Include="character_right_original.bmp" />
     <Image Include="character_left_original.bmp" />
-    <Image Include="character_original.bmp" />
     <Image Include="bitmap24.bmp" />
   </ItemGroup>
   <ItemGroup>
