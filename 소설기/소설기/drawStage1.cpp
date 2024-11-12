@@ -72,17 +72,13 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
                 case 8:
                     a.drawBitmap("seed.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                     break;
+                case 9:
+                    a.drawBitmap("lever_right.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                    break;
             }
         }
     }
 
     // 도어 그리기
     a.drawBitmap("door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
-}
-
-void drawStage1::run(std::vector<char>& buffer) {
-    draw a;
-    while (1) {
-        a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-    }
 }
