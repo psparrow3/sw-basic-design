@@ -33,28 +33,50 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
             drawStage1Past(buffer);
         }
 
-
+  
         // 캐릭터 이전 위치 지우기
         ac.characterErase(ac.x, ac.y, buffer);
 
         // 캐릭터 위치 업데이트
-        if (ac.collision(stage, ac.x, ac.y) != 2 || ac.collision(stage, ac.x, ac.y) != 9) {
+        int coll = ac.collision(stage, ac.x, ac.y);
+        if (coll != 2 || coll != 10 || coll !=11) {
             ac.gravity(stage, ac.x, ac.y);
         }
         // 캐릭터 이동
         ac.characterMove(stage, buffer);
         if (ac.facingRight)
         {
-
             ac.characterRightDraw(ac.x, ac.y, buffer);
         }
         else
         {
-
             ac.characterLeftDraw(ac.x, ac.y, buffer);
         }
-
-
+        if (ac.future)
+        {
+           
+            a.drawBitmap("broken_door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
+        }
+        else
+        {
+            if (!ac.getSeed) {
+                a.drawBitmap("seed.bmp", buffer, 2 * 17 * BLOCK_SIZE, 3 * BLOCK_SIZE, SCREEN_WIDTH);
+               
+            }
+            else {
+                stage1_Past[6][34] = 0;
+            }
+            
+            a.drawBitmap("door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
+        }
+        if (!ac.getKey) {
+            a.drawBitmap("key.bmp", buffer, 0, 2 * BLOCK_SIZE, SCREEN_WIDTH);
+        }
+        else {
+            stage1_Past[4][1] = 0;
+            stage1_Future[4][1] = 0;
+        }
+       
         // 변경된 backbuffer를 화면에 출력
         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
     }
@@ -63,11 +85,15 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 void drawStage1::drawStage1Future(std::vector<char>& buffer) {
     draw a;
 
+    drawCharacter ac;
+    
+    
 
     for (int y = 0; y < 12; y++) {
         for (int x = 0; x < 20; x++) {
             switch (stage1_future[y][x]) {
             case 1:
+                
                 a.drawBitmap("block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                 break;
             case 2:
@@ -77,7 +103,6 @@ void drawStage1::drawStage1Future(std::vector<char>& buffer) {
                 a.drawBitmap("movable_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                 break;
             case 4:
-                a.drawBitmap("key.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                 break;
             case 5:
                 a.drawBitmap("button2.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE + 20, SCREEN_WIDTH);
@@ -92,8 +117,8 @@ void drawStage1::drawStage1Future(std::vector<char>& buffer) {
         }
     }
 
-    // 도어 그리기
-    a.drawBitmap("broken_door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
+  
+   
     a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
 }
    
@@ -103,6 +128,7 @@ void drawStage1::drawStage1Future(std::vector<char>& buffer) {
 void drawStage1::drawStage1Past(std::vector<char>& buffer) {
     draw a;
 
+    drawCharacter ac;
     // stage1_past 배열 기반으로 맵을 그림
     for (int y = 0; y < 12; y++) {
         for (int x = 0; x < 20; x++) {
@@ -117,7 +143,6 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
                 a.drawBitmap("movable_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                 break;
             case 4:
-                a.drawBitmap("key.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                 break;
             case 5:
                 a.drawBitmap("button1.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE + 20, SCREEN_WIDTH);
@@ -129,7 +154,7 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
                 a.drawBitmap("triangle_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                 break;
             case 8:
-                a.drawBitmap("seed.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+                
                 break;
             case 9:
                 a.drawBitmap("lever_right.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
@@ -137,4 +162,6 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
             }
         }
     }
+
+    a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
 }

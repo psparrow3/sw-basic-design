@@ -13,10 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// í•œêµ­ì–´(ëŒ€í•œë¯¼êµ­) resources
+// ÇÑ±¹¾î(´ëÇÑ¹Î±¹) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
 LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -93,9 +94,17 @@ IDB_BITMAP25            BITMAP                  "character_right_original.bmp"
 
 IDB_BITMAP26            BITMAP                  "character_left_original.bmp"
 
+IDB_BITMAP28            BITMAP                  "left_button.bmp"
 
+IDB_BITMAP29            BITMAP                  "right_button.bmp"
 
-#endif    // í•œêµ­ì–´(ëŒ€í•œë¯¼êµ­) resources
+IDB_BITMAP30            BITMAP                  "s_button.bmp"
+
+IDB_BITMAP31            BITMAP                  "A_button.bmp"
+
+IDB_BITMAP32            BITMAP                  "SPACE_button.bmp"
+
+#endif    // ÇÑ±¹¾î(´ëÇÑ¹Î±¹) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

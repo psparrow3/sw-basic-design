@@ -2,7 +2,7 @@
 #include "Windows.h"
 #include<iostream>
 #include "draw.h"
-
+#include <thread>
 #define SCREEN_WIDTH 1902
 #define SCREEN_HEIGHT 501
 
@@ -29,10 +29,7 @@ public:
 	
 	void gravity(int stage[25][40], int newX, int newY);
 	int collision(int stage[25][40],int newX,int newY);
-	void characterLocation(int stage[25][40], int newX, int newY);
-	void eraseCharacterLocation(int stage[25][40], int preX, int preY);
 	
-
 private:
 	int playerHeart;
 	int progress;
@@ -48,13 +45,11 @@ private:
 	int invincibilityDuration;
 
 
-	void attack();
+	void attack(int stage[25][40]);
 	void switchMap();
 	void takeDamage();
 	void getItem();
-	void drawFutureMap();
-	void drawPastMap();
-	void gameOver();
+	void gameOver(std::vector<char>& buffer);
 
 
 };

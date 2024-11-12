@@ -29,43 +29,18 @@ character::character()
     getKey = 0;
     getSeed = 0;
     getSeedPiece = 0;
-    attackRange = character_Width / 2;
+    attackRange = 1;            // 공격 사거리
 
 }
-void gameOver()
+void character::gameOver(std::vector<char>& buffer)
 {
+    draw a;
+    
+    a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+    progress--;
+    x = 40;
+    y = 420;
 
-}
-void character::characterLocation(int stage[25][40], int newX, int newY)
-{
-    for (int i = 0; i < 2; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-
-            int posX = newX/40 + i;
-            int posY = newY/20 + j;
-
-         
-
-            if (posX >= 0 && posX < SCREEN_WIDTH && posY >= 0 && posY < SCREEN_HEIGHT)
-
-            {
-                stage[posY][posX] = 1;
-            }
-        }
-    }
-}
-
-void character::eraseCharacterLocation(int stage[25][40], int preX, int preY)
-{
-    for (int i = 0; i < 40; i++) {
-        for (int j = 0; j < 25; j++) {
-            if (stage[j][i] == 1) {
-                stage[j][i] = 0;
-            }
-        }
-    }
 }
 
 void character::getItem()
@@ -86,89 +61,72 @@ void character::takeDamage()
         }*/
 
         invincible = true;          // 무적 상태로 전환
-        Sleep(invincibilityDuration); // 2초 동안 대기
+        Sleep(invincibilityDuration);
         invincible = false;         // 무적 상태 해제
     }
 
 
 }
 
-void drawFutureMap()
-{
-
-}
-
-void drawPastMap()
-{
-
-}
-
 void character::switchMap()
 {
-    
-
     future = !future;
-    /*if (future)
-       drawFutureMap();
-    else
-       drawPastMap();*/
 }
 
-void character::attack()
+void character::attack(int stage[25][40])
 {
-
-    for (int i = 0; i < character_Height; i++)
+   
+    for (int i = 0; i < 3; i++)
     {
 
         for (int j = 0; j < attackRange; j++)
         {
-            //if (player[j][i] == 1)
-            //{
-            //   int newX;
-            //   int newY = y + i;
-            //   if (facingRight)         // 플레이어가 오른쪽을 볼 때
-            //   {
-            //      newX = x + character_Width + j;
-            //   }
-            //   else
-            //   // 플레이어가 왼쪽을 볼 때
-            //   {
-            //      newX = x - j;
-            //   }
-            //}
+            int newX= x / 40 + j;
+            int newY = y / 20 + i;
 
+            if (facingRight) {
+                int newX = x / 40 + j;
+              
+            }
+            else {
+                int newX = x / 40 - j - 1;
+
+            }
+            stage[newY][newX] = 1;
         }
     }
-
+    std::thread([this, &stage]() {
+        std::this_thread::sleep_for(std::chrono::milliseconds(attackCoolTime));
+        }).detach(); // detach()를 사용하여 독립적인 스레드로 실행
 }
 
 void character::characterMove(int stage[25][40], std::vector<char>& buffer)
 {
 
-   
-
-
     int preX = x;
     int preY = y;
 
-    bool movingLeft = GetAsyncKeyState(VK_LEFT) & 0x8000;
-    bool movingRight = GetAsyncKeyState(VK_RIGHT) & 0x8000;
-    bool jumping = GetAsyncKeyState(VK_SPACE) & 0x8000;
-
-    if (collision(stage, x, y) == 2 || collision(stage, x, y) == 10 || collision(stage, x, y)==11)
+    movingLeft = GetAsyncKeyState(VK_LEFT) & 0x8000;
+    movingRight = GetAsyncKeyState(VK_RIGHT) & 0x8000;
+    jumping = GetAsyncKeyState(VK_SPACE) & 0x8000;
+    bool sPress = GetAsyncKeyState('S') & 0x8000;
+    bool aPress = GetAsyncKeyState('A') & 0x8000;
+    if (collision(stage, x, y) == 2 || collision(stage, x, y) == 10 || collision(stage, x, y) == 11)
     {
         isJumping = 0;
     }
    
-    if (GetAsyncKeyState('S') & 0x8000) 
+    if (sPress) 
 
     {
         switchMap();
     }
 
-    if (GetAsyncKeyState('A') & 0x8000)
+    if (aPress)
     {
-        attack();
+        
+        attack(stage);
+        
     }
 
     if (jumping && !isJumping)
@@ -196,6 +154,12 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
             x = 40;
             y = 420;
         }
+        if (collision(stage, x, y + 20) == 11 && getKey == 1) {
+            nextStage = 1;
+            x = 40;
+            y = 420;
+            getKey = 0;
+        }
         progress++;
 
         // 문에서 들어가기;
@@ -221,9 +185,18 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
     if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
         
         if (getSeed == 1) {
-
+            getSeed = 0;
         }
-        getSeed = 0;
+    }
+    if (collision(stage, x, y) == 4) {
+        getKey = 1;
+    }
+    if (collision(stage, x, y) == 5) {
+        getSeed = 1;
+    }
+    if (collision(stage, x, y) == 2 || collision(stage, x, y)== 8)
+    {
+        gameOver(buffer);
     }
 }
 
@@ -232,8 +205,8 @@ void character::gravity(int stage[25][40], int newX, int newY)
   
    
      y += 20;
-
-    if (collision(stage, newX, y) == 2 || collision(stage, x, y) == 10 || collision(stage, x, y) == 11) {
+    int coll = collision(stage, newX, y);
+    if (coll == 2 || coll==10 || coll==11 || coll==9) {
         y = newY;
         isJumping = 0;
         return;
@@ -280,8 +253,8 @@ int character::collision(int stage[25][40], int newX, int newY)
             }
             else if (stage[posY][posX] == 8)
             {
-              /*  gameOver();*/            // 즉사기를 맞았을 때
-                return 8;            
+           
+                return 8;            // 즉사기 맞앗을 때
             }
             else if (stage[posY][posX] == 9)
             {
@@ -292,7 +265,7 @@ int character::collision(int stage[25][40], int newX, int newY)
                 return 10;               // 문 들어가기
             }
            
-            else if (stage[posY][posX] == 11 && getKey==1)
+            else if (stage[posY][posX] == 11)
             {
                 return 11;               // 잠긴 문 들어가기
             }
