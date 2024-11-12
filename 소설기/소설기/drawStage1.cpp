@@ -34,15 +34,15 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
         }
 
   
-        // Ä³¸¯ÅÍ ÀÌÀü À§Ä¡ Áö¿ì±â
+        // Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½
         ac.characterErase(ac.x, ac.y, buffer);
 
-        // Ä³¸¯ÅÍ À§Ä¡ ¾÷µ¥ÀÌÆ®
+        // Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
         int coll = ac.collision(stage, ac.x, ac.y);
         if (coll != 2 || coll != 10 || coll !=11) {
             ac.gravity(stage, ac.x, ac.y);
         }
-        // Ä³¸¯ÅÍ ÀÌµ¿
+        // Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         ac.characterMove(stage, buffer);
         if (ac.facingRight)
         {
@@ -77,7 +77,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
             stage1_Future[4][1] = 0;
         }
        
-        // º¯°æµÈ backbuffer¸¦ È­¸é¿¡ Ãâ·Â
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ backbufferï¿½ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½
         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
     }
  
@@ -129,7 +129,7 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
     draw a;
 
     drawCharacter ac;
-    // stage1_past ¹è¿­ ±â¹ÝÀ¸·Î ¸ÊÀ» ±×¸²
+    // stage1_past ï¿½è¿­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½
     for (int y = 0; y < 12; y++) {
         for (int x = 0; x < 20; x++) {
             switch (stage1_past[y][x]) {
