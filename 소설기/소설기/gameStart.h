@@ -1,5 +1,7 @@
+#pragma once
 #include <iostream>
 #include <cstring>
+
 #include <fstream>
 #include <vector>
 #include <Windows.h>
@@ -7,16 +9,14 @@
 #include "draw.h"
 #include "drawCharacter.h"
 #include "conio.h"
+#include "startScreen.h"
 #include "drawStage_prologue.h"
 #include "drawStage1.h"
-#include "gameStart.h"
 
+class gameStart
+{
+public:
+	gameStart();
+	void startGame();
+};
 
-int main() {
-
-    gameStart gs;
-  
-    gs.startGame();
-        
-    return 0;
-}

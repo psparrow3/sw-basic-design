@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ì—ì„œ ìƒì„±í•œ í¬í•¨ íŒŒì¼ì…ë‹ˆë‹¤.
-// ì†Œì„¤ê¸°.rcì—ì„œ ì‚¬ìš©ë˜ê³  ìˆìŠµë‹ˆë‹¤.
+// Microsoft Visual C++¿¡¼­ »ı¼ºÇÑ Æ÷ÇÔ ÆÄÀÏÀÔ´Ï´Ù.
+// ¼Ò¼³±â.rc¿¡¼­ »ç¿ëµÇ°í ÀÖ½À´Ï´Ù.
 //
 #define IDB_BITMAP4                     104
 #define IDB_BITMAP6                     107
@@ -28,12 +28,17 @@
 #define IDB_BITMAP25                    131
 #define IDB_BITMAP26                    132
 #define IDB_BITMAP5                     133
+#define IDB_BITMAP28                    135
+#define IDB_BITMAP29                    136
+#define IDB_BITMAP30                    137
+#define IDB_BITMAP31                    138
+#define IDB_BITMAP32                    139
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        134
+#define _APS_NEXT_RESOURCE_VALUE        141
 #define _APS_NEXT_COMMAND_VALUE         40001
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           101

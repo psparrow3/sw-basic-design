@@ -138,20 +138,21 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
     </ClInclude>
     <ClInclude Include="drawStage_prologue.h" />
+    <ClInclude Include="gameStart.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="startScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="소설기.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="bitmap24.bmp" />
+    <Image Include="A_button.bmp" />
     <Image Include="bottom.bmp" />
     <Image Include="broken_block.bmp" />
     <Image Include="broken_door.bmp" />
     <Image Include="button1.bmp" />
     <Image Include="button2.bmp" />
     <Image Include="character_left_original.bmp" />
-    <Image Include="character_original.bmp" />
     <Image Include="character_right_original.bmp" />
     <Image Include="cold_lava.bmp" />
     <Image Include="empty_block.bmp" />
@@ -163,10 +164,14 @@
     <Image Include="laser1.bmp" />
     <Image Include="lava.bmp" />
     <Image Include="lava2.bmp" />
+    <Image Include="left_button.bmp" />
     <Image Include="lever_left.bmp" />
     <Image Include="lever_right.bmp" />
     <Image Include="movable_block.bmp" />
+    <Image Include="right_button.bmp" />
     <Image Include="seed.bmp" />
+    <Image Include="SPACE_button.bmp" />
+    <Image Include="S_button.bmp" />
     <Image Include="triangle_block.bmp" />
     <Image Include="tutorial_building.bmp" />
   </ItemGroup>
@@ -184,7 +189,9 @@
     <ClCompile Include="drawStage.cpp" />
     <ClCompile Include="drawStage1.cpp" />
     <ClCompile Include="drawStage_prologue.cpp" />
+    <ClCompile Include="gameStart.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="startScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />

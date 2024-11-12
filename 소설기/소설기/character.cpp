@@ -8,20 +8,46 @@
 int character::x = 40;
 int character::y = 420;
 
+
+character::character()
+{
+
+
+    facingRight = 1, future = 1;
+
+    progress = 0;               // ì§„í–‰ìƒí™©
+    playerHeart = 3;
+    invincible = false;         //ë¬´ì  ìƒíƒœ
+    invincibilityDuration = 2000; // ë¬´ì  ì‹œê°„ (ë°€ë¦¬ì´ˆ,2ì´ˆ)
+    nextStage = 0;
+    isJumping = 0;            // ì í”„ìƒíƒœ
+    movingLeft = 0;
+    movingRight = 0;
+    jumping = 0;
+    attackCoolTime = 1000;      //ê³µê²© ì¿¨íƒ€ì„ (ë°€ë¦¬ì´ˆ,1ì´ˆ)
+
+    getKey = 0;
+    getSeed = 0;
+    getSeedPiece = 0;
+    attackRange = 1;            // ê³µê²© ì‚¬ê±°ë¦¬
+
+int character::x = 40;
+int character::y = 420;
+
 character::character()
 {
 	facingRight = 1, future = 1;
 
-	progress = 0;               // ÁøÇà»óÈ²
+	progress = 0;               // ì§„í–‰ìƒí™©
 	playerHeart = 3;
-	invincible = false;         //¹«Àû »óÅÂ
-	invincibilityDuration = 2000; // ¹«Àû ½Ã°£ (¹Ğ¸®ÃÊ,2ÃÊ)
+	invincible = false;         //ë¬´ì  ìƒíƒœ
+	invincibilityDuration = 2000; // ë¬´ì  ì‹œê°„ (ë°€ë¦¬ì´ˆ,2ì´ˆ)
 	nextStage = 0;
-	isJumping = 0;            // Á¡ÇÁ»óÅÂ
+	isJumping = 0;            // ì í”„ìƒíƒœ
 	movingLeft = 0;
 	movingRight = 0;
 	jumping = 0;
-	attackCoolTime = 1000;      //°ø°İ ÄğÅ¸ÀÓ (¹Ğ¸®ÃÊ,1ÃÊ)
+	attackCoolTime = 1000;      //ê³µê²© ì¿¨íƒ€ì„ (ë°€ë¦¬ì´ˆ,1ì´ˆ)
   
 	attackRange = character_Width / 2;
 }
@@ -29,38 +55,17 @@ void gameOver()
 {
 
 }
-void character::characterLocation(int stage[24][40], int newX, int newY)
+void character::gameOver(std::vector<char>& buffer)
 {
-	for (int i = 0; i < 2; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
+    draw a;
+    
+    a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+    progress--;
+    x = 40;
+    y = 420;
 
-			int posX = newX/40 + i;
-			int posY = newY/20 + j;
-
-		 
-
-			if (posX >= 0 && posX < SCREEN_WIDTH && posY >= 0 && posY < SCREEN_HEIGHT)
-
-			{
-				stage[posY][posX] = 1;
-				stage[posY][posX + 1] = 1;
-			}
-		}
-	}
 }
 
-void character::eraseCharacterLocation(int stage[24][40], int preX, int preY)
-{
-	for (int i = 0; i < 40; i++) {
-		for (int j = 0; j < 24; j++) {
-			if (stage[j][i] == 1) {
-				stage[j][i] = 0;
-			}
-		}
-	}
-}
 
 void character::getItem()
 {
@@ -70,208 +75,254 @@ void character::getItem()
 void character::takeDamage()
 {
 
-	if (!invincible) {  // ÀÌ¹Ì ¹«Àû »óÅÂ°¡ ¾Æ´Ï¶ó¸é µ¥¹ÌÁö Àû¿ë
+    if (!invincible) {  // ì´ë¯¸ ë¬´ì  ìƒíƒœê°€ ì•„ë‹ˆë¼ë©´ ë°ë¯¸ì§€ ì ìš©
+        playerHeart -= 1;
+
+        // í”Œë ˆì´ì–´ê°€ ìƒëª…ë ¥ì„ ë‹¤ ì†Œëª¨í–ˆì„ ê²½ìš°
+     /*   if (playerHeart == 0) {
+           gameOver();
+           return;
+        }*/
+
+        invincible = true;          // ë¬´ì  ìƒíƒœë¡œ ì „í™˜
+        Sleep(invincibilityDuration);
+        invincible = false;         // ë¬´ì  ìƒíƒœ í•´ì œ
+    }
+	if (!invincible) {  // ì´ë¯¸ ë¬´ì  ìƒíƒœê°€ ì•„ë‹ˆë¼ë©´ ë°ë¯¸ì§€ ì ìš©
 		playerHeart -= 1;
 
-		// ÇÃ·¹ÀÌ¾î°¡ »ı¸í·ÂÀ» ´Ù ¼Ò¸ğÇßÀ» °æ¿ì
+		// í”Œë ˆì´ì–´ê°€ ìƒëª…ë ¥ì„ ë‹¤ ì†Œëª¨í–ˆì„ ê²½ìš°
 	 /*   if (playerHeart == 0) {
 		   gameOver();
 		   return;
 		}*/
 
-		invincible = true;          // ¹«Àû »óÅÂ·Î ÀüÈ¯
-		Sleep(invincibilityDuration); // 2ÃÊ µ¿¾È ´ë±â
-		invincible = false;         // ¹«Àû »óÅÂ ÇØÁ¦
+		invincible = true;          // ë¬´ì  ìƒíƒœë¡œ ì „í™˜
+		Sleep(invincibilityDuration); // 2ì´ˆ ë™ì•ˆ ëŒ€ê¸°
+		invincible = false;         // ë¬´ì  ìƒíƒœ í•´ì œ
 	}
-}
-
-void drawFutureMap()
-{
-
-}
-
-void drawPastMap()
-{
-
 }
 
 void character::switchMap()
 {
-	future = !future;
-	/*if (future)
-	   drawFutureMap();
-	else
-	   drawPastMap();*/
-}
 
-void character::attack()
-{
-	for (int i = 0; i < character_Height; i++)
-	{
+    future = !future;
 
-		for (int j = 0; j < attackRange; j++)
-		{
-			//if (player[j][i] == 1)
-			//{
-			//   int newX;
-			//   int newY = y + i;
-			//   if (facingRight)         // ÇÃ·¹ÀÌ¾î°¡ ¿À¸¥ÂÊÀ» º¼ ¶§
-			//   {
-			//      newX = x + character_Width + j;
-			//   }
-			//   else
-			//   // ÇÃ·¹ÀÌ¾î°¡ ¿ŞÂÊÀ» º¼ ¶§
-			//   {
-			//      newX = x - j;
-			//   }
-			//}
 
-		}
-	}
 
 }
 
-void character::characterMove(int stage[24][40], std::vector<char>& buffer)
-{
-	int preX = x;
-	int preY = y;
+void character::attack(int stage[25][40])
+{   
+    for (int i = 0; i < 3; i++)
+    {
 
-	bool movingLeft = GetAsyncKeyState(VK_LEFT) & 0x8000;
-	bool movingRight = GetAsyncKeyState(VK_RIGHT) & 0x8000;
-	bool jumping = GetAsyncKeyState(VK_SPACE) & 0x8000;
+        for (int j = 0; j < attackRange; j++)
+        {
+            int newX= x / 40 + j;
+            int newY = y / 20 + i;
 
-	if (collision(stage, x, y) == 2 || collision(stage, x, y) == 9)
-	{
-		isJumping = 0;
-	}
+            if (facingRight) {
+                int newX = x / 40 + j;
+              
+            }
+            else {
+                int newX = x / 40 - j - 1;
 
-	if (GetAsyncKeyState('S') & 0x8000) 
-
-	{
-		switchMap();
-	}
-
-	if (GetAsyncKeyState('A') & 0x8000)
-	{
-		attack();
-	}
-
-	if (jumping && !isJumping)
-	{
-		isJumping = 1;
-
-		for (int i = 0; i < 8; i++) {
-			preY = y;
+            }
+            stage[newY][newX] = 1;
+        }
+    }
+    std::thread([this, &stage]() {
+        std::this_thread::sleep_for(std::chrono::milliseconds(attackCoolTime));
+        }).detach(); // detach()ë¥¼ ì‚¬ìš©í•˜ì—¬ ë…ë¦½ì ì¸ ìŠ¤ë ˆë“œë¡œ ì‹¤í–‰
 
 
-			y -= 20;
-			if (collision(stage, x, y) == 4) {
-				y = preY;
-				break;
-			}
-
-
-		}
-	}
-
-	if (GetAsyncKeyState(VK_UP) & 0x8000) {
-
-		if (collision(stage, x, y+20) == 9) {
-			nextStage = 1;
-			x = 40;
-			y = 420;
-		}
-		progress++;
-
-		// ¹®¿¡¼­ µé¾î°¡±â;
-	}
-	if (movingLeft) {
-
-		facingRight = 0;
-		x -= 40;
-		if (collision(stage, x, y) == 3)
-		{
-			x = preX;
-		}
-	}
-	if (movingRight) { 
-		facingRight = 1;
-		x += 40;
-
-		if (collision(stage, x, y) == 3)
-		{
-			x = preX;
-		}
-	}
-	if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
-
-		// ¾¾¾Ñ ½É±â
-	}
 }
 
-void character::gravity(int stage[24][40], int newX, int newY)
+void character::characterMove(int stage[25][40], std::vector<char>& buffer)
 {
-	 y += 20;
+    int preX = x;
+    int preY = y;
 
-	if (collision(stage, newX, y) == 2 || collision(stage, newX, y) == 9) {
-		y = newY;
-		isJumping = 0;
-		return;
-	}
+    movingLeft = GetAsyncKeyState(VK_LEFT) & 0x8000;
+    movingRight = GetAsyncKeyState(VK_RIGHT) & 0x8000;
+    jumping = GetAsyncKeyState(VK_SPACE) & 0x8000;
+    bool sPress = GetAsyncKeyState('S') & 0x8000;
+    bool aPress = GetAsyncKeyState('A') & 0x8000;
+    if (collision(stage, x, y) == 2 || collision(stage, x, y) == 10 || collision(stage, x, y) == 11)
+    {
+        isJumping = 0;
+    }
    
+    if (sPress) 
+
+    {
+        switchMap();
+    }
+
+    if (aPress)
+    {
+        
+        attack(stage);
+        
+    }
+
+    if (jumping && !isJumping)
+    {
+        isJumping = 0;
+
+        for (int i = 0; i < 3; i++) {
+            preY = y;
+
+
+            y -= 20;
+            if (collision(stage, x, y) == 2 || y < 0) {
+                y = preY;
+                break;
+            }
+
+
+        }
+    }
+
+    if (GetAsyncKeyState(VK_UP) & 0x8000) {
+
+        if (collision(stage, x, y+20) == 10) {
+            nextStage = 1;
+            x = 40;
+            y = 420;
+        }
+        if (collision(stage, x, y + 20) == 11 && getKey == 1) {
+            nextStage = 1;
+            x = 40;
+            y = 420;
+            getKey = 0;
+        }
+        progress++;
+
+        // ë¬¸ì—ì„œ ë“¤ì–´ê°€ê¸°;
+    }
+    if (movingLeft) {
+
+        facingRight = 0;
+        x -= 20;
+        if (collision(stage, x, y) == 2 || x<0)
+        {
+            x = preX;
+        }
+    }
+    if (movingRight) { 
+        facingRight = 1;
+        x += 20;
+
+        if (collision(stage, x, y) == 2 || x>=1560)
+        {
+            x = preX;
+        }
+    }
+    if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
+        
+        if (getSeed == 1) {
+            getSeed = 0;
+        }
+    }
+    if (collision(stage, x, y) == 4) {
+        getKey = 1;
+    }
+    if (collision(stage, x, y) == 5) {
+        getSeed = 1;
+    }
+    if (collision(stage, x, y) == 2 || collision(stage, x, y)== 8)
+    {
+        gameOver(buffer);
+    }
+
+}
+
+void character::gravity(int stage[25][40], int newX, int newY)
+{
+
+   
+     y += 20;
+    int coll = collision(stage, newX, y);
+    if (coll == 2 || coll==10 || coll==11 || coll==9) {
+        y = newY;
+        isJumping = 0;
+        return;
+    }
+
 }
 
 int character::collision(int stage[25][40], int newX, int newY)
 {
-	for (int i = 0; i < 2; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
 
-			int posX = newX/40 + i;
-			int posY = newY/20 + j;
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
 
-			if (stage[posY][posX] == 2)
-			{
-				return 2;      //¹Ù´Ú¿¡ Ãæµ¹
-			}
-			else if (stage[posY][posX] == 3)
-				return 3;      //º®¿¡ Ãæµ¹
-			else if (stage[posY][posX] == 4)
-				return 4;      //ÃµÀå¿¡ Ãæµ¹
-			else if (stage[posY][posX] == 5)
-			{
-				getItem();            //¾ÆÀÌÅÛ Å‰µæ
-				return 5;            //¾ÆÀÌÅÛ Áö¿ì±â ±¸ÇöÇÊ¿ä
-			}
-			else if (stage[posY][posX] == 6)
-			{
+            int posX = newX/40 + i;
+            int posY = newY/20 + j;
 
-				takeDamage();         //ÀÏ¹İ °ø°İÀ» ¸Â¾ÒÀ» ¶§
-				return 6;            //°ø°İ Áö¿ì±â ±¸ÇöÇÊ¿ä
-			}
-			else if (stage[posY][posX] == 7)
-			{
-				//gameOver();            // Áï»ç±â¸¦ ¸Â¾ÒÀ» ¶§
-				//return 7;            
-			}
-			else if (stage[posY][posX] == 8)
-			{
-				return 8;               //¾¾¾Ñ ½É´Â ºÎºĞ
-			}
-			else if (stage[posY][posX] == 9)
-			{
-				return 9;               // ¹® µé¾î°¡±â
-			}
-			else if (stage[posY][posX] == 10)
-			{
-				// µµ¿ò¸» 
-				return 10;
-			}
+            if (stage[posY][posX] == 2)
+            {
+                return 2;      //ë°”ë‹¥,ì²œì¥,ë²½ ì¶©ëŒ
+            }
+          
+            else if (stage[posY][posX] == 3)
+                return 3;      // ë¯¸ëŠ” ë¸”ëŸ­
+            else if (stage[posY][posX] == 4)
+            {
+                          
+                return 4;           // ì—´ì‡  Â‰ë“
+            }
+            else if (stage[posY][posX] == 5)
+            {
+                return 5;               // ì”¨ì•— Â‰ë“
+            }
+            else if (stage[posY][posX] == 6)
+            {
+                return 6;               // ì”¨ì•— ì¡°ê° Â‰ë“
+            }
 
-		}
-	}
-	return 0;
+            else if (stage[posY][posX] == 7)
+            {
 
+                takeDamage();         //ì¼ë°˜ ê³µê²©ì„ ë§ì•˜ì„ ë•Œ
+                return 7;            //ê³µê²© ì§€ìš°ê¸° êµ¬í˜„í•„ìš”
+            }
+            else if (stage[posY][posX] == 8)
+            {
+           
+                return 8;            // ì¦‰ì‚¬ê¸° ë§ì•—ì„ ë•Œ
+            }
+            else if (stage[posY][posX] == 9)
+            {
+                return 9;               //ì”¨ì•— ì‹¬ëŠ” ë¶€ë¶„
+            }
+            else if (stage[posY][posX] == 10)
+            {
+                return 10;               // ë¬¸ ë“¤ì–´ê°€ê¸°
+            }
+           
+            else if (stage[posY][posX] == 11)
+            {
+                return 11;               // ì ê¸´ ë¬¸ ë“¤ì–´ê°€ê¸°
+            }
+            
+            else if (stage[posY][posX] == 12)
+            {
+                return 12;               // ë²„íŠ¼ ëˆ„ë¥´ê¸°
+            }
+
+            else if (stage[posY][posX] == 13)
+            {
+                return 13;               // ë ˆë²„ ë‹¹ê¸°ê¸°
+            }
+
+        }
+    }
+    return 0;
 
 }

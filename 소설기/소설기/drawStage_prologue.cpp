@@ -1,27 +1,86 @@
 #include "drawStage_prologue.h"
 
-//draw a;
-//a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-//a.SetConsoleFontSize(1);
-//SetConsoleTitle(L"잃어버린 낙원");
-//
-//// 커서 숨기기
-//HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
-//CONSOLE_CURSOR_INFO curCursorInfo;
-//GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
-//curCursorInfo.bVisible = 0;
-//SetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
-//
-//// 백그라운드(맵) 버퍼 생성
-//std::vector<char> buffer(SCREEN_WIDTH* SCREEN_HEIGHT, ' ');
-//
-//
-//// 맵 그리기 - 맵은 고정되어 있으므로 초기화 후 다시 그리지 않음
-//int x, y;
-//for (x = 0; x < SCREEN_WIDTH - BLOCK_SIZE * 10; x += BLOCK_SIZE * 2) {
-//    a.drawBitmap("block.bmp", buffer, x, 440, SCREEN_WIDTH);
-//}
-//
-//for (y = 0; y < 12; y++) {
-//    a.drawBitmap("block.bmp", buffer, 80 * 19, y * 40, SCREEN_WIDTH);
-//}
+#include "draw.h"
+
+
+drawStage_prologue::drawStage_prologue()
+{
+
+}
+void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
+    drawCharacter ac;
+    draw a;
+  
+
+    while (1) {
+
+
+        
+        if (ac.nextStage)
+        {
+
+            a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+            break;
+        }
+        // 캐릭터 이전 위치 지우기
+        ac.characterErase(ac.x, ac.y, buffer);
+
+
+       
+      
+        if (ac.future)
+        {
+
+            a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+            a.drawBitmap("tutorial_building.bmp", buffer, 1200, 120, SCREEN_WIDTH);
+            a.drawBitmap("A_button.bmp", buffer, 100, 60, SCREEN_WIDTH);
+            a.drawBitmap("S_button.bmp", buffer, 200, 60, SCREEN_WIDTH);
+            a.drawBitmap("SPACE_button.bmp", buffer, 400, 60, SCREEN_WIDTH);
+            a.drawBitmap("left_button.bmp", buffer, 900, 60, SCREEN_WIDTH);
+            a.drawBitmap("right_button.bmp", buffer, 1050, 60, SCREEN_WIDTH);
+            a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
+        }
+        else
+        {
+            a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+            a.drawBitmap("tutorial_building.bmp", buffer, 1200, 120, SCREEN_WIDTH);
+            a.drawBitmap("A_button.bmp", buffer, 100, 60, SCREEN_WIDTH);
+            a.drawBitmap("S_button.bmp", buffer, 200, 60, SCREEN_WIDTH);
+            a.drawBitmap("SPACE_button.bmp", buffer, 400, 60, SCREEN_WIDTH);
+            a.drawBitmap("left_button.bmp", buffer, 900, 60, SCREEN_WIDTH);
+            a.drawBitmap("right_button.bmp", buffer, 1050, 60, SCREEN_WIDTH);
+            a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
+        }
+
+
+
+        int coll = ac.collision(stage_prologue, ac.x, ac.y);
+        
+        if (coll != 2 || coll != 10 || coll != 11) 
+        {
+            ac.gravity(stage_prologue, ac.x, ac.y);
+        }
+        // 캐릭터 이동
+        ac.characterMove(stage_prologue, buffer);
+        if (ac.facingRight)
+        {
+
+            ac.characterRightDraw(ac.x, ac.y, buffer);
+        }
+        else
+        {
+
+            ac.characterLeftDraw(ac.x, ac.y, buffer);
+        }
+       
+
+        // 변경된 backbuffer를 화면에 출력
+        a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+
+    }
+
+	
+
+	
+}

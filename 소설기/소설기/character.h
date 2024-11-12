@@ -2,7 +2,7 @@
 #include "Windows.h"
 #include<iostream>
 #include "draw.h"
-
+#include <thread>
 #define SCREEN_WIDTH 1902
 #define SCREEN_HEIGHT 501
 
@@ -10,7 +10,7 @@
 #define character_Height 60
 #define character_Width 40
 
-class character
+class character 
 {
 public:
 	static int x;
@@ -19,16 +19,17 @@ public:
 	bool future; 
 	bool isJumping;
 	bool facingRight;
-	
-	character();
-	void characterMove(int stage[24][40],std::vector<char>& buffer);
-	
-	void gravity(int stage[24][40], int newX, int newY);
-	int collision(int stage[24][40],int newX,int newY);
-	void characterLocation(int stage[24][40], int newX, int newY);
-	void eraseCharacterLocation(int stage[24][40], int preX, int preY);
-	
+	bool getKey;
 
+	bool getSeed;
+
+	int getSeedPiece;
+	character();
+	void characterMove(int stage[25][40],std::vector<char>& buffer);
+	
+	void gravity(int stage[25][40], int newX, int newY);
+	int collision(int stage[25][40],int newX,int newY);
+	
 private:
 	int playerHeart;
 	int progress;
@@ -44,13 +45,11 @@ private:
 	int invincibilityDuration;
 
 
-	void attack();
+	void attack(int stage[25][40]);
 	void switchMap();
 	void takeDamage();
 	void getItem();
-	void drawFutureMap();
-	void drawPastMap();
-	void gameOver();
+	void gameOver(std::vector<char>& buffer);
 
 
 };
