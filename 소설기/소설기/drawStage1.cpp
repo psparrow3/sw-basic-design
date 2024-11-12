@@ -95,10 +95,10 @@ void drawStage1::drawStage1Future(std::vector<char>& buffer) {
     // 도어 그리기
     a.drawBitmap("broken_door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
     a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
-
-   
-   
 }
+   
+   
+
 
 void drawStage1::drawStage1Past(std::vector<char>& buffer) {
     draw a;
@@ -137,7 +137,4 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
             }
         }
     }
-
-    // 도어 그리기
-    a.drawBitmap("door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
 }

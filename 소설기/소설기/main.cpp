@@ -18,9 +18,9 @@ int main() {
     draw a;
     a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     a.SetConsoleFontSize(1);
-    SetConsoleTitle(L"¿“æÓπˆ∏∞ ≥´ø¯");
+    SetConsoleTitle(L"ÏûÉÏñ¥Î≤ÑÎ¶∞ ÎÇôÏõê");
 
-    // ƒøº≠ º˚±‚±‚
+    // Ïª§ÏÑú Ïà®Í∏∞Í∏∞
     HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO curCursorInfo;
     GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
@@ -28,13 +28,17 @@ int main() {
     SetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
 
     std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
-    
+
+  
+
+   
     drawStage_prologue dsp;
     dsp.stagePrologueDraw(buffer);
 
     drawStage1 ds1;
     ds1.stage1Draw(buffer);
 
-   
+
+       
     return 0;
 }

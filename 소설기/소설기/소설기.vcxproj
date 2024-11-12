@@ -127,6 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Boss1.h" />
+    <ClInclude Include="Boss2.h" />
+    <ClInclude Include="Boss3.h" />
     <ClInclude Include="character.h" />
     <ClInclude Include="draw.h" />
     <ClInclude Include="drawCharacter.h" />
@@ -150,6 +153,7 @@
     <Image Include="character_left_original.bmp" />
     <Image Include="character_right_original.bmp" />
     <Image Include="cold_lava.bmp" />
+    <Image Include="empty_block.bmp" />
     <Image Include="empty_character.bmp" />
     <Image Include="block.bmp" />
     <Image Include="door.bmp" />
@@ -166,6 +170,9 @@
     <Image Include="tutorial_building.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Boss1.cpp" />
+    <ClCompile Include="Boss2.cpp" />
+    <ClCompile Include="Boss3.cpp" />
     <ClCompile Include="character.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
