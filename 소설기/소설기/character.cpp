@@ -8,59 +8,36 @@
 int character::x = 40;
 int character::y = 420;
 
-
+int	character::progress = 0;							// �����Ȳ
+bool character::gameOverCheck = 0;
 character::character()
 {
 
 
     facingRight = 1, future = 1;
 
-    progress = 0;               // 진행상황
+
     playerHeart = 3;
-    invincible = false;         //무적 상태
-    invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
+    invincible = false;
+    invincibilityDuration = 2000;
     nextStage = 0;
-    isJumping = 0;            // 점프상태
+    isJumping = 0;
     movingLeft = 0;
     movingRight = 0;
     jumping = 0;
-    attackCoolTime = 1000;      //공격 쿨타임 (밀리초,1초)
+
+    attackCoolTime = 1000;      //���� ��Ÿ�� (�и���,1��)
+
 
     getKey = 0;
     getSeed = 0;
     getSeedPiece = 0;
-    attackRange = 1;            // 공격 사거리
-
-int character::x = 40;
-int character::y = 420;
-
-character::character()
-{
-	facingRight = 1, future = 1;
-
-	progress = 0;               // 진행상황
-	playerHeart = 3;
-	invincible = false;         //무적 상태
-	invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
-	nextStage = 0;
-	isJumping = 0;            // 점프상태
-	movingLeft = 0;
-	movingRight = 0;
-	jumping = 0;
-	attackCoolTime = 1000;      //공격 쿨타임 (밀리초,1초)
-  
-	attackRange = character_Width / 2;
-}
-void gameOver()
-{
-
+    attackRange = 1;            // 공격 ?�거�?
 }
 void character::gameOver(std::vector<char>& buffer)
 {
     draw a;
-    
-    a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
-    progress--;
+    gameOverCheck = 1;
     x = 40;
     y = 420;
 
@@ -75,32 +52,21 @@ void character::getItem()
 void character::takeDamage()
 {
 
-    if (!invincible) {  // 이미 무적 상태가 아니라면 데미지 적용
+    if (!invincible) {
         playerHeart -= 1;
 
-        // 플레이어가 생명력을 다 소모했을 경우
-     /*   if (playerHeart == 0) {
-           gameOver();
-           return;
-        }*/
 
-        invincible = true;          // 무적 상태로 전환
+        /*   if (playerHeart == 0) {
+       gameOver();
+       return;
+    }*/
+
+
+        invincible = true;
         Sleep(invincibilityDuration);
-        invincible = false;         // 무적 상태 해제
+        invincible = false;
     }
-	if (!invincible) {  // 이미 무적 상태가 아니라면 데미지 적용
-		playerHeart -= 1;
-
-		// 플레이어가 생명력을 다 소모했을 경우
-	 /*   if (playerHeart == 0) {
-		   gameOver();
-		   return;
-		}*/
-
-		invincible = true;          // 무적 상태로 전환
-		Sleep(invincibilityDuration); // 2초 동안 대기
-		invincible = false;         // 무적 상태 해제
-	}
+	
 }
 
 void character::switchMap()
@@ -117,7 +83,7 @@ void character::attack(int stage[25][40])
     for (int i = 0; i < 3; i++)
     {
 
-        for (int j = 0; j < attackRange; j++)
+        for (int j = 1; j <= attackRange; j++)
         {
             int newX= x / 40 + j;
             int newY = y / 20 + i;
@@ -133,10 +99,6 @@ void character::attack(int stage[25][40])
             stage[newY][newX] = 1;
         }
     }
-    std::thread([this, &stage]() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(attackCoolTime));
-        }).detach(); // detach()를 사용하여 독립적인 스레드로 실행
-
 
 }
 
@@ -192,16 +154,18 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
             nextStage = 1;
             x = 40;
             y = 420;
+            progress++;
         }
         if (collision(stage, x, y + 20) == 11 && getKey == 1) {
             nextStage = 1;
             x = 40;
             y = 420;
             getKey = 0;
+            progress++;
         }
-        progress++;
+        
 
-        // 문에서 들어가기;
+     
     }
     if (movingLeft) {
 
@@ -216,7 +180,7 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
         facingRight = 1;
         x += 20;
 
-        if (collision(stage, x, y) == 2 || x>=1560)
+        if (collision(stage, x, y) == 2 || x>=1540)
         {
             x = preX;
         }
@@ -267,58 +231,59 @@ int character::collision(int stage[25][40], int newX, int newY)
 
             if (stage[posY][posX] == 2)
             {
-                return 2;      //바닥,천장,벽 충돌
+                return 2;      // ���� �浹 ó��
             }
           
             else if (stage[posY][posX] == 3)
-                return 3;      // 미는 블럭
+                return 3;      // �̴� ���� ó��
             else if (stage[posY][posX] == 4)
             {
                           
-                return 4;           // 열쇠 득
+                return 4;           // ���� ŉ��
             }
             else if (stage[posY][posX] == 5)
             {
-                return 5;               // 씨앗 득
+                return 5;               // ����
             }
             else if (stage[posY][posX] == 6)
             {
-                return 6;               // 씨앗 조각 득
+                return 6;               // ���� ����
             }
 
             else if (stage[posY][posX] == 7)
             {
 
-                takeDamage();         //일반 공격을 맞았을 때
-                return 7;            //공격 지우기 구현필요
+                takeDamage();        
+                return 7;            // ���� ����
             }
             else if (stage[posY][posX] == 8)
             {
            
-                return 8;            // 즉사기 맞앗을 때
+                return 8;            // ����
             }
+            
             else if (stage[posY][posX] == 9)
             {
-                return 9;               //씨앗 심는 부분
+                return 9;               // ���� �ɴ� ��
             }
             else if (stage[posY][posX] == 10)
             {
-                return 10;               // 문 들어가기
+                return 10;               // �� ����
             }
            
             else if (stage[posY][posX] == 11)
             {
-                return 11;               // 잠긴 문 들어가기
+                return 11;               // ��� �� ����
             }
             
             else if (stage[posY][posX] == 12)
             {
-                return 12;               // 버튼 누르기
+                return 12;               // ���� �κ�
             }
 
             else if (stage[posY][posX] == 13)
             {
-                return 13;               // 레버 당기기
+                return 13;               // 
             }
 
         }

@@ -20,9 +20,9 @@ public:
 	bool isJumping;
 	bool facingRight;
 	bool getKey;
-
+	static int progress;							// 진행상황
 	bool getSeed;
-
+	static bool gameOverCheck;
 	int getSeedPiece;
 	character();
 	void characterMove(int stage[25][40],std::vector<char>& buffer);
@@ -32,7 +32,7 @@ public:
 	
 private:
 	int playerHeart;
-	int progress;
+	
 
 	
 	bool invincible;
