@@ -8,6 +8,9 @@
     <ClCompile Include="drawCharacter.cpp" />
     <ClCompile Include="draw.cpp" />
     <ClCompile Include="drawStage_prologue.cpp" />
+    <ClCompile Include="Boss1.cpp" />
+    <ClCompile Include="Boss2.cpp" />
+    <ClCompile Include="Boss3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
@@ -17,6 +20,9 @@
     <ClInclude Include="drawCharacter.h" />
     <ClInclude Include="draw.h" />
     <ClInclude Include="drawStage_prologue.h" />
+    <ClInclude Include="Boss1.h" />
+    <ClInclude Include="Boss2.h" />
+    <ClInclude Include="Boss3.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="소설기.rc" />
@@ -45,6 +51,10 @@
     <Image Include="character_right_original.bmp" />
     <Image Include="character_left_original.bmp" />
     <Image Include="bitmap24.bmp" />
+    <Image Include="empty_block.bmp" />
+    <Image Include="Boss1.bmp" />
+    <Image Include="Boss2.bmp" />
+    <Image Include="Boss3.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />
