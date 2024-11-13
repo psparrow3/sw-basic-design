@@ -146,14 +146,11 @@
     <ResourceCompile Include="소설기.rc" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Image Include="A_button.bmp" />
-=======
     <Image Include="bitmap24.bmp" />
     <Image Include="Boss1.bmp" />
     <Image Include="Boss2.bmp" />
     <Image Include="Boss3.bmp" />
->>>>>>> 윤성
     <Image Include="bottom.bmp" />
     <Image Include="broken_block.bmp" />
     <Image Include="broken_door.bmp" />

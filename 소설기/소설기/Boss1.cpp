@@ -1,8 +1,11 @@
 #include "Boss1.h"
 
-Boss1::Boss1(int x, int y)
+int Boss1::m_x = 18;
+int Boss1::m_y = 40;
+bool Boss1::flag = false;
+
+Boss1::Boss1()
 {
-	m_x = x * 80, m_y = y;
 	at.clear();
 }
 
