@@ -12,7 +12,7 @@ public:
     void stage1Draw( std::vector<char>& buffer);
     void drawStage1Future(std::vector<char>& buffer);
     void drawStage1Past(std::vector<char>& buffer);
-    int stage1_future[12][20] =                     // ÇöÀç ¸Ê
+    int stage1_future[12][20] =                     // Ã‡Ã¶Ã€Ã§ Â¸ÃŠ
     {
        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
        {0,0,2,0,0,0,0,0,3,0,3,0,0,0,0,0,0,0,0,0},
@@ -28,7 +28,7 @@ public:
        {0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1},
     };
 
-    int stage1_past[12][20] =                     // °ú°Å ¸Ê
+    int stage1_past[12][20] =                     // Â°ÃºÂ°Ã… Â¸ÃŠ
     {
        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
        {0,0,0,0,0,0,0,0,3,0,3,0,0,0,0,0,0,0,0,0},
@@ -44,9 +44,12 @@ public:
        {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1},
     };
 
+
     static int stage1_Future[25][40];
     
     static int stage1_Past[25][40];
-   
+ 
+    
+
 };
 
