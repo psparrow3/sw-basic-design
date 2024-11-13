@@ -220,7 +220,8 @@ int main() {
 	Boss1 b(18, 40);
 	a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	a.SetConsoleFontSize(1);
-	SetConsoleTitle(L"잃어버린 낙원");
+
+	SetConsoleTitle(L"Lost Utopia");
 	
 	// 커서 숨기기
 	HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -248,11 +249,11 @@ int main() {
 	
 	while (1)
 	{
-		a.drawBitmap("empty_block.bmp", buffer, b.m_x, b.m_y, SCREEN_WIDTH);
+		a.drawBitmap("Empty_boss.bmp", buffer, b.m_x, b.m_y, SCREEN_WIDTH);
 	
-		if (1)
+		if (time >= 1000)
 		{
-			b.Boss1Attack(buffer);
+			b.Boss1Attack();
 			time = 0;
 			time_flag = 1;
 		}
@@ -262,14 +263,10 @@ int main() {
 			x--;
 			b.Boss1Move(x);
 
-			if (x == 1)
+			if (x == 0)
 			{
 				flag = 1;
 			}
-	
-			a.drawBitmap("block.bmp", buffer, b.m_x, b.m_y, SCREEN_WIDTH);
-	
-			a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		}
 		else
 		{
@@ -280,14 +277,17 @@ int main() {
 			{
 				flag = 0;
 			}
-			a.drawBitmap("block.bmp", buffer, b.m_x, b.m_y, SCREEN_WIDTH);
-	
-			a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		}
-		
-		Sleep(200);
 
-		time += 200;
+		a.drawBitmap("Boss2.bmp", buffer, b.m_x, b.m_y, SCREEN_WIDTH);
+
+		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+		b.Boss1AttackMove(buffer);
+		
+		Sleep(100);
+
+		time += 100;
 	}
 	
 	getchar();
