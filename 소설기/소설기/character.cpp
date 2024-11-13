@@ -8,14 +8,15 @@
 int character::x = 40;
 int character::y = 420;
 
-
+int	character::progress = 0;							// 진행상황
+bool character::gameOverCheck = 0;
 character::character()
 {
 
 
     facingRight = 1, future = 1;
 
-    progress = 0;               // 진행상황
+   
     playerHeart = 3;
     invincible = false;         //무적 상태
     invincibilityDuration = 2000; // 무적 시간 (밀리초,2초)
@@ -25,7 +26,7 @@ character::character()
     movingRight = 0;
     jumping = 0;
     attackCoolTime = 1000;      //공격 쿨타임 (밀리초,1초)
-
+   
     getKey = 0;
     getSeed = 0;
     getSeedPiece = 0;
@@ -35,9 +36,7 @@ character::character()
 void character::gameOver(std::vector<char>& buffer)
 {
     draw a;
-    
-    a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
-    progress--;
+    gameOverCheck = 1;
     x = 40;
     y = 420;
 
@@ -79,7 +78,7 @@ void character::attack(int stage[25][40])
     for (int i = 0; i < 3; i++)
     {
 
-        for (int j = 0; j < attackRange; j++)
+        for (int j = 1; j <= attackRange; j++)
         {
             int newX= x / 40 + j;
             int newY = y / 20 + i;
@@ -95,9 +94,7 @@ void character::attack(int stage[25][40])
             stage[newY][newX] = 1;
         }
     }
-    std::thread([this, &stage]() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(attackCoolTime));
-        }).detach(); // detach()를 사용하여 독립적인 스레드로 실행
+    
 }
 
 void character::characterMove(int stage[25][40], std::vector<char>& buffer)
@@ -153,14 +150,16 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
             nextStage = 1;
             x = 40;
             y = 420;
+            progress++;
         }
         if (collision(stage, x, y + 20) == 11 && getKey == 1) {
             nextStage = 1;
             x = 40;
             y = 420;
             getKey = 0;
+            progress++;
         }
-        progress++;
+        
 
         // 문에서 들어가기;
     }
@@ -177,7 +176,7 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
         facingRight = 1;
         x += 20;
 
-        if (collision(stage, x, y) == 2 || x>=1560)
+        if (collision(stage, x, y) == 2 || x>=1540)
         {
             x = preX;
         }

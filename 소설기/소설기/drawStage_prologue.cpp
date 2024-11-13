@@ -13,7 +13,7 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
   
 
     while (1) {
-
+        
 
         
         if (ac.nextStage)

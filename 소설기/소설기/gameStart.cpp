@@ -5,6 +5,8 @@ gameStart::gameStart() {
 }
 void gameStart::startGame() {
 	draw a;
+	drawCharacter ac;
+	
 	a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	a.SetConsoleFontSize(1);
 	SetConsoleTitle(L"ÀÒ¾î¹ö¸° ³«¿ø");
@@ -18,15 +20,21 @@ void gameStart::startGame() {
 
 	std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
 
-
-
-	/*startScreen ss;
-	ss.drawStartScreen(buffer);*/
-
+	startScreen ss;
 	drawStage_prologue dsp;
-	dsp.stagePrologueDraw(buffer);
-
 	drawStage1 ds1;
-	ds1.stage1Draw(buffer);
 
+	
+
+	/*ss.drawStartScreen;*/
+	while (1) {
+		if (ac.progress == 0) {
+			dsp.stagePrologueDraw(buffer);
+		}
+		else if (ac.progress == 1) {
+			ds1.stage1Draw(buffer);
+		}
+
+		
+	}
 }
