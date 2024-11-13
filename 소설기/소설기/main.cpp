@@ -11,7 +11,6 @@
 #include "drawStage1.h"
 #include "gameStart.h"
 
-
 int main() {
 
     gameStart gs;

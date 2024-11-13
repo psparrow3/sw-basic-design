@@ -17,7 +17,6 @@ void drawCharacter::characterRightDraw(int x, int y, std::vector<char>& buffer)
 }
 
 void drawCharacter::characterLeftDraw(int x, int y, std::vector<char>& buffer)
-
 {
     draw a;
     a.drawBitmap("character_left_original.bmp", buffer, x, y, SCREEN_WIDTH);
@@ -28,6 +27,4 @@ void drawCharacter::characterErase(int x, int y, std::vector<char>& buffer)
     draw a;
 
     a.drawBitmap("empty_character.bmp", buffer, x, y, SCREEN_WIDTH);
-
-
 }
