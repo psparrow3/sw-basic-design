@@ -11,7 +11,7 @@
 #include "Boss1.h"
 
 HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_CURSOR_INFO curCursorInfo;
+CONSOLE_CURSOR_INFO curCursorInfo;
 
 int stage1_Future[25][40]
 {

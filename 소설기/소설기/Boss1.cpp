@@ -39,7 +39,7 @@ void Boss1::Boss1AttackMove(std::vector<char>& buffer)
 
 		a.drawBitmap("boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
 
-		if (at[i].y + 40 > 480)
+		if ((at[i].y + 20 > 470)||(at[i].x < 0) || (at[i].x > 1600))
 		{
 			a.drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
 			at.erase(at.begin() + i);
