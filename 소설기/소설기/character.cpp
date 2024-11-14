@@ -16,8 +16,8 @@ character::character()
 
     facingRight = 1, future = 1;
 
-
-    playerHeart = 3;
+    seedPlant = 0;
+    characterHeart = 3;
     invincible = false;
     invincibilityDuration = 2000;
     nextStage = 0;
@@ -40,7 +40,7 @@ void character::gameOver(std::vector<char>& buffer)
     gameOverCheck = 1;
     x = 40;
     y = 420;
-
+  
 }
 
 
@@ -53,7 +53,7 @@ void character::takeDamage()
 {
 
     if (!invincible) {
-        playerHeart -= 1;
+        characterHeart -= 1;
 
 
         /*   if (playerHeart == 0) {
@@ -104,6 +104,7 @@ void character::attack(int stage[25][40])
 
 void character::characterMove(int stage[25][40], std::vector<char>& buffer)
 {
+    drawCharacter ac;
     int preX = x;
     int preY = y;
 
@@ -112,7 +113,10 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
     jumping = GetAsyncKeyState(VK_SPACE) & 0x8000;
     bool sPress = GetAsyncKeyState('S') & 0x8000;
     bool aPress = GetAsyncKeyState('A') & 0x8000;
-    if (collision(stage, x, y) == 2 || collision(stage, x, y) == 10 || collision(stage, x, y) == 11)
+    
+    
+   
+    if (collision(stage, x, y) == 2 || collision(stage, x, y) == 10 || collision(stage, x, y) == 11 || collision(stage, x, y) == 3)
     {
         isJumping = 0;
     }
@@ -132,18 +136,18 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
 
     if (jumping && !isJumping)
     {
-        isJumping = 0;
-
-        for (int i = 0; i < 3; i++) {
+        isJumping = 1;
+      
+        for (int i = 0; i < 4; i++) {
             preY = y;
 
-
+            
             y -= 20;
-            if (collision(stage, x, y) == 2 || y < 0) {
+            if (collision(stage, x, y) == 2 || y < 0 || collision(stage, x, y) == 3) {
                 y = preY;
                 break;
             }
-
+         
 
         }
     }
@@ -151,17 +155,22 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
     if (GetAsyncKeyState(VK_UP) & 0x8000) {
 
         if (collision(stage, x, y+20) == 10) {
+
+           
             nextStage = 1;
             x = 40;
             y = 420;
             progress++;
+           
         }
         if (collision(stage, x, y + 20) == 11 && getKey == 1) {
+            
             nextStage = 1;
             x = 40;
             y = 420;
             getKey = 0;
             progress++;
+          
         }
         
 
@@ -171,7 +180,7 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
 
         facingRight = 0;
         x -= 20;
-        if (collision(stage, x, y) == 2 || x<0)
+        if (collision(stage, x, y) == 2 || x<0 || collision(stage, x, y) == 3)
         {
             x = preX;
         }
@@ -180,16 +189,19 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
         facingRight = 1;
         x += 20;
 
-        if (collision(stage, x, y) == 2 || x>=1540)
+        if (collision(stage, x, y) == 2 || x>=1540 || collision(stage, x, y) == 3)
         {
             x = preX;
         }
     }
     if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
-        
-        if (getSeed == 1) {
-            getSeed = 0;
+        if (collision(stage, x, y + 20) == 9) {
+            if (getSeed == 1) {
+                seedPlant = 1;
+                getSeed = 0;
+            }
         }
+       
     }
     if (collision(stage, x, y) == 4) {
         getKey = 1;
@@ -197,8 +209,9 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
     if (collision(stage, x, y) == 5) {
         getSeed = 1;
     }
-    if (collision(stage, x, y) == 2 || collision(stage, x, y)== 8)
+    if (collision(stage, x, y) == 2 || collision(stage, x, y)== 8 || collision(stage, x, y) == 3)
     {
+        
         gameOver(buffer);
     }
 
@@ -210,7 +223,7 @@ void character::gravity(int stage[25][40], int newX, int newY)
    
      y += 20;
     int coll = collision(stage, newX, y);
-    if (coll == 2 || coll==10 || coll==11 || coll==9) {
+    if (coll == 2 || coll==10 || coll==11 || coll==9 || coll==3) {
         y = newY;
         isJumping = 0;
         return;
@@ -283,7 +296,7 @@ int character::collision(int stage[25][40], int newX, int newY)
 
             else if (stage[posY][posX] == 13)
             {
-                return 13;               // 
+                return 13;               // 보스 넘어갈때 부분
             }
 
         }

@@ -104,6 +104,18 @@ IDB_BITMAP31            BITMAP                  "A_button.bmp"
 
 IDB_BITMAP32            BITMAP                  "SPACE_button.bmp"
 
+IDB_BITMAP27            BITMAP                  "character_left_jump.bmp"
+
+IDB_BITMAP33            BITMAP                  "character_right_jump.bmp"
+
+IDB_BITMAP34            BITMAP                  "empty_heart.bmp"
+
+IDB_BITMAP35            BITMAP                  "full_heart.bmp"
+
+IDB_BITMAP36            BITMAP                  "enter_door.bmp"
+
+IDB_BITMAP37            BITMAP                  "seed_block.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

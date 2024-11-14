@@ -20,10 +20,12 @@ public:
 	bool isJumping;
 	bool facingRight;
 	bool getKey;
+	bool seedPlant;
 	static int progress;							// 진행상황
 	bool getSeed;
 	static bool gameOverCheck;
 	int getSeedPiece;
+	int characterHeart;
 	character();
 	void characterMove(int stage[25][40],std::vector<char>& buffer);
 	
@@ -31,7 +33,7 @@ public:
 	int collision(int stage[25][40],int newX,int newY);
 	
 private:
-	int playerHeart;
+	
 	
 
 	

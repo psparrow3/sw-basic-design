@@ -18,8 +18,8 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
         
         if (ac.nextStage)
         {
-
             a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+
             break;
         }
         // 캐릭터 이전 위치 지우기

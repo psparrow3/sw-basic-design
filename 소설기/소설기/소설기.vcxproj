@@ -139,6 +139,7 @@
     </ClInclude>
     <ClInclude Include="drawStage_prologue.h" />
     <ClInclude Include="gameStart.h" />
+    <ClInclude Include="moveable_block.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="startScreen.h" />
   </ItemGroup>
@@ -152,14 +153,19 @@
     <Image Include="broken_door.bmp" />
     <Image Include="button1.bmp" />
     <Image Include="button2.bmp" />
+    <Image Include="character_left_jump.bmp" />
     <Image Include="character_left_original.bmp" />
+    <Image Include="character_right_jump.bmp" />
     <Image Include="character_right_original.bmp" />
     <Image Include="cold_lava.bmp" />
     <Image Include="empty_block.bmp" />
     <Image Include="empty_character.bmp" />
     <Image Include="block.bmp" />
     <Image Include="door.bmp" />
+    <Image Include="empty_heart.bmp" />
     <Image Include="empty_map.bmp" />
+    <Image Include="enter_door.bmp" />
+    <Image Include="full_heart.bmp" />
     <Image Include="key.bmp" />
     <Image Include="laser1.bmp" />
     <Image Include="lava.bmp" />
@@ -170,6 +176,7 @@
     <Image Include="movable_block.bmp" />
     <Image Include="right_button.bmp" />
     <Image Include="seed.bmp" />
+    <Image Include="seed_block.bmp" />
     <Image Include="SPACE_button.bmp" />
     <Image Include="S_button.bmp" />
     <Image Include="triangle_block.bmp" />
@@ -191,6 +198,7 @@
     <ClCompile Include="drawStage_prologue.cpp" />
     <ClCompile Include="gameStart.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="moveable_block.cpp" />
     <ClCompile Include="startScreen.cpp" />
   </ItemGroup>
   <ItemGroup>

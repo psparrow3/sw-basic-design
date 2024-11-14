@@ -25,7 +25,7 @@ void gameStart::startGame() {
 	drawStage1 ds1;
 
 	
-
+	ac.progress++;
 	/*ss.drawStartScreen;*/
 	while (1) {
 		if (ac.progress == 0) {
