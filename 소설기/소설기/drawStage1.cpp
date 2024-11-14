@@ -1,6 +1,7 @@
 #include "drawStage1.h"
 #include "drawStage.h"
 #include "draw.h"
+#include "Boss1.h"
 
 int drawStage1::stage1_Future[25][40]
 {  
@@ -58,6 +59,62 @@ int drawStage1::stage1_Past[25][40]
    {0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,2,2,2,2,2},
    {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 };
+int drawStage1::stage1_Future_Boss[25][40]
+{
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
+};
+int drawStage1::stage1_Past_Boss[25][40]
+{
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
+};
 
 drawStage1::drawStage1()
 {
@@ -66,41 +123,36 @@ drawStage1::drawStage1()
 
 void drawStage1::stage1Draw(std::vector<char>& buffer)
 {
+
     draw a;
     
     drawCharacter ac;
     int stage[25][40];
-   
+  
+	while (1) {
+		if (ac.nextStage)
+		{
+			a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+			ac.gameOverCheck = 0;
 
-    
-    while (1) {
-        
-        if (ac.nextStage)
-        {
-            a.drawBitmap("enter_door", buffer, ac.x, ac.y, SCREEN_WIDTH);
-            a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
-            
-            Sleep(1000);
-           
-            ac.gameOverCheck = 0;
+			break;
+		}
 
-            break;
-        }
-       
-        if (ac.future)
-        {
-            memcpy(stage, stage1_Future, sizeof(stage1_Future));
-            a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
-            drawStage1Future(buffer);
-        }
-        else 
-        {
-            memcpy(stage, stage1_Past, sizeof(stage1_Past));
-            a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
-            drawStage1Past(buffer);
-        }
+		if (ac.future)
+		{
+			memcpy(stage, stage1_Future, sizeof(stage1_Future));
+			a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+			drawStage1Future(buffer);
+		}
+		else 
+		{
+			memcpy(stage, stage1_Past, sizeof(stage1_Past));
+			a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+			drawStage1Past(buffer);
+		}
 
-        ac.characterErase(ac.x, ac.y, buffer);
+
+		ac.characterErase(ac.x, ac.y, buffer);
 
       
        
@@ -157,11 +209,12 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
        
         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
     }
- 
+
+	
+	   
 }
 void drawStage1::drawStage1Future(std::vector<char>& buffer) {
-    draw a;
-
+	draw a;
 
     
     
@@ -197,8 +250,9 @@ void drawStage1::drawStage1Future(std::vector<char>& buffer) {
     a.drawBitmap("broken_door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
 }
    
+
 void drawStage1::drawStage1Past(std::vector<char>& buffer) {
-    draw a;
+	draw a;
 
    
     
@@ -240,4 +294,103 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
     }
     a.drawBitmap("door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
     a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
+
+}
+
+void drawStage1::stage1BossDraw(std::vector<char>& buffer)
+{
+	draw a;
+	drawCharacter ac;
+	Boss1 b;
+
+	int stage[25][40];
+
+	if (ac.future)
+	{
+		memcpy(stage, stage1_Future_Boss, sizeof(stage1_Future_Boss));
+		a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+		stage1FutureBossDraw(buffer);
+	}
+	else
+	{
+		memcpy(stage, stage1_Past_Boss, sizeof(stage1_Past_Boss));
+		a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+		stage1PastBossDraw(buffer);
+	}
+
+	int time = 0;
+
+	a.drawBitmap("Empty_boss.bmp", buffer, Boss1::m_x * 80, Boss1::m_y, SCREEN_WIDTH);
+
+	if (time >= 1000)
+	{
+		b.Boss1Attack();
+		time = 0;
+	}
+
+	if (!Boss1::flag)
+	{
+		Boss1::m_x--;
+
+		if (Boss1::m_x == 0)
+		{
+			Boss1::flag = true;
+		}
+	}
+	else
+	{
+		Boss1::m_x++;
+
+		if (Boss1::m_x == 18)
+		{
+			Boss1::flag = false;
+		}
+	}
+
+	a.drawBitmap("Stage1_Boss.bmp", buffer, Boss1::m_x * 80, Boss1::m_y, SCREEN_WIDTH);
+
+	b.Boss1AttackMove(buffer);
+
+	Sleep(100);
+
+	time += 100;
+
+	a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
+
+	ac.characterErase(ac.x, ac.y, buffer);
+
+	int coll = ac.collision(stage, ac.x, ac.y);
+	if (coll != 2 || coll != 10 || coll != 11) {
+		ac.gravity(stage, ac.x, ac.y);
+	}
+
+	ac.characterMove(stage, buffer);
+
+	if (ac.facingRight)
+	{
+		ac.characterRightDraw(ac.x, ac.y, buffer);
+	}
+	else
+	{
+		ac.characterLeftDraw(ac.x, ac.y, buffer);
+	}
+
+	a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+}
+
+void drawStage1::stage1FutureBossDraw(std::vector<char>& buffer)
+{
+	draw a;
+
+	a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+	a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
+}
+
+void drawStage1::stage1PastBossDraw(std::vector<char>& buffer)
+{
+	draw a;
+
+	a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+	a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
+
 }

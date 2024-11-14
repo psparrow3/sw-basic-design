@@ -1,12 +1,8 @@
 #include "gameStart.h"
 
 gameStart::gameStart() {
-
-}
-void gameStart::startGame() {
 	draw a;
-	drawCharacter ac;
-	
+
 	a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	a.SetConsoleFontSize(1);
 	SetConsoleTitle(L"ÀÒ¾î¹ö¸° ³«¿ø");
@@ -17,6 +13,11 @@ void gameStart::startGame() {
 	GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
 	curCursorInfo.bVisible = 0;
 	SetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
+}
+
+void gameStart::startGame() {
+	draw a;
+	drawCharacter ac;
 
 	std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
 
@@ -26,15 +27,22 @@ void gameStart::startGame() {
 
 	
 	ac.progress++;
+
 	/*ss.drawStartScreen;*/
 	while (1) {
-		if (ac.progress == 0) {
+		switch (drawCharacter::progress)
+		{
+		case 0:
 			dsp.stagePrologueDraw(buffer);
-		}
-		else if (ac.progress == 1) {
+			break;
+		case 1:
 			ds1.stage1Draw(buffer);
+			break;
+		case 2:
+			ds1.stage1BossDraw(buffer);
+			break;
+		default:
+			break;
 		}
-
-		
 	}
 }

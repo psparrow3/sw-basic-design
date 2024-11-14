@@ -11,9 +11,12 @@
     <ClCompile Include="Boss1.cpp" />
     <ClCompile Include="Boss2.cpp" />
     <ClCompile Include="Boss3.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="gameStart.cpp" />
     <ClCompile Include="moveable_block.cpp" />
     <ClCompile Include="startScreen.cpp" />
+=======
+>>>>>>> d87b78d571161e534fa2662e89b1821254158e02
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character.h" />
@@ -26,9 +29,12 @@
     <ClInclude Include="Boss1.h" />
     <ClInclude Include="Boss2.h" />
     <ClInclude Include="Boss3.h" />
+<<<<<<< HEAD
     <ClInclude Include="gameStart.h" />
     <ClInclude Include="moveable_block.h" />
     <ClInclude Include="startScreen.h" />
+=======
+>>>>>>> d87b78d571161e534fa2662e89b1821254158e02
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="소설기.rc" />
@@ -56,6 +62,7 @@
     <Image Include="empty_map.bmp" />
     <Image Include="character_right_original.bmp" />
     <Image Include="character_left_original.bmp" />
+<<<<<<< HEAD
     <Image Include="A_button.bmp" />
     <Image Include="character_left_jump.bmp" />
     <Image Include="character_right_jump.bmp" />
@@ -68,6 +75,13 @@
     <Image Include="SPACE_button.bmp" />
     <Image Include="S_button.bmp" />
     <Image Include="seed_block.bmp" />
+=======
+    <Image Include="bitmap24.bmp" />
+    <Image Include="empty_block.bmp" />
+    <Image Include="Boss1.bmp" />
+    <Image Include="Boss2.bmp" />
+    <Image Include="Boss3.bmp" />
+>>>>>>> d87b78d571161e534fa2662e89b1821254158e02
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />
