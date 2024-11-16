@@ -24,6 +24,9 @@ void gameStart::startGame() {
 	startScreen ss;
 	drawStage_prologue dsp;
 	drawStage1 ds1;
+	/*drawStage2 ds2;*/
+	/*drawstage3 ds3;*/
+	/*ac.progress++;*/
 
 	/*ss.drawStartScreen;*/
 	while (1) {
@@ -37,6 +40,15 @@ void gameStart::startGame() {
 			break;
 		case 2:
 			ds1.stage1BossDraw(buffer);
+			break;
+		case 3:
+			/*ds2.stage2Draw(buffer);*/
+			break;
+		case 4:
+			/*ds2.stage2BossDraw(buffer);*/
+			break;
+		case5:
+			/*ds3.stage2BossDraw(buffer);*/
 			break;
 		default:
 			break;

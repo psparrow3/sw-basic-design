@@ -16,22 +16,26 @@ public:
 	static int x;
 	static int y;
 	bool nextStage;
-	bool future; 
-	bool isJumping;
+	static bool future; 
+	static bool isJumping;
 	bool facingRight;
-	bool getKey;
+	static int seedPiece;
+	bool seedPlant;
 	static int progress;							// 진행상황
-	bool getSeed;
-	static bool gameOverCheck;
-	int getSeedPiece;
+	static bool getSeed;
+	static bool getKey;
+	static int gameOverCheck;
+	static int getSeedPiece;
+	int characterHeart;
+	bool attacking;
 	character();
 	void characterMove(int stage[25][40],std::vector<char>& buffer);
 	
 	void gravity(int stage[25][40], int newX, int newY);
 	int collision(int stage[25][40],int newX,int newY);
-	
+	void gameOver(int coll,std::vector<char>& buffer);
 private:
-	int playerHeart;
+	
 	
 
 	
@@ -49,7 +53,7 @@ private:
 	void switchMap();
 	void takeDamage();
 	void getItem();
-	void gameOver(std::vector<char>& buffer);
+	
 
 
 };
