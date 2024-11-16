@@ -32,19 +32,17 @@ void Boss1::Boss1Attack()
 
 void Boss1::Boss1AttackMove(std::vector<char>& buffer)
 {
-	draw a;
-
 	for (int i = 0; i < at.size(); i++)
 	{
-		a.drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
+		draw::drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
 		at[i].x -= at[i].x_gap / 10;
 		at[i].y -= at[i].y_gap / 10;
 
-		a.drawBitmap("boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
+		draw::drawBitmap("boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
 
 		if ((at[i].y + 20 > 470)||(at[i].x < 0) || (at[i].x > 1600))
 		{
-			a.drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
+			draw::drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
 			at.erase(at.begin() + i);
 		}
 	}

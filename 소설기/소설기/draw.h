@@ -4,6 +4,7 @@
 #include <vector>
 #include <Windows.h>
 #include <stdexcept>
+#include <thread>
 
 #define SCREEN_WIDTH 1902
 #define SCREEN_HEIGHT 501
@@ -35,12 +36,19 @@
 class draw
 {
 public:
-	char getASCIIChar(unsigned char brightness);
-	void drawBitmap(const char* filename, std::vector<char>& buffer, int startX, int startY, int screenWidth);
+	static char getASCIIChar(unsigned char brightness);
+	static std::vector<char> drawBitmap(const char* filename, std::vector<char> &buffer, int startX, int startY, int screenWidth);
+	static std::vector<char> drawCh(std::vector<char>& character, std::vector<char>& buffer, int startX, int startY, int screenWidth);
 	void SetConsoleSize(int width, int height);
 	void SetConsoleFontSize(int fontSize);
+<<<<<<< HEAD
+	static void drawBuffer(const std::vector<char>& bitmapData, int width, int height, std::vector<char>& buffer, int startX, int startY, int screenWidth);
+	static void drawChThreadedWithoutBuffer(std::vector<char>& character, int startX, int startY, int width, int height);
+	static std::vector<char> buffer_empty;
+=======
 	void flushBuffer(const std::vector<char>& buffer, int width, int height);
 	
 	
+>>>>>>> main
 };
 

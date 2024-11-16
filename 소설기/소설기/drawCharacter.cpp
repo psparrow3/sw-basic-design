@@ -8,10 +8,17 @@
 //캐릭터를 그리는 함수
 drawCharacter::drawCharacter()
 {
-
 }
+
+std::vector<char> drawCharacter::characterRight;
+std::vector<char> drawCharacter::characterLeft;
+std::vector<char> drawCharacter::characterEmpty;
+
 void drawCharacter::characterRightDraw(int x, int y, std::vector<char>& buffer)
 {
+<<<<<<< HEAD
+	draw::drawChThreadedWithoutBuffer(buffer, x, y, CHARACTER_WIDTH, CHARACTER_HEIGHT);
+=======
     draw a;
     
     a.drawBitmap("character_right_original.bmp", buffer, x, y, SCREEN_WIDTH);
@@ -24,10 +31,14 @@ void drawCharacter::characterRightJumpDraw(int x, int y, std::vector<char>& buff
     a.drawBitmap("character_right_jump.bmp", buffer, x, y, SCREEN_WIDTH);
    
   
+>>>>>>> main
 }
 
 void drawCharacter::characterLeftDraw(int x, int y, std::vector<char>& buffer)
 {
+<<<<<<< HEAD
+	draw::drawChThreadedWithoutBuffer(buffer, x, y, CHARACTER_WIDTH, CHARACTER_HEIGHT);
+=======
     draw a;
     a.drawBitmap("character_left_original.bmp", buffer, x, y, SCREEN_WIDTH);
   
@@ -38,10 +49,15 @@ void drawCharacter::characterLeftJumpDraw(int x, int y, std::vector<char>& buffe
     draw a;
     a.drawBitmap("character_left_jump.bmp", buffer, x, y, SCREEN_WIDTH);
     
+>>>>>>> main
 }
 
 void drawCharacter::characterErase(int x, int y, std::vector<char>& buffer)
 {
+<<<<<<< HEAD
+	draw::drawChThreadedWithoutBuffer(buffer, x, y, CHARACTER_WIDTH, CHARACTER_HEIGHT);
+}
+=======
     draw a;
 
     a.drawBitmap("empty_character.bmp", buffer, x, y, SCREEN_WIDTH);
@@ -71,3 +87,4 @@ void drawCharacter::characterErase(int x, int y, std::vector<char>& buffer)
         break;
     }
 }
+>>>>>>> main

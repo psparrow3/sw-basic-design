@@ -16,7 +16,6 @@ gameStart::gameStart() {
 }
 
 void gameStart::startGame() {
-	draw a;
 	drawCharacter ac;
 
 	std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
@@ -28,9 +27,15 @@ void gameStart::startGame() {
 	/*drawstage3 ds3;*/
 	/*ac.progress++;*/
 
+	startScreen a;
+
+	a.drawStartScreen();
+
 	/*ss.drawStartScreen;*/
 	while (1) {
-		switch (drawCharacter::progress)
+		std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
+
+		switch (character::progress)
 		{
 		case 0:
 			dsp.stagePrologueDraw(buffer);

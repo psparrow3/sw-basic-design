@@ -10,6 +10,22 @@ int character::x = 0;
 int character::y = 420;
 
 int	character::progress = 0;							// 진행상황
+<<<<<<< HEAD
+bool character::gameOverCheck = 0;
+bool character::future = 1;
+bool character::nextStage = 0;
+
+character::character()
+{
+	facingRight = 1;
+	playerHeart = 3;
+	invincible = false;
+	invincibilityDuration = 2000;
+	isJumping = 0;
+	movingLeft = 0;
+	movingRight = 0;
+	jumping = 0;
+=======
 int character::gameOverCheck=0;
 bool character::future = 0;
 bool character::isJumping = 0;
@@ -29,6 +45,7 @@ character::character()
 	nextStage = 0;
 	
    
+>>>>>>> main
 
 	attackCoolTime = 1000;      //공격 쿨타임 (밀리초,1초)
 
@@ -40,9 +57,17 @@ character::character()
 
 }
 
+<<<<<<< HEAD
+void character::gameOver()
+{
+	gameOverCheck = 1;
+	x = 40;
+	y = 420;
+=======
 void character::gameOver(int coll,std::vector<char>& buffer)
 {
 	gameOverCheck = 1; 
+>>>>>>> main
 }
 
 void character::getItem()
@@ -76,7 +101,7 @@ void character::attack(int stage[25][40])
 	attacking = 1;
 }
 
-void character::characterMove(int stage[25][40], std::vector<char>& buffer)
+void character::characterMove(int stage[25][40])
 {
 	drawCharacter ac;
 	int preX = x;
@@ -190,7 +215,11 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
 	
 	if (coll ==2|| coll == 8 || coll == 3)
 	{
+<<<<<<< HEAD
+		gameOver();
+=======
 		gameOver(coll,buffer);
+>>>>>>> main
 	}
 
 	time += 1;
