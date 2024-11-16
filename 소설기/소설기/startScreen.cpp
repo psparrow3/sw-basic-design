@@ -1,8 +1,11 @@
 #include "startScreen.h"
+#include "Boss1.h"
 
-startScreen::startScreen() {
-
+startScreen::startScreen() 
+{
+    Boss1::at.clear();
 }
+
 void drawStartScreen(std::vector<char>& buffer)
 {
     draw a;

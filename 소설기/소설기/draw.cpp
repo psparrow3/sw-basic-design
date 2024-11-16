@@ -100,7 +100,6 @@ void draw::drawBitmap(const char* filename, std::vector<char>& buffer, int start
             // Buffer에 문자 추가
             int bufferIndex = (startY + y) * screenWidth + (startX + x * 2);
             buffer[bufferIndex] = getASCIIChar(brightness);
-            buffer[bufferIndex + 1] = getASCIIChar(brightness);
         }
     }
 }

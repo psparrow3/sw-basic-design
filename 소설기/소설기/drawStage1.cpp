@@ -151,6 +151,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 		if (coll != 2 || coll != 10 || coll != 11 || coll != 3) {
 			ac.gravity(stage, ac.x, ac.y);
 		}
+
 		if (coll == 3) {
 
 		}
@@ -309,14 +310,12 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		stage1PastBossDraw(buffer);
 	}
 
-	int time = 0;
+	a.drawBitmap("Empty_boss.bmp", buffer, Boss1::m_x * 20, Boss1::m_y, SCREEN_WIDTH);
 
-	a.drawBitmap("Empty_boss.bmp", buffer, Boss1::m_x * 80, Boss1::m_y, SCREEN_WIDTH);
-
-	if (time >= 1000)
+	if (Boss1::time >= 1000)
 	{
 		b.Boss1Attack();
-		time = 0;
+		Boss1::time = 0;
 	}
 
 	if (!Boss1::flag)
@@ -332,19 +331,17 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 	{
 		Boss1::m_x++;
 
-		if (Boss1::m_x == 18)
+		if (Boss1::m_x == 72)
 		{
 			Boss1::flag = false;
 		}
 	}
 
-	a.drawBitmap("Stage1_Boss.bmp", buffer, Boss1::m_x * 80, Boss1::m_y, SCREEN_WIDTH);
+	a.drawBitmap("Stage1_Boss.bmp", buffer, Boss1::m_x * 20, Boss1::m_y, SCREEN_WIDTH);
 
 	b.Boss1AttackMove(buffer);
 
-	Sleep(100);
-
-	time += 100;
+	Boss1::time += 50;
 
 	a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
 
