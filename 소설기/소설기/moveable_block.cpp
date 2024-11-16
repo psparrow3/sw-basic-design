@@ -6,7 +6,22 @@ moveable_block::moveable_block() {
 
 }
 
-void moveBlock(int stage[25][40], std::vector<char>& buffer);
+void moveable_block::blockMove(int stage[25][40],bool facingRight, std::vector<char>& buffer)
+{
+	int coll = collision(stage, x, y);
+	
+	if (coll == 2 || coll == 3) {
+		gravity(stage, x, y);
+	}
+	if (coll == 1) {
+		if (facingRight) {
+			x += 20;
+		}
+		else {
+			x -= 20;
+		}
+	}
+}
 
 int moveable_block::collision(int stage[25][40], int newX, int newY)
 {
@@ -22,10 +37,10 @@ int moveable_block::collision(int stage[25][40], int newX, int newY)
 			}
 			else if (stage[posY][posY] == 3) {
 				return 3;
-			}
+			}	
+		
 			
 		}
-		
 	}
 }
 
@@ -33,7 +48,7 @@ void moveable_block::gravity(int stage[25][40],int newX,int newY)
 {
 	y += 20;
 	int coll = collision(stage, newX, y);
-	if (coll == 2 || coll == 10 || coll == 11 || coll == 9 || coll == 3) {
+	if (coll == 2 || coll == 3) {
 		y = newY;
 		return;
 	}

@@ -8,6 +8,6 @@ public:
 	moveable_block();
 	int collision(int stage[25][40], int newX, int newY);
 	void gravity(int stage[25][40], int newX, int newY);
-	void moveBlock(int stage[25][40], std::vector<char>& buffer);
+	void blockMove(int stage[25][40], bool facingRight,std::vector<char>& buffer);
 };
 

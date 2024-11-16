@@ -11,14 +11,14 @@ int drawStage1::stage1_Future[25][40]
    {0,0,0,0,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,4,0,0,2,2,2,2,2,2,0,0,0,0,0,0,3,3,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
    {0,0,0,0,2,2,2,2,2,2,0,0,0,0,0,0,3,3,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
-   {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,2,2,0,0},
-   {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,2,2,0,0},
+   {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,2,2,0,0},
+   {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,2,2,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0},
-   {0,0,2,2,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-   {0,0,2,2,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,2,2,0,0,0,0,2,2,2,2,0,0,0,0,0,0,2,2,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,2,2,0,0,0,0,2,2,2,2,0,0,0,0,0,0,2,2,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2},
    {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2},
    {0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,3,3,0,0,0,0,2,2,0,0,0,0},
@@ -28,7 +28,7 @@ int drawStage1::stage1_Future[25][40]
    {0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
-   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,2,2,2,2},
+   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
    {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 };
 int drawStage1::stage1_Past[25][40]
@@ -40,13 +40,13 @@ int drawStage1::stage1_Past[25][40]
    {0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,11,11},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
    {2,2,2,2,8,8,8,8,8,8,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,2,2,0,0,5,0,2,2,0,0},
-   {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,2,2,0,0,0,0,2,2,0,0},
-   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,0},
+   {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,2,2,2,2,0,0,2,2,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,9,2,2,2,2,0,0},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,2,2,2,2,0,0,2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,2,2,2,2,0,0,2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,0,0,0,0,2,2,2,2,2,2,0,0,2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,0,0,0,0,2,2,2,2,2,2,0,0,2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {2,2,2,2,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2},
    {2,2,2,2,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2},
    {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,3,3,0,0,0,0,2,2,0,0,0,0},
@@ -123,102 +123,109 @@ drawStage1::drawStage1()
 
 void drawStage1::stage1Draw(std::vector<char>& buffer)
 {
-
     draw a;
     
     drawCharacter ac;
     int stage[25][40];
-  
+	int seedGet = 0;
+	int keyGet = 0;\
+
+	if (ac.future)
+	{
+		memcpy(stage, stage1_Future, sizeof(stage1_Future));
+		a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+		drawStage1Future(buffer);
+	}
+	else
+	{
+		memcpy(stage, stage1_Past, sizeof(stage1_Past));
+		a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+		drawStage1Past(buffer);
+	}
+
 	while (1) {
-		if (ac.nextStage)
+		if (ac.nextStage || ac.gameOverCheck)
 		{
 			a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+			a.drawBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
+			ac.x = 0;
+			ac.y = 420;
+
 			ac.gameOverCheck = 0;
 
 			break;
 		}
 
-		if (ac.future)
-		{
-			memcpy(stage, stage1_Future, sizeof(stage1_Future));
-			a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
-			drawStage1Future(buffer);
+		int preX = ac.x;
+		int preY = ac.y;
+		bool prefuture = ac.future;
+
+		ac.characterErase(preX, preY, buffer);
+		int coll = ac.collision(stage, ac.x, ac.y);
+		if (coll != 2 || coll != 10 || coll != 11 || coll != 3) {
+			ac.gravity(stage, ac.x, ac.y);
 		}
-		else 
-		{
-			memcpy(stage, stage1_Past, sizeof(stage1_Past));
-			a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
-			drawStage1Past(buffer);
+		if (coll == 3) {
+			
 		}
+		ac.characterMove(stage, buffer);
 
+		if (prefuture != ac.future) {
+			if (ac.future)
+			{
+				memcpy(stage, stage1_Future, sizeof(stage1_Future));
+				a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+				drawStage1Future(buffer);
+			}
+			else
+			{
+				memcpy(stage, stage1_Past, sizeof(stage1_Past));
+				a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+				drawStage1Past(buffer);
+			}
+		}
+		if (ac.facingRight)
+		{
+			if (ac.isJumping) {
+				ac.characterRightJumpDraw(ac.x, ac.y, buffer);
+			}
+			else {
+				ac.isJumping = 0;
+				ac.characterRightDraw(ac.x, ac.y, buffer);
+			}
 
-		ac.characterErase(ac.x, ac.y, buffer);
+		}
+		else
+		{
+			if (ac.isJumping) {
+				ac.characterLeftJumpDraw(ac.x, ac.y, buffer);
+			}
+			else {
+				ac.isJumping = 0;
+				ac.characterLeftDraw(ac.x, ac.y, buffer);
+			}
 
-      
-       
-        int coll = ac.collision(stage, ac.x, ac.y);
-        if (coll != 2 || coll != 10 || coll !=11 || coll != 3) {
-            ac.gravity(stage, ac.x, ac.y);
-        }
-        if (ac.collision(stage, ac.x, ac.y) == 3) {
-          
-           
-        }
-        ac.characterMove(stage, buffer);
-        if (ac.facingRight)
-        {
-            if (ac.isJumping) {
-                ac.characterRightJumpDraw(ac.x, ac.y, buffer);
-            }
-            else {
-                ac.characterRightDraw(ac.x, ac.y, buffer);
-            }
-           
-        }
-        else
-        {
-            if (ac.isJumping) {
-                ac.characterLeftJumpDraw(ac.x, ac.y, buffer);
-            }
-            else {
-                ac.characterLeftDraw(ac.x, ac.y, buffer);
-            }
-
-        }
-        if (ac.future)
-        {
-           
-        }
-        else
-        {
-            if (!ac.getSeed) {
-                a.drawBitmap("seed.bmp", buffer, 2 * 17 * BLOCK_SIZE, 3 * BLOCK_SIZE, SCREEN_WIDTH);
-               
-            }
-            else {
-                stage1_Past[6][34] = 0;
-            }
-        }
-        if (!ac.getKey) {
-            a.drawBitmap("key.bmp", buffer, 0, 2 * BLOCK_SIZE, SCREEN_WIDTH);
-        }
-        else {
-            stage1_Past[4][1] = 0;
-            stage1_Future[4][1] = 0;
-        }
-       
-        a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-    }
-
-	
-	   
+		}
+		
+		if (ac.getSeed && seedGet==0) {
+			seedGet = 1;
+			stage1_Past[6][34] = 0;
+			stage1_past[3][17] = 0;
+			a.drawBitmap("empty_block.bmp", buffer, 2 * 17 * BLOCK_SIZE, 3 * BLOCK_SIZE, SCREEN_WIDTH);
+		}
+		if (ac.getKey && keyGet==0) {
+			keyGet = 1;
+			stage1_Past[4][1] = 0;
+			stage1_Future[4][1] = 0;
+			stage1_past[2][0] = 0;
+			stage1_future[2][0] = 0;
+			a.drawBitmap("empty_block.bmp", buffer, 2 * 0 * BLOCK_SIZE, 2 * BLOCK_SIZE, SCREEN_WIDTH);
+		}
+		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+	}
 }
 void drawStage1::drawStage1Future(std::vector<char>& buffer) {
 	draw a;
-
-    
-    
-
     for (int y = 0; y < 12; y++) {
         for (int x = 0; x < 20; x++) {
             switch (stage1_future[y][x]) {
@@ -233,6 +240,7 @@ void drawStage1::drawStage1Future(std::vector<char>& buffer) {
                 a.drawBitmap("movable_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                 break;
             case 4:
+				a.drawBitmap("key.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                 break;
             case 5:
                 a.drawBitmap("button2.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE + 20, SCREEN_WIDTH);
@@ -254,8 +262,6 @@ void drawStage1::drawStage1Future(std::vector<char>& buffer) {
 void drawStage1::drawStage1Past(std::vector<char>& buffer) {
 	draw a;
 
-   
-    
     for (int y = 0; y < 12; y++) {
         for (int x = 0; x < 20; x++) {
             switch (stage1_past[y][x]) {
@@ -269,6 +275,7 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
                 a.drawBitmap("movable_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                 break;
             case 4:
+				a.drawBitmap("key.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                 break;
             case 5:
                 a.drawBitmap("button1.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE + 20, SCREEN_WIDTH);
@@ -280,7 +287,7 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
                 a.drawBitmap("triangle_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                 break;
             case 8:
-
+				a.drawBitmap("seed.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
                 break;
             case 9:
                 a.drawBitmap("lever_right.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
@@ -294,7 +301,6 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
     }
     a.drawBitmap("door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
     a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
-
 }
 
 void drawStage1::stage1BossDraw(std::vector<char>& buffer)

@@ -61,7 +61,11 @@ void draw::drawBitmap(const char* filename, std::vector<char>& buffer, int start
         std::cerr << "Error opening file!" << std::endl;
         return;
     }
-
+    if (!file.is_open())
+    {
+        std::cerr << "Failed to open file: " << filename << std::endl;
+        return;
+    }
     BitmapFileHeader fileHeader;
     BitmapInfoHeader infoHeader;
 
@@ -100,14 +104,11 @@ void draw::drawBitmap(const char* filename, std::vector<char>& buffer, int start
     }
 }
 
-void draw::flushBuffer(const std::vector<char>& buffer, int width, int height)
-{
+void draw::flushBuffer(const std::vector<char>& buffer, int width, int height) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD pos = { 0, 0 };
-    SetConsoleCursorPosition(hConsole, pos);
 
-    for (int x = 0; x < width; ++x)
-    {
-        std::cout.write(&buffer[x * height], height);
-    }
+    DWORD charsWritten;
+    // WinAPI·Î Ãâ·Â
+    WriteConsoleOutputCharacterA(hConsole, buffer.data(), buffer.size(), pos, &charsWritten);
 }
