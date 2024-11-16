@@ -16,15 +16,15 @@ std::vector<char> drawCharacter::characterEmpty;
 
 void drawCharacter::characterRightDraw(int x, int y, std::vector<char>& buffer)
 {
-	buffer = draw::drawCh(drawCharacter::characterRight, buffer, x, y, SCREEN_WIDTH);
+	draw::drawChThreadedWithoutBuffer(buffer, x, y, CHARACTER_WIDTH, CHARACTER_HEIGHT);
 }
 
 void drawCharacter::characterLeftDraw(int x, int y, std::vector<char>& buffer)
 {
-	buffer = draw::drawCh(drawCharacter::characterLeft, buffer, x, y, SCREEN_WIDTH);
+	draw::drawChThreadedWithoutBuffer(buffer, x, y, CHARACTER_WIDTH, CHARACTER_HEIGHT);
 }
 
 void drawCharacter::characterErase(int x, int y, std::vector<char>& buffer)
 {
-	buffer = draw::drawCh(drawCharacter::characterEmpty, buffer, x, y, SCREEN_WIDTH);
+	draw::drawChThreadedWithoutBuffer(buffer, x, y, CHARACTER_WIDTH, CHARACTER_HEIGHT);
 }

@@ -18,11 +18,12 @@ startScreen::startScreen()
 
 void startScreen::drawStartScreen() 
 {
+	std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
 	draw a;
 	while (1) {
 		if (_kbhit()) {
 			break;
 		}
-		a.drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT);
+		a.drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT, buffer, 0, 0, SCREEN_WIDTH);
 	}
 }

@@ -30,6 +30,8 @@ void gameStart::startGame() {
 
 	/*ss.drawStartScreen;*/
 	while (1) {
+		std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
+
 		switch (character::progress)
 		{
 		case 0:

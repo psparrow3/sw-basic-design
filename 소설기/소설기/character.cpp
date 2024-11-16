@@ -33,7 +33,7 @@ character::character()
 	attackRange = 1;            // ê³µê²© ?¬ê±°ë¦?
 }
 
-void character::gameOver(std::vector<char>& buffer)
+void character::gameOver()
 {
 	gameOverCheck = 1;
 	x = 40;
@@ -87,7 +87,7 @@ void character::attack(int stage[25][40])
 	}
 }
 
-void character::characterMove(int stage[25][40], std::vector<char>& buffer)
+void character::characterMove(int stage[25][40])
 {
 	int preX = x;
 	int preY = y;
@@ -177,7 +177,7 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
 	}
 	if (collision(stage, x, y) == 2 || collision(stage, x, y)== 8)
 	{
-		gameOver(buffer);
+		gameOver();
 	}
 }
 

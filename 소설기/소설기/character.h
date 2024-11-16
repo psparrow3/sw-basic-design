@@ -26,7 +26,7 @@ public:
 	static bool gameOverCheck;
 	int getSeedPiece;
 	character();
-	void characterMove(int stage[25][40],std::vector<char>& buffer);
+	void characterMove(int stage[25][40]);
 	void gravity(int stage[25][40], int newX, int newY);
 	int collision(int stage[25][40],int newX,int newY);
 	
@@ -46,5 +46,5 @@ private:
 	void switchMap();
 	void takeDamage();
 	void getItem();
-	void gameOver(std::vector<char>& buffer);
+	void gameOver();
 };

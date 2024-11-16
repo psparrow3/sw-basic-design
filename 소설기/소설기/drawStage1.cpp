@@ -161,7 +161,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 	while (1) {
 		if (ac.nextStage)
 		{
-			draw::drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT);
+			draw::drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT, buffer, 0, 0, SCREEN_WIDTH);
 			ac.gameOverCheck = 0;
 
 			break;
@@ -173,22 +173,22 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 		if (ac.future)
 		{
 			memcpy(stage, stage1_Future, sizeof(stage1_Future));
-			draw::drawBuffer(buffer_st1_future, SCREEN_WIDTH, SCREEN_HEIGHT);
+			draw::drawBuffer(buffer_st1_future, SCREEN_WIDTH, SCREEN_HEIGHT, buffer, 0, 0, SCREEN_WIDTH);
 		}
 		else
 		{
 			memcpy(stage, stage1_Past, sizeof(stage1_Past));
-			draw::drawBuffer(buffer_st1_past, SCREEN_WIDTH, SCREEN_HEIGHT);
+			draw::drawBuffer(buffer_st1_past, SCREEN_WIDTH, SCREEN_HEIGHT, buffer, 0, 0, SCREEN_WIDTH);
 		}
 		
-		ac.characterErase(ac.x, ac.y, buffer);
+		ac.characterErase(ac.x, ac.y, drawCharacter::characterEmpty);
 
 		int coll = ac.collision(stage, ac.x, ac.y);
 		if (coll != 2 || coll != 10 || coll !=11) {
 			ac.gravity(stage, ac.x, ac.y);
 		}
  
-		ac.characterMove(stage, buffer);
+		ac.characterMove(stage);
 		if (ac.facingRight)
 		{
 			//ac.characterRightDraw(ac.x, ac.y, buffer);
@@ -314,13 +314,13 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 	if (ac.future)
 	{
 		memcpy(stage, stage1_Future_Boss, sizeof(stage1_Future_Boss));
-		draw::drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT);
+		draw::drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT, buffer, 0, 0, SCREEN_WIDTH);
 		stage1FutureBossDraw(buffer);
 	}
 	else
 	{
 		memcpy(stage, stage1_Past_Boss, sizeof(stage1_Past_Boss));
-		draw::drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT);
+		draw::drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT, buffer, 0, 0, SCREEN_WIDTH);
 		stage1PastBossDraw(buffer);
 	}
 
@@ -370,7 +370,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		ac.gravity(stage, ac.x, ac.y);
 	}
 
-	ac.characterMove(stage, buffer);
+	ac.characterMove(stage);
 
 	if (ac.facingRight)
 	{
@@ -381,17 +381,17 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		ac.characterLeftDraw(ac.x, ac.y, buffer);
 	}
 
-	draw::drawBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+	draw::drawBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT, buffer, 0, 0, SCREEN_WIDTH);
 }
 
 void drawStage1::stage1FutureBossDraw(std::vector<char>& buffer)
 {
-	draw::drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT);
+	draw::drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT, buffer, 0, 0, SCREEN_WIDTH);
 	draw::drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
 }
 
 void drawStage1::stage1PastBossDraw(std::vector<char>& buffer)
 {
-	draw::drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT);
+	draw::drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT, buffer, 0, 0, SCREEN_WIDTH);
 	draw::drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
 }

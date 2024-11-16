@@ -15,12 +15,12 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
 	while (1) {
 		if (ac.nextStage)
 		{
-			draw::drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT);
+			draw::drawBuffer(draw::buffer_empty, SCREEN_WIDTH, SCREEN_HEIGHT, buffer, 0, 0, SCREEN_WIDTH);
 			break;
 		}
 
 		// 캐릭터 이전 위치 지우기
-		ac.characterErase(ac.x, ac.y, buffer_stp);
+		ac.characterErase(ac.x, ac.y, drawCharacter::characterEmpty);
 
 		int coll = ac.collision(stage_prologue, ac.x, ac.y);
 		
@@ -32,26 +32,26 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
 		int preX = ac.x, preY = ac.y;
 
 		// 캐릭터 이동
-		ac.characterMove(stage_prologue, buffer_stp);
+		ac.characterMove(stage_prologue);
 
 		if (preX != ac.x || preY != ac.y)
 		{
-			if (ac.facingRight)
-			{
-				ac.characterRightDraw(ac.x, ac.y, buffer_stp);
-			}
-			else
-			{
-				ac.characterLeftDraw(ac.x, ac.y, buffer_stp);
-			}
-
 			if (ac.future)
 			{
-				draw::drawBuffer(buffer_stp, SCREEN_WIDTH, SCREEN_HEIGHT);
+				draw::drawBuffer(buffer_stp, SCREEN_WIDTH, SCREEN_HEIGHT, buffer, 0, 0, SCREEN_WIDTH);
 			}
 			else
 			{
-				draw::drawBuffer(buffer_stp, SCREEN_WIDTH, SCREEN_HEIGHT);
+				draw::drawBuffer(buffer_stp, SCREEN_WIDTH, SCREEN_HEIGHT, buffer, 0, 0, SCREEN_WIDTH);
+			}
+
+			if (ac.facingRight)
+			{
+				ac.characterRightDraw(ac.x, ac.y, drawCharacter::characterRight);
+			}
+			else
+			{
+				ac.characterLeftDraw(ac.x, ac.y, drawCharacter::characterLeft);
 			}
 		}
 	}

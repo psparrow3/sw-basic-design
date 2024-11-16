@@ -120,14 +120,88 @@ std::vector<char> draw::drawCh(std::vector<char>& character, std::vector<char>& 
 	return buffer;
 }
 
-void draw::drawBuffer(const std::vector<char>& buffer, int width, int height)
+void draw::drawBuffer(const std::vector<char>& bitmapData, int width, int height, std::vector<char>& buffer, int startX, int startY, int screenWidth)
 {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	COORD pos = { 0, 0 };
-	SetConsoleCursorPosition(hConsole, pos);
-
-	for (int x = 0; x < width; ++x)
+	auto drawRow = [&bitmapData, &buffer, startX, screenWidth, width](int y, int startY)
 	{
-		std::cout.write(&buffer[x * height], height);
+		int bufferIndex;
+		for (int x = 0; x < width; ++x)
+		{
+			int index = (x + (y)*width) * 3;
+			unsigned char blue = bitmapData[index];
+			unsigned char green = bitmapData[index + 1];
+			unsigned char red = bitmapData[index + 2];
+			unsigned char brightness = static_cast<unsigned char>(0.3 * red + 0.59 * green + 0.11 * blue);
+
+			bufferIndex = (startY + y) * screenWidth + (startX + x * 2);
+
+			if (bufferIndex >= 0 && bufferIndex < buffer.size())
+			{
+				buffer[bufferIndex] = getASCIIChar(brightness);
+				buffer[bufferIndex + 1] = getASCIIChar(brightness);
+			}
+		}
+	};
+
+	int numThreads = std::thread::hardware_concurrency();
+	int rowsPerThread = height / numThreads;
+	int remainingRows = height % numThreads;
+
+	std::vector<std::thread> threads;
+	for (int i = 0; i < numThreads; ++i)
+	{
+		int startRow = i * rowsPerThread;
+		int endRow = (i == numThreads - 1) ? (startRow + rowsPerThread + remainingRows) : (startRow + rowsPerThread);
+		threads.push_back(std::thread(drawRow, startRow, endRow));
+	}
+
+	for (auto& t : threads)
+	{
+		t.join();
+	}
+}
+
+void draw::drawChThreadedWithoutBuffer(std::vector<char>& character, int startX, int startY, int width, int height)
+{
+	// 사용 가능한 쓰레드 수
+	int numThreads = std::thread::hardware_concurrency();
+	int rowsPerThread = height / numThreads;
+
+	// 각 쓰레드가 처리할 영역을 나누어서 그리기
+	auto drawCharacterRows = [&character, startX, startY, width](int startRow, int endRow)
+		{
+			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+			for (int y = startRow; y < endRow; ++y)
+			{
+				// 커서 위치를 y, startX로 이동
+				COORD pos = { (SHORT)(startX), (SHORT)(startY + y) };
+				SetConsoleCursorPosition(hConsole, pos);
+
+				// 해당 행의 캐릭터 출력
+				for (int x = 0; x < width; ++x)
+				{
+					int characterIndex = y * width + x;
+					if (characterIndex < character.size())
+					{
+						std::cout << character[characterIndex];
+					}
+				}
+			}
+		};
+
+	// 멀티 쓰레드를 이용해 캐릭터 그리기
+	std::vector<std::thread> threads;
+	for (int i = 0; i < numThreads; ++i)
+	{
+		int startRow = i * rowsPerThread;
+		int endRow = (i == numThreads - 1) ? height : (startRow + rowsPerThread);
+		threads.push_back(std::thread(drawCharacterRows, startRow, endRow));
+	}
+
+	// 모든 쓰레드가 종료될 때까지 기다림
+	for (auto& t : threads)
+	{
+		t.join();
 	}
 }
