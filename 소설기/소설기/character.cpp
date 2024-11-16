@@ -10,14 +10,15 @@ int character::y = 420;
 
 int	character::progress = 0;							// 진행상황
 bool character::gameOverCheck = 0;
+bool character::future = 1;
+bool character::nextStage = 0;
 
 character::character()
 {
-	facingRight = 1, future = 1;
+	facingRight = 1;
 	playerHeart = 3;
 	invincible = false;
 	invincibilityDuration = 2000;
-	nextStage = 0;
 	isJumping = 0;
 	movingLeft = 0;
 	movingRight = 0;
@@ -34,7 +35,6 @@ character::character()
 
 void character::gameOver(std::vector<char>& buffer)
 {
-	draw a;
 	gameOverCheck = 1;
 	x = 40;
 	y = 420;

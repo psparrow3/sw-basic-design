@@ -35,10 +35,12 @@
 class draw
 {
 public:
-	char getASCIIChar(unsigned char brightness);
-	void drawBitmap(const char* filename, std::vector<char>& buffer, int startX, int startY, int screenWidth);
+	static char getASCIIChar(unsigned char brightness);
+	static std::vector<char> drawBitmap(const char* filename, std::vector<char> &buffer, int startX, int startY, int screenWidth);
+	static std::vector<char> drawCh(std::vector<char>& character, std::vector<char>& buffer, int startX, int startY, int screenWidth);
 	void SetConsoleSize(int width, int height);
 	void SetConsoleFontSize(int fontSize);
-	void flushBuffer(const std::vector<char>& buffer, int width, int height);
+	static void drawBuffer(const std::vector<char>& buffer, int width, int height);
+	static std::vector<char> buffer_empty;
 };
 
