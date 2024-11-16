@@ -41,8 +41,14 @@ public:
 	static std::vector<char> drawCh(std::vector<char>& character, std::vector<char>& buffer, int startX, int startY, int screenWidth);
 	void SetConsoleSize(int width, int height);
 	void SetConsoleFontSize(int fontSize);
+<<<<<<< HEAD
 	static void drawBuffer(const std::vector<char>& bitmapData, int width, int height, std::vector<char>& buffer, int startX, int startY, int screenWidth);
 	static void drawChThreadedWithoutBuffer(std::vector<char>& character, int startX, int startY, int width, int height);
 	static std::vector<char> buffer_empty;
+=======
+	void flushBuffer(const std::vector<char>& buffer, int width, int height);
+	
+	
+>>>>>>> main
 };
 

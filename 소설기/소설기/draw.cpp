@@ -61,11 +61,26 @@ std::vector<char> draw::drawBitmap(const char* filename, std::vector<char>& buff
 	BitmapFileHeader fileHeader;
 	BitmapInfoHeader infoHeader;
 
+<<<<<<< HEAD
 	file.read(reinterpret_cast<char*>(&fileHeader), sizeof(fileHeader));
 	file.read(reinterpret_cast<char*>(&infoHeader), sizeof(infoHeader));
 
 	int rowSize = ((infoHeader.width * infoHeader.bitCount + 31) / 32) * 4;
 	int imageSize = rowSize * infoHeader.height;
+=======
+    if (!file)
+    {
+        std::cerr << "Error opening file!" << std::endl;
+        return;
+    }
+    if (!file.is_open())
+    {
+        std::cerr << "Failed to open file: " << filename << std::endl;
+        return;
+    }
+    BitmapFileHeader fileHeader;
+    BitmapInfoHeader infoHeader;
+>>>>>>> main
 
 	std::vector<uint8_t> bitmapData(imageSize);
 	file.seekg(fileHeader.offsetData, file.beg);
@@ -98,6 +113,7 @@ std::vector<char> draw::drawBitmap(const char* filename, std::vector<char>& buff
 	return buffer;
 }
 
+<<<<<<< HEAD
 std::vector<char> draw::drawCh(std::vector<char>& character, std::vector<char>& buffer, int startX, int startY, int screenWidth)
 {
 	int width = 40;
@@ -118,6 +134,15 @@ std::vector<char> draw::drawCh(std::vector<char>& character, std::vector<char>& 
 	}
 
 	return buffer;
+=======
+void draw::flushBuffer(const std::vector<char>& buffer, int width, int height) {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD pos = { 0, 0 };
+
+    DWORD charsWritten;
+    // WinAPI·Î Ãâ·Â
+    WriteConsoleOutputCharacterA(hConsole, buffer.data(), buffer.size(), pos, &charsWritten);
+>>>>>>> main
 }
 
 void draw::drawBuffer(const std::vector<char>& bitmapData, int width, int height, std::vector<char>& buffer, int startX, int startY, int screenWidth)

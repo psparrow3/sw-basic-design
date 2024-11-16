@@ -16,22 +16,32 @@ class character
 public:
 	static int x;
 	static int y;
+<<<<<<< HEAD
 	static bool nextStage;
 	static bool future;
 	bool isJumping;
+=======
+	bool nextStage;
+	static bool future; 
+	static bool isJumping;
+>>>>>>> main
 	bool facingRight;
-	bool getKey;
+	static int seedPiece;
+	bool seedPlant;
 	static int progress;							// 진행상황
-	bool getSeed;
-	static bool gameOverCheck;
-	int getSeedPiece;
+	static bool getSeed;
+	static bool getKey;
+	static int gameOverCheck;
+	static int getSeedPiece;
+	int characterHeart;
+	bool attacking;
 	character();
 	void characterMove(int stage[25][40]);
 	void gravity(int stage[25][40], int newX, int newY);
 	int collision(int stage[25][40],int newX,int newY);
-	
+	void gameOver(int coll,std::vector<char>& buffer);
 private:
-	int playerHeart;
+	
 	
 	bool invincible;
 	
@@ -46,5 +56,11 @@ private:
 	void switchMap();
 	void takeDamage();
 	void getItem();
+<<<<<<< HEAD
 	void gameOver();
+=======
+	
+
+
+>>>>>>> main
 };
