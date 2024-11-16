@@ -6,44 +6,46 @@ bool Boss1::flag = false;
 
 Boss1::Boss1()
 {
-	at.clear();
+    at.clear();
 }
 
 void Boss1::Boss1Move(int x)
 {
-	m_x = x * 80;
+    m_x = x * 80;
 }
 
 void Boss1::Boss1Attack()
 {
-	float direction;
-	int x_gap = m_x + 40 - character::x - 20;
-	int y_gap = m_y + 80 - character::y - 30;
+    float direction;
+    int x_gap = m_x + 40 - character::x - 20;
+    int y_gap = m_y + 80 - character::y - 30;
 
-	attack b;
+    attack b;
 
-	b.x = m_x + 40;
-	b.y = m_y + 80;
-	b.x_gap = x_gap;
-	b.y_gap = y_gap;
+    b.x = m_x + 40;
+    b.y = m_y + 80;
+    b.x_gap = x_gap;
+    b.y_gap = y_gap;
 
-	at.push_back(b);
+    at.push_back(b);
 }
 
 void Boss1::Boss1AttackMove(std::vector<char>& buffer)
 {
-	for (int i = 0; i < at.size(); i++)
-	{
-		draw::drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
-		at[i].x -= at[i].x_gap / 10;
-		at[i].y -= at[i].y_gap / 10;
+    draw a;
 
-		draw::drawBitmap("boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
+    for (int i = 0; i < at.size(); i++)
+    {
+        a.drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
+        at[i].x -= at[i].x_gap / 10;
+        at[i].y -= at[i].y_gap / 10;
 
-		if ((at[i].y + 20 > 470)||(at[i].x < 0) || (at[i].x > 1600))
-		{
-			draw::drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
-			at.erase(at.begin() + i);
-		}
-	}
+        a.drawBitmap("boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
+
+        if ((at[i].y + 20 > 470) || (at[i].x < 0) || (at[i].x > 1600))
+        {
+            a.drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
+            at.erase(at.begin() + i);
+        }
+    }
 }

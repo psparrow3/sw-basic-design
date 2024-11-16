@@ -29,8 +29,6 @@ void gameStart::startGame() {
 
 	startScreen a;
 
-	a.drawStartScreen();
-
 	/*ss.drawStartScreen;*/
 	while (1) {
 		std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
@@ -52,7 +50,7 @@ void gameStart::startGame() {
 		case 4:
 			/*ds2.stage2BossDraw(buffer);*/
 			break;
-		case5:
+		case 5:
 			/*ds3.stage2BossDraw(buffer);*/
 			break;
 		default:

@@ -7,6 +7,6 @@ class startScreen
 {
 public:
 	startScreen();
-	void drawStartScreen();
+	void drawStartScreen(std::vector<char>& buffer);
 };
 
