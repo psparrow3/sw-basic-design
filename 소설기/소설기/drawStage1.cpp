@@ -312,6 +312,12 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 
 	a.drawBitmap("Empty_boss.bmp", buffer, Boss1::m_x * 20, Boss1::m_y, SCREEN_WIDTH);
 
+
+	drawStage1::stage1_Future_Boss[Boss1::m_x][Boss1::m_y] = 0;
+	drawStage1::stage1_Future_Boss[Boss1::m_x][Boss1::m_y + 1] = 0;
+	drawStage1::stage1_Future_Boss[Boss1::m_x + 1][Boss1::m_y] = 0;
+	drawStage1::stage1_Future_Boss[Boss1::m_x + 1][Boss1::m_y + 1] = 0;
+
 	if (Boss1::time >= 1000)
 	{
 		b.Boss1Attack();
@@ -336,6 +342,11 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 			Boss1::flag = false;
 		}
 	}
+
+	drawStage1::stage1_Future_Boss[Boss1::m_x][Boss1::m_y] = 7;
+	drawStage1::stage1_Future_Boss[Boss1::m_x][Boss1::m_y + 1] = 7;
+	drawStage1::stage1_Future_Boss[Boss1::m_x + 1][Boss1::m_y] = 7;
+	drawStage1::stage1_Future_Boss[Boss1::m_x + 1][Boss1::m_y + 1] = 7;
 
 	a.drawBitmap("Stage1_Boss.bmp", buffer, Boss1::m_x * 20, Boss1::m_y, SCREEN_WIDTH);
 
