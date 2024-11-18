@@ -9,7 +9,7 @@
 int character::x = 0;
 int character::y = 420;
 
-int   character::progress = 2;                     // 진행상황
+int   character::progress = 1;                     // 진행상황
 int character::gameOverCheck = 0;
 bool character::future = 0;
 bool character::isJumping = 0;
