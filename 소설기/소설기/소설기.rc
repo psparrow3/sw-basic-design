@@ -80,7 +80,7 @@ IDB_BITMAP17            BITMAP                  "lever_left.bmp"
 
 IDB_BITMAP18            BITMAP                  "lever_right.bmp"
 
-IDB_BITMAP19            BITMAP                  "movable_block.bmp"
+IDB_BITMAP19            BITMAP                  "moveable_block.bmp"
 
 IDB_BITMAP20            BITMAP                  "seed.bmp"
 

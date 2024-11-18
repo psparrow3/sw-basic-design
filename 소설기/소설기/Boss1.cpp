@@ -3,10 +3,12 @@
 int Boss1::m_x = 18;
 int Boss1::m_y = 40;
 bool Boss1::flag = false;
+int Boss1::time = 0;
+std::vector<attack> Boss1::at;
 
 Boss1::Boss1()
 {
-	at.clear();
+	
 }
 
 void Boss1::Boss1Move(int x)
@@ -16,9 +18,8 @@ void Boss1::Boss1Move(int x)
 
 void Boss1::Boss1Attack()
 {
-	float direction;
-	int x_gap = m_x + 40 - character::x - 20;
-	int y_gap = m_y + 80 - character::y - 30;
+	float x_gap = (m_x * 20) + 40 - character::x + 20;
+	float y_gap = m_y + 80 - character::y + 30;
 
 	attack b;
 
@@ -37,12 +38,13 @@ void Boss1::Boss1AttackMove(std::vector<char>& buffer)
 	for (int i = 0; i < at.size(); i++)
 	{
 		a.drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
-		at[i].x -= at[i].x_gap / 10;
-		at[i].y -= at[i].y_gap / 10;
+
+		at[i].x -= at[i].x_gap / 100;
+		at[i].y -= at[i].y_gap / 100;
 
 		a.drawBitmap("boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
 
-		if ((at[i].y + 20 > 470)||(at[i].x < 0) || (at[i].x > 1600))
+		if ((at[i].y + 20 > 470) || (at[i].x < 0) || (at[i].x > 1600))
 		{
 			a.drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
 			at.erase(at.begin() + i);
