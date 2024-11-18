@@ -39,5 +39,7 @@ public:
 	};
 
 	void stagePrologueDraw(std::vector<char>& buffer);
+	static std::vector<char> buffer_stp;
+	static std::vector<char> stpDraw();
 };
 

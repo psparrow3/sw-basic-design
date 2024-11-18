@@ -4,12 +4,11 @@
 #include "drawStage.h"
 #include "drawCharacter.h"
 
-class drawStage1 
+class drawStage1
 {
 public:
-
     drawStage1();
-    void stage1Draw( std::vector<char>& buffer);
+    void stage1Draw(std::vector<char>& buffer);
     void drawStage1Future(std::vector<char>& buffer);
 	void drawStage1Past(std::vector<char>& buffer);
 	void stage1BossDraw(std::vector<char>& buffer);
@@ -30,8 +29,6 @@ public:
        {0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
        {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1},
     };
-	
-
 
     int stage1_past[12][20] =                     // 그리는 과거맵
     {
