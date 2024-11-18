@@ -133,15 +133,17 @@
     <ClInclude Include="character.h" />
     <ClInclude Include="draw.h" />
     <ClInclude Include="drawCharacter.h" />
+    <ClInclude Include="drawMoveableBlock.h" />
     <ClInclude Include="drawStage.h" />
     <ClInclude Include="drawStage1.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
     </ClInclude>
     <ClInclude Include="drawStage_prologue.h" />
     <ClInclude Include="gameStart.h" />
-    <ClInclude Include="moveable_block.h" />
+    <ClInclude Include="moveableBlock.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="startScreen.h" />
+    <ClInclude Include="writeText.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="소설기.rc" />
@@ -177,7 +179,7 @@
     <Image Include="left_button.bmp" />
     <Image Include="lever_left.bmp" />
     <Image Include="lever_right.bmp" />
-    <Image Include="movable_block.bmp" />
+    <Image Include="moveable_block.bmp" />
     <Image Include="right_button.bmp" />
     <Image Include="seed.bmp" />
     <Image Include="seed_block.bmp" />
@@ -197,13 +199,15 @@
     <ClCompile Include="drawCharacter.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
     </ClCompile>
+    <ClCompile Include="drawMoveableBlock.cpp" />
     <ClCompile Include="drawStage.cpp" />
     <ClCompile Include="drawStage1.cpp" />
     <ClCompile Include="drawStage_prologue.cpp" />
     <ClCompile Include="gameStart.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="moveable_block.cpp" />
+    <ClCompile Include="moveableBlock.cpp" />
     <ClCompile Include="startScreen.cpp" />
+    <ClCompile Include="writeText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />

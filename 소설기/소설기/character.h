@@ -15,39 +15,45 @@ class character
 public:
 	static int x;
 	static int y;
-	bool nextStage;
-	static bool future;
+
+	static bool nextStage;
+	static bool future; 
 	static bool isJumping;
 	bool facingRight;
 	static int seedPiece;
-	bool seedPlant;
-	static int progress;                     // 진행상황
+	static bool seedPlant;							// 씨앗을 심었는지
+	static int progress;							// 진행상황
+
 	static bool getSeed;
 	static bool getKey;
 	static int gameOverCheck;
 	static int getSeedPiece;
 	int characterHeart;
 	bool attacking;
+	int limitJump = 0;;
+	static bool pressingButton;
+	int gravityTime = 0;
 	character();
-	void characterMove(int stage[25][40], std::vector<char>& buffer);
 
+	void characterMove(int stage[25][40],std::vector<char>& buffer);
+	
 	void gravity(int stage[25][40], int newX, int newY);
-	int collision(int stage[25][40], int newX, int newY);
-	void gameOver(int coll, std::vector<char>& buffer);
+	int collision(int stage[25][40],int newX,int newY);
+	void gameOver(int coll,std::vector<char>& buffer);
+
+	
 private:
 
 
 	int sTime;
 
 	bool invincible;
-
 	bool movingLeft;
 	bool jumping;
 	bool movingRight;
 	int attackRange;
 	int attackCoolTime;
 	int invincibilityDuration;
-
 
 	void attack(int stage[25][40]);
 	void switchMap();

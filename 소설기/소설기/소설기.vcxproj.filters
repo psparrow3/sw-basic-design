@@ -1,87 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="character.cpp" />
-    <ClCompile Include="drawStage.cpp" />
-    <ClCompile Include="drawStage1.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="drawCharacter.cpp" />
-    <ClCompile Include="draw.cpp" />
-    <ClCompile Include="drawStage_prologue.cpp" />
     <ClCompile Include="Boss1.cpp" />
     <ClCompile Include="Boss2.cpp" />
     <ClCompile Include="Boss3.cpp" />
-<<<<<<< HEAD
+    <ClCompile Include="character.cpp" />
+    <ClCompile Include="draw.cpp" />
+    <ClCompile Include="drawCharacter.cpp" />
+    <ClCompile Include="drawMoveableBlock.cpp" />
+    <ClCompile Include="drawStage.cpp" />
+    <ClCompile Include="drawStage1.cpp" />
+    <ClCompile Include="drawStage_prologue.cpp" />
     <ClCompile Include="gameStart.cpp" />
-    <ClCompile Include="moveable_block.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="moveableBlock.cpp" />
     <ClCompile Include="startScreen.cpp" />
-=======
->>>>>>> d87b78d571161e534fa2662e89b1821254158e02
+    <ClCompile Include="writeText.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="character.h" />
-    <ClInclude Include="drawStage.h" />
-    <ClInclude Include="drawStage1.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="drawCharacter.h" />
-    <ClInclude Include="draw.h" />
-    <ClInclude Include="drawStage_prologue.h" />
     <ClInclude Include="Boss1.h" />
     <ClInclude Include="Boss2.h" />
     <ClInclude Include="Boss3.h" />
-<<<<<<< HEAD
+    <ClInclude Include="character.h" />
+    <ClInclude Include="draw.h" />
+    <ClInclude Include="drawCharacter.h" />
+    <ClInclude Include="drawMoveableBlock.h" />
+    <ClInclude Include="drawStage.h" />
+    <ClInclude Include="drawStage1.h" />
+    <ClInclude Include="drawStage_prologue.h" />
     <ClInclude Include="gameStart.h" />
-    <ClInclude Include="moveable_block.h" />
+    <ClInclude Include="moveableBlock.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="startScreen.h" />
-=======
->>>>>>> d87b78d571161e534fa2662e89b1821254158e02
+    <ClInclude Include="writeText.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="소설기.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="block.bmp" />
-    <Image Include="tutorial_building.bmp" />
-    <Image Include="door.bmp" />
-    <Image Include="empty_character.bmp" />
+    <Image Include="A_button.bmp" />
+    <Image Include="bitmap24.bmp" />
+    <Image Include="Boss1.bmp" />
+    <Image Include="Boss2.bmp" />
+    <Image Include="Boss3.bmp" />
     <Image Include="bottom.bmp" />
     <Image Include="broken_block.bmp" />
     <Image Include="broken_door.bmp" />
     <Image Include="button1.bmp" />
     <Image Include="button2.bmp" />
+    <Image Include="character_left_jump.bmp" />
+    <Image Include="character_left_original.bmp" />
+    <Image Include="character_right_jump.bmp" />
+    <Image Include="character_right_original.bmp" />
     <Image Include="cold_lava.bmp" />
+    <Image Include="empty_block.bmp" />
+    <Image Include="empty_character.bmp" />
+    <Image Include="block.bmp" />
+    <Image Include="door.bmp" />
+    <Image Include="empty_heart.bmp" />
+    <Image Include="empty_map.bmp" />
+    <Image Include="enter_door.bmp" />
+    <Image Include="full_heart.bmp" />
     <Image Include="key.bmp" />
     <Image Include="laser1.bmp" />
     <Image Include="lava.bmp" />
     <Image Include="lava2.bmp" />
+    <Image Include="left_button.bmp" />
     <Image Include="lever_left.bmp" />
     <Image Include="lever_right.bmp" />
-    <Image Include="movable_block.bmp" />
-    <Image Include="seed.bmp" />
-    <Image Include="triangle_block.bmp" />
-    <Image Include="empty_map.bmp" />
-    <Image Include="character_right_original.bmp" />
-    <Image Include="character_left_original.bmp" />
-<<<<<<< HEAD
-    <Image Include="A_button.bmp" />
-    <Image Include="character_left_jump.bmp" />
-    <Image Include="character_right_jump.bmp" />
-    <Image Include="empty_block.bmp" />
-    <Image Include="empty_heart.bmp" />
-    <Image Include="enter_door.bmp" />
-    <Image Include="full_heart.bmp" />
-    <Image Include="left_button.bmp" />
+    <Image Include="moveable_block.bmp" />
     <Image Include="right_button.bmp" />
+    <Image Include="seed.bmp" />
+    <Image Include="seed_block.bmp" />
     <Image Include="SPACE_button.bmp" />
     <Image Include="S_button.bmp" />
-    <Image Include="seed_block.bmp" />
-=======
-    <Image Include="bitmap24.bmp" />
-    <Image Include="empty_block.bmp" />
-    <Image Include="Boss1.bmp" />
-    <Image Include="Boss2.bmp" />
-    <Image Include="Boss3.bmp" />
->>>>>>> d87b78d571161e534fa2662e89b1821254158e02
+    <Image Include="triangle_block.bmp" />
+    <Image Include="tutorial_building.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />

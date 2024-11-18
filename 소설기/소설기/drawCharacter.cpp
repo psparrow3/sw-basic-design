@@ -10,10 +10,10 @@ drawCharacter::drawCharacter()
 {
 
 }
+
 void drawCharacter::characterRightDraw(int x, int y, std::vector<char>& buffer)
 {
     draw a;
-
     a.drawBitmap("character_right_original.bmp", buffer, x, y, SCREEN_WIDTH);
 }
 
