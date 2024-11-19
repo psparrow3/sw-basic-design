@@ -35,6 +35,33 @@ void drawCharacter::characterLeftJumpDraw(int x, int y, std::vector<char>& buffe
     a.drawBitmap("character_left_jump.bmp", buffer, x, y, SCREEN_WIDTH);
 }
 
+void drawCharacter::characterRightAttackDraw(int x, int y, std::vector<char>& buffer)
+{
+    draw a;
+    a.drawBitmap("character_right_attack.bmp", buffer, x, y, SCREEN_WIDTH);
+}
+
+void drawCharacter::characterLeftAttackDraw(int x, int y, std::vector<char>&buffer)
+{
+    draw a;
+    a.drawBitmap("character_right_attack.bmp", buffer, x, y, SCREEN_WIDTH);
+}
+void  drawCharacter::characterRightJumpAttackDraw(int x, int y, std::vector<char>& buffer)
+{
+    draw a;
+    a.drawBitmap("character_right_jump.bmp", buffer, x, y, SCREEN_WIDTH);
+    a.drawBitmap("character_right_attack.bmp", buffer, x, y, SCREEN_WIDTH);
+   
+}
+
+void  drawCharacter::characterLeftJumpAttackDraw(int x, int y, std::vector<char>& buffer)
+{
+    draw a;
+    a.drawBitmap("character_right_jump.bmp", buffer, x, y, SCREEN_WIDTH);
+    a.drawBitmap("character_right_attack.bmp", buffer, x, y, SCREEN_WIDTH);
+  
+}
+
 void drawCharacter::characterErase(int x, int y, std::vector<char>& buffer)
 {
     draw a;
@@ -64,5 +91,56 @@ void drawCharacter::characterErase(int x, int y, std::vector<char>& buffer)
         break;
     default:
         break;
+    }
+}
+void drawCharacter::characterAttackErase(int x, int y, std::vector<char>& buffer)
+{
+    draw a;
+    a.drawBitmap("empty_character_attack.bmp", buffer, x, y, SCREEN_WIDTH);
+}
+void drawCharacter::characterDraw(int x, int y, std::vector<char>& buffer) 
+{
+    
+    if (facingRight) {
+        if (attacking && isJumping) {
+            
+            characterRightJumpAttackDraw(x, y, buffer); // 점프 그리기
+        }
+        else if (attacking) {          
+            
+           
+          
+            characterRightAttackDraw(x, y, buffer);
+                
+           
+        }
+        else if (isJumping) {
+            characterRightJumpDraw(x, y, buffer); // 점프 동작 그리기
+        }
+        else {
+            
+            characterRightDraw(x, y, buffer); // 기본 오른쪽 이동 동작 그리기
+        }
+
+    }
+    else { // facingLeft
+        if (attacking && isJumping) {
+          
+            characterLeftJumpAttackDraw(x, y, buffer); // 점프 동작 그리기
+        }
+        else if (attacking) {
+           
+           
+            characterLeftAttackDraw(x, y, buffer); // 공격 동작 그리기
+        }
+        else if (isJumping) {
+            // 점프
+
+            characterLeftJumpDraw(x, y, buffer); // 점프 동작 그리기
+        }
+        else {
+          
+            characterLeftDraw(x, y, buffer); // 기본 오른쪽 이동 동작 그리기
+        }
     }
 }

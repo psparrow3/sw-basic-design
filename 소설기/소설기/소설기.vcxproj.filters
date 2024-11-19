@@ -76,6 +76,9 @@
     <Image Include="S_button.bmp" />
     <Image Include="triangle_block.bmp" />
     <Image Include="tutorial_building.bmp" />
+    <Image Include="character_right_attack.bmp" />
+    <Image Include="stage1_tree.bmp" />
+    <Image Include="empty_character_attack.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />

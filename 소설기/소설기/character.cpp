@@ -9,9 +9,9 @@
 
 
 int character::x = 0;
-int character::y = 420;
+int character::y = 410;
 
-int   character::progress = 1;                     // 진행상황
+int   character::progress = 0;                     // 진행상황
 int character::gameOverCheck = 0;
 bool character::future = 0;
 bool character::isJumping = 0;
@@ -21,19 +21,23 @@ int character::getSeedPiece = 0;
 bool character::pressingButton = 0; 
 bool character::seedPlant = 0;
 bool character::nextStage = 0;
+int character::characterHeart = 3;
+bool character::attacking = 0;
+bool character::facingRight = 1;
+bool character::land = 1;
 character::character()
 {
-	facingRight = 1;
-	characterHeart = 3;
+	
+	
 	invincible = false;
 	invincibilityDuration = 2000;
 
-	attackCoolTime = 1000;      //공격 쿨타임 (밀리초,1초)
+	attackCoolTime = 10;      // 공격 쿨타임
 	sTime = 3;
 
 	nextStage = 0;
 
-	attackRange = 1;            // 공격 사거리
+	attackRange = 2;           // 공격 사거리
 }
 
 void character::gameOver(int coll, std::vector<char>& buffer)
@@ -48,18 +52,9 @@ void character::getItem()
 
 void character::takeDamage()
 {
-	if (!invincible) {
-		characterHeart -= 1;
-
-		/*   if (playerHeart == 0) {
-		gameOver();
-		return;
-	 }*/
-
-		invincible = true;
-		Sleep(invincibilityDuration);
-		invincible = false;
-	}
+	characterHeart -= 1;
+	if (characterHeart == 0)
+		gameOverCheck = 1;
 }
 
 void character::switchMap()
@@ -67,15 +62,35 @@ void character::switchMap()
 	future = !future;
 }
 
-void character::attack(int stage[25][40])
+void character::attack(int(&stage)[25][40])
 {
 	attacking = 1;
+	for (int i = 0; i < attackRange; i++) {
+		int atX;
+		int atY = y;
+
+		if (facingRight)
+		{
+			atX = x + i;
+		}
+		else 
+		{
+			atX = x - i;
+		}
+		if (collision(stage, atX, atY) == 98) 
+		{
+			/*Boss1::Boss1Heart -= 1;*/
+			progress++;
+			break;
+		}
+	}
 }
 
-void character::characterMove(int stage[25][40], std::vector<char>& buffer)
+
+
+void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 {
 
-	drawCharacter ac;
 	int preX = x;
 	int preY = y;
 
@@ -85,31 +100,36 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
 	bool sPress = GetAsyncKeyState('S') & 0x8000;
 	bool aPress = GetAsyncKeyState('A') & 0x8000;
 
-
 	int coll = collision(stage, x, y);
 
-	if (coll == 2 || coll == 10 || coll == 11 || coll == 3)
-	{
-		isJumping = 0;
-	}
+	// 충돌 체크로 점프 상태 해제
 
-	if (aPress)
-	{
+
+	// 공격
+	if (aPress && attackCoolTime>=10) {
 		attack(stage);
-		
+		attackCoolTime = 0;
 	}
 
-	if (sPress && sTime >= 3)
-	{
+	// 맵 전환
+	if (sPress && sTime >= 3) {
 		switchMap();
 		sTime = 0;
+	}
+
+	if (!land)
+	{
+		if (!collision(stage, x, y + 10))
+		{
+			y += 10;
+		}
 	}
 
 	if (jumping && !isJumping)
 	{
 		isJumping = 1;
 
-		
+
 		for (int i = 0; i < 3; i++) {
 			preY = y;
 
@@ -126,21 +146,30 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
 
 			}
 		}
-		
-		/*limitJump += 20;
-		if (limitJump >= 60) {
-			limitJump = 0;
-			isJumping = 1;
-		}*/
-		
-	
-	
 	}
 
+	// 이동 처리
+	if (movingLeft) {
+		facingRight = false;
+		preX = x;
+		x -= 20;
+		int leftColl = collision(stage, x, y);
+		if (leftColl == 2 || x < 0 || leftColl == 3 || leftColl==14) {
+			x = preX; // 충돌 발생 시 위치 복원
+		}
+	}
+	else if (movingRight) {
+		facingRight = true;
+		preX = x;
+		x += 20;
+		int rightColl = collision(stage, x + 20, y);
+		if (rightColl == 2 || x > 1600 || rightColl == 3 || rightColl==14) { // x > 800: 오른쪽 경계 제한
+			x = preX; // 충돌 발생 시 위치 복원
+		}
+	}
 	if (GetAsyncKeyState(VK_UP) & 0x8000) {
 		if (collision(stage, x, y + 20) == 10) {
 			nextStage = 1;
-
 			progress++;
 		}
 		if (collision(stage, x, y + 20) == 11 && getKey == 1) {
@@ -151,36 +180,14 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
 		}
 
 	}
-
-	if (movingLeft) {
-		facingRight = 0;
-		x -= 20;
-		int leftcoll = collision(stage, x, y);
-
-		
-		if (leftcoll == 2 || x < 0 || leftcoll == 3 || leftcoll == 14)
-		{
-			x = preX;
+	if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
+		if (collision(stage, x, y + 20) == 9 && getSeed) {
+			seedPlant = 1;
+			getSeed = 0;
 		}
-	}
-
-	if (movingRight) {
-		facingRight = 1;
-		x += 20;
-		int rightcoll = collision(stage, x + 20, y);
-
-		if (rightcoll == 2 || x >= 1540 || rightcoll == 3 || rightcoll == 14)
-		{
-			x = preX;
-		}
-	}
-
-
-	if (GetAsyncKeyState(VK_DOWN) & 0x8000 && collision(stage, x, y+20) == 9 && getSeed)
-	{
-		seedPlant = 1;
-		getSeed = 0;
-
+	} 
+	if (coll == 7) {
+		takeDamage();
 	}
 
 	if (coll == 4) {
@@ -190,34 +197,33 @@ void character::characterMove(int stage[25][40], std::vector<char>& buffer)
 	if (coll == 5) {
 		getSeed = 1;
 	}
-
 	
+
 	if (coll == 2 || coll == 8 || coll == 3 || GetAsyncKeyState('R') & 0x8000 || coll == 14)
 	{
 		gameOver(coll, buffer);
 	}
 
-	
 	sTime += 1;
+	attackCoolTime += 1;
 }
-
-void character::gravity(int stage[25][40], int newX, int newY)
+void character::gravity(int(&stage)[25][40], int newX, int newY)
 {
-	
-	y += 20;
-		
-	int coll= collision(stage, x, y);
-	
+	int coll = collision(stage, x, y + 20);
 
 	if (coll == 2 || coll == 10 || coll == 11 || coll == 9 || coll == 3) {
 
 		y = newY;
 		isJumping = 0;
+		land = 1;
 		return;
 	}
 	
+	else
+	{
+		land = 0;
+	}
 }
-
 int character::collision(int stage[25][40], int newX, int newY)
 {
 	for (int i = 0; i < 2; i++)
@@ -282,6 +288,10 @@ int character::collision(int stage[25][40], int newX, int newY)
 			else if (stage[posY][posX] == 14)
 			{
 				return 14;               // 버튼 충돌
+			}
+			else if (stage[posY][posX] == 98)
+			{
+				return 98;				// 1스테이지 보스
 			}
 		
 		}
