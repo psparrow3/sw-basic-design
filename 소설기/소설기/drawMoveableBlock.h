@@ -4,7 +4,7 @@
 class drawMoveableBlock : public moveableBlock
 {
 public:
-	drawMoveableBlock();
+	drawMoveableBlock(int x, int y);
 	void moveableBlockDraw(int x, int y, std::vector<char>& buffer);
 	void moveableBlockErase(int x, int y, std::vector<char>& buffer);
 };
