@@ -3,6 +3,7 @@
 #include "draw.h"
 #include "drawStage.h"
 #include "drawCharacter.h"
+#include "Boss1.h"
 
 class drawStage1
 {
