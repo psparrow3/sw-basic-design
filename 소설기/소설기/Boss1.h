@@ -15,7 +15,7 @@ public:
 	static int m_x, m_y;
 	Boss1();
 	void Boss1Attack();
-	void Boss1AttackMove(std::vector<char>& buffer);
+	void Boss1AttackMove(std::vector<char>& buffer, int (&stage)[25][40]);
 	static std::vector<attack> at;
 	static bool flag;
 	static int time;

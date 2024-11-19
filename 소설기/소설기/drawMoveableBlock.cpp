@@ -1,8 +1,9 @@
 #include "drawMoveableBlock.h"
 
-drawMoveableBlock::drawMoveableBlock()
+drawMoveableBlock::drawMoveableBlock(int x, int y)
 {
-
+	m_x = x;
+	m_y = y;
 }
 
 void drawMoveableBlock::moveableBlockDraw(int x, int y, std::vector<char>& buffer)
