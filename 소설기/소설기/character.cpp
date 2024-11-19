@@ -11,7 +11,7 @@
 int character::x = 0;
 int character::y = 410;
 
-int   character::progress = 0;                     // ÁøÇà»óÈ²
+int   character::progress = 0;                     // ì§„í–‰ìƒí™©
 int character::gameOverCheck = 0;
 bool character::future = 0;
 bool character::isJumping = 0;
@@ -25,19 +25,19 @@ int character::characterHeart = 3;
 bool character::attacking = 0;
 bool character::facingRight = 1;
 bool character::land = 1;
+int character::clearStage[25][40] = { 0 };
+
 character::character()
 {
-	
-	
 	invincible = false;
 	invincibilityDuration = 2000;
 
-	attackCoolTime = 10;      // °ø°İ ÄğÅ¸ÀÓ
+	attackCoolTime = 10;      // ê³µê²© ì¿¨íƒ€ì„
 	sTime = 3;
 
 	nextStage = 0;
 
-	attackRange = 2;           // °ø°İ »ç°Å¸®
+	attackRange = 2;           // ê³µê²© ì‚¬ê±°ë¦¬
 }
 
 void character::gameOver(int coll, std::vector<char>& buffer)
@@ -52,9 +52,12 @@ void character::getItem()
 
 void character::takeDamage()
 {
-	characterHeart -= 1;
+	characterHeart--;
+
 	if (characterHeart == 0)
+	{
 		gameOverCheck = 1;
+	}
 }
 
 void character::switchMap()
@@ -87,9 +90,9 @@ void character::attack(int(&stage)[25][40])
 }
 
 
-
 void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 {
+	drawCharacter ac;
 
 	int preX = x;
 	int preY = y;
@@ -102,16 +105,18 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 
 	int coll = collision(stage, x, y);
 
-	// Ãæµ¹ Ã¼Å©·Î Á¡ÇÁ »óÅÂ ÇØÁ¦
+	// ì¶©ëŒ ì²´í¬ë¡œ ì í”„ ìƒíƒœ í•´ì œ
 
 
-	// °ø°İ
+	// ê³µê²©
 	if (aPress && attackCoolTime>=10) {
 		attack(stage);
+
 		attackCoolTime = 0;
+
 	}
 
-	// ¸Ê ÀüÈ¯
+	// ë§µ ì „í™˜
 	if (sPress && sTime >= 3) {
 		switchMap();
 		sTime = 0;
@@ -129,7 +134,8 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 	{
 		isJumping = 1;
 
-
+		land = 0;
+				
 		for (int i = 0; i < 3; i++) {
 			preY = y;
 
@@ -143,19 +149,18 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 			}
 			if (jumpcoll == 2 || y < 0 || jumpcoll == 3) {
 				y = preY;
-
 			}
 		}
 	}
 
-	// ÀÌµ¿ Ã³¸®
+	// ì´ë™ ì²˜ë¦¬
 	if (movingLeft) {
 		facingRight = false;
 		preX = x;
 		x -= 20;
 		int leftColl = collision(stage, x, y);
 		if (leftColl == 2 || x < 0 || leftColl == 3 || leftColl==14) {
-			x = preX; // Ãæµ¹ ¹ß»ı ½Ã À§Ä¡ º¹¿ø
+			x = preX; // ì¶©ëŒ ë°œìƒ ì‹œ ìœ„ì¹˜ ë³µì›
 		}
 	}
 	else if (movingRight) {
@@ -163,8 +168,8 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 		preX = x;
 		x += 20;
 		int rightColl = collision(stage, x + 20, y);
-		if (rightColl == 2 || x > 1600 || rightColl == 3 || rightColl==14) { // x > 800: ¿À¸¥ÂÊ °æ°è Á¦ÇÑ
-			x = preX; // Ãæµ¹ ¹ß»ı ½Ã À§Ä¡ º¹¿ø
+		if (rightColl == 2 || x > 1600 || rightColl == 3 || rightColl==14) { // x > 800: ì˜¤ë¥¸ìª½ ê²½ê³„ ì œí•œ
+			x = preX; // ì¶©ëŒ ë°œìƒ ì‹œ ìœ„ì¹˜ ë³µì›
 		}
 	}
 	if (GetAsyncKeyState(VK_UP) & 0x8000) {
@@ -178,8 +183,8 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 			getKey = 0;
 			progress++;
 		}
-
 	}
+
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
 		if (collision(stage, x, y + 20) == 9 && getSeed) {
 			seedPlant = 1;
@@ -188,7 +193,30 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 	} 
 	if (coll == 7) {
 		takeDamage();
+
+
+	if (movingLeft) {
+		facingRight = 0;
+		x -= 20;
+		int leftcoll = collision(stage, x, y);
+
+		if (leftcoll == 2 || x < 0 || leftcoll == 3 || leftcoll == 14)
+		{
+			x = preX;
+		}
 	}
+
+	if (movingRight) {
+		facingRight = 1;
+		x += 20;
+		int rightcoll = collision(stage, x + 20, y);
+
+		if (rightcoll == 2 || x >= 1540 || rightcoll == 3 || rightcoll == 14)
+		{
+			x = preX;
+		}
+	}
+
 
 	if (coll == 4) {
 		getKey = 1;
@@ -197,7 +225,6 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 	if (coll == 5) {
 		getSeed = 1;
 	}
-	
 
 	if (coll == 2 || coll == 8 || coll == 3 || GetAsyncKeyState('R') & 0x8000 || coll == 14)
 	{
@@ -207,6 +234,7 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 	sTime += 1;
 	attackCoolTime += 1;
 }
+
 void character::gravity(int(&stage)[25][40], int newX, int newY)
 {
 	int coll = collision(stage, x, y + 20);
@@ -218,13 +246,16 @@ void character::gravity(int(&stage)[25][40], int newX, int newY)
 		land = 1;
 		return;
 	}
-	
+
 	else
 	{
 		land = 0;
 	}
 }
-int character::collision(int stage[25][40], int newX, int newY)
+
+
+int character::collision(int (&stage)[25][40], int newX, int newY)
+
 {
 	for (int i = 0; i < 2; i++)
 	{
@@ -235,66 +266,65 @@ int character::collision(int stage[25][40], int newX, int newY)
 
 			if (stage[posY][posX] == 2)
 			{
-				return 2;			// ºí·° Ãæµ¹ Ã³¸®
+				return 2;			// ë¸”ëŸ­ ì¶©ëŒ ì²˜ë¦¬
 			}
 			else if (stage[posY][posX] == 3)
 			{
-				return 3;			// ¹Ì´Â ºí·° Ã³¸®
+				return 3;			// ë¯¸ëŠ” ë¸”ëŸ­ ì²˜ë¦¬
 			}
 			else if (stage[posY][posX] == 4)
 			{
-
-				return 4;           // ¿­¼è Å‰µæ
+				return 4;           // ì—´ì‡  Â‰ë“
 			}
 			else if (stage[posY][posX] == 5)
 			{
-				return 5;           // ¾¾¾Ñ
+				return 5;           // ì”¨ì•—
 			}
 			else if (stage[posY][posX] == 6)
 			{
-				return 6;           // ¾¾¾Ñ Á¶°¢
+				return 6;           // ì”¨ì•— ì¡°ê°
 			}
 			else if (stage[posY][posX] == 7)
 			{
 				takeDamage();
-				return 7;			// ÇÇÇØ ÀÔÀ½
+				return 7;			// í”¼í•´ ì…ìŒ
 			}
 			else if (stage[posY][posX] == 8)
 			{
-				return 8;            // Áï»ç±â
+				return 8;            // ì¦‰ì‚¬ê¸°
 			}
 			else if (stage[posY][posX] == 9)
 			{
-				return 9;               // ¾¾¾Ñ ½É´Â °÷
+				return 9;               // ì”¨ì•— ì‹¬ëŠ” ê³³
 			}
 			else if (stage[posY][posX] == 10)
 			{
-				return 10;               // ¹® µé¾î°¡±â
+				return 10;               // ë¬¸ ë“¤ì–´ê°€ê¸°
 			}
 			else if (stage[posY][posX] == 11)
 			{
-				return 11;               // Àá±ä ¹® µé¾î°¡±â
+				return 11;               // ì ê¸´ ë¬¸ ë“¤ì–´ê°€ê¸°
 			}
-
 			else if (stage[posY][posX] == 12)
 			{
-				return 12;               // µµ¿ò¸» ºÎºĞ
+				return 12;               // ë„ì›€ë§ ë¶€ë¶„
 			}
-
 			else if (stage[posY][posX] == 13)
 			{
-				return 13;               // º¸½º ³Ñ¾î°¥¶§ ºÎºĞ
+				return 13;               // ë³´ìŠ¤ ë„˜ì–´ê°ˆë•Œ ë¶€ë¶„
 			}
 			else if (stage[posY][posX] == 14)
 			{
-				return 14;               // ¹öÆ° Ãæµ¹
+				return 14;               // ë²„íŠ¼ ì¶©ëŒ
 			}
+
 			else if (stage[posY][posX] == 98)
 			{
-				return 98;				// 1½ºÅ×ÀÌÁö º¸½º
+				return 98;				// 1ìŠ¤í…Œì´ì§€ ë³´ìŠ¤
 			}
 		
-		}
-	}
+
+    }
+  }
 	return 0;
 }

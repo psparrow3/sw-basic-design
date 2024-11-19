@@ -3,6 +3,7 @@
 #include<iostream>
 #include "draw.h"
 #include <thread>
+
 #define SCREEN_WIDTH 1902
 #define SCREEN_HEIGHT 501
 
@@ -21,8 +22,8 @@ public:
 	static bool isJumping;
 	
 	static int seedPiece;
-	static bool seedPlant;							// ¾¾¾ÑÀ» ½É¾ú´ÂÁö
-	static int progress;							// ÁøÇà»óÈ²
+	static bool seedPlant;							// ì”¨ì•—ì„ ì‹¬ì—ˆëŠ”ì§€
+	static int progress;							// ì§„í–‰ìƒí™©
 
 	static bool getSeed;
 	static bool getKey;
@@ -30,23 +31,19 @@ public:
 	static int getSeedPiece;
 	static int characterHeart;
 	static bool attacking;
-	int limitJump = 0;;
 	static bool pressingButton;
-	int gravityTime = 0;
 	static bool facingRight;
 	static bool land;
 	character();
-
-	void characterMove(int(&stage)[25][40], std::vector<char>& buffer);
-	
-	void gravity(int(&stage)[25][40], int newX, int newY);
-	int collision(int stage[25][40],int newX,int newY);
+  
+	void characterMove(int (&stage)[25][40], std::vector<char>& buffer);
+	void gravity(int (&stage)[25][40], int newX, int newY);
+	int collision(int (&stage)[25][40],int newX,int newY);
+  
 	void gameOver(int coll,std::vector<char>& buffer);
-
-	
+	static int clearStage[25][40];
+		
 private:
-
-
 	int sTime;
 
 	bool invincible;
@@ -61,7 +58,4 @@ private:
 	void switchMap();
 	void takeDamage();
 	void getItem();
-
-
-
 };

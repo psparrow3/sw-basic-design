@@ -1,32 +1,36 @@
 #include "moveableBlock.h"
 
-moveableBlock::moveableBlock() {		
-	int x = 0;
-	int y = 0;				// x,y √ ±‚»≠
+moveableBlock::moveableBlock() 
+{
 
 }
 
 
+
 void moveableBlock::blockMove(int stage[25][40], int characterX,int characterY)
+
 {
+	int coll = collision(stage, m_x, m_y);
 	
-	int coll = collision(stage, x, y);
-	
-	
-	if (x+20 == characterX && y==characterY) {
-		int preX = x;
-		x -= 20;
-		int coll = collision(stage, x, y);
+
+	if (m_x + 20 == characterX && m_y==characterY) {
+		int preX = m_x;
+		m_x -= 20;
+		int coll = collision(stage, m_x, m_y);
+
 		if (coll == 3 || coll == 2) {
-			x = preX;
+			m_x = preX;
 		}
 	}
-	if (x-20 == characterX && y == characterY) {
-		int preX = x;
-		x += 20;
-		int coll = collision(stage, x+20, y);
+
+	
+	if (m_x - 20 == characterX && m_y == characterY) {
+		int preX = m_x;
+		m_x += 20;
+		int coll = collision(stage, m_x + 20, m_y);
+
 		if (coll == 3 || coll == 2) {
-			x = preX;
+			m_x = preX;
 		}
 	}
 }
@@ -54,10 +58,10 @@ int moveableBlock::collision(int stage[25][40], int newX, int newY)
 
 void moveableBlock::gravity(int stage[25][40],int newX,int newY)
 {
-	y += 20;
-	int coll = collision(stage, newX, y);
+	m_y += 20;
+	int coll = collision(stage, newX, m_y);
 	if (coll == 2 || coll == 3) {
-		y = newY;
+		m_y = newY;
 		return;
 	}
 }
@@ -70,7 +74,6 @@ void moveableBlock::blockLocation(int(&stage)[25][40], int x, int y)
 			int posY = y / 20 + j;
 			stage[posY][posX] = 3;
 		}
-		
 	}
 }
 
@@ -82,6 +85,5 @@ void moveableBlock::blockLocationErase(int (&stage)[25][40], int x, int y)
 				stage[i][j] = 0;
 			}
 		}
-
 	}
 }
