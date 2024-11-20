@@ -1,4 +1,4 @@
-#include "character.h"
+﻿#include "character.h"
 #include "conio.h"
 #include "Windows.h"
 #include "drawCharacter.h"
@@ -11,14 +11,14 @@
 int character::x = 0;
 int character::y = 410;
 
-int   character::progress = 0;                     // 진행상황
+int character::progress = 0;                     // 진행상황
 int character::gameOverCheck = 0;
 bool character::future = 0;
 bool character::isJumping = 0;
 bool character::getSeed = 0;
 bool character::getKey = 0;
 int character::getSeedPiece = 0;
-bool character::pressingButton = 0; 
+bool character::pressingButton = 0;
 bool character::seedPlant = 0;
 bool character::nextStage = 0;
 int character::characterHeart = 3;
@@ -76,11 +76,11 @@ void character::attack(int(&stage)[25][40])
 		{
 			atX = x + i;
 		}
-		else 
+		else
 		{
 			atX = x - i;
 		}
-		if (collision(stage, atX, atY) == 98) 
+		if (collision(stage, atX, atY) == 98)
 		{
 			/*Boss1::Boss1Heart -= 1;*/
 			progress++;
@@ -90,7 +90,7 @@ void character::attack(int(&stage)[25][40])
 }
 
 
-void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
+void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 {
 	drawCharacter ac;
 
@@ -109,7 +109,7 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 
 
 	// 공격
-	if (aPress && attackCoolTime>=10) {
+	if (aPress && attackCoolTime >= 10) {
 		attack(stage);
 
 		attackCoolTime = 0;
@@ -135,7 +135,7 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 		isJumping = 1;
 
 		land = 0;
-				
+
 		for (int i = 0; i < 3; i++) {
 			preY = y;
 
@@ -159,7 +159,7 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 		preX = x;
 		x -= 20;
 		int leftColl = collision(stage, x, y);
-		if (leftColl == 2 || x < 0 || leftColl == 3 || leftColl==14) {
+		if (leftColl == 2 || x < 0 || leftColl == 3 || leftColl == 14) {
 			x = preX; // 충돌 발생 시 위치 복원
 		}
 	}
@@ -168,7 +168,7 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 		preX = x;
 		x += 20;
 		int rightColl = collision(stage, x + 20, y);
-		if (rightColl == 2 || x > 1600 || rightColl == 3 || rightColl==14) { // x > 800: 오른쪽 경계 제한
+		if (rightColl == 2 || x > 1600 || rightColl == 3 || rightColl == 14) { // x > 800: 오른쪽 경계 제한
 			x = preX; // 충돌 발생 시 위치 복원
 		}
 	}
@@ -190,10 +190,11 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 			seedPlant = 1;
 			getSeed = 0;
 		}
-	} 
+	}
+	
 	if (coll == 7) {
 		takeDamage();
-
+	}
 
 	if (movingLeft) {
 		facingRight = 0;
@@ -217,7 +218,6 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 		}
 	}
 
-
 	if (coll == 4) {
 		getKey = 1;
 	}
@@ -240,13 +240,11 @@ void character::gravity(int(&stage)[25][40], int newX, int newY)
 	int coll = collision(stage, x, y + 20);
 
 	if (coll == 2 || coll == 10 || coll == 11 || coll == 9 || coll == 3) {
-
 		y = newY;
 		isJumping = 0;
 		land = 1;
 		return;
 	}
-
 	else
 	{
 		land = 0;
@@ -254,8 +252,7 @@ void character::gravity(int(&stage)[25][40], int newX, int newY)
 }
 
 
-int character::collision(int (&stage)[25][40], int newX, int newY)
-
+int character::collision(int(&stage)[25][40], int newX, int newY)
 {
 	for (int i = 0; i < 2; i++)
 	{
@@ -274,7 +271,7 @@ int character::collision(int (&stage)[25][40], int newX, int newY)
 			}
 			else if (stage[posY][posX] == 4)
 			{
-				return 4;           // 열쇠 득
+				return 4;           // 열쇠 획득
 			}
 			else if (stage[posY][posX] == 5)
 			{
@@ -286,7 +283,6 @@ int character::collision(int (&stage)[25][40], int newX, int newY)
 			}
 			else if (stage[posY][posX] == 7)
 			{
-				takeDamage();
 				return 7;			// 피해 입음
 			}
 			else if (stage[posY][posX] == 8)
@@ -317,14 +313,11 @@ int character::collision(int (&stage)[25][40], int newX, int newY)
 			{
 				return 14;               // 버튼 충돌
 			}
-
 			else if (stage[posY][posX] == 98)
 			{
 				return 98;				// 1스테이지 보스
 			}
-		
-
-    }
-  }
+		}
+	}
 	return 0;
 }
