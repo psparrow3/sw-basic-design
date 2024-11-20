@@ -42,28 +42,20 @@ void Boss1::Boss1AttackMove(std::vector<char>& buffer, int(&stage)[25][40])
 	std::set<int> er;
 	er.clear();
 	int cx = character::x, cy = character::y;
-	int col;
 
 	for (int i = 0; i < at.size(); i++)
 	{
-		col = 0;
-
-		if ((at[i].y + 20 > 470) || (at[i].x <= 0) || (at[i].x + 20 > 1600) || at[i].y <= 0)
+		if ((at[i].y + 20 > 470) || (at[i].x <= 0) || (at[i].x + 40 > 1600) || at[i].y <= 0)
 		{
 			er.insert(i);
+			continue;
 		}
 
-		for (int iy = 0; iy < 20; iy++)
+		if (at[i].x < cx + 80 && at[i].x + 40 > cx && at[i].y < cy + 60 && at[i].y + 20 > cy)
 		{
-			for (int ix = 0; ix < 20; ix++)
-			{
-				if (col != 1 && at[i].x + ix > cx && at[i].x + ix < cx + 40 && at[i].y + iy > cy && at[i].y + iy < cy + 60)
-				{
-					er.insert(i);
-					character::takeDamage();
-					col = 1;
-				}
-			}
+			er.insert(i);       // 충돌한 공격 객체 제거
+			character::takeDamage(); // 캐릭터 피해 처리
+			continue;
 		}
 
 		a.drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
