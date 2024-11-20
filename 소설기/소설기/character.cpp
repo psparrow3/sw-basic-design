@@ -11,7 +11,7 @@
 int character::x = 0;
 int character::y = 420;
 
-int character::progress = 2;                     // 진행상황
+int character::progress = 0;                     // 진행상황
 int character::gameOverCheck = 0;
 bool character::future = 0;
 bool character::isJumping = 0;
@@ -127,12 +127,6 @@ void character::characterMove(int (&stage)[25][40], std::vector<char>& buffer)
 				y = preY;
 			}
 		}
-		
-		/*limitJump += 20;
-		if (limitJump >= 60) {
-			limitJump = 0;
-			isJumping = 1;
-		}*/
 	}
 
 	if (GetAsyncKeyState(VK_UP) & 0x8000) {
@@ -241,7 +235,6 @@ int character::collision(int (&stage)[25][40], int newX, int newY)
 			}
 			else if (stage[posY][posX] == 7)
 			{
-				takeDamage();
 				return 7;			// 피해 입음
 			}
 			else if (stage[posY][posX] == 8)

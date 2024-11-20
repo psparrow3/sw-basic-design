@@ -464,7 +464,6 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 			a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 			a.drawBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
 
-			Boss1::at.clear();
 			memcpy(stage, character::clearStage, sizeof(character::clearStage));
 			character::characterHeart = 3;
 
@@ -569,11 +568,23 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 
 		if (ac.facingRight)
 		{
-			ac.characterRightDraw(ac.x, ac.y, buffer);
+			if (ac.isJumping) {
+				ac.characterRightJumpDraw(ac.x, ac.y, buffer);
+			}
+			else {
+				ac.isJumping = 0;
+				ac.characterRightDraw(ac.x, ac.y, buffer);
+			}
 		}
 		else
 		{
-			ac.characterLeftDraw(ac.x, ac.y, buffer);
+			if (ac.isJumping) {
+				ac.characterLeftJumpDraw(ac.x, ac.y, buffer);
+			}
+			else {
+				ac.isJumping = 0;
+				ac.characterLeftDraw(ac.x, ac.y, buffer);
+			}
 		}
 
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);

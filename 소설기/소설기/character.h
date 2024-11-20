@@ -41,7 +41,8 @@ public:
 	int collision(int (&stage)[25][40],int newX,int newY);
 	void gameOver(int coll,std::vector<char>& buffer);
 	static int clearStage[25][40];
-		
+	static void takeDamage();
+
 private:
 	int sTime;
 
@@ -55,6 +56,5 @@ private:
 
 	void attack(int(&stage)[25][40]);
 	void switchMap();
-	void takeDamage();
 	void getItem();
 };
