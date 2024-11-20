@@ -5,22 +5,30 @@ moveableBlock::moveableBlock()
 
 }
 
-void moveableBlock::blockMove(int stage[25][40],int characterX)
+
+
+void moveableBlock::blockMove(int stage[25][40], int characterX,int characterY)
+
 {
 	int coll = collision(stage, m_x, m_y);
 	
-	if (m_x + 20 == characterX) {
+
+	if (m_x + 20 == characterX && m_y==characterY) {
 		int preX = m_x;
 		m_x -= 20;
 		int coll = collision(stage, m_x, m_y);
+
 		if (coll == 3 || coll == 2) {
 			m_x = preX;
 		}
 	}
-	if (m_x - 20 == characterX) {
+
+	
+	if (m_x - 20 == characterX && m_y == characterY) {
 		int preX = m_x;
 		m_x += 20;
 		int coll = collision(stage, m_x + 20, m_y);
+
 		if (coll == 3 || coll == 2) {
 			m_x = preX;
 		}
@@ -58,7 +66,7 @@ void moveableBlock::gravity(int stage[25][40],int newX,int newY)
 	}
 }
 
-void moveableBlock::blockLocation(int stage[25][40], int x, int y)
+void moveableBlock::blockLocation(int(&stage)[25][40], int x, int y)
 {
 	for (int i = 0; i < 2; i++) {
 		for (int j = 0; j < 2; j++) {
@@ -69,7 +77,7 @@ void moveableBlock::blockLocation(int stage[25][40], int x, int y)
 	}
 }
 
-void moveableBlock::blockLocationErase(int stage[25][40], int x, int y)
+void moveableBlock::blockLocationErase(int (&stage)[25][40], int x, int y)
 {
 	for (int i = 0; i < 40; i++) {
 		for (int j = 0; j < 25; j++) {

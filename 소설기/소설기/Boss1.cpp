@@ -22,6 +22,7 @@ void Boss1::Boss1reset()
 
 void Boss1::Boss1Attack()
 {
+
 	float direction;
 	int x_gap = (m_x * 20) + 40 - (character::x + 30);
 	int y_gap = m_y + 80 - (character::y + 30);
@@ -46,7 +47,10 @@ void Boss1::Boss1AttackMove(std::vector<char>& buffer, int (&stage)[25][40])
 
 	for (int i = 0; i < at.size(); i++)
 	{
+<<<<<<< HEAD
 		col = 0;
+=======
+>>>>>>> c275eea78e3ca7c13260ac9fdccc6a922434b219
 
 		if ((at[i].y + 20 > 470) || (at[i].x <= 0) || (at[i].x + 20 > 1600) || at[i].y <= 0)
 		{
