@@ -158,21 +158,18 @@ drawStage1::drawStage1()
 
 void drawStage1::stage1Draw(std::vector<char>& buffer)
 {
+	draw a;
 
-    draw a;
-    
-    drawCharacter ac;
+	drawCharacter ac;
 
-	drawMoveableBlock mb1,mb2;
-	mb1.x = 540, mb1.y = 80;
-	mb2.x = 700, mb2.y = 80;
+	drawMoveableBlock mb1, mb2;
+	mb1.m_x = 540, mb1.m_y = 80;
+	mb2.m_x = 700, mb2.m_y = 80;
 	int stage[25][40];
 	int seedGet = 0;
 	int keyGet = 0;
 	writeText wt;
 	int textX = 1650;
-
-
 
 	while (1) {
 
@@ -180,26 +177,26 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 		{
 			if (ac.nextStage) {
 				a.drawBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
-				a.drawBitmap("enter_door.bmp", buffer,1485, 25, SCREEN_WIDTH);
+				a.drawBitmap("enter_door.bmp", buffer, 1485, 25, SCREEN_WIDTH);
 				a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 				ac.nextStage = 0;
 				Sleep(1000);
 				a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 			}
 
-			character::characterHeart = 3;			
+			character::characterHeart = 3;
 
 			a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 			a.drawBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
-			
+
 			ac.x = 0;
 			ac.y = 410;
-		
+
 			ac.gameOverCheck = 0;
 			break;
 		}
 
-		
+
 		int preX = ac.x;
 		int preY = ac.y;
 
@@ -214,16 +211,16 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			ac.characterErase(ac.x, ac.y, buffer);
 		}
 
-		
-		int charactercoll = ac.collision(stage, ac.x, ac.y);
-		
-		mb1.moveableBlockErase(mb1.x, mb1.y, buffer);
-		mb2.moveableBlockErase(mb2.x, mb2.y, buffer);
-		mb1.blockLocationErase(stage, mb1.x, mb1.y);
-		mb2.blockLocationErase(stage, mb2.x, mb2.y);
 
-		int block1coll = mb1.collision(stage, mb1.x, mb1.y);
-		int block2coll = mb2.collision(stage, mb2.x, mb2.y);
+		int charactercoll = ac.collision(stage, ac.x, ac.y);
+
+		mb1.moveableBlockErase(mb1.m_x, mb1.m_y, buffer);
+		mb2.moveableBlockErase(mb2.m_x, mb2.m_y, buffer);
+		mb1.blockLocationErase(stage, mb1.m_x, mb1.m_y);
+		mb2.blockLocationErase(stage, mb2.m_x, mb2.m_y);
+
+		int block1coll = mb1.collision(stage, mb1.m_x, mb1.m_y);
+		int block2coll = mb2.collision(stage, mb2.m_x, mb2.m_y);
 
 
 		if (block1coll != 2 || block1coll != 3)
@@ -235,19 +232,19 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			mb2.gravity(stage, mb2.m_x, mb2.m_y);
 		}
 
-		mb1.blockMove(stage, ac.x,ac.y);
-		mb2.blockMove(stage, ac.x,ac.y);
+		mb1.blockMove(stage, ac.x, ac.y);
+		mb2.blockMove(stage, ac.x, ac.y);
 
 		mb1.moveableBlockDraw(mb1.m_x, mb1.m_y, buffer);
 		mb2.moveableBlockDraw(mb2.m_x, mb2.m_y, buffer);
 		mb1.blockLocation(stage, mb1.m_x, mb1.m_y);
 		mb2.blockLocation(stage, mb2.m_x, mb2.m_y);
-		
-		if (charactercoll != 2 || charactercoll != 10 || charactercoll != 11 || charactercoll != 3 || charactercoll!=14) {
-			
+
+		if (charactercoll != 2 || charactercoll != 10 || charactercoll != 11 || charactercoll != 3 || charactercoll != 14) {
+
 			ac.gravity(stage, ac.x, ac.y);
 		}
-	
+
 		ac.characterMove(stage, buffer);
 
 		if (ac.getSeed && seedGet == 0) {
@@ -268,12 +265,13 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 
 		}
 		if (ac.getKey) {
-			wt.drawText(L"열쇠", textX, 700, 20, RGB(128, 128, 128), L"굴림체");
+			//wt.drawText(L"열쇠", textX, 700, 20, RGB(128, 128, 128), L"굴림체");
+		}
 
-		}
 		if (ac.getSeed) {
-			wt.drawText(L"씨앗", textX, 700, 20, RGB(128, 128, 128), L"굴림체");
+			//wt.drawText(L"씨앗", textX, 700, 20, RGB(128, 128, 128), L"굴림체");
 		}
+
 		if (ac.collision(stage, ac.x, ac.y + 20) == 11)
 		{
 
@@ -281,7 +279,8 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 				ac.progress++;
 				ac.nextStage = 1;
 			}
-			wt.drawText(L"문이 잠겨있다", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
+
+			//wt.drawText(L"문이 잠겨있다", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
 		}
 		if (ac.future)
 		{
@@ -300,29 +299,27 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 
 		ac.characterDraw(ac.x, ac.y, buffer);
 
-		
-
-		if (ac.collision(stage, ac.x,ac.y+20)==14) {		// 스위치
+		if (ac.collision(stage, ac.x, ac.y + 20) == 14) {		// 스위치
 
 			if (ac.x / 40 == 36) {				// 기둥 스위치
 				stage1_future[6][18] = 0;			// 스위치 그림 제거
 				stage1_future[8][12] = 0;			// 기둥 그림 제거
 				// 스위치 위치 제거
-				stage1_Future[13][37] = 0;		
+				stage1_Future[13][37] = 0;
 				stage1_Future[13][36] = 0;
 				// 기둥 위치 제거
-				for (int i = 23; i >= 16; i--) {		
+				for (int i = 23; i >= 16; i--) {
 					stage1_Future[i][25] = 0;
 					stage1_Future[i][24] = 0;
-				}			
+				}
 				stage1_Future[16][23] = 0;
 				stage1_Future[23][23] = 0;
-			}	
+			}
 
 			if (ac.x / 40 == 38) {			//	레이저 스위치
 				stage1_past[10][19] = 0;		// 스위치 그림 제거
 				// 스위치 위치 제거
-				stage1_Past[21][39] = 0;		
+				stage1_Past[21][39] = 0;
 				stage1_Past[21][38] = 0;
 				// 레이저 그림 제거
 				stage1_past[1][18] = 0;
@@ -345,15 +342,15 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			stage1_Future[6][34] = 2;
 			stage1_Future[5][34] = 2;
 
-			wt.drawText(L"씨앗이 심어졌다!", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
+			//wt.drawText(L"씨앗이 심어졌다!", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
 			Sleep(1000);
 			ac.seedPlant = 0;
 		}
-		if (ac.collision(stage, ac.x, ac.y + 20) == 9 && ac.getSeed==1) 
+		if (ac.collision(stage, ac.x, ac.y + 20) == 9 && ac.getSeed == 1)
 		{
-			wt.drawText(L"씨앗을 심을 수 있을 것 같다!", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
+			//wt.drawText(L"씨앗을 심을 수 있을 것 같다!", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
 		}
-		
+
 		if (ac.getSeed && seedGet == 0) {
 			seedGet = 1;
 			stage1_Past[6][34] = 0;
@@ -370,9 +367,8 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			a.drawBitmap("empty_block.bmp", buffer, 2 * 0 * BLOCK_SIZE, 2 * BLOCK_SIZE, SCREEN_WIDTH);
 		}
 
-		
-		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);		
-		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
+		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+		//wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
 
 	}
 }
@@ -481,19 +477,6 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 			a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 			a.drawBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  	  for (int i = 0; i < Boss1::at.size(); i++)
-      {
-  	  	stage[Boss1::at[i].y / 20][Boss1::at[i].x / 20] = 0;
-     	}
-      
-			Boss1::at.clear();
->>>>>>> c275eea78e3ca7c13260ac9fdccc6a922434b219
-=======
-			Boss1::at.clear();
->>>>>>> parent of c845596 (no message)
 			memcpy(stage, character::clearStage, sizeof(character::clearStage));
 			character::characterHeart = 3;
 
@@ -598,11 +581,23 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 
 		if (ac.facingRight)
 		{
-			ac.characterRightDraw(ac.x, ac.y, buffer);
+			if (ac.isJumping) {
+				ac.characterRightJumpDraw(ac.x, ac.y, buffer);
+			}
+			else {
+				ac.isJumping = 0;
+				ac.characterRightDraw(ac.x, ac.y, buffer);
+			}
 		}
 		else
 		{
-			ac.characterLeftDraw(ac.x, ac.y, buffer);
+			if (ac.isJumping) {
+				ac.characterLeftJumpDraw(ac.x, ac.y, buffer);
+			}
+			else {
+				ac.isJumping = 0;
+				ac.characterLeftDraw(ac.x, ac.y, buffer);
+			}
 		}
 
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
