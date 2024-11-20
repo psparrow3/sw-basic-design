@@ -2,11 +2,11 @@
 #include "writeText.h"
 #include "draw.h"
 
-
 drawStage_prologue::drawStage_prologue()
 {
 
 }
+
 void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
     drawCharacter ac;
     draw a;
@@ -35,8 +35,7 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
         {
             ac.characterErase(ac.x, ac.y, buffer);
         }
-        
-       
+               
         int coll = ac.collision(stage_prologue, ac.x, ac.y);
 
         a.drawBitmap("tutorial_building.bmp", buffer, 1226, 120, SCREEN_WIDTH);
@@ -47,7 +46,6 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
         a.drawBitmap("right_button.bmp", buffer, 1050, 60, SCREEN_WIDTH);
         a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
 
-
         if (coll != 2 || coll != 10 || coll != 11 || coll != 12)
         {
             ac.gravity(stage_prologue, ac.x, ac.y);
@@ -57,16 +55,11 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
 
         ac.characterDraw(ac.x, ac.y, buffer);
 
-      
-
-
         if (ac.collision(stage_prologue, ac.x, ac.y+20) == 12 && checkHelpText == 0)
         {
 
             checkHelpText = 1;
         }
-     
-
 
         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -76,13 +69,11 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
         wt.drawText(L"점프", 460, 200, 20, RGB(128, 128, 128), L"굴림체");
         wt.drawText(L"왼쪽", 917, 200, 20, RGB(128, 128, 128), L"굴림체");
         wt.drawText(L"오른쪽", 1057, 200, 20, RGB(128, 128, 128), L"굴림체");
+
         if (ac.collision(stage_prologue, ac.x, ac.y + 20) == 10)
         {
-       
-            
-            wt.drawText(L"'위'키를 눌러서 문으로", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+            wt.drawText(L"'↑'키를 눌러서 문으로", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
             wt.drawText(L"들어가자", 1700, 720, 20, RGB(128, 128, 128), L"굴림체");
-        }
- 
+        } 
     }
 }

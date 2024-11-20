@@ -25,7 +25,6 @@ void gameStart::startGame() {
 	drawStage1 ds1;
 	/*drawStage2 ds2;*/
 	/*drawstage3 ds3;*/
-	ac.progress += 1;
 
 	startScreen a;
 

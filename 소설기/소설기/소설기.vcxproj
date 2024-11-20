@@ -159,6 +159,7 @@
     <Image Include="broken_door.bmp" />
     <Image Include="button1.bmp" />
     <Image Include="button2.bmp" />
+    <Image Include="character_left_attack.bmp" />
     <Image Include="character_left_jump.bmp" />
     <Image Include="character_left_original.bmp" />
     <Image Include="character_right_attack.bmp" />

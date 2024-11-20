@@ -34,6 +34,10 @@ public:
 	static bool pressingButton;
 	static bool facingRight;
 	static bool land;
+	static int leftTime;
+	static int rightTime;
+	static bool isLeverPull;
+
 	character();
 
 	void characterMove(int(&stage)[25][40], std::vector<char>& buffer);
