@@ -56,14 +56,14 @@ int drawStage1::stage1_Future[25][40] =
    {0,0,2,2,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,14,14,0,0},
    {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2},
    {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2},
-   {0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
-   {0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
-   {0,0,0,0,2,2,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0},
-   {0,0,0,0,2,2,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
-   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
+   {0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
+   {0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
+   {0,0,0,0,2,2,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,2,2,2,2,2,2,2,2,0,0,0,0,0,0},
+   {0,0,0,0,2,2,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,2,2,2,2,2,2,2,2,0,0,0,0,0,0},
+   {0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
+   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
    {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 };
 int drawStage1::stage1_Past[25][40] =
@@ -84,14 +84,14 @@ int drawStage1::stage1_Past[25][40] =
    {0,0,0,0,0,0,0,0,2,2,2,2,0,0,2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {2,2,2,2,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2},
    {2,2,2,2,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2},
-   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
-   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
-   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0},
-   {0,0,2,2,0,0,0,0,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-   {0,0,2,2,0,0,0,0,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,14,14},
-   {0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
-   {0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
+   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
+   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
+   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,2,2,2,2,2,2,2,2,0,0,0,0,0,0},
+   {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,2,2,2,2,2,2,2,2,0,0,0,0,0,0},
+   {0,0,2,2,0,0,0,0,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,2,2,0,0,0,0,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,0,0,14,14},
+   {0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
+   {0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
    {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 };
 int drawStage1::stage1_Future_Boss[25][40] =
@@ -158,17 +158,21 @@ drawStage1::drawStage1()
 
 void drawStage1::stage1Draw(std::vector<char>& buffer)
 {
-	draw a;
-	drawCharacter ac;
-	drawMoveableBlock mb1(16, 4), mb2(20, 4);
-	writeText wt;
-	
-	mb1.m_x = 540, mb1.m_y = 80;
-	mb2.m_x = 700, mb2.m_y = 80;
+
+    draw a;
+    
+    drawCharacter ac;
+
+	drawMoveableBlock mb1,mb2;
+	mb1.x = 540, mb1.y = 80;
+	mb2.x = 700, mb2.y = 80;
 	int stage[25][40];
 	int seedGet = 0;
 	int keyGet = 0;
-	int textX = 1610;
+	writeText wt;
+	int textX = 1650;
+
+
 
 	while (1) {
 
@@ -180,34 +184,47 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 				a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 				ac.nextStage = 0;
 				Sleep(1000);
+				a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 			}
 
 			character::characterHeart = 3;			
+
 			a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 			a.drawBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
 			
 			ac.x = 0;
-			ac.y = 420;
+			ac.y = 410;
 		
 			ac.gameOverCheck = 0;
 			break;
 		}
-		wt.drawText(L"∞°¡ˆ∞Ì ¿÷¥¬ æ∆¿Ã≈€ : ∏µ", 1610, 600, 20, RGB(128, 128, 128), L"±º∏≤√º");
+
 		
 		int preX = ac.x;
 		int preY = ac.y;
 
-		ac.characterErase(preX, preY, buffer);
+
+		if (ac.attacking)
+		{
+			ac.attacking = 0;
+			ac.characterAttackErase(ac.x, ac.y, buffer);
+		}
+		else
+		{
+			ac.characterErase(ac.x, ac.y, buffer);
+		}
+
 		
 		int charactercoll = ac.collision(stage, ac.x, ac.y);
 		
-		mb1.moveableBlockErase(mb1.m_x, mb1.m_y, buffer);
-		mb2.moveableBlockErase(mb2.m_x, mb2.m_y, buffer);
-		mb1.blockLocationErase(stage, mb1.m_x, mb1.m_y);
-		mb2.blockLocationErase(stage, mb2.m_x, mb2.m_y);
+		mb1.moveableBlockErase(mb1.x, mb1.y, buffer);
+		mb2.moveableBlockErase(mb2.x, mb2.y, buffer);
+		mb1.blockLocationErase(stage, mb1.x, mb1.y);
+		mb2.blockLocationErase(stage, mb2.x, mb2.y);
 
-		int block1coll = mb1.collision(stage, mb1.m_x, mb1.m_y);
-		int block2coll = mb2.collision(stage, mb2.m_x, mb2.m_y);
+		int block1coll = mb1.collision(stage, mb1.x, mb1.y);
+		int block2coll = mb2.collision(stage, mb2.x, mb2.y);
+
 
 		if (block1coll != 2 || block1coll != 3)
 		{
@@ -218,8 +235,8 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			mb2.gravity(stage, mb2.m_x, mb2.m_y);
 		}
 
-		mb1.blockMove(stage, ac.x);
-		mb2.blockMove(stage, ac.x);
+		mb1.blockMove(stage, ac.x,ac.y);
+		mb2.blockMove(stage, ac.x,ac.y);
 
 		mb1.moveableBlockDraw(mb1.m_x, mb1.m_y, buffer);
 		mb2.moveableBlockDraw(mb2.m_x, mb2.m_y, buffer);
@@ -227,6 +244,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 		mb2.blockLocation(stage, mb2.m_x, mb2.m_y);
 		
 		if (charactercoll != 2 || charactercoll != 10 || charactercoll != 11 || charactercoll != 3 || charactercoll!=14) {
+			
 			ac.gravity(stage, ac.x, ac.y);
 		}
 	
@@ -250,23 +268,29 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 
 		}
 		if (ac.getKey) {
-			wt.drawText(L"ø≠ºË", textX, 700, 20, RGB(128, 128, 128), L"±º∏≤√º");
+			wt.drawText(L"Ïó¥Ïá†", textX, 700, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
 
 		}
 		if (ac.getSeed) {
-			wt.drawText(L"æææ—", textX, 700, 20, RGB(128, 128, 128), L"±º∏≤√º");
+			wt.drawText(L"Ïî®Ïïó", textX, 700, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
 		}
 		if (ac.collision(stage, ac.x, ac.y + 20) == 11)
 		{
-			wt.drawText(L"πÆ¿Ã ¿·∞‹¿÷¥Ÿ", 1610, 800, 20, RGB(128, 128, 128), L"±º∏≤√º");
-		}
 
+			if (ac.getKey && GetAsyncKeyState(VK_UP) & 0x8000) {
+				ac.progress++;
+				ac.nextStage = 1;
+			}
+			wt.drawText(L"Î¨∏Ïù¥ Ïû†Í≤®ÏûàÎã§", 1650, 800, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
+		}
 		if (ac.future)
 		{
 			memcpy(stage, stage1_Future, sizeof(stage1_Future));
 			a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+
 			drawStage1Future(buffer);
 		}
+
 		else
 		{
 			memcpy(stage, stage1_Past, sizeof(stage1_Past));
@@ -274,36 +298,19 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			drawStage1Past(buffer);
 		}
 
-		if (ac.facingRight)
-		{
-			if (ac.isJumping) {
-				ac.characterRightJumpDraw(ac.x, ac.y, buffer);
-			}
-			else {
-				ac.isJumping = 0;
-				ac.characterRightDraw(ac.x, ac.y, buffer);
-			}
-		}
-		else
-		{
-			if (ac.isJumping) {
-				ac.characterLeftJumpDraw(ac.x, ac.y, buffer);
-			}
-			else {
-				ac.isJumping = 0;
-				ac.characterLeftDraw(ac.x, ac.y, buffer);
-			}
-		}
+		ac.characterDraw(ac.x, ac.y, buffer);
 
-		if (ac.collision(stage, ac.x, ac.y + 20) == 14) {		// Ω∫¿ßƒ°
-			
-			if (ac.x / 40 == 36) {				// ±‚µ’ Ω∫¿ßƒ°
-				stage1_future[6][18] = 0;			// Ω∫¿ßƒ° ±◊∏≤ ¡¶∞≈
-				stage1_future[8][12] = 0;			// ±‚µ’ ±◊∏≤ ¡¶∞≈
-				// Ω∫¿ßƒ° ¿ßƒ° ¡¶∞≈
+		
+
+		if (ac.collision(stage, ac.x,ac.y+20)==14) {		// Ïä§ÏúÑÏπò
+
+			if (ac.x / 40 == 36) {				// Í∏∞Îë• Ïä§ÏúÑÏπò
+				stage1_future[6][18] = 0;			// Ïä§ÏúÑÏπò Í∑∏Î¶º Ï†úÍ±∞
+				stage1_future[8][12] = 0;			// Í∏∞Îë• Í∑∏Î¶º Ï†úÍ±∞
+				// Ïä§ÏúÑÏπò ÏúÑÏπò Ï†úÍ±∞
 				stage1_Future[13][37] = 0;		
 				stage1_Future[13][36] = 0;
-				// ±‚µ’ ¿ßƒ° ¡¶∞≈
+				// Í∏∞Îë• ÏúÑÏπò Ï†úÍ±∞
 				for (int i = 23; i >= 16; i--) {		
 					stage1_Future[i][25] = 0;
 					stage1_Future[i][24] = 0;
@@ -312,15 +319,15 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 				stage1_Future[23][23] = 0;
 			}	
 
-			if (ac.x / 40 == 38) {			//	∑π¿Ã¿˙ Ω∫¿ßƒ°
-				stage1_past[10][19] = 0;		// Ω∫¿ßƒ° ±◊∏≤ ¡¶∞≈
-				// Ω∫¿ßƒ° ¿ßƒ° ¡¶∞≈
+			if (ac.x / 40 == 38) {			//	Î†àÏù¥Ï†Ä Ïä§ÏúÑÏπò
+				stage1_past[10][19] = 0;		// Ïä§ÏúÑÏπò Í∑∏Î¶º Ï†úÍ±∞
+				// Ïä§ÏúÑÏπò ÏúÑÏπò Ï†úÍ±∞
 				stage1_Past[21][39] = 0;		
 				stage1_Past[21][38] = 0;
-				// ∑π¿Ã¿˙ ±◊∏≤ ¡¶∞≈
+				// Î†àÏù¥Ï†Ä Í∑∏Î¶º Ï†úÍ±∞
 				stage1_past[1][18] = 0;
 				stage1_future[1][18] = 0;
-				// ∑π¿Ã¿˙ ¿ßƒ° ¡¶∞≈
+				// Î†àÏù¥Ï†Ä ÏúÑÏπò Ï†úÍ±∞
 				for (int i = 3; i >= 2; i--) {
 					stage1_Past[i][37] = 0;
 					stage1_Past[i][36] = 0;
@@ -331,16 +338,20 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 		}
 		if (ac.seedPlant)
 		{
-			stage1_future[4][17] = 10;
+			stage1_past[4][17] = 10;
+			stage1_future[3][17] = 11;
+			stage1_future[3][17] = 11;
 			stage1_Future[7][34] = 2;
-			stage1_Future[7][35] = 2;
-			wt.drawText(L"æææ—¿Ã Ω…æÓ¡≥¥Ÿ!", 1650, 800, 20, RGB(128, 128, 128), L"±º∏≤√º");
+			stage1_Future[6][34] = 2;
+			stage1_Future[5][34] = 2;
+
+			wt.drawText(L"Ïî®ÏïóÏù¥ Ïã¨Ïñ¥Ï°åÎã§!", 1650, 800, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
 			Sleep(1000);
 			ac.seedPlant = 0;
 		}
 		if (ac.collision(stage, ac.x, ac.y + 20) == 9 && ac.getSeed==1) 
 		{
-			wt.drawText(L"æææ—¿ª Ω…¿ª ºˆ ¿÷¿ª ∞Õ ∞∞¥Ÿ!", 1650, 800, 20, RGB(128, 128, 128), L"±º∏≤√º");
+			wt.drawText(L"Ïî®ÏïóÏùÑ Ïã¨ÏùÑ Ïàò ÏûàÏùÑ Í≤É Í∞ôÎã§!", 1650, 800, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
 		}
 		
 		if (ac.getSeed && seedGet == 0) {
@@ -359,8 +370,10 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			a.drawBitmap("empty_block.bmp", buffer, 2 * 0 * BLOCK_SIZE, 2 * BLOCK_SIZE, SCREEN_WIDTH);
 		}
 
-		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		
+		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);		
+		wt.drawText(L"Í∞ÄÏßÄÍ≥† ÏûàÎäî ÏïÑÏù¥ÌÖú:", 1650, 600, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
+
 	}
 }
 void drawStage1::drawStage1Future(std::vector<char>& buffer) {
@@ -391,13 +404,15 @@ void drawStage1::drawStage1Future(std::vector<char>& buffer) {
 			case 10:
 				a.drawBitmap("seed_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE - 15, SCREEN_WIDTH);
 				break;
+			case 11:
+				a.drawBitmap("stage1_tree.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE - 15, SCREEN_WIDTH);
+				break;
 			}
 		}
 	}   
 	a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
 	a.drawBitmap("broken_door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
 }
-
 
 void drawStage1::drawStage1Past(std::vector<char>& buffer) {
 	draw a;
@@ -434,7 +449,9 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
 			case 10:
 				a.drawBitmap("seed_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE - 15, SCREEN_WIDTH);
 				break;
+			
 			}
+			
 		}
 	}
 	a.drawBitmap("door.bmp", buffer, 2 * 19 * BLOCK_SIZE, BLOCK_SIZE - 20, SCREEN_WIDTH);
@@ -464,6 +481,19 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 			a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 			a.drawBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  	  for (int i = 0; i < Boss1::at.size(); i++)
+      {
+  	  	stage[Boss1::at[i].y / 20][Boss1::at[i].x / 20] = 0;
+     	}
+      
+			Boss1::at.clear();
+>>>>>>> c275eea78e3ca7c13260ac9fdccc6a922434b219
+=======
+			Boss1::at.clear();
+>>>>>>> parent of c845596 (no message)
 			memcpy(stage, character::clearStage, sizeof(character::clearStage));
 			character::characterHeart = 3;
 
@@ -524,7 +554,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		else
 		{
 			Boss1::m_x++;
-
+      
 			if (Boss1::m_x == 72)
 			{
 				Boss1::flag = false;
@@ -547,7 +577,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		stage[Boss1::m_y / 20 + 1][Boss1::m_x + 3] = 98;
 		stage[Boss1::m_y / 20 + 2][Boss1::m_x + 3] = 98;
 		stage[Boss1::m_y / 20 + 3][Boss1::m_x + 3] = 98;
-
+    
 		a.drawBitmap("Stage1_Boss.bmp", buffer, Boss1::m_x * 20, Boss1::m_y, SCREEN_WIDTH);
 
 		b.Boss1AttackMove(buffer, stage);
@@ -568,23 +598,11 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 
 		if (ac.facingRight)
 		{
-			if (ac.isJumping) {
-				ac.characterRightJumpDraw(ac.x, ac.y, buffer);
-			}
-			else {
-				ac.isJumping = 0;
-				ac.characterRightDraw(ac.x, ac.y, buffer);
-			}
+			ac.characterRightDraw(ac.x, ac.y, buffer);
 		}
 		else
 		{
-			if (ac.isJumping) {
-				ac.characterLeftJumpDraw(ac.x, ac.y, buffer);
-			}
-			else {
-				ac.isJumping = 0;
-				ac.characterLeftDraw(ac.x, ac.y, buffer);
-			}
+			ac.characterLeftDraw(ac.x, ac.y, buffer);
 		}
 
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -605,5 +623,4 @@ void drawStage1::stage1PastBossDraw(std::vector<char>& buffer)
 
 	a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 	a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
-
 }

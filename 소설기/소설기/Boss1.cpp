@@ -11,17 +11,9 @@ Boss1::Boss1()
 
 }
 
-void Boss1::Boss1reset()
-{
-	m_x = 20;
-	m_y = 40;
-	flag = false;
-	time = 0;
-	at.clear();
-}
-
 void Boss1::Boss1Attack()
 {
+
 	float direction;
 	int x_gap = (m_x * 20) + 40 - (character::x + 30);
 	int y_gap = m_y + 80 - (character::y + 30);
@@ -39,31 +31,22 @@ void Boss1::Boss1Attack()
 void Boss1::Boss1AttackMove(std::vector<char>& buffer, int (&stage)[25][40])
 {
 	draw a;
-	std::set<int> er;
+	std::vector<int> er;
 	er.clear();
-	int cx = character::x, cy = character::y;
-	int col;
 
 	for (int i = 0; i < at.size(); i++)
 	{
+<<<<<<< HEAD
+<<<<<<< HEAD
 		col = 0;
+=======
+>>>>>>> c275eea78e3ca7c13260ac9fdccc6a922434b219
 
+=======
+>>>>>>> parent of c845596 (no message)
 		if ((at[i].y + 20 > 470) || (at[i].x <= 0) || (at[i].x + 20 > 1600) || at[i].y <= 0)
 		{
-			er.insert(i);
-		}
-
-		for (int iy = 0; iy < 20; iy++)
-		{
-			for (int ix = 0; ix < 20; ix++)
-			{
-				if (col != 1 && at[i].x + ix > cx && at[i].x + ix < cx + 40 && at[i].y + iy > cy && at[i].y + iy < cy + 60)
-				{
-					er.insert(i);
-					character::takeDamage();
-					col = 1;
-				}
-			}
+			er.push_back(i);
 		}
 
 		a.drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
