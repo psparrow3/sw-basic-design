@@ -183,7 +183,6 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 	memcpy(resetPastStage, stage1_Past, sizeof(stage1_Past));
 	memcpy(resetpastStage, stage1_past, sizeof(stage1_past));
 	memcpy(resetFutureStage, stage1_Future, sizeof(stage1_Future));
-	
 	memcpy(resetfutureStage, stage1_future, sizeof(stage1_future));
 
 
@@ -330,16 +329,11 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			mb1.moveableBlockDraw(mb1.m_x, mb1.m_y, buffer);
 		
 		}
-
-
-			mb1.moveableBlockDraw(mb1.m_x, mb1.m_y, buffer);
-		}
 		else
 		{
 			memcpy(stage, stage1_Past, sizeof(stage1_Past));
 
-			a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
-			
+			a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);	
 			drawStage1Past(buffer);
 			
 			mb1.moveableBlockDraw(mb1.m_x, mb1.m_y, buffer);

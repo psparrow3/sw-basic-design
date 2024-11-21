@@ -114,7 +114,7 @@ IDB_BITMAP36            BITMAP                  "enter_door.bmp"
 
 IDB_BITMAP37            BITMAP                  "seed_block.bmp"
 
-IDB_BITMAP38            BITMAP                  "C:\\Users\\MSI\\Desktop\\소설기 잃어버린 낙원\\소설기\\소설기\\character_right_attack.bmp"
+IDB_BITMAP38            BITMAP                  "character_right_attack.bmp"
 
 IDB_BITMAP39            BITMAP                  "stage1_tree.bmp"
 
@@ -127,7 +127,7 @@ IDB_BITMAP42            BITMAP                  "test_treetop.bmp"
 
 IDB_BITMAP43            BITMAP                  "character_left_attack.bmp"
 
-IDB_BITMAP44            BITMAP                  "C:\\Users\\MSI\\Desktop\\소설기 잃어버린 낙원\\소설기\\소설기\\stage1_boss_tree_upper.bmp"
+IDB_BITMAP44            BITMAP                  "stage1_boss_tree_upper.bmp"
 
 IDB_BITMAP45            BITMAP                  "stage1_boss_tree_lower.bmp"
 
