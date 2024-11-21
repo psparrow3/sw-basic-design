@@ -5,7 +5,7 @@
 #include "draw.h"
 #include "conio.h"
 
-//ƒ≥∏Ø≈Õ∏¶ ±◊∏Æ¥¬ «‘ºˆ
+//Ï∫êÎ¶≠ÌÑ∞Î•º Í∑∏Î¶¨Îäî Ìï®Ïàò
 drawCharacter::drawCharacter()
 {
 
@@ -43,8 +43,10 @@ void drawCharacter::characterRightAttackDraw(int x, int y, std::vector<char>& bu
 
 void drawCharacter::characterLeftAttackDraw(int x, int y, std::vector<char>&buffer)
 {
-	draw a;
-	a.drawBitmap("character_left_attack.bmp", buffer, x - 80, y, SCREEN_WIDTH);
+
+    draw a;
+    a.drawBitmap("character_left_attack.bmp", buffer, x, y, SCREEN_WIDTH);
+
 }
 void  drawCharacter::characterRightJumpAttackDraw(int x, int y, std::vector<char>& buffer)
 {
@@ -55,84 +57,121 @@ void  drawCharacter::characterRightJumpAttackDraw(int x, int y, std::vector<char
 
 void  drawCharacter::characterLeftJumpAttackDraw(int x, int y, std::vector<char>& buffer)
 {
-	draw a;
-	a.drawBitmap("character_left_jump.bmp", buffer, x, y, SCREEN_WIDTH);
-	a.drawBitmap("character_left_attack.bmp", buffer, x, y, SCREEN_WIDTH);
+
+    draw a;
+    a.drawBitmap("character_left_jump.bmp", buffer, x+80, y, SCREEN_WIDTH);
+    a.drawBitmap("character_left_attack.bmp", buffer, x, y, SCREEN_WIDTH);
+  
+
 }
 
 void drawCharacter::characterErase(int x, int y, std::vector<char>& buffer)
 {
 	draw a;
 
-	a.drawBitmap("empty_character.bmp", buffer, x, y, SCREEN_WIDTH);
 
-	switch (characterHeart)
-	{
-	case 0:
-		a.drawBitmap("empty_heart.bmp", buffer, 1630, 250, SCREEN_WIDTH);
-		a.drawBitmap("empty_heart.bmp", buffer, 1710, 250, SCREEN_WIDTH);
-		a.drawBitmap("empty_heart.bmp", buffer, 1790, 250, SCREEN_WIDTH);
-	case 1:
-		a.drawBitmap("full_heart.bmp", buffer, 1630, 250, SCREEN_WIDTH);
-		a.drawBitmap("empty_heart.bmp", buffer, 1710, 250, SCREEN_WIDTH);
-		a.drawBitmap("empty_heart.bmp", buffer, 1790, 250, SCREEN_WIDTH);
-		break;
-	case 2:
-		a.drawBitmap("full_heart.bmp", buffer, 1630, 250, SCREEN_WIDTH);
-		a.drawBitmap("full_heart.bmp", buffer, 1710, 250, SCREEN_WIDTH);
-		a.drawBitmap("empty_heart.bmp", buffer, 1790, 250, SCREEN_WIDTH);
-		break;
-	case 3:
-		a.drawBitmap("full_heart.bmp", buffer, 1630, 250, SCREEN_WIDTH);
-		a.drawBitmap("full_heart.bmp", buffer, 1710, 250, SCREEN_WIDTH);
-		a.drawBitmap("full_heart.bmp", buffer, 1790, 250, SCREEN_WIDTH);
-		break;
-	default:
-		break;
-	}
+    a.eraseBitmap("empty_character.bmp", buffer, x, y, SCREEN_WIDTH);
+
+    
 }
-
 void drawCharacter::characterAttackErase(int x, int y, std::vector<char>& buffer)
 {
-	draw a;
-	if (facingRight)
-	{
-		a.drawBitmap("empty_character_attack.bmp", buffer, x, y, SCREEN_WIDTH);
-	}
-	else
-	{
-		a.drawBitmap("empty_character_attack.bmp", buffer, x - 80, y, SCREEN_WIDTH);
-	}
+    draw a;
+    a.eraseBitmap("empty_character_attack.bmp", buffer, x, y, SCREEN_WIDTH);
+   
+}
+
+void drawCharacter::characterHeartDraw(std::vector<char>& buffer)
+{
+    draw a;
+    switch (character::characterHeart)
+    {
+    case 0:
+        a.drawBitmap("empty_heart.bmp", buffer, 1630, 210, SCREEN_WIDTH);
+        a.drawBitmap("empty_heart.bmp", buffer, 1710, 210, SCREEN_WIDTH);
+        a.drawBitmap("empty_heart.bmp", buffer, 1790, 210, SCREEN_WIDTH);
+    case 1:
+        a.drawBitmap("full_heart.bmp", buffer, 1630, 210, SCREEN_WIDTH);
+        a.drawBitmap("empty_heart.bmp", buffer, 1710, 210, SCREEN_WIDTH);
+        a.drawBitmap("empty_heart.bmp", buffer, 1790, 210, SCREEN_WIDTH);
+        break;
+    case 2:
+        a.drawBitmap("full_heart.bmp", buffer, 1630, 210, SCREEN_WIDTH);
+        a.drawBitmap("full_heart.bmp", buffer, 1710, 210, SCREEN_WIDTH);
+        a.drawBitmap("empty_heart.bmp", buffer, 1790, 210, SCREEN_WIDTH);
+        break;
+    case 3:
+        a.drawBitmap("full_heart.bmp", buffer, 1630, 210, SCREEN_WIDTH);
+        a.drawBitmap("full_heart.bmp", buffer, 1710, 210, SCREEN_WIDTH);
+        a.drawBitmap("full_heart.bmp", buffer, 1790, 210, SCREEN_WIDTH);
+        break;
+    default:
+        break;
+    }
+}
+
+void drawCharacter::characterInfo(std::vector<char>& buffer)
+{
+    draw a;
+    writeText wt;
+    if (future)
+    {
+        wt.drawText(L"ÌòÑÏû¨", 1670, 40, 100, RGB(128, 128, 128), L"Î≥ºÎìúÏ≤¥");
+    }
+    else
+    {
+        wt.drawText(L"Í≥ºÍ±∞", 1670, 40, 100, RGB(128, 128, 128), L"Î≥ºÎìúÏ≤¥");
+    }
+    a.drawBitmap("status_informaition.bmp", buffer, 1600, 0, SCREEN_WIDTH);
 }
 
 void drawCharacter::characterDraw(int x, int y, std::vector<char>& buffer) 
-{   
-	if (facingRight) {
-		if (attacking && isJumping) {
-			characterRightJumpAttackDraw(x, y, buffer); // ¡°«¡ ±◊∏Æ±‚
-		}
-		else if (attacking) {          
-			characterRightAttackDraw(x, y, buffer);
-	  	}
-		else if (isJumping) {
-			characterRightJumpDraw(x, y, buffer); // ¡°«¡ µø¿€ ±◊∏Æ±‚
-		}
-		else {
-			characterRightDraw(x, y, buffer); // ±‚∫ª ø¿∏•¬  ¿Ãµø µø¿€ ±◊∏Æ±‚
-		}
-	}
-	else { // facingLeft
-		if (attacking && isJumping) {
-			characterLeftJumpAttackDraw(x, y, buffer); // ¡°«¡ µø¿€ ±◊∏Æ±‚
-		}
-		else if (attacking) {  
-			characterLeftAttackDraw(x, y, buffer); // ∞¯∞› µø¿€ ±◊∏Æ±‚
-		}
-		else if (isJumping) {
-			characterLeftJumpDraw(x, y, buffer); // ¡°«¡ µø¿€ ±◊∏Æ±‚
-		}
-		else {
-			characterLeftDraw(x, y, buffer); // ±‚∫ª ø¿∏•¬  ¿Ãµø µø¿€ ±◊∏Æ±‚
-		}
-	}
+{
+    
+    if (facingRight) {
+        if (attacking && isJumping) {
+            
+            characterRightJumpAttackDraw(x, y, buffer); // Ï†êÌîÑ Í∑∏Î¶¨Í∏∞
+        }
+        else if (attacking) {          
+            
+           
+          
+            characterRightAttackDraw(x, y, buffer);
+                
+           
+        }
+        else if (isJumping) {
+            characterRightJumpDraw(x, y, buffer); // Ï†êÌîÑ ÎèôÏûë Í∑∏Î¶¨Í∏∞
+        }
+        else {
+            
+            characterRightDraw(x, y, buffer); // Í∏∞Î≥∏ Ïò§Î•∏Ï™Ω Ïù¥Îèô ÎèôÏûë Í∑∏Î¶¨Í∏∞
+        }
+
+    }
+    else { // facingLeft
+        if (attacking && isJumping) {
+          
+            characterLeftJumpAttackDraw(x-80, y, buffer); 
+        }
+        else if (attacking) {
+           
+           
+            characterLeftAttackDraw(x-80, y, buffer); 
+        }
+        else if (isJumping) {
+            // Ï†êÌîÑ
+
+            characterLeftJumpDraw(x, y, buffer); 
+        }
+        else {
+          
+            characterLeftDraw(x, y, buffer); 
+        }
+    }
+
+    characterHeartDraw(buffer);
+    characterInfo(buffer);
 }
+

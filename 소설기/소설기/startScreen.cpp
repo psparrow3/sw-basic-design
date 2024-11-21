@@ -1,21 +1,31 @@
 #include "startScreen.h"
 #include "Boss1.h"
 
-startScreen::startScreen() {
-	Boss1::at.clear();
-}
-void drawStartScreen(std::vector<char>& buffer) 
-{
-    Boss1::at.clear();
-}
 
-//void drawStartScreen(std::vector<char>& buffer)
-//{
-//    draw a;
-//    while (1) {
-//        if (_kbhit()) {
-//            break;
-//        }
-//        a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
-//    }
-//}
+void startScreen::drawStartScreen(std::vector<char>& buffer)
+{
+    draw a;
+   
+    while (1) {
+        
+        if (_kbhit()) {
+            
+            break;
+        }
+        
+
+        a.drawBitmap("start_screen.bmp", buffer, 0, 0, SCREEN_WIDTH);
+        
+        a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+    }
+
+    while (1) {
+        if (_kbhit()) {
+
+            break;
+        }
+        a.drawBitmap("chat_window_start.bmp", buffer, 0, 0, SCREEN_WIDTH);
+
+        a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+    }
+}

@@ -13,69 +13,75 @@ Boss1::Boss1()
 
 void Boss1::Boss1reset()
 {
-	m_x = 20;
-	m_y = 40;
-	flag = false;
-	time = 0;
-	at.clear();
+
+    m_x = 20;
+    m_y = 40;
+    flag = false;
+    time = 0;
+    at.clear();
+
 }
 
 void Boss1::Boss1Attack()
 {
-	float direction;
-	int x_gap = (m_x * 20) + 40 - (character::x + 30);
-	int y_gap = m_y + 80 - (character::y + 30);
 
-	attack b;
+    float direction;
+    int x_gap = (m_x * 20) + 40 - (character::x + 30);
+    int y_gap = m_y + 80 - (character::y + 30);
 
-	b.x = (m_x * 20) + 40;
-	b.y = m_y + 80;
-	b.x_gap = x_gap;
-	b.y_gap = y_gap;
 
-	at.push_back(b);
+    attack b;
+
+    b.x = (m_x * 20) + 40;
+    b.y = m_y + 80;
+    b.x_gap = x_gap;
+    b.y_gap = y_gap;
+
+    at.push_back(b);
 }
 
 void Boss1::Boss1AttackMove(std::vector<char>& buffer, int(&stage)[25][40])
 {
-	draw a;
-	std::set<int> er;
-	er.clear();
-	int cx = character::x, cy = character::y;
 
-	for (int i = 0; i < at.size(); i++)
-	{
-		if ((at[i].y + 20 > 470) || (at[i].x <= 0) || (at[i].x + 40 > 1600) || at[i].y <= 0)
-		{
-			er.insert(i);
-			continue;
-		}
+    draw a;
+    std::set<int> er;
+    er.clear();
+    int cx = character::x, cy = character::y;
 
-		if (at[i].x < cx + 80 && at[i].x + 40 > cx && at[i].y < cy + 60 && at[i].y + 20 > cy)
-		{
-			er.insert(i);       // √Êµπ«— ∞¯∞› ∞¥√º ¡¶∞≈
-			character::takeDamage(); // ƒ≥∏Ø≈Õ «««ÿ √≥∏Æ
-			continue;
-		}
+    for (int i = 0; i < at.size(); i++)
+    {
+        if ((at[i].y + 20 > 470) || (at[i].x <= 0) || (at[i].x + 40 > 1600) || at[i].y <= 0)
+        {
+            er.insert(i);
+            continue;
+        }
 
-		a.drawBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
+        if (at[i].x < cx + 80 && at[i].x + 40 > cx && at[i].y < cy + 60 && at[i].y + 20 > cy)
+        {
+            er.insert(i);       // Ï∂©ÎèåÌïú Í≥µÍ≤© Í∞ùÏ≤¥ Ï†úÍ±∞
+            character::takeDamage(); // Ï∫êÎ¶≠ÌÑ∞ ÌîºÌï¥ Ï≤òÎ¶¨
+            continue;
+        }
 
-		stage[at[i].y / 20][at[i].x / 40] = 0;
 
-		at[i].x -= at[i].x_gap / 100;
-		at[i].y -= at[i].y_gap / 100;
+        a.eraseBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
 
-		stage[at[i].y / 20][at[i].x / 40] = 7;
+        stage[at[i].y / 20][at[i].x / 40] = 0;
 
-		a.drawBitmap("boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
-	}
+        at[i].x -= at[i].x_gap / 100;
+        at[i].y -= at[i].y_gap / 100;
 
-	for (auto o : er)
-	{
-		a.drawBitmap("empty_boss_attack.bmp", buffer, at[o].x, at[o].y, SCREEN_WIDTH);
+        stage[at[i].y / 20][at[i].x / 40] = 7;
 
-		stage[at[o].y / 20][at[o].x / 40] = 0;
+        a.drawBitmap("boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
+    }
 
-		at.erase(at.begin() + o);
-	}
+    for (auto o : er)
+    {
+        a.eraseBitmap("empty_boss_attack.bmp", buffer, at[o].x, at[o].y, SCREEN_WIDTH);
+
+        stage[at[o].y / 20][at[o].x / 40] = 0;
+
+        at.erase(at.begin() + o);
+    }
 }

@@ -20,12 +20,14 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
         if (ac.nextStage)
         {
             Sleep(1000);
-            a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+            a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
             ac.x = 0;
             ac.y = 410;
             ac.nextStage = 0;
             break;
         }
+
+
         if (ac.attacking)
         {
             ac.attacking = 0;
@@ -35,9 +37,20 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
         {
             ac.characterErase(ac.x, ac.y, buffer);
         }
-               
+
+
         int coll = ac.collision(stage_prologue, ac.x, ac.y);
 
+        
+
+        if (coll != 2 || coll != 10 || coll != 11 || coll != 12)
+        {
+            ac.gravity(stage_prologue, ac.x, ac.y);
+        }
+
+  
+
+        a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
         a.drawBitmap("tutorial_building.bmp", buffer, 1226, 120, SCREEN_WIDTH);
         a.drawBitmap("A_button.bmp", buffer, 100, 60, SCREEN_WIDTH);
         a.drawBitmap("S_button.bmp", buffer, 200, 60, SCREEN_WIDTH);
@@ -46,11 +59,8 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
         a.drawBitmap("right_button.bmp", buffer, 1050, 60, SCREEN_WIDTH);
         a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
 
-        if (coll != 2 || coll != 10 || coll != 11 || coll != 12)
-        {
-            ac.gravity(stage_prologue, ac.x, ac.y);
-        }
 
+      
         ac.characterMove(stage_prologue, buffer);
 
         ac.characterDraw(ac.x, ac.y, buffer);
@@ -63,17 +73,17 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
 
         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-        wt.drawText(L"∞°¡ˆ∞Ì ¿÷¥¬ æ∆¿Ã≈€:", 1650, 600, 20, RGB(128, 128, 128), L"±º∏≤√º");
-        wt.drawText(L"∞¯∞›", 120, 200, 20, RGB(128, 128, 128), L"±º∏≤√º");
-        wt.drawText(L"∏  ¿¸»Ø", 210, 200, 20, RGB(128, 128, 128), L"±º∏≤√º");
-        wt.drawText(L"¡°«¡", 460, 200, 20, RGB(128, 128, 128), L"±º∏≤√º");
-        wt.drawText(L"øﬁ¬ ", 917, 200, 20, RGB(128, 128, 128), L"±º∏≤√º");
-        wt.drawText(L"ø¿∏•¬ ", 1057, 200, 20, RGB(128, 128, 128), L"±º∏≤√º");
+        wt.drawText(L"Í∞ÄÏßÄÍ≥† ÏûàÎäî ÏïÑÏù¥ÌÖú:", 1650, 600, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
+        wt.drawText(L"Í≥µÍ≤©", 120, 200, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
+        wt.drawText(L"Îßµ Ï†ÑÌôò", 210, 200, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
+        wt.drawText(L"Ï†êÌîÑ", 460, 200, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
+        wt.drawText(L"ÏôºÏ™Ω", 917, 200, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
+        wt.drawText(L"Ïò§Î•∏Ï™Ω", 1057, 200, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
 
         if (ac.collision(stage_prologue, ac.x, ac.y + 20) == 10)
         {
-            wt.drawText(L"'°Ë'≈∞∏¶ ¥≠∑Øº≠ πÆ¿∏∑Œ", 1650, 700, 20, RGB(128, 128, 128), L"±º∏≤√º");
-            wt.drawText(L"µÈæÓ∞°¿⁄", 1700, 720, 20, RGB(128, 128, 128), L"±º∏≤√º");
+            wt.drawText(L"'‚Üë'ÌÇ§Î•º ÎàåÎü¨ÏÑú Î¨∏ÏúºÎ°ú", 1650, 700, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
+            wt.drawText(L"Îì§Ïñ¥Í∞ÄÏûê", 1700, 720, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
         } 
     }
 }
