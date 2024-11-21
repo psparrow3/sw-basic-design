@@ -1,4 +1,4 @@
-#include "drawStage_prologue.h"
+﻿#include "drawStage_prologue.h"
 #include "writeText.h"
 #include "draw.h"
 

@@ -167,15 +167,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 {
 	draw a;
 	drawCharacter ac;
-	drawMoveableBlock mb1(720, 60);
-
-
-	draw a;
-
-	drawCharacter ac;
-
-	drawMoveableBlock mb1(720, 60);
-	
+	drawMoveableBlock mb1(720, 60);	
 
 	int stage[25][40];
 	int seedGet = 0;
@@ -485,8 +477,6 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 		ac.characterDraw(ac.x, ac.y, buffer);
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
-
-
 	}
 }
 
