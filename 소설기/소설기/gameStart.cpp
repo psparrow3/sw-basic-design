@@ -25,11 +25,11 @@ void gameStart::startGame() {
 	drawStage1 ds1;
 	/*drawStage2 ds2;*/
 	/*drawstage3 ds3;*/
-	ac.progress += 1;
+	/*ac.progress += 2;*/
 
-	startScreen a;
+	
 
-	/*ss.drawStartScreen;*/
+	ss.drawStartScreen(buffer);
 	while (1) {
 		switch (character::progress)
 		{

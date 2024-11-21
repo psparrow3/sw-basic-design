@@ -63,7 +63,6 @@
     <Image Include="full_heart.bmp" />
     <Image Include="key.bmp" />
     <Image Include="laser1.bmp" />
-    <Image Include="lava.bmp" />
     <Image Include="lava2.bmp" />
     <Image Include="left_button.bmp" />
     <Image Include="lever_left.bmp" />
@@ -79,6 +78,14 @@
     <Image Include="character_right_attack.bmp" />
     <Image Include="stage1_tree.bmp" />
     <Image Include="empty_character_attack.bmp" />
+    <Image Include="test_treebottom.bmp" />
+    <Image Include="test_treetop.bmp" />
+    <Image Include="character_left_attack.bmp" />
+    <Image Include="stage1_boss_tree_upper.bmp" />
+    <Image Include="stage1_boss_tree_lower.bmp" />
+    <Image Include="start_screen.bmp" />
+    <Image Include="chat_window_start.bmp" />
+    <Image Include="status_informaition.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />

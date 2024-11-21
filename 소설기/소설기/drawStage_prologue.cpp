@@ -20,12 +20,14 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
         if (ac.nextStage)
         {
             Sleep(1000);
-            a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+            a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
             ac.x = 0;
             ac.y = 410;
             ac.nextStage = 0;
             break;
         }
+
+
         if (ac.attacking)
         {
             ac.attacking = 0;
@@ -35,10 +37,19 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
         {
             ac.characterErase(ac.x, ac.y, buffer);
         }
-        
-       
+
         int coll = ac.collision(stage_prologue, ac.x, ac.y);
 
+        
+
+        if (coll != 2 || coll != 10 || coll != 11 || coll != 12)
+        {
+            ac.gravity(stage_prologue, ac.x, ac.y);
+        }
+
+       
+
+        a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
         a.drawBitmap("tutorial_building.bmp", buffer, 1226, 120, SCREEN_WIDTH);
         a.drawBitmap("A_button.bmp", buffer, 100, 60, SCREEN_WIDTH);
         a.drawBitmap("S_button.bmp", buffer, 200, 60, SCREEN_WIDTH);
@@ -47,18 +58,9 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
         a.drawBitmap("right_button.bmp", buffer, 1050, 60, SCREEN_WIDTH);
         a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
 
-
-        if (coll != 2 || coll != 10 || coll != 11 || coll != 12)
-        {
-            ac.gravity(stage_prologue, ac.x, ac.y);
-        }
-
         ac.characterMove(stage_prologue, buffer);
 
         ac.characterDraw(ac.x, ac.y, buffer);
-
-      
-
 
         if (ac.collision(stage_prologue, ac.x, ac.y+20) == 12 && checkHelpText == 0)
         {
@@ -66,8 +68,7 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
             checkHelpText = 1;
         }
      
-
-
+        
         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
         wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");

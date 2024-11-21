@@ -159,11 +159,13 @@
     <Image Include="broken_door.bmp" />
     <Image Include="button1.bmp" />
     <Image Include="button2.bmp" />
+    <Image Include="character_left_attack.bmp" />
     <Image Include="character_left_jump.bmp" />
     <Image Include="character_left_original.bmp" />
     <Image Include="character_right_attack.bmp" />
     <Image Include="character_right_jump.bmp" />
     <Image Include="character_right_original.bmp" />
+    <Image Include="chat_window_start.bmp" />
     <Image Include="cold_lava.bmp" />
     <Image Include="empty_block.bmp" />
     <Image Include="empty_character.bmp" />
@@ -176,7 +178,6 @@
     <Image Include="full_heart.bmp" />
     <Image Include="key.bmp" />
     <Image Include="laser1.bmp" />
-    <Image Include="lava.bmp" />
     <Image Include="lava2.bmp" />
     <Image Include="left_button.bmp" />
     <Image Include="lever_left.bmp" />
@@ -186,8 +187,14 @@
     <Image Include="seed.bmp" />
     <Image Include="seed_block.bmp" />
     <Image Include="SPACE_button.bmp" />
+    <Image Include="stage1_boss_tree_lower.bmp" />
+    <Image Include="stage1_boss_tree_upper.bmp" />
     <Image Include="stage1_tree.bmp" />
+    <Image Include="start_screen.bmp" />
+    <Image Include="status_informaition.bmp" />
     <Image Include="S_button.bmp" />
+    <Image Include="test_treebottom.bmp" />
+    <Image Include="test_treetop.bmp" />
     <Image Include="triangle_block.bmp" />
     <Image Include="tutorial_building.bmp" />
   </ItemGroup>

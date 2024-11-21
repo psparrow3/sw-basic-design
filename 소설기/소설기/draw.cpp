@@ -52,6 +52,7 @@ char draw::getASCIIChar(unsigned char brightness)
     else return '@';  // For very low brightness
 }
 
+
 void draw::drawBitmap(const char* filename, std::vector<char>& buffer, int startX, int startY, int screenWidth)
 {
     std::ifstream file(filename, std::ios::binary);
@@ -61,11 +62,7 @@ void draw::drawBitmap(const char* filename, std::vector<char>& buffer, int start
         std::cerr << "Error opening file!" << std::endl;
         return;
     }
-    if (!file.is_open())
-    {
-        std::cerr << "Failed to open file: " << filename << std::endl;
-        return;
-    }
+
     BitmapFileHeader fileHeader;
     BitmapInfoHeader infoHeader;
 
@@ -86,7 +83,7 @@ void draw::drawBitmap(const char* filename, std::vector<char>& buffer, int start
     file.read(reinterpret_cast<char*>(bitmapData.data()), bitmapData.size());
     file.close();
 
-    // Buffer에 모든 픽셀을 그립니다.
+    // 캐릭터 픽셀만 업데이트
     for (int y = 0; y < infoHeader.height; ++y)
     {
         for (int x = 0; x < infoHeader.width; ++x)
@@ -97,18 +94,73 @@ void draw::drawBitmap(const char* filename, std::vector<char>& buffer, int start
             unsigned char red = bitmapData[index + 2];
             unsigned char brightness = static_cast<unsigned char>(0.3 * red + 0.59 * green + 0.11 * blue);
 
-            // Buffer에 문자 추가
+            // 기존 내용 보존
             int bufferIndex = (startY + y) * screenWidth + (startX + x * 2);
+            if (brightness > 240)
+            {
+                continue; // 흰색 배경 (공백 문자) 생략
+            }
+
             buffer[bufferIndex] = getASCIIChar(brightness);
         }
     }
 }
 
-void draw::flushBuffer(const std::vector<char>& buffer, int width, int height) {
+void draw::eraseBitmap(const char* filename, std::vector<char>& buffer, int startX, int startY, int screenWidth)
+{
+    std::ifstream file(filename, std::ios::binary);
+
+    if (!file)
+    {
+        std::cerr << "Error opening file!" << std::endl;
+        return;
+    }
+
+    BitmapFileHeader fileHeader;
+    BitmapInfoHeader infoHeader;
+
+    file.read(reinterpret_cast<char*>(&fileHeader), sizeof(fileHeader));
+    file.read(reinterpret_cast<char*>(&infoHeader), sizeof(infoHeader));
+
+    if (fileHeader.fileType != 0x4D42)
+    {
+        std::cerr << "Not a BMP file!" << std::endl;
+        return;
+    }
+
+    int rowSize = ((infoHeader.width * infoHeader.bitCount + 31) / 32) * 4;
+    int imageSize = rowSize * infoHeader.height;
+
+    std::vector<uint8_t> bitmapData(imageSize);
+    file.seekg(fileHeader.offsetData, file.beg);
+    file.read(reinterpret_cast<char*>(bitmapData.data()), bitmapData.size());
+    file.close();
+
+    // 캐릭터 픽셀만 업데이트
+    for (int y = 0; y < infoHeader.height; ++y)
+    {
+        for (int x = 0; x < infoHeader.width; ++x)
+        {
+            int index = (x + (infoHeader.height - 1 - y) * infoHeader.width) * 3;
+            unsigned char blue = bitmapData[index];
+            unsigned char green = bitmapData[index + 1];
+            unsigned char red = bitmapData[index + 2];
+            unsigned char brightness = static_cast<unsigned char>(0.3 * red + 0.59 * green + 0.11 * blue);
+
+            // 기존 내용 보존
+            int bufferIndex = (startY + y) * screenWidth + (startX + x * 2);
+          
+            buffer[bufferIndex] = getASCIIChar(brightness);
+        }
+    }
+}
+
+void draw::flushBuffer(const std::vector<char>& buffer, int width, int height)
+{
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD pos = { 0, 0 };
 
     DWORD charsWritten;
-    // WinAPI로 출력
+    // 버퍼 내용 출력
     WriteConsoleOutputCharacterA(hConsole, buffer.data(), buffer.size(), pos, &charsWritten);
 }

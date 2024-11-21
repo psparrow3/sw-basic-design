@@ -40,5 +40,6 @@ public:
 	void SetConsoleSize(int width, int height);
 	void SetConsoleFontSize(int fontSize);
 	void flushBuffer(const std::vector<char>& buffer, int width, int height);
+	void eraseBitmap(const char* filename, std::vector<char>& buffer, int startX, int startY, int screenWidth);
 };
 
