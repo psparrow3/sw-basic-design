@@ -18,9 +18,9 @@ public:
 	static int y;
 
 	static bool nextStage;
-	static bool future; 
+	static bool future;
 	static bool isJumping;
-	
+
 	static int seedPiece;
 	static bool seedPlant;							// 씨앗을 심었는지
 	static int progress;							// 진행상황
@@ -37,6 +37,7 @@ public:
 	static int leftTime;
 	static int rightTime;
 	static bool isLeverPull;
+
 	character();
   
 	void characterMove(int (&stage)[25][40], std::vector<char>& buffer);
@@ -44,8 +45,10 @@ public:
 	int collision(int (&stage)[25][40],int newX,int newY);
 	static void takeDamage();
 	void gameOver(int coll,std::vector<char>& buffer);
+
 	static int clearStage[25][40];
-		
+	static void takeDamage();
+
 private:
 	int sTime;
 
@@ -59,6 +62,6 @@ private:
 
 	void attack(int(&stage)[25][40]);
 	void switchMap();
-	
+
 	void getItem();
 };

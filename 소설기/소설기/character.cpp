@@ -1,4 +1,4 @@
-#include "character.h"
+﻿#include "character.h"
 #include "conio.h"
 #include "Windows.h"
 #include "drawCharacter.h"
@@ -7,18 +7,17 @@
 #include "draw.h"
 #include "drawMoveableBlock.h"
 
-
 int character::x = 0;
 int character::y = 410;
 
-int   character::progress = 0;                     // 진행상황
+int character::progress = 0;                     // 진행상황
 int character::gameOverCheck = 0;
 bool character::future = 0;
 bool character::isJumping = 0;
 bool character::getSeed = 0;
 bool character::getKey = 0;
 int character::getSeedPiece = 0;
-bool character::pressingButton = 0; 
+bool character::pressingButton = 0;
 bool character::seedPlant = 0;
 bool character::nextStage = 0;
 int character::characterHeart = 3;
@@ -29,22 +28,23 @@ int character::clearStage[25][40] = { 0 };
 int character::leftTime = 0;
 int character::rightTime = 0;
 bool character::isLeverPull = 0;
+
 character::character()
 {
-	invincible = false;
-	invincibilityDuration = 2000;
+    invincible = false;
+    invincibilityDuration = 2000;
 
-	attackCoolTime = 10;      // 공격 쿨타임
-	sTime = 3;
+    attackCoolTime = 10;      // 공격 쿨타임
+    sTime = 3;
 
-	nextStage = 0;
+    nextStage = 0;
 
-	attackRange = 2;           // 공격 사거리
+    attackRange = 2;           // 공격 사거리
 }
 
 void character::gameOver(int coll, std::vector<char>& buffer)
 {
-	gameOverCheck = 1;
+    gameOverCheck = 1;
 }
 
 void character::getItem()
@@ -54,21 +54,22 @@ void character::getItem()
 
 void character::takeDamage()
 {
-	characterHeart--;
+    characterHeart--;
 
-	if (characterHeart == 0)
-	{
-		gameOverCheck = 1;
-	}
+    if (characterHeart == 0)
+    {
+        gameOverCheck = 1;
+    }
 }
 
 void character::switchMap()
 {
-	future = !future;
+    future = !future;
 }
 
 void character::attack(int(&stage)[25][40])
 {
+
 	attacking = 1;
 
 	int atX;
@@ -104,6 +105,7 @@ void character::attack(int(&stage)[25][40])
 
 void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 {
+
 	drawCharacter ac;
 
 	int preX = x;
@@ -225,9 +227,11 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	attackCoolTime += 1;
 	leftTime += 1;
 	rightTime += 1;
+
 }
 void character::gravity(int(&stage)[25][40], int newX, int newY)
 {
+
 	
 	int coll = collision(stage, x, y + 20);
 
@@ -242,12 +246,13 @@ void character::gravity(int(&stage)[25][40], int newX, int newY)
 	{
 		land = 0;
 	}
+
 }
 
-
-int character::collision(int (&stage)[25][40], int newX, int newY)
+int character::collision(int(&stage)[25][40], int newX, int newY)
 
 {
+
 	for (int i = 0; i < 2; i++)
 	{
 		for (int j = 0; j < 3; j++)
@@ -317,7 +322,8 @@ int character::collision(int (&stage)[25][40], int newX, int newY)
 			}
 		
 
+
     }
   }
-	return 0;
+   return 0;
 }

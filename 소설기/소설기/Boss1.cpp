@@ -13,18 +13,22 @@ Boss1::Boss1()
 
 void Boss1::Boss1reset()
 {
+
     m_x = 20;
     m_y = 40;
     flag = false;
     time = 0;
     at.clear();
+
 }
 
 void Boss1::Boss1Attack()
 {
+
     float direction;
     int x_gap = (m_x * 20) + 40 - (character::x + 30);
     int y_gap = m_y + 80 - (character::y + 30);
+
 
     attack b;
 
@@ -38,6 +42,7 @@ void Boss1::Boss1Attack()
 
 void Boss1::Boss1AttackMove(std::vector<char>& buffer, int(&stage)[25][40])
 {
+
     draw a;
     std::set<int> er;
     er.clear();
@@ -53,10 +58,11 @@ void Boss1::Boss1AttackMove(std::vector<char>& buffer, int(&stage)[25][40])
 
         if (at[i].x < cx + 80 && at[i].x + 40 > cx && at[i].y < cy + 60 && at[i].y + 20 > cy)
         {
-            er.insert(i);       // Ãæµ¹ÇÑ °ø°İ °´Ã¼ Á¦°Å
-            character::takeDamage(); // Ä³¸¯ÅÍ ÇÇÇØ Ã³¸®
+            er.insert(i);       // ì¶©ëŒí•œ ê³µê²© ê°ì²´ ì œê±°
+            character::takeDamage(); // ìºë¦­í„° í”¼í•´ ì²˜ë¦¬
             continue;
         }
+
 
         a.eraseBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
 

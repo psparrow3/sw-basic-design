@@ -5,9 +5,9 @@ gameStart::gameStart() {
 
 	a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	a.SetConsoleFontSize(1);
-	SetConsoleTitle(L"ÀÒ¾î¹ö¸° ³«¿ø");
+	SetConsoleTitle(L"ìƒì–´ë²„ë¦° ë‚™ì›");
 
-	// Ä¿¼­ ¼û±â±â
+	// ì»¤ì„œ ìˆ¨ê¸°ê¸°
 	HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO curCursorInfo;
 	GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
@@ -25,7 +25,9 @@ void gameStart::startGame() {
 	drawStage1 ds1;
 	/*drawStage2 ds2;*/
 	/*drawstage3 ds3;*/
+
 	/*ac.progress += 2;*/
+
 
 	
 
