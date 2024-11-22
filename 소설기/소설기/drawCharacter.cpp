@@ -125,7 +125,7 @@ void drawCharacter::characterInfo(std::vector<char>& buffer)
     a.drawBitmap("status_informaition.bmp", buffer, 1600, 0, SCREEN_WIDTH);
 }
 
-void drawCharacter::characterDraw(int x, int y, std::vector<char>& buffer) 
+void drawCharacter::characterDraw(std::vector<char>& buffer) 
 {
     
     if (facingRight) {

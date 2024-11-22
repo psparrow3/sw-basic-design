@@ -74,29 +74,33 @@ void character::attack(int(&stage)[25][40])
 
 	int atX;
 	int atY = y;
-
+	
 
 
 	if (facingRight)
 	{
-		atX = x + 80;
+		atX = x+100;
 	}
 	else
 	{
-		atX = x - 40;
+		atX = x - 80;
+	}
+	for (int ty = 0; ty <= 60; ty+=20) {
+		int coll = collision(stage, atX, atY+ty);
+		if (coll == 98)
+		{
+			nextStage = 1;
+
+
+		}
+		if (coll == 15)
+		{
+			isLeverPull = 1;
+		}
 	}
 	int coll = collision(stage, atX, atY);
-	if (coll == 98)
-	{
-		nextStage = 1;
-		
-
-	}
-	if (coll == 15)
-	{
-		isLeverPull = 1;
-	}
-	if (coll == 2 || atX <= 0 || coll == 3 || coll == 14 || coll==8 || atX>=1600)
+	
+	if (coll == 2 || atX <= 0 || coll == 3 || coll == 14 || coll==8 || atX>=1600 || atX<=0)
 	{
 		attacking = 0;
 	}
@@ -192,16 +196,18 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	}
 	
 	if (GetAsyncKeyState(VK_UP) & 0x8000) {
-		if (collision(stage, x, y + 20) == 10) {
+		int upcoll = collision(stage, x, y + 20);
+		if (upcoll == 10) {
 			nextStage = 1;
 			progress++;
 		}
-		if (collision(stage, x, y + 20) == 11 && getKey == 1) {
+		if (upcoll == 11 && getKey == 1) {
 			nextStage = 1;
 
 			getKey = 0;
 			progress++;
 		}
+		
 	}
 
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000) {

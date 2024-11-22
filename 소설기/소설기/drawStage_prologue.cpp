@@ -27,7 +27,7 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
             break;
         }
 
-
+       
         if (ac.attacking)
         {
             ac.attacking = 0;
@@ -63,7 +63,7 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
       
         ac.characterMove(stage_prologue, buffer);
 
-        ac.characterDraw(ac.x, ac.y, buffer);
+        ac.characterDraw(buffer);
 
         if (ac.collision(stage_prologue, ac.x, ac.y+20) == 12 && checkHelpText == 0)
         {
