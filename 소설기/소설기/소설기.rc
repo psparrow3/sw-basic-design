@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// 한국어(대한민국) resources
+// �ѱ���(���ѹα�) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
 LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
@@ -114,12 +114,11 @@ IDB_BITMAP36            BITMAP                  "enter_door.bmp"
 
 IDB_BITMAP37            BITMAP                  "seed_block.bmp"
 
-IDB_BITMAP38            BITMAP                  "C:\\Users\\MSI\\Desktop\\소설기 잃어버린 낙원\\소설기\\소설기\\character_right_attack.bmp"
+IDB_BITMAP38            BITMAP                  "character_right_attack.bmp"
 
 IDB_BITMAP39            BITMAP                  "stage1_tree.bmp"
 
 IDB_BITMAP40            BITMAP                  "empty_character_attack.bmp"
-
 
 IDB_BITMAP41            BITMAP                  "test_treebottom.bmp"
 
@@ -127,7 +126,7 @@ IDB_BITMAP42            BITMAP                  "test_treetop.bmp"
 
 IDB_BITMAP43            BITMAP                  "character_left_attack.bmp"
 
-IDB_BITMAP44            BITMAP                  "C:\\Users\\MSI\\Desktop\\소설기 잃어버린 낙원\\소설기\\소설기\\stage1_boss_tree_upper.bmp"
+IDB_BITMAP44            BITMAP                  "stage1_boss_tree_upper.bmp"
 
 IDB_BITMAP45            BITMAP                  "stage1_boss_tree_lower.bmp"
 
@@ -137,8 +136,11 @@ IDB_BITMAP47            BITMAP                  "chat_window_start.bmp"
 
 IDB_BITMAP48            BITMAP                  "status_informaition.bmp"
 
+IDB_BITMAP49            BITMAP                  "seed_piece.bmp"
 
-#endif    // 한국어(대한민국) resources
+IDB_BITMAP50            BITMAP                  "small_block.bmp"
+
+#endif    // �ѱ���(���ѹα�) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

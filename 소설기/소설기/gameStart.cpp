@@ -8,8 +8,6 @@ gameStart::gameStart() {
 	SetConsoleTitle(L"잃어버린 낙원");
 
 	// 커서 숨기기
-	HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_CURSOR_INFO curCursorInfo;
 	GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
 	curCursorInfo.bVisible = 0;
 	SetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
@@ -27,9 +25,6 @@ void gameStart::startGame() {
 	/*drawstage3 ds3;*/
 
 	/*ac.progress += 2;*/
-
-
-	
 
 	ss.drawStartScreen(buffer);
 	while (1) {
