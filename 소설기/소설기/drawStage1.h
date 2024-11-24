@@ -18,7 +18,8 @@ public:
 
     static int stage1_future[12][20];
 	static int stage1_past[12][20];
-
+	static int stage1_future_Boss[12][20];
+	static int stage1_past_Boss[12][20];
 	static int stage1_Future[25][40];
 	static int stage1_Past[25][40];
 	static int stage1_Future_Boss[25][40];

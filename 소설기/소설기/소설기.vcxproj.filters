@@ -78,7 +78,6 @@
     <Image Include="character_right_attack.bmp" />
     <Image Include="stage1_tree.bmp" />
     <Image Include="empty_character_attack.bmp" />
-
     <Image Include="test_treebottom.bmp" />
     <Image Include="test_treetop.bmp" />
     <Image Include="character_left_attack.bmp" />
@@ -87,7 +86,8 @@
     <Image Include="start_screen.bmp" />
     <Image Include="chat_window_start.bmp" />
     <Image Include="status_informaition.bmp" />
-
+    <Image Include="seed_piece.bmp" />
+    <Image Include="small_block.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />

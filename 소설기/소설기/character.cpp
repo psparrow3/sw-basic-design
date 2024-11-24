@@ -13,6 +13,7 @@ int character::y = 410;
 int character::progress = 0;                     // 진행상황
 int character::gameOverCheck = 0;
 bool character::future = 0;
+bool character::pre_future = 1;
 bool character::isJumping = 0;
 bool character::getSeed = 0;
 bool character::getKey = 0;
@@ -105,7 +106,6 @@ void character::attack(int(&stage)[25][40])
 
 void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 {
-
 	drawCharacter ac;
 
 	int preX = x;
@@ -120,7 +120,6 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	int coll = collision(stage, x, y);
 
 	// 충돌 체크로 점프 상태 해제
-
 
 	// 공격
 	if (aPress && attackCoolTime >=3) {
@@ -155,12 +154,14 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 			y -= 20;
 			int jumpcoll;
+
 			if (facingRight) {
 				jumpcoll = collision(stage, x + 20, y);
 			}
 			else {
 				jumpcoll = collision(stage, x, y);
 			}
+
 			if (jumpcoll == 2 || y < 0 || jumpcoll == 3) {
 				y = preY;
 			}
@@ -219,10 +220,11 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 		getSeed = 1;
 	}
 
-	if (coll == 2 || collision(stage,x,y+20) == 8 || coll == 3 || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll ==15)
+	if (coll == 2 || collision(stage, x, y + 20) == 8 || coll == 3 || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15)
 	{
 		gameOver(coll, buffer);
 	}
+
 	sTime += 1;
 	attackCoolTime += 1;
 	leftTime += 1;
@@ -231,8 +233,6 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 }
 void character::gravity(int(&stage)[25][40], int newX, int newY)
 {
-
-	
 	int coll = collision(stage, x, y + 20);
 
 	if (coll == 2 || coll == 10 || coll == 11 || coll == 9 || coll == 3 || coll==12) {
@@ -250,9 +250,7 @@ void character::gravity(int(&stage)[25][40], int newX, int newY)
 }
 
 int character::collision(int(&stage)[25][40], int newX, int newY)
-
 {
-
 	for (int i = 0; i < 2; i++)
 	{
 		for (int j = 0; j < 3; j++)
@@ -320,10 +318,7 @@ int character::collision(int(&stage)[25][40], int newX, int newY)
 			{
 				return 98;				// 1스테이지 보스
 			}
-		
-
-
+		}
     }
-  }
    return 0;
 }

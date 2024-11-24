@@ -13,7 +13,6 @@ void startScreen::drawStartScreen(std::vector<char>& buffer)
             break;
         }
         
-
         a.drawBitmap("start_screen.bmp", buffer, 0, 0, SCREEN_WIDTH);
         
         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -24,6 +23,7 @@ void startScreen::drawStartScreen(std::vector<char>& buffer)
 
             break;
         }
+
         a.drawBitmap("chat_window_start.bmp", buffer, 0, 0, SCREEN_WIDTH);
 
         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);

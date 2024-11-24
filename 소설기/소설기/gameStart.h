@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <cstring>
-
 #include <fstream>
 #include <vector>
 #include <Windows.h>
@@ -15,6 +14,8 @@
 
 class gameStart
 {
+	HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO curCursorInfo;
 public:
 	gameStart();
 	void startGame();

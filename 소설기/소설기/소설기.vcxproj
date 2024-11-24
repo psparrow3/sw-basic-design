@@ -186,6 +186,8 @@
     <Image Include="right_button.bmp" />
     <Image Include="seed.bmp" />
     <Image Include="seed_block.bmp" />
+    <Image Include="seed_piece.bmp" />
+    <Image Include="small_block.bmp" />
     <Image Include="SPACE_button.bmp" />
     <Image Include="stage1_boss_tree_lower.bmp" />
     <Image Include="stage1_boss_tree_upper.bmp" />
