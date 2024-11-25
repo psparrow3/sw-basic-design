@@ -134,6 +134,7 @@ IDB_BITMAP47            BITMAP                  "chat_window_start.bmp"
 
 IDB_BITMAP48            BITMAP                  "status_informaition.bmp"
 
+<<<<<<< HEAD
 IDB_BITMAP49            BITMAP                  "small_block.bmp"
 
 IDB_BITMAP50            BITMAP                  "triangle_block_up.bmp"
@@ -145,6 +146,11 @@ IDB_BITMAP52            BITMAP                  "triangle_block_right.bmp"
 IDB_BITMAP53            BITMAP                  "past_text.bmp"
 
 IDB_BITMAP54            BITMAP                  "future_text.bmp"
+=======
+IDB_BITMAP49            BITMAP                  "seed_piece.bmp"
+
+IDB_BITMAP50            BITMAP                  "small_block.bmp"
+>>>>>>> main
 
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////

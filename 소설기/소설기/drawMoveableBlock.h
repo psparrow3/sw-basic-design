@@ -5,8 +5,11 @@
 class drawMoveableBlock : public moveableBlock
 {
 public:
+<<<<<<< HEAD
 
 	
+=======
+>>>>>>> main
 	drawMoveableBlock(int x,int y);
 
 	void moveableBlockDraw(int posX, int posY, std::vector<char>& buffer);

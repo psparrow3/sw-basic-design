@@ -31,7 +31,11 @@ void moveableBlock::blockMove(int(&stage)[25][40], int characterX, int character
 		}
 	}
 }
+<<<<<<< HEAD
 int moveableBlock::collision(int(&stage)[25][40], int newX, int newY)
+=======
+int moveableBlock::collision(int (&stage)[25][40], int newX, int newY)
+>>>>>>> main
 {
 	for (int i = 0; i < 2; i++) {
 		for (int j = 0; j < 2; j++) {

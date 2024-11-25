@@ -87,12 +87,17 @@
     <Image Include="start_screen.bmp" />
     <Image Include="chat_window_start.bmp" />
     <Image Include="status_informaition.bmp" />
+<<<<<<< HEAD
     <Image Include="small_block.bmp" />
     <Image Include="triangle_block_up.bmp" />
     <Image Include="triangle_block_down.bmp" />
     <Image Include="triangle_block_right.bmp" />
     <Image Include="past_text.bmp" />
     <Image Include="future_text.bmp" />
+=======
+    <Image Include="seed_piece.bmp" />
+    <Image Include="small_block.bmp" />
+>>>>>>> main
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />
