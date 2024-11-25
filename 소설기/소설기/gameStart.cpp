@@ -26,10 +26,6 @@ void gameStart::startGame() {
 
 	ac.progress +=2;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 	ss.drawStartScreen(buffer);
 	while (1) {
 		switch (character::progress)

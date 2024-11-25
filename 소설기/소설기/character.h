@@ -19,11 +19,6 @@ public:
 
 	static bool nextStage;
 	static bool future;
-<<<<<<< HEAD
-	
-=======
-	static bool pre_future;
->>>>>>> main
 	static bool isJumping;
 
 	static int seedPiece;

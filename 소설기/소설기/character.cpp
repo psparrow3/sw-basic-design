@@ -12,18 +12,13 @@ int character::y = 410;
 
 int character::progress = 0;                     // 진행상황
 int character::gameOverCheck = 0;
-<<<<<<< HEAD
 bool character::future = 1;
-
-=======
-bool character::future = 0;
-bool character::pre_future = 1;
->>>>>>> main
 bool character::isJumping = 0;
 bool character::getSeed = 0;
 bool character::getKey = 0;
 int character::getSeedPiece = 0;
 bool character::pressingButton = 0;
+int character::seedPiece = 0;
 bool character::seedPlant = 0;
 bool character::nextStage = 0;
 int character::characterHeart = 3;
@@ -154,7 +149,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 			int jumpcoll;
 
 			if (facingRight) {
-				jumpcoll = collision(stage, x + 20, y);
+				jumpcoll = collision(stage, x, y);
 			}
 			else {
 				jumpcoll = collision(stage, x, y);
@@ -224,14 +219,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	{
 		gameOver(coll, buffer);
 	}
-<<<<<<< HEAD
-	if (coll == 7 && notDamage >= 20) {
-		takeDamage();
-		notDamage = 0;
-	}
-=======
 
->>>>>>> main
 	sTime += 1;
 	notDamage += 1;
 	attackCoolTime += 1;
