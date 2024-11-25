@@ -13,22 +13,18 @@ Boss1::Boss1()
 
 void Boss1::Boss1reset()
 {
-
     m_x = 20;
     m_y = 40;
     flag = false;
     time = 0;
     at.clear();
-
 }
 
 void Boss1::Boss1Attack()
 {
-
     float direction;
     int x_gap = (m_x * 20) + 40 - (character::x + 30);
     int y_gap = m_y + 80 - (character::y + 30);
-
 
     attack b;
 
@@ -42,7 +38,6 @@ void Boss1::Boss1Attack()
 
 void Boss1::Boss1AttackMove(std::vector<char>& buffer, int(&stage)[25][40])
 {
-
     draw a;
     std::set<int> er;
     er.clear();
@@ -62,7 +57,6 @@ void Boss1::Boss1AttackMove(std::vector<char>& buffer, int(&stage)[25][40])
             character::takeDamage(); // 캐릭터 피해 처리
             continue;
         }
-
 
         a.eraseBitmap("empty_boss_attack.bmp", buffer, at[i].x, at[i].y, SCREEN_WIDTH);
 

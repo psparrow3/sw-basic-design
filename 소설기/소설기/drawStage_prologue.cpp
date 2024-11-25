@@ -85,5 +85,6 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
             wt.drawText(L"'↑'키를 눌러서 문으로", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
             wt.drawText(L"들어가자", 1700, 720, 20, RGB(128, 128, 128), L"굴림체");
         } 
+       
     }
 }

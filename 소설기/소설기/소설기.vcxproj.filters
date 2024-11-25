@@ -16,6 +16,7 @@
     <ClCompile Include="moveableBlock.cpp" />
     <ClCompile Include="startScreen.cpp" />
     <ClCompile Include="writeText.cpp" />
+    <ClCompile Include="drawStage2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Boss1.h" />
@@ -33,6 +34,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="startScreen.h" />
     <ClInclude Include="writeText.h" />
+    <ClInclude Include="drawStage2.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="소설기.rc" />
@@ -73,7 +75,6 @@
     <Image Include="seed_block.bmp" />
     <Image Include="SPACE_button.bmp" />
     <Image Include="S_button.bmp" />
-    <Image Include="triangle_block.bmp" />
     <Image Include="tutorial_building.bmp" />
     <Image Include="character_right_attack.bmp" />
     <Image Include="stage1_tree.bmp" />
@@ -87,6 +88,11 @@
     <Image Include="chat_window_start.bmp" />
     <Image Include="status_informaition.bmp" />
     <Image Include="small_block.bmp" />
+    <Image Include="triangle_block_up.bmp" />
+    <Image Include="triangle_block_down.bmp" />
+    <Image Include="triangle_block_right.bmp" />
+    <Image Include="past_text.bmp" />
+    <Image Include="future_text.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />

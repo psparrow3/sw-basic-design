@@ -12,7 +12,8 @@ int character::y = 410;
 
 int character::progress = 0;                     // 진행상황
 int character::gameOverCheck = 0;
-bool character::future = 0;
+bool character::future = 1;
+
 bool character::isJumping = 0;
 bool character::getSeed = 0;
 bool character::getKey = 0;
@@ -31,9 +32,7 @@ bool character::isLeverPull = 0;
 
 character::character()
 {
-    invincible = false;
-    invincibilityDuration = 2000;
-
+	notDamage = 20;
     attackCoolTime = 10;      // 공격 쿨타임
     sTime = 3;
 
@@ -74,38 +73,30 @@ void character::attack(int(&stage)[25][40])
 
 	int atX;
 	int atY = y;
-	
-
 
 	if (facingRight)
 	{
-		atX = x+100;
+		atX = x+80;
 	}
 	else
 	{
 		atX = x - 80;
 	}
-	for (int ty = 0; ty <= 60; ty+=20) {
-		int coll = collision(stage, atX, atY+ty);
-		if (coll == 98)
-		{
-			nextStage = 1;
-
-
-		}
-		if (coll == 15)
-		{
-			isLeverPull = 1;
-		}
-	}
-	int coll = collision(stage, atX, atY);
 	
+	int coll = collision(stage, atX, atY);
+	if (coll == 98)
+	{
+		nextStage = 1;
+	}
+	if (coll == 15)
+	{
+		isLeverPull = 1;
+	}
 	if (coll == 2 || atX <= 0 || coll == 3 || coll == 14 || coll==8 || atX>=1600 || atX<=0)
 	{
 		attacking = 0;
 	}
 }
-
 
 void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 {
@@ -125,13 +116,11 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	// 충돌 체크로 점프 상태 해제
 
-
 	// 공격
 	if (aPress && attackCoolTime >=3) {
 		attack(stage);
 
 		attackCoolTime = 0;
-
 	}
 
 	// 맵 전환
@@ -150,7 +139,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	if (jumping && !isJumping)
 	{
-		isJumping = 1;
+		isJumping = 0;
 
 		land = 0;
 
@@ -229,7 +218,12 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	{
 		gameOver(coll, buffer);
 	}
+	if (coll == 7 && notDamage >= 20) {
+		takeDamage();
+		notDamage = 0;
+	}
 	sTime += 1;
+	notDamage += 1;
 	attackCoolTime += 1;
 	leftTime += 1;
 	rightTime += 1;

@@ -1,11 +1,13 @@
 #pragma once
 #include "character.h"
-#include "drawStage1.h"
+
+
 class moveableBlock
 {
 public:
-	int m_x, m_y;
 	moveableBlock();
+	int m_x, m_y;
+
 	int collision(int (&stage)[25][40], int newX, int newY);
 	void gravity(int (&stage)[25][40], int newX, int newY);
 

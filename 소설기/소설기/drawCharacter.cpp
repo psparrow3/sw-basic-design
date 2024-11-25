@@ -113,16 +113,20 @@ void drawCharacter::characterHeartDraw(std::vector<char>& buffer)
 void drawCharacter::characterInfo(std::vector<char>& buffer)
 {
     draw a;
+   
     writeText wt;
+   
+    a.drawBitmap("status_informaition.bmp", buffer, 1600, 0, SCREEN_WIDTH);
     if (future)
     {
-        wt.drawText(L"현재", 1670, 40, 100, RGB(128, 128, 128), L"볼드체");
+       
+        a.drawBitmap("future_text.bmp", buffer, 1670, 20, SCREEN_WIDTH);
     }
     else
     {
-        wt.drawText(L"과거", 1670, 40, 100, RGB(128, 128, 128), L"볼드체");
+      
+        a.drawBitmap("past_text.bmp", buffer, 1670, 20, SCREEN_WIDTH);
     }
-    a.drawBitmap("status_informaition.bmp", buffer, 1600, 0, SCREEN_WIDTH);
 }
 
 void drawCharacter::characterDraw(std::vector<char>& buffer) 
