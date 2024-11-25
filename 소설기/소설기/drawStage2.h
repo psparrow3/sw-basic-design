@@ -22,8 +22,8 @@ class drawStage2
 	static int stage2_Past[25][40];
 
 
-	static int stage1_Future_Boss[25][40];
-	static int stage1_Past_Boss[25][40];
+	static int stage2_Future_Boss[25][40];
+	static int stage2_Past_Boss[25][40];
 
 };
 
