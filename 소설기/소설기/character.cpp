@@ -12,13 +12,13 @@ int character::y = 410;
 
 int character::progress = 0;                     // 진행상황
 int character::gameOverCheck = 0;
-bool character::future = 0;
-bool character::pre_future = 1;
+bool character::future = 1;
 bool character::isJumping = 0;
 bool character::getSeed = 0;
 bool character::getKey = 0;
 int character::getSeedPiece = 0;
 bool character::pressingButton = 0;
+int character::seedPiece = 0;
 bool character::seedPlant = 0;
 bool character::nextStage = 0;
 int character::characterHeart = 3;
@@ -32,9 +32,7 @@ bool character::isLeverPull = 0;
 
 character::character()
 {
-    invincible = false;
-    invincibilityDuration = 2000;
-
+	notDamage = 20;
     attackCoolTime = 10;      // 공격 쿨타임
     sTime = 3;
 
@@ -76,33 +74,29 @@ void character::attack(int(&stage)[25][40])
 	int atX;
 	int atY = y;
 
-
-
 	if (facingRight)
 	{
-		atX = x + 80;
+		atX = x+80;
 	}
 	else
 	{
-		atX = x - 40;
+		atX = x - 80;
 	}
+	
 	int coll = collision(stage, atX, atY);
 	if (coll == 98)
 	{
 		nextStage = 1;
-		
-
 	}
 	if (coll == 15)
 	{
 		isLeverPull = 1;
 	}
-	if (coll == 2 || atX <= 0 || coll == 3 || coll == 14 || coll==8 || atX>=1600)
+	if (coll == 2 || atX <= 0 || coll == 3 || coll == 14 || coll==8 || atX>=1600 || atX<=0)
 	{
 		attacking = 0;
 	}
 }
-
 
 void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 {
@@ -126,7 +120,6 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 		attack(stage);
 
 		attackCoolTime = 0;
-
 	}
 
 	// 맵 전환
@@ -145,7 +138,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	if (jumping && !isJumping)
 	{
-		isJumping = 1;
+		isJumping = 0;
 
 		land = 0;
 
@@ -156,7 +149,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 			int jumpcoll;
 
 			if (facingRight) {
-				jumpcoll = collision(stage, x + 20, y);
+				jumpcoll = collision(stage, x, y);
 			}
 			else {
 				jumpcoll = collision(stage, x, y);
@@ -193,16 +186,18 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	}
 	
 	if (GetAsyncKeyState(VK_UP) & 0x8000) {
-		if (collision(stage, x, y + 20) == 10) {
+		int upcoll = collision(stage, x, y + 20);
+		if (upcoll == 10) {
 			nextStage = 1;
 			progress++;
 		}
-		if (collision(stage, x, y + 20) == 11 && getKey == 1) {
+		if (upcoll == 11 && getKey == 1) {
 			nextStage = 1;
 
 			getKey = 0;
 			progress++;
 		}
+		
 	}
 
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
@@ -226,6 +221,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	}
 
 	sTime += 1;
+	notDamage += 1;
 	attackCoolTime += 1;
 	leftTime += 1;
 	rightTime += 1;

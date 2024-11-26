@@ -84,6 +84,8 @@ void Boss1::Boss1AttackMove(std::vector<char>& buffer, int(&stage)[25][40])
 	draw a;
 	std::set<int> er;
 	er.clear();
+	std::set<int> er_seed;
+	er_seed.clear();
 	int cx = character::x, cy = character::y;
 
 	for (int i = 0; i < at.size(); i++)
@@ -126,8 +128,22 @@ void Boss1::Boss1AttackMove(std::vector<char>& buffer, int(&stage)[25][40])
 		at.erase(at.begin() + o);
 	}
 
-	for (auto i : dr)
+	for (int i = 0; i < dr.size(); i++)
 	{
-		a.drawBitmap("seed_piece.bmp", buffer, i.x, 460, SCREEN_WIDTH);
+		a.drawBitmap("seed_piece.bmp", buffer, dr[i].x, 460, SCREEN_WIDTH);
+
+		if (dr[i].x < cx + 80 && dr[i].x + 40 > cx && dr[i].y < cy + 60 && dr[i].y + 20 > cy)
+		{
+			a.eraseBitmap("empty_boss_attack.bmp", buffer, dr[i].x, 460, SCREEN_WIDTH);
+			character::seedPiece++;
+			er_seed.insert(i);
+		}
+	}
+
+	for (auto i : er_seed)
+	{
+		a.eraseBitmap("empty_boss_attack.bmp", buffer, at[i].x, 460, SCREEN_WIDTH);
+
+		dr.erase(dr.begin() + i);
 	}
 }

@@ -19,6 +19,6 @@ public:
 	void characterLeftJumpAttackDraw(int x, int y, std::vector<char>& buffer);
 	void characterHeartDraw(std::vector<char>& buffer);
 	void characterInfo(std::vector<char>& buffer);
-	void characterDraw(int x, int y, std::vector<char>& buffer);
+	void characterDraw(std::vector<char>& buffer);
 
 };
