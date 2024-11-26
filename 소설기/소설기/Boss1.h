@@ -18,9 +18,11 @@ public:
 	void Boss1Attack();
 	void Boss1AttackMove(std::vector<char>& buffer, int(&stage)[25][40]);
 	static void Boss1reset(std::vector<char>& buffer);
+	static void Boss1_Die();
 	static std::vector<attack> at;
 	static std::vector<attack> dr;
 	static bool flag;
 	static int time;
 	static int seed_num;
+	static int hp;
 };

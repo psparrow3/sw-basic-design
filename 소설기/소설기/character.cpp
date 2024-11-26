@@ -8,7 +8,7 @@
 #include "drawMoveableBlock.h"
 
 int character::x = 0;
-int character::y = 410;
+int character::y = 420;
 
 int character::progress = 0;                     // 진행상황
 int character::gameOverCheck = 0;
@@ -76,27 +76,30 @@ void character::attack(int(&stage)[25][40])
 
 	if (facingRight)
 	{
-		atX = x+80;
+		atX = x + 80;
 	}
 	else
 	{
 		atX = x - 80;
 	}
-	
+
 	int coll = collision(stage, atX, atY);
+
 	if (coll == 98)
 	{
-		nextStage = 1;
+		Boss1::hp = 0;
+
 	}
 	if (coll == 15)
 	{
 		isLeverPull = 1;
 	}
-	if (coll == 2 || atX <= 0 || coll == 3 || coll == 14 || coll==8 || atX>=1600 || atX<=0)
+	if (coll == 2 || atX <= 0 || coll == 3 || coll == 14 || coll == 8 || atX >= 1600 || atX <= 0)
 	{
 		attacking = 0;
 	}
 }
+
 
 void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 {
@@ -138,7 +141,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	if (jumping && !isJumping)
 	{
-		isJumping = 0;
+		isJumping = 1;
 
 		land = 0;
 

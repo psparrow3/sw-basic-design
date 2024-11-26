@@ -7,6 +7,7 @@ int Boss1::time = 0;
 std::vector<attack> Boss1::at;
 std::vector <attack> Boss1::dr;
 int Boss1::seed_num = 0;
+int Boss1::hp = 0;
 
 Boss1::Boss1()
 {
@@ -21,6 +22,7 @@ void Boss1::Boss1reset(std::vector<char>& buffer)
     m_y = 40;
     flag = false;
     time = 0;
+    hp = 1;
 
     for (auto i : at)
     {
@@ -147,4 +149,9 @@ void Boss1::Boss1AttackMove(std::vector<char>& buffer, int(&stage)[25][40])
 
         dr.erase(dr.begin() + i);
     }
+}
+
+void Boss1::Boss1_Die()
+{
+    
 }
