@@ -1,9 +1,10 @@
 #pragma once
 
 #include "draw.h"
-#include "drawStage.h"
 #include "drawCharacter.h"
 #include "Boss1.h"
+#include "drawMoveableBlock.h"
+#include "writeText.h"
 
 class drawStage1
 {

@@ -19,7 +19,6 @@ public:
 
 	static bool nextStage;
 	static bool future;
-	static bool pre_future;
 	static bool isJumping;
 
 	static int seedPiece;
@@ -50,14 +49,14 @@ public:
 
 private:
 	int sTime;
-
-	bool invincible;
+	int notDamage;
+	
 	bool movingLeft;
 	bool jumping;
 	bool movingRight;
 	int attackRange;
 	int attackCoolTime;
-	int invincibilityDuration;
+	
 
 	void attack(int(&stage)[25][40]);
 	void switchMap();

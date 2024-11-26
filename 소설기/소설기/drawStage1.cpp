@@ -1,9 +1,4 @@
 ﻿#include "drawStage1.h"
-#include "drawStage.h"
-#include "draw.h"
-#include "Boss1.h"
-#include "drawMoveableBlock.h"
-#include "writeText.h"
 
 int drawStage1::stage1_future[12][20] =
 {
@@ -117,8 +112,8 @@ int drawStage1::stage1_Past[25][40] =
    {2,2,2,2,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2},
    {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
    {0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
-   {0,0,0,0,0,0,0,0,2,2,0,0,15,15,0,0,0,0,0,0,0,0,0,0,8,8,2,2,2,2,2,2,2,2,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,2,2,0,0,15,15,0,0,0,0,0,0,0,0,0,0,8,8,2,2,2,2,2,2,2,2,0,0,0,0,0,0},	
+   {0,0,0,0,0,0,0,0,2,2,0,0,15,15,0,0,0,0,0,0,0,0,0,8,8,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0},
+   {0,0,0,0,0,0,0,0,2,2,0,0,15,15,0,0,0,0,0,0,0,0,0,8,8,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0},	
    {0,0,2,2,0,0,0,0,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,2,2,0,0,0,0,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,0,0,14,14},
    {0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,2,2,2,2},
@@ -169,14 +164,14 @@ int drawStage1::stage1_Past_Boss[25][40] =
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -192,8 +187,10 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 {
 	draw a;
 	drawCharacter ac;
+
 	drawMoveableBlock mb1(720, 60);
 	
+
 	int stage[25][40];
 	int seedGet = 0;
 	int keyGet = 0;
@@ -222,26 +219,30 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 				a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 				ac.seedPlant = 0;
 			}
-			/*if (ac.gameOverCheck)
+			if (ac.gameOverCheck)
 			{
 				ac.getSeed = 0;
 				ac.getKey = 0;
+				ac.isLeverPull = 0;
+				ac.gameOverCheck = 0;
 				memcpy(stage1_Past, resetPastStage, sizeof(stage1_Past));
 				memcpy(stage1_past, resetpastStage,  sizeof(stage1_past));
 				memcpy(stage1_Future, resetFutureStage, sizeof(stage1_Future));
 				memcpy(stage1_future, resetfutureStage,  sizeof(stage1_future));
-			}*/
+
+				a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+				a.eraseBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
+				a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+			}
+			
 
 			character::characterHeart = 3;
-			ac.isLeverPull = 0;
-			a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
-			a.eraseBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
-		
+	
 			ac.x = 0;
 			ac.y = 410;
 			ac.facingRight = 1;
 
-			ac.gameOverCheck = 0;
+			
 			break;
 		}
 
@@ -305,11 +306,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 
 		if (ac.collision(stage, ac.x, ac.y + 20) == 11)
 		{
-			if (ac.getKey && GetAsyncKeyState(VK_UP) & 0x8000) {
-				ac.progress++;
-				ac.nextStage = 1;
-			}
-
+			
 			wt.drawText(L"문이 잠겨있다", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
 		}
 
@@ -319,6 +316,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 			drawStage1Future(buffer);
 			mb1.moveableBlockDraw(mb1.m_x, mb1.m_y, buffer);
+
 		}
 		else
 		{
@@ -444,7 +442,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 		}
 
 		ac.characterMove(stage, buffer);
-		ac.characterDraw(ac.x, ac.y, buffer);
+		ac.characterDraw(buffer);
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
 	}
@@ -541,30 +539,34 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 	writeText wt;
 	int stage[25][40];
 	ac.seedPlant = 0;
-
+	int start = 0;
+	
 	while (1)
 	{
-		if (Boss1::seed_num == 10)
-		{
-			ac.seedPlant = 1;
-		}
-
+		
 		if (ac.nextStage || ac.gameOverCheck)
 		{
 			if (ac.nextStage) {
 				a.eraseBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
+				ac.seedPiece = 0;
+				ac.seedPlant = 0;
+				
 				a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 				ac.nextStage = 0;
 				Sleep(1000);
 				a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 			}
-
+			
+			ac.seedPiece = 0;
+			ac.seedPlant = 0;
+			ac.getSeed = 0;
+			ac.facingRight = 1;
 			memcpy(stage, character::clearStage, sizeof(character::clearStage));
 			character::characterHeart = 3;
 			Boss1::Boss1reset(buffer);
 
 			ac.x = 0;
-			ac.y = 420;
+			ac.y = 410;
 
 			ac.gameOverCheck = 0;
 
@@ -590,11 +592,15 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 
 			if (ac.seedPlant)
 			{
+				
+				a.drawBitmap("stage1_boss_tree_lower.bmp", buffer, 600, 300, SCREEN_WIDTH);
+				a.drawBitmap("stage1_boss_tree_upper.bmp", buffer, 600, 120, SCREEN_WIDTH);
+				
 				drawStage1::stage1_Future_Boss[9][16] = 3;
 				drawStage1::stage1_Future_Boss[9][17] = 3;
 				drawStage1::stage1_Future_Boss[9][18] = 3;
 				drawStage1::stage1_Future_Boss[9][19] = 3;
-				drawStage1::stage1_Future_Boss[12][21] = 3;
+				drawStage1::stage1_Future_Boss[11][21] = 3;
 				drawStage1::stage1_Future_Boss[12][24] = 3;
 				drawStage1::stage1_Future_Boss[12][25] = 3;
 				drawStage1::stage1_Future_Boss[12][26] = 3;
@@ -603,7 +609,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 				drawStage1::stage1_Future_Boss[15][17] = 3;
 				drawStage1::stage1_Future_Boss[15][18] = 3;
 				drawStage1::stage1_Future_Boss[15][19] = 3;
-				drawStage1::stage1_Future_Boss[18][21] = 3;
+				drawStage1::stage1_Future_Boss[17][21] = 3;
 				drawStage1::stage1_Future_Boss[18][23] = 3;
 				drawStage1::stage1_Future_Boss[18][24] = 3;
 				drawStage1::stage1_Future_Boss[18][25] = 3;
@@ -613,18 +619,19 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 				drawStage1::stage1_Future_Boss[21][18] = 3;
 				drawStage1::stage1_Future_Boss[21][19] = 3;
 
-				a.drawBitmap("stage1_boss_tree_lower.bmp", buffer, 600, 300, SCREEN_WIDTH);
-				a.drawBitmap("stage1_boss_tree_upper.bmp", buffer, 600, 120, SCREEN_WIDTH);
+				
+
 			}
 		}
 		else
 		{
 			memcpy(stage, stage1_Past_Boss, sizeof(stage1_Past_Boss));
+
 			a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 			stage1PastBossDraw(buffer);
-
 			a.drawBitmap("small_block.bmp", buffer, 820, 400, SCREEN_WIDTH);
 			a.drawBitmap("small_block.bmp", buffer, 820, 280, SCREEN_WIDTH);
+
 		}
 
 		a.eraseBitmap("Empty_boss.bmp", buffer, Boss1::m_x * 20, Boss1::m_y, SCREEN_WIDTH);
@@ -693,32 +700,81 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		Boss1::time += 50;
 
 		a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
-
+		ac.characterMove(stage, buffer);
 		int coll = ac.collision(stage, ac.x, ac.y);
 
-		if (coll != 2 && coll != 10 && coll != 11) {
+		if (coll != 2 && coll != 10 && coll != 11 && coll != 3 && coll != 14 && coll != 15) {
+
+
 			ac.gravity(stage, ac.x, ac.y);
 		}
-
-		ac.characterMove(stage, buffer);
-
-		ac.characterDraw(ac.x, ac.y, buffer);
+	
+		
+		ac.characterDraw(buffer);
 
 		b.Boss1AttackMove(buffer, stage);
 
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-		if (ac.collision(stage, ac.x, ac.y + 20) == 9 && ac.getSeed == 1)
+		if (ac.collision(stage, ac.x, ac.y + 20) == 9 && ac.getSeed==1)
 		{
 			wt.drawText(L"씨앗을 심을 수 있을 것 같다!", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
-		}		
+			if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+			{
+				wt.drawText(L"씨앗을 심어졌다!", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
+				Sleep(1000);
+			}
+			
+
+		}
+		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
+		if (ac.seedPiece) {
+			switch (ac.seedPiece)
+			{
+			case 1: wt.drawText(L"씨앗조각 : 1", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+				break;
+			case 2: wt.drawText(L"씨앗조각 : 2", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+				break;
+			case 3: wt.drawText(L"씨앗조각 : 3", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+				break;
+			case 4: wt.drawText(L"씨앗조각 : 4", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+				break;
+			case 5: wt.drawText(L"씨앗조각 : 5", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+				break;
+			case 6: wt.drawText(L"씨앗조각 : 6", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+				break;
+			case 7: wt.drawText(L"씨앗조각 : 7", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+				break;
+			case 8: wt.drawText(L"씨앗조각 : 8", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+				break;
+			case 9: wt.drawText(L"씨앗조각 : 9", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+				break;
+			case 10: wt.drawText(L"씨앗조각 : 10", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+				ac.getSeed = 1;
+				ac.seedPiece = 0;
+				break;
+			default:
+				break;
+			}
+			
+		}
+		if (ac.getSeed)
+			wt.drawText(L"씨앗", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+		if (start == 0) {
+			wt.drawText(L"침입자...", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+			Sleep(1000);
+			wt.drawText(L"제거한다...", 1650, 720, 20, RGB(128, 128, 128), L"굴림체");
+			Sleep(1000);
+			start = 1;
+		}
+		
 	}
 }
 
 void drawStage1::stage1FutureBossDraw(std::vector<char>& buffer)
 {
 	draw a;
-
+	
 	a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 	a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
 }
