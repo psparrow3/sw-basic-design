@@ -1,5 +1,5 @@
 #pragma once
-
+#include "drawStage.h"
 #include "drawCharacter.h"
 #include <iostream>
 
