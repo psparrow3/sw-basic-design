@@ -6,7 +6,7 @@
 
 class drawStage2
 {
-	
+public:
 	void stage2Draw(std::vector<char>& buffer);
 	void drawStage2Future(std::vector<char>& buffer);
 	void drawStage2Past(std::vector<char>& buffer);

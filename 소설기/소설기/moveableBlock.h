@@ -17,4 +17,3 @@ public:
 	void blockLocationErase(int(&stage)[25][40], int x, int y);
 
 };
-

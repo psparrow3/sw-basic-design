@@ -1,9 +1,17 @@
 ﻿#include "character.h"
+#include "conio.h"
+#include "Windows.h"
+#include "drawCharacter.h"
+#include <iostream>
+#include <dinput.h>
+#include "draw.h"
+#include "drawMoveableBlock.h"
+#include "Boss1.h"
 
 int character::x = 0;
 int character::y = 420;
 
-int character::progress = 0;                     // 진행상황
+int character::progress = 2;                     // 진행상황
 int character::gameOverCheck = 0;
 bool character::future = 1;
 bool character::isJumping = 0;
@@ -61,7 +69,7 @@ void character::switchMap()
 
 void character::attack(int(&stage)[25][40])
 {
-
+	
 	attacking = 1;
 
 	int atX;
@@ -77,16 +85,17 @@ void character::attack(int(&stage)[25][40])
 	}
 
 	int coll = collision(stage, atX, atY);
-
+	
 	if (coll == 98)
 	{
 		Boss1::hp = 0;
-
 	}
+
 	if (coll == 15)
 	{
 		isLeverPull = 1;
 	}
+
 	if (coll == 2 || atX <= 0 || coll == 3 || coll == 14 || coll == 8 || atX >= 1600 || atX <= 0)
 	{
 		attacking = 0;
@@ -211,7 +220,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 		getSeed = 1;
 	}
 
-	if (coll == 2 || collision(stage, x, y + 20) == 8 || coll == 3 || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15)
+	if (coll == 2 || collision(stage, x, y + 20) == 8  || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15 || collision(stage, x+40, y) == 8)
 	{
 		gameOver(coll, buffer);
 	}
