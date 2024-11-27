@@ -146,7 +146,15 @@ IDB_BITMAP53            BITMAP                  "past_text.bmp"
 
 IDB_BITMAP54            BITMAP                  "future_text.bmp"
 
+IDB_BITMAP55            BITMAP                  "laser_length.bmp"
 
+IDB_BITMAP56            BITMAP                  "laser_width.bmp"
+
+IDB_BITMAP57            BITMAP                  "bridge.bmp"
+
+IDB_BITMAP58            BITMAP                  "laser_width_bottom.bmp"
+
+IDB_BITMAP59            BITMAP                  "laser_length_bottom.bmp"
 
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////

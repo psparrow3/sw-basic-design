@@ -23,4 +23,5 @@ public:
 	static bool flag;
 	static int time;
 	static int seed_num;
+	static int hp;
 };

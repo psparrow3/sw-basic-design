@@ -5,7 +5,7 @@ gameStart::gameStart() {
 
 	a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	a.SetConsoleFontSize(1);
-	SetConsoleTitle(L"잃어버린 낙원");
+	
 
 	// 커서 숨기기
 	GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);
@@ -21,10 +21,10 @@ void gameStart::startGame() {
 	startScreen ss;
 	drawStage_prologue dsp;
 	drawStage1 ds1;
-	/*drawStage2 ds2;*/
+	drawStage2 ds2;
 	/*drawstage3 ds3;*/
 
-	ac.progress +=2;
+	ac.progress +=0;
 
 	ss.drawStartScreen(buffer);
 	while (1) {
@@ -40,7 +40,7 @@ void gameStart::startGame() {
 			ds1.stage1BossDraw(buffer);
 			break;
 		case 3:
-			/*ds2.stage2Draw(buffer);*/
+			ds2.stage2Draw(buffer);
 			break;
 		case 4:
 			/*ds2.stage2BossDraw(buffer);*/

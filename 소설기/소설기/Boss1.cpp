@@ -7,6 +7,7 @@ int Boss1::time = 0;
 std::vector<attack> Boss1::at;
 std::vector <attack> Boss1::dr;
 int Boss1::seed_num = 0;
+int Boss1::hp = 1;
 
 Boss1::Boss1()
 {
