@@ -1,6 +1,4 @@
 ﻿#include "drawStage_prologue.h"
-#include "writeText.h"
-#include "draw.h"
 
 drawStage_prologue::drawStage_prologue()
 {

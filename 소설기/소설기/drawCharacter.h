@@ -2,7 +2,7 @@
 #include "character.h"
 #include <windows.h>
 #include <iostream>
-#include "writeText.h"
+#include "draw.h"
 
 class drawCharacter : public character
 {

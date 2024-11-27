@@ -1,11 +1,4 @@
 ﻿#include "character.h"
-#include "conio.h"
-#include "Windows.h"
-
-#include <iostream>
-#include <dinput.h>
-
-
 
 int character::x = 0;
 int character::y = 420;
@@ -22,7 +15,7 @@ int character::seedPiece = 0;
 bool character::seedPlant = 0;
 bool character::nextStage = 0;
 int character::characterHeart = 3;
-bool character::attacking = 10;
+bool character::attacking = 1;
 bool character::facingRight = 1;
 bool character::land = 1;
 int character::clearStage[25][40] = { 0 };

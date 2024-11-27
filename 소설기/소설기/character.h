@@ -3,10 +3,9 @@
 #include <iostream>
 #include "draw.h"
 #include "Boss1.h"
-#include <thread>
+#include <dinput.h>
+#include "conio.h"
 
-#define SCREEN_WIDTH 1902
-#define SCREEN_HEIGHT 501
 
 #define blockSize 40
 #define character_Height 60
