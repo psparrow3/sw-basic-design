@@ -11,6 +11,7 @@
 #include "startScreen.h"
 #include "drawStage_prologue.h"
 #include "drawStage1.h"
+#include "drawStage2.h"
 
 class gameStart
 {

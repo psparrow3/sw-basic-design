@@ -156,6 +156,7 @@
     <Image Include="Boss2.bmp" />
     <Image Include="Boss3.bmp" />
     <Image Include="bottom.bmp" />
+    <Image Include="bridge.bmp" />
     <Image Include="broken_block.bmp" />
     <Image Include="broken_door.bmp" />
     <Image Include="button1.bmp" />
@@ -179,7 +180,12 @@
     <Image Include="full_heart.bmp" />
     <Image Include="future_text.bmp" />
     <Image Include="key.bmp" />
+    <Image Include="laser.bmp" />
+    <Image Include="laser_length.bmp" />
     <Image Include="laser1.bmp" />
+    <Image Include="laser_length_bottom.bmp" />
+    <Image Include="laser_width.bmp" />
+    <Image Include="laser_width_bottom.bmp" />
     <Image Include="lava2.bmp" />
     <Image Include="left_button.bmp" />
     <Image Include="lever_left.bmp" />
