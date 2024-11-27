@@ -1,4 +1,4 @@
-ï»¿#pragma once
+#pragma once
 #include "Windows.h"
 #include<iostream>
 #include "draw.h"
@@ -23,8 +23,8 @@ public:
 	static bool isJumping;
 
 	static int seedPiece;
-	static bool seedPlant;							// ì”¨ì•—ì„ ì‹¬ì—ˆëŠ”ì§€
-	static int progress;							// ì§„í–‰ìƒí™©
+	static bool seedPlant;							// ¾¾¾ÑÀ» ½É¾ú´ÂÁö
+	static int progress;							// ÁøÇà»óÈ²
 
 	static bool getSeed;
 	static bool getKey;
