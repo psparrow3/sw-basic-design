@@ -1,11 +1,11 @@
 ﻿#include "character.h"
 #include "conio.h"
 #include "Windows.h"
-#include "drawCharacter.h"
+
 #include <iostream>
 #include <dinput.h>
-#include "draw.h"
-#include "drawMoveableBlock.h"
+
+
 
 int character::x = 0;
 int character::y = 420;

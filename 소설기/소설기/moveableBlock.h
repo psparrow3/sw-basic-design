@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "character.h"
 
-
 class moveableBlock
 {
 public:
