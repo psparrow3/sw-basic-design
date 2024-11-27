@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "character.h"
+#include "drawStage1.h"
 
 class moveableBlock
 {
