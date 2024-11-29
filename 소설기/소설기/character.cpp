@@ -1,9 +1,11 @@
 ﻿#include "drawCharacter.h"
 
 int character::x = 0;
-int character::y = 420;
+int character::y = 410;
+
 
 int character::progress = 0;                     // 진행상황
+
 int character::gameOverCheck = 0;
 bool character::future = 1;
 bool character::isJumping = 0;
@@ -211,7 +213,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	if (coll == 5) {
 		getSeed = 1;
 	}
-
+	
 	if (coll == 2 || collision(stage, x, y + 20) == 8  || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15 || collision(stage, x+40, y) == 8)
 	{
 		gameOver(coll, buffer);
@@ -226,7 +228,10 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 }
 void character::gravity(int(&stage)[25][40], int newX, int newY)
 {
+	
 	int coll = collision(stage, x, y + 20);
+	
+	
 
 	if (coll == 2 || coll == 10 || coll == 11 || coll == 9 || coll == 3 || coll==12) {
 
