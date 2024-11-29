@@ -10,10 +10,10 @@ int drawStage1::stage1_future[12][20] =
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0},
 	{0,1,0,0,1,1,0,0,0,0,0,1,1,0,0,0,0,0,5,0},
 	{0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
-	{0,0,0,1,1,0,0,0,0,0,0,0,6,0,3,0,0,1,0,0},		 
-	{0,0,1,0,1,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0},
-	{0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1}
+	{0,0,0,1,1,0,0,0,0,0,0,0,6,0,0,0,0,1,0,0},		 
+	{0,0,1,0,1,0,0,0,0,0,0,0,6,1,1,1,1,0,0,0},
+	{0,0,0,0,1,1,1,1,0,0,0,0,6,0,0,0,0,0,0,0},
+	{0,0,0,0,1,0,0,0,1,0,0,0,6,0,0,0,0,0,1,1}
 };
 
 int drawStage1::stage1_past[12][20] =
@@ -26,10 +26,10 @@ int drawStage1::stage1_past[12][20] =
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0},
 	{0,0,0,0,1,1,0,1,1,0,0,1,1,0,0,0,0,0,0,0},
 	{1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
-	{0,0,0,0,1,0,0,0,0,0,0,0,6,0,3,0,0,1,0,0},
-	{0,0,0,0,1,0,9,0,0,0,0,0,0,1,1,1,1,0,0,0},		
-	{0,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,5},		
-	{0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1}
+	{0,0,0,0,1,0,0,0,0,0,0,0,6,0,0,0,0,1,0,0},
+	{0,0,0,0,1,0,9,0,0,0,0,0,6,1,1,1,1,0,0,0},		
+	{0,1,0,0,1,1,1,1,0,0,0,0,6,0,0,0,0,0,0,5},		
+	{0,0,0,1,1,0,0,0,0,0,0,0,6,0,0,0,0,0,1,1}
 };
 
 int drawStage1::stage1_future_Boss[12][20] =
@@ -239,7 +239,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			character::characterHeart = 3;
 	
 			ac.x = 10;
-			ac.y = 420;
+			ac.y = 410;
 			ac.facingRight = 1;
 
 			
@@ -374,7 +374,13 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 		if (ac.collision(stage, ac.x, ac.y + 20) == 14) {		// 스위치
 			if (ac.x / 40 == 36) {            // 기둥 스위치
 				stage1_future[6][18] = 0;         // 스위치 그림 제거
-				stage1_future[8][12] = 0;         // 기둥 그림 제거
+
+				// 기둥 그림 제거
+				stage1_future[8][12] = 0;        
+				stage1_future[9][12] = 0;
+				stage1_future[10][12] = 0;
+				stage1_future[11][12] = 0;
+
 				// 스위치 위치 제거
 				stage1_Future[13][37] = 0;
 				stage1_Future[13][36] = 0;
@@ -394,6 +400,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 				stage1_Past[21][38] = 0;
 				// 레이저 그림 제거
 				stage1_past[1][18] = 0;
+				
 				stage1_future[1][18] = 0;
 				// 레이저 위치 제거
 				for (int i = 3; i >= 2; i--) {
@@ -463,10 +470,10 @@ void drawStage1::drawStage1Future(std::vector<char>& buffer) {
 				a.drawBitmap("key.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
 				break;
 			case 5:
-				a.drawBitmap("button2.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE + 20, SCREEN_WIDTH);
+				a.drawBitmap("button1.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE + 20, SCREEN_WIDTH);
 				break;
 			case 6:
-				a.drawBitmap("laser1.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+				a.drawBitmap("laser_length.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
 				break;
 			case 7:
 				a.drawBitmap("triangle_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
@@ -500,10 +507,10 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
 				a.drawBitmap("key.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
 				break;
 			case 5:
-				a.drawBitmap("button1.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE + 20, SCREEN_WIDTH);
+				a.drawBitmap("button2.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE + 20, SCREEN_WIDTH);
 				break;
 			case 6:
-				a.drawBitmap("laser1.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+				a.drawBitmap("laser_length.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
 				break;
 			case 7:
 				a.drawBitmap("triangle_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
@@ -569,7 +576,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 			Boss1::Boss1reset(buffer);
 
 			ac.x = 0;
-			ac.y = 420;
+			ac.y = 410;
 
 			ac.gameOverCheck = 0;
 
