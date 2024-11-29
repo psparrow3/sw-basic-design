@@ -7,15 +7,18 @@ movingBlock::movingBlock()
 	
 }
 
-void movingBlock::blockMove()
+void movingBlock::blockMove(int (&stage)[25][40])
 {
 	
 	if (!up) {
 		
 		m_y += 20;
 		
+		if (m_y+20 == drawCharacter::y && m_x - 40 <= drawCharacter::x && m_x + 60 >= drawCharacter::x) {
+			drawCharacter::y += 20;
+		}
 		
-		if (m_y >= 280) 
+		if (m_y >= 300) 
 			up = 1;
 		
 			
@@ -24,7 +27,11 @@ void movingBlock::blockMove()
 	if (up){
 		
 		m_y -= 20;
-	
+		
+		
+		if (m_y == drawCharacter::y + 40 && m_x - 40 <= drawCharacter::x && m_x + 60 >= drawCharacter::x) {
+			drawCharacter::y -= 20;
+		}
 
 
 
@@ -35,8 +42,15 @@ void movingBlock::blockMove()
 	
 }
 
-void movingBlock::collision() {
-	
+void movingBlock::collision(int(&stage)[25][40]) 
+{
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 2; j++) {
+			int posX = m_x / 40 + i;
+			int posY = m_y / 20 + j;
+			
+		}
+	}
 }
 
 void movingBlock::blockLocation(int(&stage)[25][40])

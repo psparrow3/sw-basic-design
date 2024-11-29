@@ -42,7 +42,7 @@ public:
 
 	void characterMove(int(&stage)[25][40], std::vector<char>& buffer);
 	void gravity(int(&stage)[25][40], int newX, int newY);
-	int collision(int(&stage)[25][40], int newX, int newY);
+	static int collision(int(&stage)[25][40], int newX, int newY);
 	static void takeDamage();
 	void gameOver(int coll, std::vector<char>& buffer);
 	static int clearStage[25][40];

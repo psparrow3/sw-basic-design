@@ -360,25 +360,16 @@ void drawStage2::stage2Draw(std::vector<char>& buffer)
 		mb.movingBlockErase(buffer);
 		mb.blockLocationErase(stage);
 		if (movetime >= 2) {
-			mb.blockMove();
+			mb.blockMove(stage);
 			movetime = 0;
 		}
 		
-	
+		
 		mb.blockLocation(stage);
 		mb.movingBlockDraw(buffer);
 
 		ac.characterMove(stage, buffer);
-		if (ac.collision(stage, ac.x, ac.y+20) == 2) {
-			if (ac.x > 1220 && ac.x < 1360 && ac.y>120 && ac.y <= 240) {
-				ac.y -= 20;
-			} 
-		}
-		if (ac.collision(stage, ac.x, ac.y-20) == 2) {
-			if (ac.x > 1220 && ac.x < 1360 && ac.y>120 && ac.y <= 240) {
-				ac.y += 20;
-			}
-		}
+		
 		ac.characterDraw(buffer);
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
