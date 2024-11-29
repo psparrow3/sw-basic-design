@@ -156,6 +156,18 @@ IDB_BITMAP58            BITMAP                  "laser_width_bottom.bmp"
 
 IDB_BITMAP59            BITMAP                  "laser_length_bottom.bmp"
 
+IDB_BITMAP60            BITMAP                  "stage2_lava1.bmp"
+
+IDB_BITMAP61            BITMAP                  "stage2_lava2.bmp"
+
+IDB_BITMAP62            BITMAP                  "stage2_lava3.bmp"
+
+IDB_BITMAP63            BITMAP                  "stage2_lava.bmp"
+
+IDB_BITMAP64            BITMAP                  "stage2_Boss.bmp"
+
+IDB_BITMAP65            BITMAP                  "stage2_Boss_left.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 
