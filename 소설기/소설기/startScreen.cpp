@@ -1,6 +1,4 @@
 #include "startScreen.h"
-#include "Boss1.h"
-
 
 void startScreen::drawStartScreen(std::vector<char>& buffer)
 {

@@ -1,5 +1,4 @@
 #pragma once
-#include "draw.h"
 #include "drawCharacter.h"
 
 #include "writeText.h"

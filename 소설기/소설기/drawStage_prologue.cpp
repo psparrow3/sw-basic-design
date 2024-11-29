@@ -1,6 +1,4 @@
 ﻿#include "drawStage_prologue.h"
-#include "writeText.h"
-#include "draw.h"
 
 drawStage_prologue::drawStage_prologue()
 {
@@ -10,7 +8,7 @@ drawStage_prologue::drawStage_prologue()
 void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
 	drawCharacter ac;
 	draw a;
-
+	
 	writeText wt;
   
 	int checkHelpText = 0;

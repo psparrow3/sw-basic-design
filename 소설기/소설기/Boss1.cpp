@@ -1,4 +1,4 @@
-#include "Boss1.h"
+﻿#include "Boss1.h"
 
 int Boss1::m_x = 20;
 int Boss1::m_y = 40;
@@ -22,6 +22,7 @@ void Boss1::Boss1reset(std::vector<char>& buffer)
     m_y = 40;
     flag = false;
     time = 0;
+    hp = 1;
 
     for (auto i : at)
     {
@@ -66,7 +67,6 @@ void Boss1::Boss1reset(std::vector<char>& buffer)
 
 void Boss1::Boss1Attack()
 {
-    float direction;
     int x_gap = (m_x * 20) + 40 - (character::x + 30);
     int y_gap = m_y + 80 - (character::y + 30);
 

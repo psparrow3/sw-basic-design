@@ -8,7 +8,6 @@
     <ClCompile Include="draw.cpp" />
     <ClCompile Include="drawCharacter.cpp" />
     <ClCompile Include="drawMoveableBlock.cpp" />
-    <ClCompile Include="drawStage.cpp" />
     <ClCompile Include="drawStage1.cpp" />
     <ClCompile Include="drawStage2.cpp" />
     <ClCompile Include="drawStage_prologue.cpp" />
@@ -26,7 +25,6 @@
     <ClInclude Include="draw.h" />
     <ClInclude Include="drawCharacter.h" />
     <ClInclude Include="drawMoveableBlock.h" />
-    <ClInclude Include="drawStage.h" />
     <ClInclude Include="drawStage1.h" />
     <ClInclude Include="drawStage2.h" />
     <ClInclude Include="drawStage_prologue.h" />
@@ -41,10 +39,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="A_button.bmp" />
-    <Image Include="bitmap24.bmp" />
-    <Image Include="Boss1.bmp" />
-    <Image Include="Boss2.bmp" />
-    <Image Include="Boss3.bmp" />
     <Image Include="bottom.bmp" />
     <Image Include="broken_block.bmp" />
     <Image Include="broken_door.bmp" />
