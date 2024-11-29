@@ -1,6 +1,5 @@
 #pragma once
 
-#include "draw.h"
 #include "drawCharacter.h"
 #include "Boss1.h"
 #include "drawMoveableBlock.h"

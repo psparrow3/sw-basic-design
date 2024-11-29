@@ -1,8 +1,7 @@
-#pragma once
+﻿#pragma once
 #include "character.h"
 #include <windows.h>
-#include <iostream>
-#include "writeText.h"
+
 class drawCharacter : public character
 {
 public:
@@ -20,5 +19,4 @@ public:
 	void characterHeartDraw(std::vector<char>& buffer);
 	void characterInfo(std::vector<char>& buffer);
 	void characterDraw(std::vector<char>& buffer);
-
 };

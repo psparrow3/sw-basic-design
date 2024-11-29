@@ -135,10 +135,7 @@
     <ClInclude Include="drawCharacter.h" />
     <ClInclude Include="drawMoveableBlock.h" />
     <ClInclude Include="drawMovingBlock.h" />
-    <ClInclude Include="drawStage.h" />
-    <ClInclude Include="drawStage1.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
-    </ClInclude>
+    <ClInclude Include="drawStage1.h" />
     <ClInclude Include="drawStage2.h" />
     <ClInclude Include="drawStage_prologue.h" />
     <ClInclude Include="gameStart.h" />
@@ -149,105 +146,45 @@
     <ClInclude Include="writeText.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="소설기.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="A_button.bmp" />
-    <Image Include="bitmap24.bmp" />
-    <Image Include="Boss1.bmp" />
-    <Image Include="Boss2.bmp" />
-    <Image Include="Boss3.bmp" />
-    <Image Include="bottom.bmp" />
-    <Image Include="bridge.bmp" />
-    <Image Include="broken_block.bmp" />
-    <Image Include="broken_door.bmp" />
-    <Image Include="button1.bmp" />
-    <Image Include="button2.bmp" />
-    <Image Include="character_left_attack.bmp" />
-    <Image Include="character_left_jump.bmp" />
-    <Image Include="character_left_original.bmp" />
-    <Image Include="character_right_attack.bmp" />
-    <Image Include="character_right_jump.bmp" />
-    <Image Include="character_right_original.bmp" />
-    <Image Include="chat_window_start.bmp" />
-    <Image Include="cold_lava.bmp" />
-    <Image Include="empty_block.bmp" />
-    <Image Include="empty_character.bmp" />
-    <Image Include="block.bmp" />
-    <Image Include="door.bmp" />
-    <Image Include="empty_character_attack.bmp" />
-    <Image Include="empty_heart.bmp" />
-    <Image Include="empty_map.bmp" />
-    <Image Include="enter_door.bmp" />
-    <Image Include="full_heart.bmp" />
-    <Image Include="future_text.bmp" />
-    <Image Include="key.bmp" />
-    <Image Include="laser.bmp" />
-    <Image Include="laser_length.bmp" />
-    <Image Include="laser1.bmp" />
-    <Image Include="laser_length_bottom.bmp" />
-    <Image Include="laser_width.bmp" />
-    <Image Include="laser_width_bottom.bmp" />
-    <Image Include="lava2.bmp" />
-    <Image Include="left_button.bmp" />
-    <Image Include="lever_left.bmp" />
-    <Image Include="lever_right.bmp" />
-    <Image Include="moveable_block.bmp" />
-    <Image Include="past_text.bmp" />
-    <Image Include="right_button.bmp" />
-    <Image Include="seed.bmp" />
-    <Image Include="seed_block.bmp" />
-    <Image Include="seed_piece.bmp" />
-    <Image Include="small_block.bmp" />
-    <Image Include="SPACE_button.bmp" />
-    <Image Include="stage1_boss_tree_lower.bmp" />
-    <Image Include="stage1_boss_tree_upper.bmp" />
-    <Image Include="stage1_tree.bmp" />
-    <Image Include="start_screen.bmp" />
-    <Image Include="status_informaition.bmp" />
-    <Image Include="S_button.bmp" />
-    <Image Include="test_treebottom.bmp" />
-    <Image Include="test_treetop.bmp" />
-    <Image Include="triangle_block_down.bmp" />
-    <Image Include="triangle_block_right.bmp" />
-    <Image Include="triangle_block_up.bmp" />
-    <Image Include="tutorial_building.bmp" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Boss1.cpp" />
     <ClCompile Include="Boss2.cpp" />
     <ClCompile Include="Boss3.cpp" />
-    <ClCompile Include="character.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="character.cpp" />
     <ClCompile Include="draw.cpp" />
-    <ClCompile Include="drawCharacter.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
-    </ClCompile>
-    <ClCompile Include="drawMoveableBlock.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="drawCharacter.cpp" />
+    <ClCompile Include="drawMoveableBlock.cpp" />
     <ClCompile Include="drawMovingBlock.cpp" />
-    <ClCompile Include="drawStage.cpp" />
-    <ClCompile Include="drawStage1.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="drawStage1.cpp" />
     <ClCompile Include="drawStage2.cpp" />
     <ClCompile Include="drawStage_prologue.cpp" />
     <ClCompile Include="gameStart.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="moveableBlock.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="moveableBlock.cpp" />
     <ClCompile Include="movingBlock.cpp" />
     <ClCompile Include="startScreen.cpp" />
     <ClCompile Include="writeText.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="소설기.vcxproj.filters" />
+    <Image Include="A_button.bmp" />
+    <Image Include="background.bmp" />
+    <Image Include="B_button.bmp" />
+    <Image Include="boss_battle.bmp" />
+    <Image Include="character.bmp" />
+    <Image Include="left_button.bmp" />
+    <Image Include="moveable_block.bmp" />
+    <Image Include="moveable_block_transparent.bmp" />
+    <Image Include="past_text.bmp" />
+    <Image Include="S_button.bmp" />
+    <Image Include="stage1_boss1.bmp" />
+    <Image Include="stage1_boss2.bmp" />
+    <Image Include="stage1_boss3.bmp" />
+    <Image Include="stage1_floor.bmp" />
+    <Image Include="stage1_prologue.bmp" />
+    <Image Include="space_button.bmp" />
+    <Image Include="stage2_boss.bmp" />
+    <Image Include="stage2_prologue.bmp" />
+    <Image Include="stage3_boss.bmp" />
+    <Image Include="stage3_prologue.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

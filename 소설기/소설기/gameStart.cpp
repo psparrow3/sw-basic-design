@@ -1,4 +1,4 @@
-#include "gameStart.h"
+﻿#include "gameStart.h"
 
 gameStart::gameStart() {
 	draw a;
@@ -24,7 +24,6 @@ void gameStart::startGame() {
 	drawStage2 ds2;
 	/*drawstage3 ds3;*/
 
-	
 
 	ss.drawStartScreen(buffer);
 	while (1) {
