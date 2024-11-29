@@ -6,7 +6,8 @@
 #include <stdexcept>
 
 #define SCREEN_WIDTH 1902
-#define SCREEN_HEIGHT 500
+#define SCREEN_HEIGHT 501
+
 #define BLOCK_SIZE 40
 
 #pragma pack(push, 1)

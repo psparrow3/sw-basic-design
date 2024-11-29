@@ -6,7 +6,6 @@
 #include <Windows.h>
 #include <stdexcept>
 #include "draw.h"
-#include "drawCharacter.h"
 #include "conio.h"
 #include "startScreen.h"
 #include "drawStage_prologue.h"
