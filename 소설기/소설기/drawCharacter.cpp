@@ -110,8 +110,6 @@ void drawCharacter::characterInfo(std::vector<char>& buffer)
 
     draw a;
    
-    writeText wt;
-   
     a.drawBitmap("status_informaition.bmp", buffer, 1600, 0, SCREEN_WIDTH);
     if (future)
     {

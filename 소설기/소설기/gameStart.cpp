@@ -1,4 +1,4 @@
-#include "gameStart.h"
+﻿#include "gameStart.h"
 
 gameStart::gameStart() {
 	draw a;

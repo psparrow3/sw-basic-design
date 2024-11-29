@@ -5,9 +5,9 @@
 #include "Boss1.h"
 #include <dinput.h>
 #include "conio.h"
+#include "drawMoveableBlock.h"
 
-
-#define blockSize 40
+#define blockSize 40 
 #define character_Height 60
 #define character_Width 40
 

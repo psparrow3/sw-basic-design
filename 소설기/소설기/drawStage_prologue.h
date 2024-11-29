@@ -2,7 +2,6 @@
 
 #include "drawCharacter.h"
 #include <iostream>
-#include "draw.h"
 #include "writeText.h"
 
 class drawStage_prologue 

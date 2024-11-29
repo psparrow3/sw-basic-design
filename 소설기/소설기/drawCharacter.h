@@ -4,6 +4,8 @@
 #include <iostream>
 #include "draw.h"
 
+class character;
+
 class drawCharacter : public character
 {
 public:

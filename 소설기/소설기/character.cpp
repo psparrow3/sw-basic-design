@@ -1,17 +1,9 @@
 ﻿#include "character.h"
-#include "conio.h"
-#include "Windows.h"
-#include "drawCharacter.h"
-#include <iostream>
-#include <dinput.h>
-#include "draw.h"
-#include "drawMoveableBlock.h"
-#include "Boss1.h"
 
 int character::x = 0;
 int character::y = 420;
 
-int character::progress = 2;                     // 진행상황
+int character::progress = 0;                     // 진행상황
 int character::gameOverCheck = 0;
 bool character::future = 1;
 bool character::isJumping = 0;
