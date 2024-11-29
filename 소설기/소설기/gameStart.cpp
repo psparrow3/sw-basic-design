@@ -42,7 +42,7 @@ void gameStart::startGame() {
 			ds2.stage2Draw(buffer);
 			break;
 		case 4:
-			/*ds2.stage2BossDraw(buffer);*/
+			ds2.stage2BossDraw(buffer);
 			break;
 		case 5:
 			/*ds3.stage2BossDraw(buffer);*/

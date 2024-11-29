@@ -150,6 +150,10 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="A_button.bmp" />
+    <Image Include="stage2_Boss.bmp" />
+    <Image Include="stage2_Boss_left.bmp" />
+    <Image Include="stage2_Boss_right.bmp" />
+    <Image Include="stage2_lava.bmp" />
     <Image Include="bottom.bmp" />
     <Image Include="bridge.bmp" />
     <Image Include="broken_block.bmp" />
@@ -175,7 +179,6 @@
     <Image Include="full_heart.bmp" />
     <Image Include="future_text.bmp" />
     <Image Include="key.bmp" />
-    <Image Include="laser.bmp" />
     <Image Include="laser_length.bmp" />
     <Image Include="laser1.bmp" />
     <Image Include="laser_length_bottom.bmp" />
@@ -196,6 +199,9 @@
     <Image Include="stage1_boss_tree_lower.bmp" />
     <Image Include="stage1_boss_tree_upper.bmp" />
     <Image Include="stage1_tree.bmp" />
+    <Image Include="stage2_lava1.bmp" />
+    <Image Include="stage2_lava2.bmp" />
+    <Image Include="stage2_lava3.bmp" />
     <Image Include="start_screen.bmp" />
     <Image Include="status_informaition.bmp" />
     <Image Include="S_button.bmp" />
