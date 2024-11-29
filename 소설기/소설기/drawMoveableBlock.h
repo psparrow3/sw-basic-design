@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "draw.h"
 #include "moveableBlock.h"
+#include "character.h"
 
 class drawMoveableBlock : public moveableBlock
 {

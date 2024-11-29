@@ -1,6 +1,5 @@
 #pragma once
-#include "character.h"
-#include "draw.h"
+#include "drawCharacter.h"
 
 class Boss2
 {

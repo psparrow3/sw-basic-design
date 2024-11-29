@@ -1,6 +1,5 @@
 #pragma once
 #include "character.h"
-#include "draw.h"
 #include "drawStage1.h"
 #include <set>
 

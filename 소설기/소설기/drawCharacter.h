@@ -1,10 +1,6 @@
 ﻿#pragma once
 #include "character.h"
 #include <windows.h>
-#include <iostream>
-#include "draw.h"
-
-class character;
 
 class drawCharacter : public character
 {
