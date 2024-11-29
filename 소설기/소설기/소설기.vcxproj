@@ -134,6 +134,7 @@
     <ClInclude Include="draw.h" />
     <ClInclude Include="drawCharacter.h" />
     <ClInclude Include="drawMoveableBlock.h" />
+    <ClInclude Include="drawMovingBlock.h" />
     <ClInclude Include="drawStage.h" />
     <ClInclude Include="drawStage1.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
@@ -142,6 +143,7 @@
     <ClInclude Include="drawStage_prologue.h" />
     <ClInclude Include="gameStart.h" />
     <ClInclude Include="moveableBlock.h" />
+    <ClInclude Include="movingBlock.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="startScreen.h" />
     <ClInclude Include="writeText.h" />
@@ -226,6 +228,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="drawMovingBlock.cpp" />
     <ClCompile Include="drawStage.cpp" />
     <ClCompile Include="drawStage1.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -239,6 +242,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="movingBlock.cpp" />
     <ClCompile Include="startScreen.cpp" />
     <ClCompile Include="writeText.cpp" />
   </ItemGroup>

@@ -17,6 +17,8 @@
     <ClCompile Include="moveableBlock.cpp" />
     <ClCompile Include="startScreen.cpp" />
     <ClCompile Include="writeText.cpp" />
+    <ClCompile Include="movingBlock.cpp" />
+    <ClCompile Include="drawMovingBlock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Boss1.h" />
@@ -35,6 +37,8 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="startScreen.h" />
     <ClInclude Include="writeText.h" />
+    <ClInclude Include="movingBlock.h" />
+    <ClInclude Include="drawMovingBlock.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="소설기.rc" />
