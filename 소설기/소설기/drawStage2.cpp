@@ -487,6 +487,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			ac.y = 350;
 			ac.facingRight = 1;
 			ctimeCheck = 0;
+			Boss2::hp = 2;
 
 			ac.gameOverCheck = 0;
 			break;
