@@ -1,10 +1,10 @@
 ﻿#include "drawCharacter.h"
 
-int character::x = 0;
-int character::y = 410;
+int character::x = 1360;
+int character::y = 220;
 
 
-int character::progress = 4;                     // 진행상황
+int character::progress = 3;                     // 진행상황
 
 int character::gameOverCheck = 0;
 bool character::future = 1;
@@ -20,7 +20,7 @@ int character::characterHeart = 3;
 bool character::attacking = 1;
 bool character::facingRight = 1;
 bool character::land = 1;
-int character::clearStage[25][40] = { 0 };
+int character::clearStage[25][40]     = { 0 };
 int character::leftTime = 0;
 int character::rightTime = 0;
 bool character::isLeverPull = 0;
@@ -137,7 +137,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	if (jumping && !isJumping)
 	{
-		isJumping = 0;
+		isJumping = 1;
 
 		land = 0;
 

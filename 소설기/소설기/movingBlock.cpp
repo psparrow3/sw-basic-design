@@ -14,7 +14,7 @@ void movingBlock::blockMove(int (&stage)[25][40])
 		
 		m_y += 20;
 		
-		if (m_y+20 == drawCharacter::y && m_x - 40 <= drawCharacter::x && m_x + 60 >= drawCharacter::x) {
+		if (m_y+20 <= drawCharacter::y && m_y + 20 >= drawCharacter::y && m_x - 40 <= drawCharacter::x && m_x + 80 > drawCharacter::x) {
 			drawCharacter::y += 20;
 		}
 		
@@ -29,7 +29,7 @@ void movingBlock::blockMove(int (&stage)[25][40])
 		m_y -= 20;
 		
 		
-		if (m_y == drawCharacter::y + 40 && m_x - 40 <= drawCharacter::x && m_x + 60 >= drawCharacter::x) {
+		if (m_y-40 == drawCharacter::y && m_x - 40 <= drawCharacter::x && m_x + 80 > drawCharacter::x) {
 			drawCharacter::y -= 20;
 		}
 
