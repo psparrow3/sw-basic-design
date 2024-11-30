@@ -115,7 +115,7 @@ int drawStage2::stage2_Future_Boss[25][40] =
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
 	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
 	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
@@ -472,10 +472,10 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 
 	int atimeCheck = 0;
 	int ctimeCheck = 0;
-	int laser_x = 1440;
-	bool laserAttack = TRUE;
+	int laser_x = 1380;
+	bool laserAttack = FALSE;
 
-	ac.y = 350;
+	ac.y = 370;
 
 	while (1)
 	{
@@ -502,7 +502,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			a.eraseBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
 
 			ac.x = 0;
-			ac.y = 350;
+			ac.y = 370;
 			ac.facingRight = 1;
 			ctimeCheck = 0;
 			Boss2::hp = 2;
@@ -529,33 +529,42 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			ac.gravity(stage, ac.x, ac.y);
 		}
 
-		for (int i = 0; i < 11; i++)
+		if (laserAttack)
 		{
-			stage2_Future_Boss[i * 2][laser_x / 40] = 0;
-			stage2_Future_Boss[i * 2 + 1][laser_x / 40] = 0;
+			for (int i = 0; i < 21; i++)
+			{
+				stage2_Future_Boss[i][laser_x / 40+1] = 0;
+			}			
 		}
 
-		//if (atimeCheck > attackTime)
+		if (atimeCheck > attackTime)
 		{
 			laserAttack = TRUE;
 
 			laser_x -= 40;
 
-			if (laser_x == 80)
+			if (laser_x <= 80)
 			{
 				atimeCheck = 0;
 				attackTime = rand() % 11 + 20;
-				laser_x = 1440;
-				//laserAttack = FALSE;
+				laser_x = 1380;
+				laserAttack = FALSE;
 			}
 		}
 
-		/*if (ctimeCheck > changeTime)
+		if (laserAttack) {
+			for (int i = 0; i < 21; i++)
+			{
+				stage2_Future_Boss[i][laser_x / 40+1] = 8;
+			}
+		}
+		
+		if (ctimeCheck > changeTime)
 		{
 			Boss2::Boss2Attack_change();
 			ctimeCheck = 0;
 			changeTime = rand() % 11 + 20;
-		}*/
+		}
 
 		if (ac.future)
 		{
@@ -583,15 +592,6 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		{
 			a.eraseBitmap("Empty_boss.bmp", buffer, 0, 260, SCREEN_WIDTH);
 			a.drawBitmap("stage2_Boss_left.bmp", buffer, 0, 260, SCREEN_WIDTH);
-		}
-
-		if (laserAttack)
-		{
-			for (int i = 0; i < 11; i++)
-			{
-				stage2_Future_Boss[i * 2][laser_x / 40] = 8;
-				stage2_Future_Boss[i * 2 + 1][laser_x / 40] = 8;
-			}
 		}
 
 		ac.characterMove(stage, buffer);
