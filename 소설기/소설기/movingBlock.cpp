@@ -18,7 +18,7 @@ void movingBlock::blockMove(int (&stage)[25][40])
 			drawCharacter::y += 20;
 		}
 		
-		if (m_y >= 300) 
+		if (m_y >= minHeight) 
 			up = 1;
 		
 			
@@ -35,7 +35,7 @@ void movingBlock::blockMove(int (&stage)[25][40])
 
 
 
-		if (m_y <= 120)
+		if (m_y <= maxHeight)
 			up = 0;
 	}
 

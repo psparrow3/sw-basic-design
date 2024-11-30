@@ -4,7 +4,7 @@ int character::x = 0;
 int character::y = 410;
 
 
-int character::progress = 3;                     // 진행상황
+int character::progress = 4;                     // 진행상황
 
 int character::gameOverCheck = 0;
 bool character::future = 1;
@@ -137,7 +137,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	if (jumping && !isJumping)
 	{
-		isJumping = 1;
+		isJumping = 0;
 
 		land = 0;
 

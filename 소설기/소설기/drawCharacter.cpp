@@ -126,6 +126,8 @@ void drawCharacter::characterInfo(std::vector<char>& buffer)
 
 void drawCharacter::characterDraw(std::vector<char>& buffer) 
 {
+	
+
 	if (facingRight) {
 		if (attacking && isJumping)
 		{

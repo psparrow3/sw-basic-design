@@ -5,7 +5,7 @@ class movingBlock
 
 public:
 	movingBlock();
-	int m_x, m_y;
+	int m_x, m_y,maxHeight,minHeight;
 	bool up = 0;
 	void blockMove(int (&stage)[25][40]);
 
