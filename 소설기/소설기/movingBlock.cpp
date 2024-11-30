@@ -1,4 +1,4 @@
-#include "movingBlock.h"
+#include "drawMovingBlock.h"
 
 
 
@@ -44,13 +44,7 @@ void movingBlock::blockMove(int (&stage)[25][40])
 
 void movingBlock::collision(int(&stage)[25][40]) 
 {
-	for (int i = 0; i < 2; i++) {
-		for (int j = 0; j < 2; j++) {
-			int posX = m_x / 40 + i;
-			int posY = m_y / 20 + j;
-			
-		}
-	}
+	
 }
 
 void movingBlock::blockLocation(int(&stage)[25][40])

@@ -3,7 +3,6 @@
 int character::x = 0;
 int character::y = 410;
 
-
 int character::progress = 4;                     // 진행상황
 
 int character::gameOverCheck = 0;
@@ -84,7 +83,10 @@ void character::attack(int(&stage)[25][40])
 	{
 		Boss1::hp = 0;
 	}
-
+	if (coll == 99)
+	{
+		/*Boss2::hp--;*/
+	}
 	if (coll == 15)
 	{
 		isLeverPull = 1;

@@ -517,6 +517,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		{
 			ac.attacking = 0;
 			ac.characterAttackErase(ac.x, ac.y, buffer);
+			Boss2::Boss2TakeDamage(stage);
 		}
 		else
 		{
@@ -565,7 +566,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			ctimeCheck = 0;
 			changeTime = rand() % 11 + 20;
 		}
-
+		
 		if (ac.future)
 		{
 			memcpy(stage, stage2_Future_Boss, sizeof(stage2_Future_Boss));
@@ -582,6 +583,8 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			memcpy(stage, stage2_Past_Boss, sizeof(stage2_Past_Boss));
 			stage2PastBossDraw(buffer);
 		}
+		
+		Boss2::Boss2LocationErase(stage);
 
 		if (Boss2::hp == 2)
 		{
@@ -593,7 +596,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			a.eraseBitmap("Empty_boss.bmp", buffer, 0, 260, SCREEN_WIDTH);
 			a.drawBitmap("stage2_Boss_left.bmp", buffer, 0, 260, SCREEN_WIDTH);
 		}
-
+		Boss2::Boss2Location(stage);
 		ac.characterMove(stage, buffer);
 		ac.characterDraw(buffer);
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
