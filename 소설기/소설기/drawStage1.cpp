@@ -555,7 +555,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		if (ac.nextStage || ac.gameOverCheck)
 		{
 			if (ac.nextStage) {
-				a.eraseBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
+				
 				ac.seedPiece = 0;
 				ac.seedPlant = 0;
 
@@ -563,6 +563,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 				ac.nextStage = 0;
 				Sleep(1000);
 				a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+				a.eraseBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
 			}
 
 			ac.seedPiece = 0;

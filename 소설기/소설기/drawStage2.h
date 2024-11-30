@@ -1,5 +1,6 @@
 #pragma once
 #include "drawCharacter.h"
+#include "drawMovingBlock.h"
 #include "writeText.h"
 #include <cstdlib>
 #include <ctime>

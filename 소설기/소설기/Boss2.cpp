@@ -1,8 +1,8 @@
 #include "Boss2.h"
 
 int Boss2::m_x = 1440;
-int Boss2::m_y = 400;
-int Boss2::hp = 1;
+int Boss2::m_y = 340;
+int Boss2::hp = 2;
 
 void Boss2::Boss2Attack_change()
 {
