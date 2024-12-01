@@ -144,7 +144,7 @@ void Boss1::Boss1AttackMove(std::vector<char>& buffer, int(&stage)[25][40])
     for (auto it = er_seed.rbegin(); it != er_seed.rend(); ++it)
     {
         int i = *it;
-        a.eraseBitmap("empty_boss_attack.bmp", buffer, at[i].x, 460, SCREEN_WIDTH);
+        a.eraseBitmap("empty_boss_attack.bmp", buffer, dr[i].x, 460, SCREEN_WIDTH);
 
         dr.erase(dr.begin() + i);
     }

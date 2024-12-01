@@ -794,10 +794,11 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 
 			a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-			wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
+			
 			
 		
 		}
+		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
 	}
 	
 }

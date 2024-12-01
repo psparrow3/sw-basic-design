@@ -461,7 +461,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 	int checkBossHp = 2;
 	int resetPastStage[25][40];
 	int resetFutureStage[25][40];
-
+	
 	memcpy(resetPastStage, stage2_Past_Boss, sizeof(stage2_Past_Boss));
 	memcpy(resetFutureStage, stage2_Future_Boss, sizeof(stage2_Future_Boss));
 
@@ -532,13 +532,21 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 
 		if (laserAttack)
 		{
-			for (int i = 0; i < 21; i++)
-			{
-				stage2_Future_Boss[i][laser_x / 40+1] = 0;
-			}			
+			if (Boss2::hp == 2) {
+				for (int i = 0; i < 21; i++)
+				{
+					stage2_Future_Boss[i][laser_x / 40 + 1] = 0;
+				}
+			}
+			if (Boss2::hp == 1) {
+				for (int i = 0; i < 21; i++)
+				{
+					stage2_Future_Boss[i][laser_x / 40] = 0;
+				}
+			}
 		}
 
-		if (atimeCheck > attackTime)
+		if (atimeCheck > attackTime && Boss2::hp)
 		{
 			laserAttack = TRUE;
 			if (Boss2::hp == 2) {
@@ -569,13 +577,21 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		}
 
 		if (laserAttack) {
-			for (int i = 0; i < 21; i++)
-			{
-				stage2_Future_Boss[i][laser_x / 40+1] = 8;
+			if (Boss2::hp == 2) {
+				for (int i = 0; i < 21; i++)
+				{
+					stage2_Future_Boss[i][laser_x / 40 + 1] = 8;
+				}
+			}
+			if (Boss2::hp == 1) {
+				for (int i = 0; i < 21; i++)
+				{
+					stage2_Future_Boss[i][laser_x / 40] = 8;
+				}
 			}
 		}
 		
-		if (ctimeCheck > changeTime)
+		if (ctimeCheck > changeTime && Boss2::hp)
 		{
 			Boss2::Boss2Attack_change();
 			ctimeCheck = 0;
