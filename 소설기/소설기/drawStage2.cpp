@@ -472,7 +472,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 
 	int atimeCheck = 0;
 	int ctimeCheck = 0;
-	int laser_x = 1440;
+	int laser_x = 1400;
 	bool laserAttack = TRUE;
 
 	ac.y = 350;
@@ -545,7 +545,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			{
 				atimeCheck = 0;
 				attackTime = rand() % 11 + 20;
-				laser_x = 1440;
+				laser_x = 1400;
 				//laserAttack = FALSE;
 			}
 		}
