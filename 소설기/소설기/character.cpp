@@ -83,10 +83,7 @@ void character::attack(int(&stage)[25][40])
 	{
 		Boss1::hp = 0;
 	}
-	if (coll == 99)
-	{
-		/*Boss2::hp--;*/
-	}
+	
 	if (coll == 15)
 	{
 		isLeverPull = 1;
@@ -131,7 +128,8 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	if (!land)
 	{
-		if (!collision(stage, x, y + 10))
+		int landcoll = collision(stage, ac.x, ac.y + 10);
+		if (landcoll != 2 && landcoll != 10 && landcoll != 11 && landcoll != 3 && landcoll != 14 && landcoll != 15)
 		{
 			y += 10;
 		}
@@ -317,6 +315,14 @@ int character::collision(int(&stage)[25][40], int newX, int newY)
 			else if (stage[posY][posX] == 98)
 			{
 				return 98;				// 1스테이지 보스
+			}
+			else if (stage[posY][posX] == 99)
+			{
+				return 99;				// 2스테이지 보스
+			}
+			else if (stage[posY][posX] == 100)
+			{
+				return 100;				// 3스테이지 보스
 			}
 		}
     }

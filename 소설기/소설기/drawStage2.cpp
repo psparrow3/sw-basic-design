@@ -458,7 +458,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 	ac.facingRight = 1;
 	ac.future = 1;
 	ac.attacking = 0;
-
+	int checkBossHp = 2;
 	int resetPastStage[25][40];
 	int resetFutureStage[25][40];
 
@@ -541,16 +541,31 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		if (atimeCheck > attackTime)
 		{
 			laserAttack = TRUE;
-
-			laser_x -= 40;
-
-			if (laser_x <= 80)
-			{
-				atimeCheck = 0;
-				attackTime = rand() % 11 + 20;
-				laser_x = 1380;
-				laserAttack = FALSE;
+			if (Boss2::hp == 2) {
+				laser_x -= 40;
+				if (laser_x <= 0)
+				{
+					atimeCheck = 0;
+					attackTime = rand() % 11 + 20;
+					laser_x = 1380;
+					laserAttack = FALSE;
+				}
 			}
+			else {
+				
+				laser_x += 40;
+				if (laser_x >= 1600)
+				{
+					
+					atimeCheck = 0;
+					attackTime = rand() % 11 + 20;
+					laser_x = 160;
+					laserAttack = FALSE;
+				}
+			}
+		
+
+			
 		}
 
 		if (laserAttack) {
@@ -588,17 +603,30 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 
 		if (Boss2::hp == 2)
 		{
-			a.eraseBitmap("Empty_boss.bmp", buffer, 1420, 260, SCREEN_WIDTH);
-			a.drawBitmap("stage2_Boss_right.bmp", buffer, 1420, 260, SCREEN_WIDTH);
+			a.eraseBitmap("Empty_boss.bmp", buffer, 1420, 300, SCREEN_WIDTH);
+			a.drawBitmap("stage2_Boss_right.bmp", buffer, 1420, 300, SCREEN_WIDTH);
+			Boss2::m_x = 1420;
+			Boss2::m_y = 300;
 		}
 		else if (Boss2::hp == 1)
 		{
-			a.eraseBitmap("Empty_boss.bmp", buffer, 0, 260, SCREEN_WIDTH);
-			a.drawBitmap("stage2_Boss_left.bmp", buffer, 0, 260, SCREEN_WIDTH);
+			a.eraseBitmap("Empty_boss.bmp", buffer, 0, 300, SCREEN_WIDTH);
+			a.drawBitmap("stage2_Boss_left.bmp", buffer, 0, 300, SCREEN_WIDTH);
+			if (checkBossHp == 2) {
+				laser_x = 160;
+				laserAttack = FALSE;
+				checkBossHp--;
+			}
+			Boss2::m_x = 0;
+			Boss2::m_y = 300;
 		}
 		Boss2::Boss2Location(stage);
 		ac.characterMove(stage, buffer);
 		ac.characterDraw(buffer);
+		
+
+
+		
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
 

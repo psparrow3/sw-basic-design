@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="A_button.bmp" />
+    <Image Include="stage1_Boss_die.bmp" />
     <Image Include="stage2_Boss.bmp" />
     <Image Include="stage2_Boss_left.bmp" />
     <Image Include="stage2_Boss_right.bmp" />

@@ -1,7 +1,7 @@
 #include "Boss2.h"
 
-int Boss2::m_x = 1440;
-int Boss2::m_y = 340;
+int Boss2::m_x = 1420;
+int Boss2::m_y = 300;
 int Boss2::hp = 2;
 
 void Boss2::Boss2Attack_change()
@@ -32,7 +32,7 @@ void Boss2::Boss2Location(int(&stage)[25][40])
 		for (int j = 0; j < 4; j++) {
 			int posX = m_x / 40 + i;
 			int posY = m_y / 20 + j;
-			stage[posY][posX] = 99;
+			stage[posY][posX] =99;
 		}
 	}
 }
@@ -68,6 +68,7 @@ void Boss2::Boss2TakeDamage(int(&stage)[25][40]) {
 	if (coll == 99)
 	{
 		Boss2::hp--;
+
 	}
 
 

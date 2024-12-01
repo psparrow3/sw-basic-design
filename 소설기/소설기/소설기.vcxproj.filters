@@ -94,10 +94,17 @@
     <Image Include="tutorial_building.bmp" />
     <Image Include="laser_length.bmp" />
     <Image Include="laser_width.bmp" />
-    <Image Include="laser.bmp" />
     <Image Include="bridge.bmp" />
     <Image Include="laser_width_bottom.bmp" />
     <Image Include="laser_length_bottom.bmp" />
+    <Image Include="stage2_Boss.bmp" />
+    <Image Include="stage2_Boss_left.bmp" />
+    <Image Include="stage2_Boss_right.bmp" />
+    <Image Include="stage2_lava.bmp" />
+    <Image Include="stage2_lava1.bmp" />
+    <Image Include="stage2_lava2.bmp" />
+    <Image Include="stage2_lava3.bmp" />
+    <Image Include="stage1_Boss_die.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />
