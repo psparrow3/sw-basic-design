@@ -636,6 +636,16 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			Boss2::m_x = 0;
 			Boss2::m_y = 300;
 		}
+		else {
+			laserAttack = FALSE;
+			for (int i = 0; i < 21; i++)
+			{
+				stage2_Future_Boss[i][laser_x / 40] = 0;
+			}
+			
+		}
+	
+		
 		Boss2::Boss2Location(stage);
 		ac.characterMove(stage, buffer);
 		ac.characterDraw(buffer);
@@ -645,7 +655,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
-
+		
 		atimeCheck++;
 		ctimeCheck++;
 	}
