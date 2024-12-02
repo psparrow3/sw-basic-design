@@ -3,7 +3,6 @@
 int character::x = 0;
 int character::y = 410;
 
-
 int character::progress = 4;                     // 진행상황
 
 int character::gameOverCheck = 0;
@@ -20,7 +19,7 @@ int character::characterHeart = 3;
 bool character::attacking = 1;
 bool character::facingRight = 1;
 bool character::land = 1;
-int character::clearStage[25][40] = { 0 };
+int character::clearStage[25][40]     = { 0 };
 int character::leftTime = 0;
 int character::rightTime = 0;
 bool character::isLeverPull = 0;
@@ -84,7 +83,10 @@ void character::attack(int(&stage)[25][40])
 	{
 		Boss1::hp = 0;
 	}
-
+	if (coll == 99)
+	{
+		/*Boss2::hp--;*/
+	}
 	if (coll == 15)
 	{
 		isLeverPull = 1;
@@ -137,7 +139,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	if (jumping && !isJumping)
 	{
-		isJumping = 0;
+		isJumping = 1;
 
 		land = 0;
 
@@ -214,7 +216,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 		getSeed = 1;
 	}
 	
-	if (coll == 2 || collision(stage, x, y + 20) == 8  || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15 || collision(stage, x+40, y) == 8)
+	if (coll == 2 || collision(stage, x, y + 20) == 8 || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15 || collision(stage, x + 40, y) == 8)
 	{
 		gameOver(coll, buffer);
 	}
@@ -228,10 +230,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 }
 void character::gravity(int(&stage)[25][40], int newX, int newY)
 {
-	
 	int coll = collision(stage, x, y + 20);
-	
-	
 
 	if (coll == 2 || coll == 10 || coll == 11 || coll == 9 || coll == 3 || coll==12) {
 
@@ -315,6 +314,10 @@ int character::collision(int(&stage)[25][40], int newX, int newY)
 			else if (stage[posY][posX] == 98)
 			{
 				return 98;				// 1스테이지 보스
+			}
+			else if (stage[posY][posX] == 99)
+			{
+				return 99;				// 2스테이지 보스
 			}
 		}
     }

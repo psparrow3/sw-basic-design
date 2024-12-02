@@ -1,8 +1,9 @@
 #pragma once
 #include "Windows.h"
 #include "draw.h"
-#include <thread>
+
 #include "Boss1.h"
+
 
 #define SCREEN_WIDTH 1902
 #define SCREEN_HEIGHT 501

@@ -722,42 +722,41 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		if (Boss1::hp)
 		{
 			a.drawBitmap("Stage1_Boss.bmp", buffer, Boss1::m_x * 20, Boss1::m_y, SCREEN_WIDTH);
-			a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		}
+
+		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
 
 		if (ac.collision(stage, ac.x, ac.y + 20) == 9 && ac.getSeed == 1)
 		{
 			wt.drawText(L"씨앗을 심을 수 있을 것 같다!", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
+		}
 
-			wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
-
-			switch (ac.seedPiece)
-			{
-			case 1: wt.drawText(L"씨앗조각 : 1", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
-				break;
-			case 2: wt.drawText(L"씨앗조각 : 2", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
-				break;
-			case 3: wt.drawText(L"씨앗조각 : 3", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
-				break;
-			case 4: wt.drawText(L"씨앗조각 : 4", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
-				break;
-			case 5: wt.drawText(L"씨앗조각 : 5", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
-				break;
-			case 6: wt.drawText(L"씨앗조각 : 6", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
-				break;
-			case 7: wt.drawText(L"씨앗조각 : 7", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
-				break;
-			case 8: wt.drawText(L"씨앗조각 : 8", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
-				break;
-			case 9: wt.drawText(L"씨앗조각 : 9", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
-				break;
-			case 10: wt.drawText(L"씨앗조각 : 10", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
-				ac.getSeed = 1;
-				ac.seedPiece = 0;
-				break;
-			default:
-				break;
-			}
+		switch (ac.seedPiece)
+		{
+		case 1: wt.drawText(L"씨앗조각 : 1", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+			break;
+		case 2: wt.drawText(L"씨앗조각 : 2", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+			break;
+		case 3: wt.drawText(L"씨앗조각 : 3", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+			break;
+		case 4: wt.drawText(L"씨앗조각 : 4", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+			break;
+		case 5: wt.drawText(L"씨앗조각 : 5", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+			break;
+		case 6: wt.drawText(L"씨앗조각 : 6", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+			break;
+		case 7: wt.drawText(L"씨앗조각 : 7", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+			break;
+		case 8: wt.drawText(L"씨앗조각 : 8", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+			break;
+		case 9: wt.drawText(L"씨앗조각 : 9", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+			break;
+		case 10: wt.drawText(L"씨앗조각 : 10", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
+			ac.getSeed = 1;
+			ac.seedPiece = 0;
+			break;
+		default:
+			break;
 		}
 		
 		if (ac.getSeed)
@@ -794,9 +793,9 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 			Boss1::time = 0;
 
 			a.drawBitmap("door.bmp", buffer, 1520, 420, SCREEN_WIDTH);
-
-			a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		}
+
+		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 	}
 }
 
