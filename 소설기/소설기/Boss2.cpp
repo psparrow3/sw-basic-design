@@ -1,7 +1,7 @@
 #include "Boss2.h"
 
 int Boss2::m_x = 1440;
-int Boss2::m_y = 340;
+int Boss2::m_y = 280;
 int Boss2::hp = 2;
 
 void Boss2::Boss2Attack_change()
@@ -28,8 +28,10 @@ void Boss2::Boss2Attack_laser(std::vector<char>& buffer, int x)
 
 void Boss2::Boss2Location(int(&stage)[25][40])
 {
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 4; j++) {
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++) 
+		{
 			int posX = m_x / 40 + i;
 			int posY = m_y / 20 + j;
 			stage[posY][posX] = 99;
@@ -39,8 +41,10 @@ void Boss2::Boss2Location(int(&stage)[25][40])
 
 void Boss2::Boss2LocationErase(int(&stage)[25][40])
 {
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 4; j++) {
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
 			int posX = m_x / 40 + i;
 			int posY = m_y / 20 + j;
 			stage[posY][posX] = 0;
@@ -64,12 +68,8 @@ void Boss2::Boss2TakeDamage(int(&stage)[25][40]) {
 
 	int coll = character::collision(stage, atX, atY);
 
-
 	if (coll == 99)
 	{
 		Boss2::hp--;
 	}
-
-
-	
 }

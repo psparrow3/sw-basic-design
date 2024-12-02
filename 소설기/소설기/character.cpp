@@ -216,7 +216,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 		getSeed = 1;
 	}
 	
-	if (coll == 2 || collision(stage, x, y + 20) == 8  || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15 || collision(stage, x+40, y) == 8)
+	if (coll == 2 || collision(stage, x, y + 20) == 8 || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15 || collision(stage, x + 40, y) == 8)
 	{
 		gameOver(coll, buffer);
 	}
@@ -230,10 +230,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 }
 void character::gravity(int(&stage)[25][40], int newX, int newY)
 {
-	
 	int coll = collision(stage, x, y + 20);
-	
-	
 
 	if (coll == 2 || coll == 10 || coll == 11 || coll == 9 || coll == 3 || coll==12) {
 
@@ -317,6 +314,10 @@ int character::collision(int(&stage)[25][40], int newX, int newY)
 			else if (stage[posY][posX] == 98)
 			{
 				return 98;				// 1스테이지 보스
+			}
+			else if (stage[posY][posX] == 99)
+			{
+				return 99;				// 2스테이지 보스
 			}
 		}
     }

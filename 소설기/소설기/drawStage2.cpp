@@ -535,7 +535,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		{
 			for (int i = 0; i < 21; i++)
 			{
-				stage2_Future_Boss[i][laser_x / 40+1] = 0;
+				stage2_Future_Boss[i][laser_x / 40 + 1] = 0;
 			}			
 		}
 
@@ -555,10 +555,11 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			}
 		}
 
-		if (laserAttack) {
+		if (laserAttack)
+		{
 			for (int i = 0; i < 21; i++)
 			{
-				stage2_Future_Boss[i][laser_x / 40+1] = 8;
+				stage2_Future_Boss[i][laser_x / 40 + 1] = 8;
 			}
 		}
 		
@@ -567,7 +568,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			Boss2::Boss2Attack_change();
 			ctimeCheck = 0;
 			changeTime = rand() % 11 + 20;
-		}
+		}*
 		
 		if (ac.future)
 		{
@@ -587,25 +588,42 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		}
 		
 		Boss2::Boss2LocationErase(stage);
+		a.eraseBitmap("Empty_boss.bmp", buffer, Boss2::m_x, Boss2::m_y, SCREEN_WIDTH);
 
 		if (Boss2::hp == 2)
 		{
-			a.eraseBitmap("Empty_boss.bmp", buffer, 1420, 260, SCREEN_WIDTH);
-			a.drawBitmap("stage2_Boss_right.bmp", buffer, 1420, 260, SCREEN_WIDTH);
+			Boss2::m_x = 1440;
+			a.drawBitmap("stage2_Boss_right.bmp", buffer, Boss2::m_x, Boss2::m_y, SCREEN_WIDTH);
 		}
 		else if (Boss2::hp == 1)
 		{
-			a.eraseBitmap("Empty_boss.bmp", buffer, 0, 260, SCREEN_WIDTH);
-			a.drawBitmap("stage2_Boss_left.bmp", buffer, 0, 260, SCREEN_WIDTH);
+			Boss2::m_x = 0;
+			a.drawBitmap("stage2_Boss_left.bmp", buffer, Boss2::m_x, Boss2::m_y, SCREEN_WIDTH);
 		}
+
 		Boss2::Boss2Location(stage);
+
 		ac.characterMove(stage, buffer);
 		ac.characterDraw(buffer);
-		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
 
 		atimeCheck++;
 		ctimeCheck++;
+
+		if (Boss2::hp == 0)
+		{
+			stage2_Future_Boss[22][38] = 10;
+			stage2_Future_Boss[22][39] = 10;
+			stage2_Past_Boss[22][38] = 10;
+			stage2_Past_Boss[22][39] = 10;
+
+			atimeCheck = 0;
+			ctimeCheck = 0;
+
+			a.drawBitmap("door.bmp", buffer, 1520, 380, SCREEN_WIDTH);
+		}
+
+		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 	}
 }
 
