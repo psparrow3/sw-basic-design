@@ -22,7 +22,6 @@ void Boss2::Boss2Attack_laser(std::vector<char>& buffer, int x)
 	for (int y = 0; y < 11; y++)
 	{
 		a.drawBitmap("laser_length.bmp", buffer, x, y * 40, SCREEN_WIDTH);
-
 	}
 }
 

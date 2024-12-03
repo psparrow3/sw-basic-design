@@ -168,6 +168,8 @@ IDB_BITMAP64            BITMAP                  "stage2_Boss.bmp"
 
 IDB_BITMAP65            BITMAP                  "stage2_Boss_left.bmp"
 
+IDB_BITMAP66            BITMAP                  "Boss3_meteor.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

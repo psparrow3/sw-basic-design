@@ -128,19 +128,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Boss1.h" />
-    <ClInclude Include="Boss2.h" />
-    <ClInclude Include="Boss3.h" />
+    <ClInclude Include="Boss1.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Boss2.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Boss3.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="character.h" />
     <ClInclude Include="draw.h" />
     <ClInclude Include="drawCharacter.h" />
     <ClInclude Include="drawMoveableBlock.h" />
     <ClInclude Include="drawMovingBlock.h" />
     <ClInclude Include="drawStage1.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="drawStage2.h" />
-    <ClInclude Include="drawStage_prologue.h" />
+    <ClInclude Include="drawStage2.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="drawStage3.h" />
+    <ClInclude Include="drawStage_prologue.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="gameStart.h" />
     <ClInclude Include="moveableBlock.h" />
     <ClInclude Include="movingBlock.h" />
@@ -153,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="A_button.bmp" />
+    <Image Include="Boss3_meteor.bmp" />
     <Image Include="stage2_Boss.bmp" />
     <Image Include="stage2_Boss_left.bmp" />
     <Image Include="stage2_Boss_right.bmp" />
@@ -216,9 +234,18 @@
     <Image Include="tutorial_building.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Boss1.cpp" />
-    <ClCompile Include="Boss2.cpp" />
-    <ClCompile Include="Boss3.cpp" />
+    <ClCompile Include="Boss1.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Boss2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Boss3.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="character.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -235,8 +262,15 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="drawStage2.cpp" />
-    <ClCompile Include="drawStage_prologue.cpp" />
+    <ClCompile Include="drawStage2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="drawStage3.cpp" />
+    <ClCompile Include="drawStage_prologue.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="gameStart.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="moveableBlock.cpp">

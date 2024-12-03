@@ -188,13 +188,14 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 	draw a;
 	drawCharacter ac;
 
-	drawMoveableBlock mb1(720, 60);	
+	drawMoveableBlock mb1(720, 60);
 
 	int stage[25][40];
 	int seedGet = 0;
 	int keyGet = 0;
 	writeText wt;
 	int textX = 1650;
+	int seed_time = 0;
 
 	int resetPastStage[25][40];
 	int resetpastStage[12][20];
@@ -224,6 +225,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 				ac.getKey = 0;
 				ac.isLeverPull = 0;
 				ac.gameOverCheck = 0;
+				seed_time = 0;
 				memcpy(stage1_Past, resetPastStage, sizeof(stage1_Past));
 				memcpy(stage1_past, resetpastStage,  sizeof(stage1_past));
 				memcpy(stage1_Future, resetFutureStage, sizeof(stage1_Future));
@@ -292,7 +294,6 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			textX += 50;
 
 			a.eraseBitmap("empty_block.bmp", buffer, 2 * 0 * BLOCK_SIZE, 2 * BLOCK_SIZE, SCREEN_WIDTH);
-
 		}
 
 		if (ac.getKey) {
@@ -303,9 +304,8 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			wt.drawText(L"씨앗", textX, 700, 20, RGB(128, 128, 128), L"굴림체");
 		}
 
-		if (ac.collision(stage, ac.x, ac.y + 20) == 11)
+		if (ac.collision(stage, ac.x, ac.y + 20) == 11 && !character::getKey)
 		{
-			
 			wt.drawText(L"문이 잠겨있다", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
 		}
 
@@ -315,7 +315,6 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 			drawStage1Future(buffer);
 			mb1.moveableBlockDraw(mb1.m_x, mb1.m_y, buffer);
-
 		}
 		else
 		{
@@ -421,9 +420,13 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			stage1_Future[5][34] = 2;
 
 			wt.drawText(L"씨앗이 심어졌다!", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
-			Sleep(1000);
-			ac.seedPlant = 0;
+			seed_time += 100;
 			textX -= 50;
+		}
+
+		if (seed_time > 1000)
+		{
+			ac.seedPlant = 0;
 		}
 
 		if (ac.collision(stage, ac.x, ac.y + 20) == 9 && ac.getSeed == 1)
@@ -546,6 +549,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 	int stage[25][40];
 	int seedPlantCheck = 0;
 	int start = 0;
+	int seed_time = 0;
 	ac.facingRight = 1;
 	ac.future = 1;
 
@@ -570,6 +574,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 			ac.getSeed = 0;
 			ac.facingRight = 1;
 			ac.future = 1;
+			seed_time = 0;
 			memcpy(stage, character::clearStage, sizeof(character::clearStage));
 			character::characterHeart = 3;
 			Boss1::Boss1reset(buffer);
@@ -761,10 +766,15 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		if (ac.getSeed)
 			wt.drawText(L"씨앗", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
 
-		if (seedPlantCheck==0 && ac.seedPlant) {
+		if (seedPlantCheck == 0 && ac.seedPlant) {
 			wt.drawText(L"씨앗이 심어졌다!", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
-			Sleep(500);
+			seed_time += 100;
 			seedPlantCheck = 1;
+		}
+
+		if (seed_time > 500)
+		{
+			ac.seedPlant = 0;
 		}
 
 		if (Boss1::hp == 0)
@@ -789,7 +799,6 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		if (start == 0)
 		{
 			wt.drawText(L"침입자...", 700, 500, 100, RGB(128, 128, 128), L"굴림체");
-
 			Sleep(1000);
 			wt.drawText(L"제거한다...", 700, 600, 100, RGB(128, 128, 128), L"굴림체");
 			Sleep(1000);
