@@ -506,7 +506,10 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			ac.y = 370;
 			ac.facingRight = 1;
 			ctimeCheck = 0;
+			Boss2::Boss2LocationErase(stage);
 			Boss2::hp = 2;
+			Boss2::m_x = 1440;
+			Boss2::m_y = 280;
 
 			ac.gameOverCheck = 0;
 			break;
@@ -568,7 +571,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			Boss2::Boss2Attack_change();
 			ctimeCheck = 0;
 			changeTime = rand() % 11 + 20;
-		}*
+		}
 		
 		if (ac.future)
 		{

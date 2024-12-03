@@ -1,7 +1,6 @@
 #pragma once
 #include "Windows.h"
 #include "draw.h"
-
 #include "Boss1.h"
 
 

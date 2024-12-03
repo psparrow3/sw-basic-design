@@ -3,7 +3,7 @@
 int character::x = 0;
 int character::y = 410;
 
-int character::progress = 4;                     // 진행상황
+int character::progress = 0;                     // 진행상황
 
 int character::gameOverCheck = 0;
 bool character::future = 1;
@@ -16,7 +16,7 @@ int character::seedPiece = 0;
 bool character::seedPlant = 0;
 bool character::nextStage = 0;
 int character::characterHeart = 3;
-bool character::attacking = 1;
+bool character::attacking = 0;
 bool character::facingRight = 1;
 bool character::land = 1;
 int character::clearStage[25][40]     = { 0 };
