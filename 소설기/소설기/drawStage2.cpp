@@ -452,13 +452,14 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 {
 	draw a;
 	drawCharacter ac;
-	Boss1 b;
+	
 	writeText wt;
 	int stage[25][40];
 	ac.facingRight = 1;
 	ac.future = 1;
 	ac.attacking = 0;
 	int checkBossHp = 2;
+	int start = 0;
 	int resetPastStage[25][40];
 	int resetFutureStage[25][40];
 	
@@ -493,6 +494,8 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			if (ac.gameOverCheck)
 			{
 				ac.getKey = 0;
+				ac.isJumping = 0;
+				ac.facingRight = 1;
 				memcpy(stage2_Past_Boss, resetPastStage, sizeof(stage2_Past_Boss));
 				memcpy(stage2_Future_Boss, resetFutureStage, sizeof(stage2_Future_Boss));
 			}
@@ -510,7 +513,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			ac.gameOverCheck = 0;
 			break;
 		}
-
+		
 		a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 
 		if (ac.attacking)
@@ -647,13 +650,22 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 	
 		
 		Boss2::Boss2Location(stage);
-		ac.characterMove(stage, buffer);
+		if (start)
+			ac.characterMove(stage, buffer);
 		ac.characterDraw(buffer);
 		
 
-
+		
 		
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+		if (start == 0) {
+			wt.drawText(L"그 분에겐", 700, 400, 100, RGB(128, 128, 128), L"굴림체");
+			Sleep(500);
+			wt.drawText(L"보낼 수 없다.", 700, 500, 100, RGB(128, 128, 128), L"굴림체");
+			Sleep(500);
+			start = 1;
+		}
+
 		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
 		
 		atimeCheck++;

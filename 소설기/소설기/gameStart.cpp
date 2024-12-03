@@ -22,7 +22,7 @@ void gameStart::startGame() {
 	drawStage_prologue dsp;
 	drawStage1 ds1;
 	drawStage2 ds2;
-	/*drawstage3 ds3;*/
+	drawStage3 ds3;
 
 
 	ss.drawStartScreen(buffer);
@@ -45,7 +45,10 @@ void gameStart::startGame() {
 			ds2.stage2BossDraw(buffer);
 			break;
 		case 5:
-			/*ds3.stage2BossDraw(buffer);*/
+			ds3.stage3BossPage1Draw(buffer);
+			break;
+		case 6:
+			ds3.stage3BossPage2Draw(buffer);
 			break;
 		default:
 			break;

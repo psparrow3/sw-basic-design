@@ -139,6 +139,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
     </ClInclude>
     <ClInclude Include="drawStage2.h" />
+    <ClInclude Include="drawStage3.h" />
     <ClInclude Include="drawStage_prologue.h" />
     <ClInclude Include="gameStart.h" />
     <ClInclude Include="moveableBlock.h" />
@@ -236,6 +237,7 @@
       </ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="drawStage2.cpp" />
+    <ClCompile Include="drawStage3.cpp" />
     <ClCompile Include="drawStage_prologue.cpp" />
     <ClCompile Include="gameStart.cpp" />
     <ClCompile Include="main.cpp" />

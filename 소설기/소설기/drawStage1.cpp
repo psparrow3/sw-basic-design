@@ -729,7 +729,8 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		Boss1::time += 50;
 
 		a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
-		ac.characterMove(stage, buffer);
+		if (start)
+			ac.characterMove(stage, buffer);
 		int coll = ac.collision(stage, ac.x, ac.y);
 
 		if (coll != 2 && coll != 10 && coll != 11 && coll != 3 && coll != 14 && coll != 15) {

@@ -74,9 +74,9 @@ void moveableBlock::gravity(int(&stage)[25][40], int newX, int newY)
 	}
 	if (coll == 2 && m_y == 100)
 	{
-
+		
 		m_x -= 20;
-		m_y = 90;
+		m_y = 85;
 	}
 
 }
@@ -90,6 +90,7 @@ void moveableBlock::blockLocation(int(&stage)[25][40], int x, int y)
 			stage[posY][posX] = 2;
 		}
 	}
+	
 }
 
 void moveableBlock::blockLocationErase(int(&stage)[25][40], int x, int y)
