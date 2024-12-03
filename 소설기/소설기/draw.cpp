@@ -15,6 +15,11 @@ void draw::SetConsoleSize(int width, int height)
     windowSize.Right = width - 1;
     windowSize.Bottom = height - 1;
     SetConsoleWindowInfo(hConsole, TRUE, &windowSize);
+
+    HWND hwndConsole = GetConsoleWindow();
+    LONG style = GetWindowLong(hwndConsole, GWL_STYLE);
+    style &= ~(WS_MAXIMIZEBOX | WS_SIZEBOX);
+    SetWindowLong(hwndConsole, GWL_STYLE, style);
 }
 
 void draw::SetConsoleFontSize(int fontSize)
