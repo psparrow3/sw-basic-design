@@ -87,7 +87,7 @@ void moveableBlock::blockLocation(int(&stage)[25][40], int x, int y)
 		for (int j = 0; j < 2; j++) {
 			int posX = x / 40 + i;
 			int posY = y / 20 + j;
-			stage[posY][posX] = 3;
+			stage[posY][posX] = 2;
 		}
 	}
 }
