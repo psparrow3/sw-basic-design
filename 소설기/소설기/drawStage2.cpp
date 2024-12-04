@@ -450,16 +450,17 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 {
 	draw a;
 	drawCharacter ac;
-	Boss1 b;
+	
 	writeText wt;
 	int stage[25][40];
 	ac.facingRight = 1;
 	ac.future = 1;
 	ac.attacking = 0;
-
+	int checkBossHp = 2;
+	int start = 0;
 	int resetPastStage[25][40];
 	int resetFutureStage[25][40];
-
+	
 	memcpy(resetPastStage, stage2_Past_Boss, sizeof(stage2_Past_Boss));
 	memcpy(resetFutureStage, stage2_Future_Boss, sizeof(stage2_Future_Boss));
 
@@ -470,9 +471,6 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 
 	int atimeCheck = 0;
 	int ctimeCheck = 0;
-
-	int start = 0;
-	int checkBossHp = 2;
 
 	int laser_x = 1380;
 	bool laserAttack = FALSE;
@@ -495,6 +493,8 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			if (ac.gameOverCheck)
 			{
 				ac.getKey = 0;
+				ac.isJumping = 0;
+				ac.facingRight = 1;
 				memcpy(stage2_Past_Boss, resetPastStage, sizeof(stage2_Past_Boss));
 				memcpy(stage2_Future_Boss, resetFutureStage, sizeof(stage2_Future_Boss));
 			}
@@ -522,7 +522,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			ac.gameOverCheck = 0;
 			break;
 		}
-
+		
 		a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 
 		if (ac.attacking)
@@ -551,7 +551,6 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 					stage2_Future_Boss[i][laser_x / 40 + 1] = 0;
 				}
 			}
-
 			if (Boss2::hp == 1)
 			{
 				for (int i = 0; i < 21; i++)
@@ -588,7 +587,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 					atimeCheck = 0;
 					attackTime = rand() % 11 + 20;
 				}
-			}
+			}			
 		}
 
 		if (laserAttack)
@@ -600,7 +599,6 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 					stage2_Future_Boss[i][laser_x / 40 + 1] = 8;
 				}
 			}
-
 			if (Boss2::hp == 1)
 			{
 				for (int i = 0; i < 21; i++)
@@ -610,7 +608,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			}
 		}
 		
-		if (ctimeCheck > changeTime)
+		if (ctimeCheck > changeTime && Boss2::hp)
 		{
 			Boss2::Boss2Attack_change();
 			ctimeCheck = 0;
@@ -699,7 +697,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		}
 
 		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
-
+		
 		atimeCheck++;
 		ctimeCheck++;
 	}

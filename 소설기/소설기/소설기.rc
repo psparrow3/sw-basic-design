@@ -168,11 +168,15 @@ IDB_BITMAP64            BITMAP                  "stage2_Boss.bmp"
 
 IDB_BITMAP65            BITMAP                  "stage2_Boss_left.bmp"
 
-IDB_BITMAP66            BITMAP                  "Boss3_meteor.bmp"
+IDB_BITMAP66            BITMAP                  "C:\\Users\\yoons\\OneDrive\\바탕 화면\\sw-basic-design\\소설기\\소설기\\Boss3_meteor.bmp"
 
-IDB_BITMAP67            BITMAP                  "stage3_Boss_p1.bmp"
+IDB_BITMAP69            BITMAP                  "stage3_Boss_p1_left.bmp"
 
-IDB_BITMAP68            BITMAP                  "stage3_Boss_p2.bmp"
+IDB_BITMAP70            BITMAP                  "stage3_Boss_p1_right.bmp"
+
+IDB_BITMAP71            BITMAP                  "stage3_Boss_p2_left.bmp"
+
+IDB_BITMAP72            BITMAP                  "stage3_Boss_p2_right.bmp"
 
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////

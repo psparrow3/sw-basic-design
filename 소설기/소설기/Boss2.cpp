@@ -29,7 +29,7 @@ void Boss2::Boss2Location(int(&stage)[25][40])
 		{
 			int posX = m_x / 40 + i;
 			int posY = m_y / 20 + j;
-			stage[posY][posX] = 99;
+			stage[posY][posX] =99;
 		}
 	}
 }
@@ -47,8 +47,8 @@ void Boss2::Boss2LocationErase(int(&stage)[25][40])
 	}
 }
 
-void Boss2::Boss2TakeDamage(int(&stage)[25][40]) {
-
+void Boss2::Boss2TakeDamage(int(&stage)[25][40])
+{
 	int atX;
 	int atY = character::y;
 

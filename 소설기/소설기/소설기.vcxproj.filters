@@ -106,9 +106,13 @@
     <Image Include="stage2_lava1.bmp" />
     <Image Include="stage2_lava2.bmp" />
     <Image Include="stage2_lava3.bmp" />
+<<<<<<< HEAD
     <Image Include="Boss3_meteor.bmp" />
     <Image Include="stage3_Boss_p1.bmp" />
     <Image Include="stage3_Boss_p2.bmp" />
+=======
+    <Image Include="stage1_Boss_die.bmp" />
+>>>>>>> origin/stage
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />
