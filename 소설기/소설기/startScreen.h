@@ -2,6 +2,7 @@
 #include "draw.h"
 #include <iostream>
 #include <Windows.h>
+#include "writeText.h"
 
 class startScreen
 {

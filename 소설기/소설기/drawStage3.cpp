@@ -158,6 +158,7 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 			ac.gameOverCheck = 0;
 			Boss3::hp = 6;
 			Boss3::phase = 0;
+			Boss3::meteor_y = 0;
 
 			break;
 		}
@@ -363,7 +364,7 @@ void drawStage3::stage3PastBossDraw(std::vector<char>& buffer)
 			switch (stage3_past_Boss[y][x])
 			{
 			case 1:
-				a.drawBitmap("block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+				a.drawBitmap("past_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
 				break;
 			case 4:
 				a.drawBitmap("key.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);

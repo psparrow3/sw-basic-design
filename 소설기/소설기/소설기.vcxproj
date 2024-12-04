@@ -164,7 +164,14 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="A_button.bmp" />
+    <Image Include="past_block.bmp" />
+    <Image Include="tutorial_researcher_text.bmp" />
+    <Image Include="narration1.bmp" />
     <Image Include="Boss3_meteor.bmp" />
+    <Image Include="destroyed_eden.bmp" />
+    <Image Include="diary1.bmp" />
+    <Image Include="diary2.bmp" />
+    <Image Include="peaceful_eden.bmp" />
     <Image Include="stage1_Boss_die.bmp" />
     <Image Include="stage2_Boss.bmp" />
     <Image Include="stage2_Boss_left.bmp" />
@@ -225,8 +232,6 @@
     <Image Include="start_screen.bmp" />
     <Image Include="status_informaition.bmp" />
     <Image Include="S_button.bmp" />
-    <Image Include="test_treebottom.bmp" />
-    <Image Include="test_treetop.bmp" />
     <Image Include="triangle_block_down.bmp" />
     <Image Include="triangle_block_right.bmp" />
     <Image Include="triangle_block_up.bmp" />
