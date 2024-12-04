@@ -1,7 +1,8 @@
 #pragma once
-#include "drawStage.h"
+
 #include "drawCharacter.h"
 #include <iostream>
+#include "writeText.h"
 
 class drawStage_prologue 
 {

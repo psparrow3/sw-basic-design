@@ -1,6 +1,4 @@
 #include "startScreen.h"
-#include "Boss1.h"
-
 
 void startScreen::drawStartScreen(std::vector<char>& buffer)
 {
@@ -8,14 +6,18 @@ void startScreen::drawStartScreen(std::vector<char>& buffer)
    
     while (1) {
         
+     
+        
+      
         if (_kbhit()) {
-            
+         
             break;
         }
-        
-        a.drawBitmap("start_screen.bmp", buffer, 0, 0, SCREEN_WIDTH);
+
+        a.drawBitmap("start_screen.bmp", buffer, 50, 0, SCREEN_WIDTH);
         
         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
     }
 
     while (1) {

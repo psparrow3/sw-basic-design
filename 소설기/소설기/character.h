@@ -1,8 +1,8 @@
 #pragma once
 #include "Windows.h"
-#include<iostream>
 #include "draw.h"
-#include <thread>
+#include "Boss1.h"
+
 
 #define SCREEN_WIDTH 1902
 #define SCREEN_HEIGHT 501
@@ -19,12 +19,11 @@ public:
 
 	static bool nextStage;
 	static bool future;
-	static bool pre_future;
 	static bool isJumping;
 
 	static int seedPiece;
-	static bool seedPlant;							// ì”¨ì•—ì„ ì‹¬ì—ˆëŠ”ì§€
-	static int progress;							// ì§„í–‰ìƒí™©
+	static bool seedPlant;                     // ¾¾¾ÑÀ» ½É¾ú´ÂÁö
+	static int progress;                     // ÁøÇà»óÈ²
 
 	static bool getSeed;
 	static bool getKey;
@@ -40,24 +39,24 @@ public:
 	static bool isLeverPull;
 
 	character();
-  
-	void characterMove(int (&stage)[25][40], std::vector<char>& buffer);
-	void gravity(int (&stage)[25][40], int newX, int newY);
-	int collision(int (&stage)[25][40],int newX,int newY);
+
+	void characterMove(int(&stage)[25][40], std::vector<char>& buffer);
+	void gravity(int(&stage)[25][40], int newX, int newY);
+	static int collision(int(&stage)[25][40], int newX, int newY);
 	static void takeDamage();
-	void gameOver(int coll,std::vector<char>& buffer);
+	void gameOver(int coll, std::vector<char>& buffer);
 	static int clearStage[25][40];
 
 private:
 	int sTime;
+	int notDamage;
 
-	bool invincible;
 	bool movingLeft;
 	bool jumping;
 	bool movingRight;
 	int attackRange;
 	int attackCoolTime;
-	int invincibilityDuration;
+
 
 	void attack(int(&stage)[25][40]);
 	void switchMap();

@@ -6,11 +6,11 @@
 #include <Windows.h>
 #include <stdexcept>
 #include "draw.h"
-#include "drawCharacter.h"
 #include "conio.h"
 #include "startScreen.h"
 #include "drawStage_prologue.h"
 #include "drawStage1.h"
+#include "drawStage2.h"
 
 class gameStart
 {

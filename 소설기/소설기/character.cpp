@@ -1,40 +1,31 @@
-﻿#include "character.h"
-#include "conio.h"
-#include "Windows.h"
-#include "drawCharacter.h"
-#include <iostream>
-#include <dinput.h>
-#include "draw.h"
-#include "drawMoveableBlock.h"
+﻿#include "drawCharacter.h"
 
 int character::x = 0;
 int character::y = 410;
+int character::progress = 0;                     // 진행상황
 
-int character::progress = 3;                     // 진행상황
 int character::gameOverCheck = 0;
-bool character::future = 0;
-bool character::pre_future = 1;
+bool character::future = 1;
 bool character::isJumping = 0;
 bool character::getSeed = 0;
 bool character::getKey = 0;
 int character::getSeedPiece = 0;
 bool character::pressingButton = 0;
+int character::seedPiece = 0;
 bool character::seedPlant = 0;
 bool character::nextStage = 0;
 int character::characterHeart = 3;
-bool character::attacking = 10;
+bool character::attacking = 0;
 bool character::facingRight = 1;
 bool character::land = 1;
-int character::clearStage[25][40] = { 0 };
+int character::clearStage[25][40]     = { 0 };
 int character::leftTime = 0;
 int character::rightTime = 0;
 bool character::isLeverPull = 0;
 
 character::character()
 {
-    invincible = false;
-    invincibilityDuration = 2000;
-
+	notDamage = 20;
     attackCoolTime = 10;      // 공격 쿨타임
     sTime = 3;
 
@@ -70,13 +61,11 @@ void character::switchMap()
 
 void character::attack(int(&stage)[25][40])
 {
-
+	
 	attacking = 1;
 
 	int atX;
 	int atY = y;
-
-
 
 	if (facingRight)
 	{
@@ -84,20 +73,25 @@ void character::attack(int(&stage)[25][40])
 	}
 	else
 	{
-		atX = x - 40;
+		atX = x - 80;
 	}
+
 	int coll = collision(stage, atX, atY);
+	
 	if (coll == 98)
 	{
-		nextStage = 1;
-		
-
+		Boss1::hp = 0;
+	}
+	if (coll == 99)
+	{
+		/*Boss2::hp--;*/
 	}
 	if (coll == 15)
 	{
 		isLeverPull = 1;
 	}
-	if (coll == 2 || atX <= 0 || coll == 3 || coll == 14 || coll==8 || atX>=1600)
+
+	if (coll == 2 || atX <= 0 || coll == 3 || coll == 14 || coll == 8 || atX >= 1600 || atX <= 0)
 	{
 		attacking = 0;
 	}
@@ -126,7 +120,6 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 		attack(stage);
 
 		attackCoolTime = 0;
-
 	}
 
 	// 맵 전환
@@ -156,7 +149,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 			int jumpcoll;
 
 			if (facingRight) {
-				jumpcoll = collision(stage, x + 20, y);
+				jumpcoll = collision(stage, x, y);
 			}
 			else {
 				jumpcoll = collision(stage, x, y);
@@ -193,16 +186,18 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	}
 	
 	if (GetAsyncKeyState(VK_UP) & 0x8000) {
-		if (collision(stage, x, y + 20) == 10) {
+		int upcoll = collision(stage, x, y + 20);
+		if (upcoll == 10) {
 			nextStage = 1;
 			progress++;
 		}
-		if (collision(stage, x, y + 20) == 11 && getKey == 1) {
+		if (upcoll == 11 && getKey == 1) {
 			nextStage = 1;
 
 			getKey = 0;
 			progress++;
 		}
+		
 	}
 
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
@@ -219,13 +214,14 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	if (coll == 5) {
 		getSeed = 1;
 	}
-
-	if (coll == 2 || collision(stage, x, y + 20) == 8 || coll == 3 || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15)
+	
+	if (coll == 2 || collision(stage, x, y + 20) == 8 || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15 || collision(stage, x + 40, y) == 8)
 	{
 		gameOver(coll, buffer);
 	}
 
 	sTime += 1;
+	notDamage += 1;
 	attackCoolTime += 1;
 	leftTime += 1;
 	rightTime += 1;
@@ -317,6 +313,10 @@ int character::collision(int(&stage)[25][40], int newX, int newY)
 			else if (stage[posY][posX] == 98)
 			{
 				return 98;				// 1스테이지 보스
+			}
+			else if (stage[posY][posX] == 99)
+			{
+				return 99;				// 2스테이지 보스
 			}
 		}
     }

@@ -1,6 +1,4 @@
 ﻿#include "drawStage_prologue.h"
-#include "writeText.h"
-#include "draw.h"
 
 drawStage_prologue::drawStage_prologue()
 {
@@ -10,13 +8,13 @@ drawStage_prologue::drawStage_prologue()
 void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
 	drawCharacter ac;
 	draw a;
-
+	
 	writeText wt;
   
 	int checkHelpText = 0;
 	bool attackCheck = 0;
   
-	while (1){
+	while (1) {
 		if (ac.nextStage)
 		{
 			Sleep(1000);
@@ -39,6 +37,7 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
 
 		int coll = ac.collision(stage_prologue, ac.x, ac.y);
 
+
 		if (coll != 2 || coll != 10 || coll != 11 || coll != 12)
 		{
 			ac.gravity(stage_prologue, ac.x, ac.y);
@@ -52,12 +51,12 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
 		a.drawBitmap("left_button.bmp", buffer, 900, 60, SCREEN_WIDTH);
 		a.drawBitmap("right_button.bmp", buffer, 1050, 60, SCREEN_WIDTH);
 		a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
-	  
+
 		ac.characterMove(stage_prologue, buffer);
 
-		ac.characterDraw(ac.x, ac.y, buffer);
+		ac.characterDraw(buffer);
 
-		if (ac.collision(stage_prologue, ac.x, ac.y+20) == 12 && checkHelpText == 0)
+		if (ac.collision(stage_prologue, ac.x, ac.y + 20) == 12 && checkHelpText == 0)
 		{
 			checkHelpText = 1;
 		}
@@ -75,6 +74,6 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
 		{
 			wt.drawText(L"'↑'키를 눌러서 문으로", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
 			wt.drawText(L"들어가자", 1700, 720, 20, RGB(128, 128, 128), L"굴림체");
-		} 
+		}
 	}
 }

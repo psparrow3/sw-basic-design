@@ -82,8 +82,6 @@ IDB_BITMAP19            BITMAP                  "moveable_block.bmp"
 
 IDB_BITMAP20            BITMAP                  "seed.bmp"
 
-IDB_BITMAP22            BITMAP                  "triangle_block.bmp"
-
 IDB_BITMAP21            BITMAP                  "bottom.bmp"
 
 IDB_BITMAP23            BITMAP                  "empty_map.bmp"
@@ -136,9 +134,39 @@ IDB_BITMAP47            BITMAP                  "chat_window_start.bmp"
 
 IDB_BITMAP48            BITMAP                  "status_informaition.bmp"
 
-IDB_BITMAP49            BITMAP                  "seed_piece.bmp"
+IDB_BITMAP49            BITMAP                  "small_block.bmp"
 
-IDB_BITMAP50            BITMAP                  "small_block.bmp"
+IDB_BITMAP50            BITMAP                  "triangle_block_up.bmp"
+
+IDB_BITMAP51            BITMAP                  "triangle_block_down.bmp"
+
+IDB_BITMAP52            BITMAP                  "triangle_block_right.bmp"
+
+IDB_BITMAP53            BITMAP                  "past_text.bmp"
+
+IDB_BITMAP54            BITMAP                  "future_text.bmp"
+
+IDB_BITMAP55            BITMAP                  "laser_length.bmp"
+
+IDB_BITMAP56            BITMAP                  "laser_width.bmp"
+
+IDB_BITMAP57            BITMAP                  "bridge.bmp"
+
+IDB_BITMAP58            BITMAP                  "laser_width_bottom.bmp"
+
+IDB_BITMAP59            BITMAP                  "laser_length_bottom.bmp"
+
+IDB_BITMAP60            BITMAP                  "stage2_lava1.bmp"
+
+IDB_BITMAP61            BITMAP                  "stage2_lava2.bmp"
+
+IDB_BITMAP62            BITMAP                  "stage2_lava3.bmp"
+
+IDB_BITMAP63            BITMAP                  "stage2_lava.bmp"
+
+IDB_BITMAP64            BITMAP                  "stage2_Boss.bmp"
+
+IDB_BITMAP65            BITMAP                  "stage2_Boss_left.bmp"
 
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////

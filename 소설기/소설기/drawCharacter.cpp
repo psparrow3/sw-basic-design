@@ -1,9 +1,4 @@
 ﻿#include "drawCharacter.h"
-#include "character.h"
-#include <windows.h>
-#include <iostream>
-#include "draw.h"
-#include "conio.h"
 
 //캐릭터를 그리는 함수
 drawCharacter::drawCharacter()
@@ -51,34 +46,25 @@ void drawCharacter::characterLeftAttackDraw(int x, int y, std::vector<char>&buff
 void  drawCharacter::characterRightJumpAttackDraw(int x, int y, std::vector<char>& buffer)
 {
 	draw a;
-	a.drawBitmap("character_right_jump.bmp", buffer, x, y, SCREEN_WIDTH);
 	a.drawBitmap("character_right_attack.bmp", buffer, x, y, SCREEN_WIDTH);
 }
 
 void  drawCharacter::characterLeftJumpAttackDraw(int x, int y, std::vector<char>& buffer)
 {
-
 	draw a;
-	a.drawBitmap("character_left_jump.bmp", buffer, x+80, y, SCREEN_WIDTH);
 	a.drawBitmap("character_left_attack.bmp", buffer, x, y, SCREEN_WIDTH);
-  
-
 }
 
 void drawCharacter::characterErase(int x, int y, std::vector<char>& buffer)
 {
 	draw a;
-
-
 	a.eraseBitmap("empty_character.bmp", buffer, x, y, SCREEN_WIDTH);
-
-	
 }
+
 void drawCharacter::characterAttackErase(int x, int y, std::vector<char>& buffer)
 {
 	draw a;
 	a.eraseBitmap("empty_character_attack.bmp", buffer, x, y, SCREEN_WIDTH);
-   
 }
 
 void drawCharacter::characterHeartDraw(std::vector<char>& buffer)
@@ -113,23 +99,24 @@ void drawCharacter::characterHeartDraw(std::vector<char>& buffer)
 void drawCharacter::characterInfo(std::vector<char>& buffer)
 {
 	draw a;
-	writeText wt;
+	a.drawBitmap("status_informaition.bmp", buffer, 1600, 0, SCREEN_WIDTH);
 
 	if (future)
 	{
-		wt.drawText(L"현재", 1670, 40, 100, RGB(128, 128, 128), L"볼드체");
+	   
+		a.drawBitmap("future_text.bmp", buffer, 1670, 20, SCREEN_WIDTH);
 	}
-	else if (!future)
+	else
 	{
-		wt.drawText(L"과거", 1670, 40, 100, RGB(128, 128, 128), L"볼드체");
+	  
+		a.drawBitmap("past_text.bmp", buffer, 1670, 20, SCREEN_WIDTH);
 	}
-	
-	a.drawBitmap("status_informaition.bmp", buffer, 1600, 0, SCREEN_WIDTH);
 }
 
-void drawCharacter::characterDraw(int x, int y, std::vector<char>& buffer) 
+void drawCharacter::characterDraw(std::vector<char>& buffer) 
 {
-	if (facingRight) {
+	if (facingRight) 
+	{
 		if (attacking && isJumping)
 		{
 			characterRightJumpAttackDraw(x, y, buffer);

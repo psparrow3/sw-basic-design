@@ -1,6 +1,5 @@
 #pragma once
 #include "character.h"
-#include "draw.h"
 #include "drawStage1.h"
 #include <set>
 
@@ -23,4 +22,5 @@ public:
 	static bool flag;
 	static int time;
 	static int seed_num;
+	static int hp;
 };
