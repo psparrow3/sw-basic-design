@@ -4,11 +4,11 @@
 
 class Boss3
 {
+public:
 	static int m_x, m_y;
 	static int meteor_y;
 
-public:
-	static void Boss3Attack_laser(std::vector<char>& buffer, int x);
+	static void Boss3Attack_laser(std::vector<char>& buffer);
 	static void Boss3Attack_long(std::vector<char>& buffer);
 	static void Boss3Attack_meteor(std::vector<char>& buffer);
 	static void Boss3Attack_change();

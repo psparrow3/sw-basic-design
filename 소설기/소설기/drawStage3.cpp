@@ -126,8 +126,17 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 			a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 		}
 
-		Boss3::Boss3Attack_meteor(buffer);
+		if (0)
+		{
+			Boss3::Boss3Attack_meteor(buffer);
+		}
 
+		if (1)
+		{
+			Boss3::Boss3Attack_laser(buffer);
+		}
+			
+		a.drawBitmap("Stage3_Boss_p2.bmp", buffer, 0, 0, SCREEN_WIDTH);
 		a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
 		ac.characterMove(stage, buffer);
 		int coll = ac.collision(stage, ac.x, ac.y);
@@ -139,6 +148,12 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 		ac.characterDraw(buffer);
 
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+		if (Boss3::meteor_y == 360)
+		{
+			ac.gameOverCheck = 1;
+			Boss3::meteor_y = 0;
+		}
 	}
 }
 

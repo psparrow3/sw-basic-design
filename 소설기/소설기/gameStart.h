@@ -21,4 +21,3 @@ public:
 	gameStart();
 	void startGame();
 };
-

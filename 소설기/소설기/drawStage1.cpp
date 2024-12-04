@@ -606,7 +606,6 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 
 			if (ac.seedPlant)
 			{
-
 				a.drawBitmap("stage1_boss_tree_lower.bmp", buffer, 600, 300, SCREEN_WIDTH);
 				a.drawBitmap("stage1_boss_tree_upper.bmp", buffer, 600, 120, SCREEN_WIDTH);
 

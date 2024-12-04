@@ -3,7 +3,7 @@
 int character::x = 0;
 int character::y = 410;
 
-int character::progress = 5;                     // 진행상황
+int character::progress = 4;                     // 진행상황
 
 int character::gameOverCheck = 0;
 bool character::future = 1;
@@ -226,8 +226,8 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	attackCoolTime += 1;
 	leftTime += 1;
 	rightTime += 1;
-
 }
+
 void character::gravity(int(&stage)[25][40], int newX, int newY)
 {
 	int coll = collision(stage, x, y + 20);

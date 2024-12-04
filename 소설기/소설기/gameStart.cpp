@@ -3,9 +3,9 @@
 gameStart::gameStart() {
 	draw a;
 
+	SetConsoleTitle(L"잃어버린 낙원");
 	a.SetConsoleSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	a.SetConsoleFontSize(1);
-	
 
 	// 커서 숨기기
 	GetConsoleCursorInfo(hConsoleOut, &curCursorInfo);

@@ -1,7 +1,7 @@
 #include "Boss2.h"
 
 int Boss2::m_x = 1440;
-int Boss2::m_y = 280;
+int Boss2::m_y = 300;
 int Boss2::hp = 2;
 
 void Boss2::Boss2Attack_change()
@@ -13,11 +13,7 @@ void Boss2::Boss2Attack_laser(std::vector<char>& buffer, int x)
 {
 	draw a;
 	
-	for (int y = 0; y < 11; y++)
-	{
-		a.eraseBitmap("empty_boss_attack.bmp", buffer, x, y * 40, SCREEN_WIDTH);
-		a.eraseBitmap("empty_boss_attack.bmp", buffer, x, y * 40 + 20, SCREEN_WIDTH);
-	}
+	a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 
 	for (int y = 0; y < 11; y++)
 	{
@@ -69,6 +65,11 @@ void Boss2::Boss2TakeDamage(int(&stage)[25][40]) {
 
 	if (coll == 99)
 	{
-		Boss2::hp--;
+		hp--;
+	}
+
+	if (hp == 1)
+	{
+		m_x = 0;
 	}
 }

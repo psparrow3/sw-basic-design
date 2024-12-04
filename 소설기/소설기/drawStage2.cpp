@@ -14,7 +14,6 @@ int drawStage2::stage2_future[12][20] =
 	{0,0,0,0,0,7,0,0,0,7,0,7,0,1,1,0,0,0,0,0},
 	{0,0,5,0,1,1,0,0,1,1,0,1,1,0,0,0,0,0,0,0},
 	{0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-
 };
 
 int drawStage2::stage2_past[12][20] =
@@ -31,7 +30,6 @@ int drawStage2::stage2_past[12][20] =
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-
 };
 
 int drawStage2::stage2_Future[25][40] =
@@ -473,6 +471,9 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 	int atimeCheck = 0;
 	int ctimeCheck = 0;
 
+	int start = 0;
+	int checkBossHp = 2;
+
 	int laser_x = 1380;
 	bool laserAttack = FALSE;
 
@@ -505,11 +506,18 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			ac.x = 0;
 			ac.y = 370;
 			ac.facingRight = 1;
+			ac.attacking = 0;
+			ac.isJumping = 0;
+
 			ctimeCheck = 0;
+			
 			Boss2::Boss2LocationErase(stage);
 			Boss2::hp = 2;
 			Boss2::m_x = 1440;
-			Boss2::m_y = 280;
+			Boss2::m_y = 300;
+
+			checkBossHp = 2;
+			laser_x = 1380;
 
 			ac.gameOverCheck = 0;
 			break;
@@ -536,33 +544,69 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 
 		if (laserAttack)
 		{
-			for (int i = 0; i < 21; i++)
+			if (Boss2::hp == 2)
 			{
-				stage2_Future_Boss[i][laser_x / 40 + 1] = 0;
-			}			
+				for (int i = 0; i < 21; i++)
+				{
+					stage2_Future_Boss[i][laser_x / 40 + 1] = 0;
+				}
+			}
+
+			if (Boss2::hp == 1)
+			{
+				for (int i = 0; i < 21; i++)
+				{
+					stage2_Future_Boss[i][laser_x / 40] = 0;
+				}
+			}
 		}
 
 		if (atimeCheck > attackTime)
 		{
 			laserAttack = TRUE;
 
-			laser_x -= 40;
-
-			if (laser_x <= 80)
+			if (Boss2::hp == 2)
 			{
-				atimeCheck = 0;
-				attackTime = rand() % 11 + 20;
+				laser_x -= 40;
 
-				laser_x = 1380;
-				laserAttack = FALSE;
+				if (laser_x <= 80)
+				{
+					laser_x = 1380;
+					laserAttack = FALSE;
+					atimeCheck = 0;
+					attackTime = rand() % 11 + 20;
+				}
+			}
+			else if (Boss2::hp == 1)
+			{
+				laser_x += 40;
+
+				if (laser_x >= 1600)
+				{
+					laser_x = 160;
+					laserAttack = FALSE;
+					atimeCheck = 0;
+					attackTime = rand() % 11 + 20;
+				}
 			}
 		}
 
 		if (laserAttack)
 		{
-			for (int i = 0; i < 21; i++)
+			if (Boss2::hp == 2)
 			{
-				stage2_Future_Boss[i][laser_x / 40 + 1] = 8;
+				for (int i = 0; i < 21; i++)
+				{
+					stage2_Future_Boss[i][laser_x / 40 + 1] = 8;
+				}
+			}
+
+			if (Boss2::hp == 1)
+			{
+				for (int i = 0; i < 21; i++)
+				{
+					stage2_Future_Boss[i][laser_x / 40] = 8;
+				}
 			}
 		}
 		
@@ -602,19 +646,29 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		{
 			Boss2::m_x = 0;
 			a.drawBitmap("stage2_Boss_left.bmp", buffer, Boss2::m_x, Boss2::m_y, SCREEN_WIDTH);
+
+			if (checkBossHp == 2) {
+				laser_x = 160;
+				checkBossHp--;
+			}
 		}
-
-		Boss2::Boss2Location(stage);
-
-		ac.characterMove(stage, buffer);
-		ac.characterDraw(buffer);
-		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
-
-		atimeCheck++;
-		ctimeCheck++;
-
-		if (Boss2::hp == 0)
+		else
 		{
+			if (laserAttack)
+			{
+				for (int y = 0; y < 11; y++)
+				{
+					a.drawBitmap("laser_length.bmp", buffer, laser_x, y * 40, SCREEN_WIDTH);
+				}
+
+				laserAttack = FALSE;
+			}			
+			
+			for (int i = 0; i < 21; i++)
+			{
+				stage2_Future_Boss[i][laser_x / 40] = 0;
+			}
+
 			stage2_Future_Boss[22][38] = 10;
 			stage2_Future_Boss[22][39] = 10;
 			stage2_Past_Boss[22][38] = 10;
@@ -626,7 +680,28 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			a.drawBitmap("door.bmp", buffer, 1520, 380, SCREEN_WIDTH);
 		}
 
+		Boss2::Boss2Location(stage);
+
+		if (start)
+			ac.characterMove(stage, buffer);
+
+		ac.characterDraw(buffer);
+
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+		if (start == 0)
+		{
+			wt.drawText(L"그 분에겐", 700, 400, 100, RGB(128, 128, 128), L"굴림체");
+			Sleep(500);
+			wt.drawText(L"보낼 수 없다.", 700, 500, 100, RGB(128, 128, 128), L"굴림체");
+			Sleep(500);
+			start = 1;
+		}
+
+		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
+
+		atimeCheck++;
+		ctimeCheck++;
 	}
 }
 

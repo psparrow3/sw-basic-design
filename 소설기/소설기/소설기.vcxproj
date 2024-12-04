@@ -223,6 +223,8 @@
     <Image Include="stage2_lava1.bmp" />
     <Image Include="stage2_lava2.bmp" />
     <Image Include="stage2_lava3.bmp" />
+    <Image Include="stage3_Boss_p1.bmp" />
+    <Image Include="stage3_Boss_p2.bmp" />
     <Image Include="start_screen.bmp" />
     <Image Include="status_informaition.bmp" />
     <Image Include="S_button.bmp" />
