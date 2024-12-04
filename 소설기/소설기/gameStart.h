@@ -11,6 +11,7 @@
 #include "drawStage_prologue.h"
 #include "drawStage1.h"
 #include "drawStage2.h"
+#include "drawStage3.h"
 
 class gameStart
 {
@@ -20,4 +21,3 @@ public:
 	gameStart();
 	void startGame();
 };
-
