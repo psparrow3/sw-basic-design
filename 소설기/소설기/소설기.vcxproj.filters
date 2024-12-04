@@ -107,6 +107,13 @@
     <Image Include="stage2_lava2.bmp" />
     <Image Include="stage2_lava3.bmp" />
     <Image Include="stage1_Boss_die.bmp" />
+    <Image Include="peaceful_eden.bmp" />
+    <Image Include="destroyed_eden.bmp" />
+    <Image Include="bitmap69.bmp" />
+    <Image Include="peaceful_eden_text.bmp" />
+    <Image Include="destroyed_eden_text.bmp" />
+    <Image Include="narration1.bmp" />
+    <Image Include="diary1.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />

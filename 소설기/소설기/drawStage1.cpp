@@ -822,7 +822,34 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		}
 		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
 	}
-	
+	int i = 0;
+	int term = 0;
+	a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+	a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+	while (_kbhit()) {
+		_getch();
+	}
+	while (1) {
+		term++;
+
+		if (i == 0) {
+			wt.drawText(L"누군가의 일지가 있다...", 400, 500, 50, RGB(128, 128, 128), L"굴림체");
+			Sleep(1000);
+			i = 1;
+		}
+
+		if (i == 1) {
+			a.drawBitmap("diary1.bmp", buffer, 50, 0, SCREEN_WIDTH);
+			a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+			if (_kbhit()) {
+				
+
+				break;
+			}
+
+		}
+	}
+
 }
 
 

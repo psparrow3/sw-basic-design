@@ -170,6 +170,18 @@ IDB_BITMAP65            BITMAP                  "stage2_Boss_left.bmp"
 
 IDB_BITMAP66            BITMAP                  "stage1_Boss_die.bmp"
 
+IDB_BITMAP67            BITMAP                  "peaceful_eden.bmp"
+
+IDB_BITMAP68            BITMAP                  "destroyed_eden.bmp"
+
+IDB_BITMAP69            BITMAP                  "peaceful_eden_text.bmp"
+
+IDB_BITMAP71            BITMAP                  "destroyed_eden_text.bmp"
+
+IDB_BITMAP72            BITMAP                  "narration1.bmp"
+
+IDB_BITMAP73            BITMAP                  "diary1.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

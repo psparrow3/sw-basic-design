@@ -14,8 +14,9 @@ gameStart::gameStart() {
 }
 
 void gameStart::startGame() {
+	draw a;
 	drawCharacter ac;
-
+	writeText wt;
 	std::vector<char> buffer(SCREEN_WIDTH * SCREEN_HEIGHT, ' ');
 
 	startScreen ss;
@@ -37,6 +38,7 @@ void gameStart::startGame() {
 			break;
 		case 2:
 			ds1.stage1BossDraw(buffer);
+			
 			break;
 		case 3:
 			ds2.stage2Draw(buffer);

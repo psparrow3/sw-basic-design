@@ -179,7 +179,7 @@ void drawStage3::stage3BossPage1Draw(std::vector<char>& buffer)
 
 		if (start == 0) {
 			a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-			wt.drawText(L"내 낙원을 방해하는 자", 500, 400, 100, RGB(128, 128, 128), L"굴림체");
+			wt.drawText(L"낙원을 방해하는 자", 500, 400, 100, RGB(128, 128, 128), L"굴림체");
 			Sleep(1000);
 			wt.drawText(L"용서하지 않는다", 500, 500, 100, RGB(128, 128, 128), L"굴림체");
 			Sleep(1000);
@@ -300,7 +300,7 @@ void drawStage3::stage3BossPage2Draw(std::vector<char>& buffer)
 		}
 
 
-
+		
 		if (ac.future)
 		{
 			memcpy(stage, stage3_Future_Boss, sizeof(stage3_Future_Boss));

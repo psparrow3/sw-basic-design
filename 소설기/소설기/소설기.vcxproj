@@ -153,6 +153,13 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="A_button.bmp" />
+    <Image Include="bitmap69.bmp" />
+    <Image Include="destroyed_eden.bmp" />
+    <Image Include="destroyed_eden_text.bmp" />
+    <Image Include="diary1.bmp" />
+    <Image Include="narration1.bmp" />
+    <Image Include="peaceful_eden.bmp" />
+    <Image Include="peaceful_eden_text.bmp" />
     <Image Include="stage1_Boss_die.bmp" />
     <Image Include="stage2_Boss.bmp" />
     <Image Include="stage2_Boss_left.bmp" />
