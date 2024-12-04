@@ -153,7 +153,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="A_button.bmp" />
-    <Image Include="bitmap69.bmp" />
+    <Image Include="past_block.bmp" />
+    <Image Include="tutorial_researcher_text.bmp" />
     <Image Include="destroyed_eden.bmp" />
     <Image Include="destroyed_eden_text.bmp" />
     <Image Include="diary1.bmp" />

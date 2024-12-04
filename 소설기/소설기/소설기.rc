@@ -184,6 +184,8 @@ IDB_BITMAP73            BITMAP                  "diary1.bmp"
 
 IDB_BITMAP74            BITMAP                  "diary2.bmp"
 
+IDB_BITMAP75            BITMAP                  "past_block.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

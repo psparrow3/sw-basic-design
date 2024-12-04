@@ -375,7 +375,7 @@ void drawStage3::stage3PastBossDraw(std::vector<char>& buffer)
 		for (int x = 0; x < 20; x++) {
 			switch (stage3_past_Boss[y][x]) {
 			case 1:
-				a.drawBitmap("block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+				a.drawBitmap("past_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
 				break;
 			case 4:
 				a.drawBitmap("key.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);

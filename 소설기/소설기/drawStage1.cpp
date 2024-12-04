@@ -519,7 +519,7 @@ void drawStage1::drawStage1Past(std::vector<char>& buffer) {
 		for (int x = 0; x < 20; x++) {
 			switch (stage1_past[y][x]) {
 			case 1:
-				a.drawBitmap("block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
+				a.drawBitmap("past_block.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
 				break;
 			case 2:
 				a.drawBitmap("lava2.bmp", buffer, 2 * x * BLOCK_SIZE, y * BLOCK_SIZE, SCREEN_WIDTH);
