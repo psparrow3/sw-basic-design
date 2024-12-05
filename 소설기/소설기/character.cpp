@@ -2,7 +2,7 @@
 
 int character::x = 0;
 int character::y = 410;
-int character::progress = 1;                     // 진행상황
+int character::progress = 5;                     // 진행상황
 
 int character::gameOverCheck = 0;
 bool character::future = 1;
@@ -135,7 +135,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	if (jumping && !isJumping)
 	{
-		isJumping = 0;
+		isJumping = 1;
 
 		land = 0;
 
@@ -223,6 +223,9 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	if (coll == 2 || collision(stage, x, y + 20) == 8 || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15 || collision(stage, x + 40, y) == 8)
 	{
 		gameOver(coll, buffer);
+	}
+	if (collision(stage, x, y + 10) == 2) {
+		y -= 10;
 	}
 
 	sTime += 1;

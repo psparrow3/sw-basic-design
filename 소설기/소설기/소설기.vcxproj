@@ -164,6 +164,10 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="A_button.bmp" />
+    <Image Include="bitmap80.bmp" />
+    <Image Include="page1_researcher_text1.bmp" />
+    <Image Include="page1_researcher_text2.bmp" />
+    <Image Include="page1_researcher_text3.bmp" />
     <Image Include="past_block.bmp" />
     <Image Include="tutorial_researcher_text.bmp" />
     <Image Include="narration1.bmp" />

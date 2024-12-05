@@ -24,7 +24,7 @@ void gameStart::startGame() {
 	drawStage2 ds2;
 	drawStage3 ds3;
 
-	ss.drawStartScreen(buffer);
+	/*ss.drawStartScreen(buffer);*/
 
 	while (1) {
 		switch (character::progress)

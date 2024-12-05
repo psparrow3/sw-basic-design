@@ -864,7 +864,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		ac.nextStage = 0;
 		int i = 0;
 
-		a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+		a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		while (_kbhit()) {
 			_getch();
@@ -878,7 +878,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 			}
 
 			if (i == 1) {
-				a.drawBitmap("diary2.bmp", buffer, 50, 0, SCREEN_WIDTH);
+				a.drawBitmap("diary1.bmp", buffer, 50, 0, SCREEN_WIDTH);
 				a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 				if (_kbhit()) {
 

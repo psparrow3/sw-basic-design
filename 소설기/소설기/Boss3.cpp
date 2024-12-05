@@ -66,7 +66,7 @@ void Boss3::Boss3Attack_laser(std::vector<char>& buffer, int(&stage)[25][40], in
 
 	for (int x = 0; x < 20; x++)
 	{
-		if (!(x >= m_x / 80 && x <= m_x / 80 + 2) && !(x >= cx && x <= cx + 1))
+		if (!(x >= m_x / 80 && x <= m_x / 80 + 2) && !(x >= cx && x <= cx + 2))
 		{
 			for (int y = 0; y < 12; y++)
 			{
@@ -120,7 +120,12 @@ void Boss3::Boss3Attack_meteor(std::vector<char>& buffer)
 	a.drawBitmap("Boss3_meteor.bmp", buffer, 800 - 80, meteor_y, SCREEN_WIDTH);
 
 	if (meteor_y < 480 - 120)
-		meteor_y += 5;
+	{
+		if (hp > 3)
+			meteor_y += 5;
+		else
+			meteor_y += 10;
+	}
 }
 
 void Boss3::Boss3Attack_change()

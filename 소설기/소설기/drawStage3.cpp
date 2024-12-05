@@ -115,6 +115,7 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 	int change = 0;
 	int BossAttack = 0;
 
+	int pageCheck = 0;
 	int cx, cy;
 	cx = cy = 0;
 	
@@ -195,7 +196,7 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 		{
 			a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-			wt.drawText(L"내 낙원을 방해하는 자", 500, 400, 100, RGB(128, 128, 128), L"굴림체");
+			wt.drawText(L"낙원을 방해하는 자", 500, 400, 100, RGB(128, 128, 128), L"굴림체");
 			Sleep(1000);
 			wt.drawText(L"용서치 않겠다", 500, 500, 100, RGB(128, 128, 128), L"굴림체");
 			Sleep(1000);
@@ -251,7 +252,7 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 					}
 					else
 					{
-						if (character::x + 80 > 720 && character::x < 880 && 
+						if (character::x > 720 && character::x - 80 < 880 &&
 							character::y + 60 > Boss3::meteor_y && character::y < Boss3::meteor_y + 120)
 						{
 							timeCheck = 0;
@@ -277,7 +278,10 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 			else					// 레이저
 			{
 				laserTime++;
-				wt.drawText(L"잠시 뒤 레이저 공격이 시작됩니다.", 1650, 650, 20, RGB(128, 128, 128), L"굴림체");
+				if (Boss3::hp) {
+					wt.drawText(L"경고!", 700, 100, 100, RGB(128, 128, 128), L"굴림체");
+				}
+				
 			}
 		}
 
@@ -300,17 +304,86 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 				BossAttack = 0;
 			}
 		}
-
+		
 		if (Boss3::hp)
 		{
 			Boss3::Boss3LocationErase(stage);
-			Boss3::Boss3Draw(buffer);
+			
+			
+			if (Boss3::hp > 3) {
+				Boss3::Boss3Draw(buffer);
+			}
+			else {
+				if (pageCheck) {
+					Boss3::Boss3Draw(buffer);
+				}
+			}
 			Boss3::Boss3Location(stage);
+			
 		}
 		else
 		{
 			BossAttack = 0;
 			laserTime = 0;
+		}
+		
+		if (pageCheck == 0 && Boss3::hp == 3 && character::isJumping==0) {
+			BossAttack = 0;
+			pageCheck = 1;
+			int i = 0;
+			a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+			
+			a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+			while (_kbhit()) {
+				_getch();
+			}
+			while (1) {
+				if (i == 0) {
+					a.drawBitmap("page1_researcher_text1.bmp", buffer, 50, 0, SCREEN_WIDTH);
+					a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+					if (_kbhit()) {
+						i = 1;
+					}
+				}
+				if (i == 1) {
+					while (_kbhit()) {
+						_getch();
+					}
+					a.drawBitmap("page1_researcher_text2.bmp", buffer, 50, 0, SCREEN_WIDTH);
+					a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+					if (_kbhit()) {
+						i = 2;
+					}
+				}
+				if (i == 2) {
+					a.drawBitmap("page1_researcher_text3.bmp", buffer, 50, 0, SCREEN_WIDTH);
+					a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+					Sleep(1000);
+					for (int j = 0; j < 20; j++) {
+						a.drawBitmap("page1_researcher_text3.bmp", buffer, 50, 0, SCREEN_WIDTH);
+						a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+						a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+						a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+					}
+					i = 3;
+				}
+				if (i == 3) {
+					wt.drawText(L"낙", 500, 400, 100, RGB(128, 128, 128), L"굴림체");
+					Sleep(500);
+					wt.drawText(L"원", 600, 400, 100, RGB(128, 128, 128), L"굴림체");
+					Sleep(500);
+					wt.drawText(L"을", 700, 400, 100, RGB(128, 128, 128), L"굴림체");
+					Sleep(500);
+					wt.drawText(L"지", 900, 400, 100, RGB(128, 128, 128), L"굴림체");
+					Sleep(500);
+					wt.drawText(L"킨", 1000, 400, 100, RGB(128, 128, 128), L"굴림체");
+					Sleep(500);
+					wt.drawText(L"다.", 1100, 400, 100, RGB(128, 128, 128), L"굴림체");
+					Sleep(500);
+					break;
+				}
+			}
+		
 		}
 	
 		ac.characterMove(stage, buffer);
