@@ -2,7 +2,7 @@
 
 int character::x = 0;
 int character::y = 410;
-int character::progress = 5;                     // 진행상황
+int character::progress = 1;                     // 진행상황
 
 int character::gameOverCheck = 0;
 bool character::future = 1;
