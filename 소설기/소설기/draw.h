@@ -4,6 +4,10 @@
 #include <vector>
 #include <Windows.h>
 #include <stdexcept>
+#include <mutex>
+#include <thread>
+#include <conio.h>
+#include <atomic>
 
 #define SCREEN_WIDTH 1902
 #define SCREEN_HEIGHT 501

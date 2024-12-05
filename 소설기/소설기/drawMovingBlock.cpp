@@ -11,8 +11,15 @@ drawMovingBlock::drawMovingBlock(int x, int y, int height1, int height2)
 void drawMovingBlock::movingBlockDraw(std::vector<char>& buffer)
 {
 	draw a;
-	a.drawBitmap("block.bmp", buffer, m_x, m_y, SCREEN_WIDTH);
-
+	
+	if (character::future)
+	{
+		a.drawBitmap("block.bmp", buffer, m_x, m_y, SCREEN_WIDTH);
+	}
+	else
+	{
+		a.drawBitmap("past_block.bmp", buffer, m_x, m_y, SCREEN_WIDTH);
+	}
 }
 
 void drawMovingBlock::movingBlockErase(std::vector<char>& buffer)
@@ -20,13 +27,4 @@ void drawMovingBlock::movingBlockErase(std::vector<char>& buffer)
 	draw a;
 	a.eraseBitmap("empty_block.bmp", buffer, m_x, m_y, SCREEN_WIDTH);
 
-}/*
-void drawMovingBlock::BlockMoving(int (&stage)[25][40],std::vector<char>& buffer) {
-	movingBlockErase(buffer);
-	blockLocationErase(stage);
-	
-	blockMove(stage);
-	
-	blockLocation(stage);
-	movingBlockDraw(buffer);
-}*/
+}
