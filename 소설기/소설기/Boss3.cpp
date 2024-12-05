@@ -5,6 +5,7 @@ int Boss3::m_y = 40;
 int Boss3::meteor_y = 0;
 int Boss3::hp = 6;
 int Boss3::phase = 0;
+bool Boss3::damaged = FALSE;
 
 void Boss3::Boss3Draw(std::vector<char>& buffer)
 {
@@ -183,9 +184,8 @@ void Boss3::Boss3LocationErase(int(&stage)[25][40])
 	}
 }
 
-bool Boss3::Boss3TakeDamage(int(&stage)[25][40])
+void Boss3::Boss3TakeDamage(int(&stage)[25][40])
 {
-	int flag = 0;
 	int atX;
 	int atY = character::y;
 
@@ -203,8 +203,6 @@ bool Boss3::Boss3TakeDamage(int(&stage)[25][40])
 	if (coll == 100)
 	{
 		hp--;
-		flag = 1;
+		damaged = TRUE;
 	}
-
-	return flag;
 }

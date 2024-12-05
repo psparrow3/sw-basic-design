@@ -136,7 +136,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	if (jumping && !isJumping)
 	{
-		isJumping = 1;
+		isJumping = 0;
 
 		land = 0;
 

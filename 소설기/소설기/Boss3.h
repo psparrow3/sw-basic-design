@@ -9,6 +9,7 @@ public:
 	static int meteor_y;
 	static int hp;
 	static int phase;
+	static bool damaged;
 
 	static void Boss3Draw(std::vector<char>& buffer);
 	static void Boss3Attack_laser(std::vector<char>& buffer, int(&stage)[25][40], int cx, int cy);
@@ -18,5 +19,5 @@ public:
 	static void Boss3Attack_change();
 	static void Boss3Location(int(&stage)[25][40]);
 	static void Boss3LocationErase(int(&stage)[25][40]);
-	static bool Boss3TakeDamage(int(&stage)[25][40]);
+	static void Boss3TakeDamage(int(&stage)[25][40]);
 };
