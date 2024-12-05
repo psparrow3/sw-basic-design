@@ -219,70 +219,76 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 		if (timeCheck > attackTime)
 		{
 			BossAttack = 1;
+			if (Boss3::hp == 3 && pageCheck == 0) {
 
-			if (change)				// 메테오
-			{
-				Boss3::Boss3Attack_meteor(buffer);
-
-				if (ac.attacking)
+			}
+			else {
+				if (change)				// 메테오
 				{
-					ac.attacking = 0;
-					
-					if (Boss3::damaged)
+					Boss3::Boss3Attack_meteor(buffer);
+
+					if (ac.attacking)
 					{
-						timeCheck = 0;
-						change = 0;
-						attackTime = rand() % 21 + 20;
+						ac.attacking = 0;
+
+						if (Boss3::damaged)
+						{
+							timeCheck = 0;
+							change = 0;
+							attackTime = rand() % 21 + 20;
+							Boss3::meteor_y = 0;
+							BossAttack = 0;
+							Boss3::damaged = FALSE;
+						}
+
+						if (ac.facingRight)
+						{
+							if (character::x + 160 > 720 && character::x + 80 < 880 &&
+								character::y + 60 > Boss3::meteor_y && character::y < Boss3::meteor_y + 120)
+							{
+								timeCheck = 0;
+								change = 0;
+								attackTime = rand() % 21 + 20;
+								Boss3::meteor_y = 0;
+								BossAttack = 0;
+							}
+						}
+						else
+						{
+							if (character::x > 720 && character::x - 80 < 880 &&
+								character::y + 60 > Boss3::meteor_y && character::y < Boss3::meteor_y + 120)
+							{
+								timeCheck = 0;
+								change = 0;
+								attackTime = rand() % 21 + 20;
+								Boss3::meteor_y = 0;
+								BossAttack = 0;
+							}
+						}
+					}
+
+					if (character::x + 80 > 720 && character::x < 880 && character::y + 60 > Boss3::meteor_y && character::y < Boss3::meteor_y + 120)
+					{
+						ac.gameOverCheck = 1;
+					}
+
+					if (Boss3::meteor_y == 360)
+					{
 						Boss3::meteor_y = 0;
-						BossAttack = 0;
-						Boss3::damaged = FALSE;
-					}
-
-					if (ac.facingRight)
-					{
-						if (character::x + 160 > 720 && character::x + 80 < 880 && 
-							character::y + 60 > Boss3::meteor_y && character::y < Boss3::meteor_y + 120)
-						{
-							timeCheck = 0;
-							change = 0;
-							attackTime = rand() % 21 + 20;
-							Boss3::meteor_y = 0;
-							BossAttack = 0;
-						}
-					}
-					else
-					{
-						if (character::x > 720 && character::x - 80 < 880 &&
-							character::y + 60 > Boss3::meteor_y && character::y < Boss3::meteor_y + 120)
-						{
-							timeCheck = 0;
-							change = 0;
-							attackTime = rand() % 21 + 20;
-							Boss3::meteor_y = 0;
-							BossAttack = 0;
-						}
+						ac.gameOverCheck = 1;
 					}
 				}
-
-				if (character::x + 80 > 720 && character::x < 880 && character::y + 60 > Boss3::meteor_y && character::y < Boss3::meteor_y + 120)
+				else					// 레이저
 				{
-					ac.gameOverCheck = 1;
-				}
+					laserTime++;
+					if (Boss3::hp) {
+						wt.drawText(L"경고!", 700, 100, 100, RGB(128, 128, 128), L"굴림체");
+					}
 
-				if (Boss3::meteor_y == 360)
-				{
-					Boss3::meteor_y = 0;
-					ac.gameOverCheck = 1;
 				}
 			}
-			else					// 레이저
-			{
-				laserTime++;
-				if (Boss3::hp) {
-					wt.drawText(L"경고!", 700, 100, 100, RGB(128, 128, 128), L"굴림체");
-				}
-				
-			}
+		
+			
 		}
 
 		if (laserTime >= 5)
