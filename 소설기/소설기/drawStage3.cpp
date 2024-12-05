@@ -227,13 +227,14 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 				{
 					ac.attacking = 0;
 					
-					if (Boss3::Boss3TakeDamage(stage))
+					if (Boss3::damaged)
 					{
 						timeCheck = 0;
 						change = 0;
 						attackTime = rand() % 21 + 20;
 						Boss3::meteor_y = 0;
 						BossAttack = 0;
+						Boss3::damaged = FALSE;
 					}
 
 					if (ac.facingRight)
@@ -300,9 +301,17 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 			}
 		}
 
-		Boss3::Boss3LocationErase(stage);
-		Boss3::Boss3Draw(buffer);
-		Boss3::Boss3Location(stage);
+		if (Boss3::hp)
+		{
+			Boss3::Boss3LocationErase(stage);
+			Boss3::Boss3Draw(buffer);
+			Boss3::Boss3Location(stage);
+		}
+		else
+		{
+			BossAttack = 0;
+			laserTime = 0;
+		}
 	
 		ac.characterMove(stage, buffer);
 		ac.characterDraw(buffer);
