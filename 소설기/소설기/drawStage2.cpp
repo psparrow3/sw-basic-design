@@ -672,15 +672,23 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 				stage2_Future_Boss[i][laser_x / 40] = 0;
 			}
 
-			stage2_Future_Boss[22][38] = 10;
-			stage2_Future_Boss[22][39] = 10;
-			stage2_Past_Boss[22][38] = 10;
-			stage2_Past_Boss[22][39] = 10;
+			stage2_Future_Boss[22][18] = 10;
+			stage2_Future_Boss[22][19] = 10;
+			stage2_Future_Boss[22][20] = 10;
+			stage2_Future_Boss[22][21] = 10;
+			stage2_Future_Boss[22][22] = 10;
+			stage2_Future_Boss[22][23] = 10;
+			stage2_Past_Boss[22][18] = 10;
+			stage2_Past_Boss[22][19] = 10;
+			stage2_Past_Boss[22][20] = 10;
+			stage2_Past_Boss[22][21] = 10;
+			stage2_Past_Boss[22][22] = 10;
+			stage2_Past_Boss[22][23] = 10;
 
 			atimeCheck = 0;
 			ctimeCheck = 0;
 
-			a.drawBitmap("door.bmp", buffer, 1520, 380, SCREEN_WIDTH);
+			a.drawBitmap("last_door.bmp", buffer, 640, 140, SCREEN_WIDTH);
 		}
 
 		Boss2::Boss2Location(stage);
@@ -705,6 +713,39 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		
 		atimeCheck++;
 		ctimeCheck++;
+	}
+	int i = 0;
+	
+
+	a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+	a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+	while (_kbhit())
+	{
+		_getch();
+	}
+
+	while (1)
+	{
+		
+
+		if (i == 0)
+		{
+			wt.drawText(L"누군가의 일지가 있다...", 400, 500, 50, RGB(128, 128, 128), L"굴림체");
+			Sleep(1000);
+			i = 1;
+		}
+
+		if (i == 1)
+		{
+			a.drawBitmap("diary2.bmp", buffer, 50, 0, SCREEN_WIDTH);
+			a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+			if (_kbhit())
+			{
+				break;
+			}
+		}
 	}
 }
 

@@ -164,6 +164,12 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="A_button.bmp" />
+    <Image Include="chat_window_clear1.bmp" />
+    <Image Include="chat_window_clear2.bmp" />
+    <Image Include="chat_window_p11.bmp" />
+    <Image Include="chat_window_p12.bmp" />
+    <Image Include="chat_window_p13.bmp" />
+    <Image Include="last_door.bmp" />
     <Image Include="past_block.bmp" />
     <Image Include="tutorial_researcher_text.bmp" />
     <Image Include="narration1.bmp" />

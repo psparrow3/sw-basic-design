@@ -75,6 +75,7 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
 			wt.drawText(L"'↑'키를 눌러서 문으로", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
 			wt.drawText(L"들어가자", 1700, 720, 20, RGB(128, 128, 128), L"굴림체");
 		}
+		
 	}
 
 	int i = 0;
@@ -89,7 +90,7 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
 
 	while (1)
 	{
-		a.drawBitmap("tutorial_researcher_text.bmp", buffer, 50, 0, SCREEN_WIDTH);
+		a.drawBitmap("chat_window_start.bmp", buffer, 50, 0, SCREEN_WIDTH);
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 		if (_kbhit())
