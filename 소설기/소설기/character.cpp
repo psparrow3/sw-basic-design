@@ -136,13 +136,13 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	if (jumping && !isJumping)
 	{
-		isJumping = 0;
+		isJumping = 1;
 
 		land = 0;
 
 		for (int i = 0; i < 3; i++) {
 			preY = y;
-
+			preX = x;
 			y -= 20;
 			int jumpcoll;
 
@@ -154,7 +154,9 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 			}
 
 			if (jumpcoll == 2 || y < 0 || jumpcoll == 3) {
+				
 				y = preY;
+				
 			}
 		}
 	}
@@ -237,10 +239,13 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 void character::gravity(int(&stage)[25][40], int newX, int newY)
 {
+
 	int coll = collision(stage, x, y + 20);
+	
+	
 
 	if (coll == 2 || coll == 10 || coll == 11 || coll == 9 || coll == 3 || coll==12) {
-
+		
 		y = newY;
 		isJumping = 0;
 		land = 1;

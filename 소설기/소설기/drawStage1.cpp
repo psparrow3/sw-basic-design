@@ -602,12 +602,12 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 		if (ac.nextStage || ac.gameOverCheck)
 		{
 			if (ac.nextStage) {
-				
+			
 				ac.seedPiece = 0;
 				ac.seedPlant = 0;
 
 				a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-				ac.nextStage = 0;
+				
 				Sleep(1000);
 				a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 				a.eraseBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
@@ -855,40 +855,42 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 
 		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
 	}
+	if (ac.nextStage) {
+		int i = 0;
+		ac.nextStage = 0;
 
-	int i = 0;
-	int term = 0;
+		a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-	a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
-	a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-	while (_kbhit()) 
-	{
-		_getch();
-	}
-
-	while (1)
-	{
-		term++;
-
-		if (i == 0) 
+		while (_kbhit())
 		{
-			wt.drawText(L"누군가의 일지가 있다...", 400, 500, 50, RGB(128, 128, 128), L"굴림체");
-			Sleep(1000);
-			i = 1;
+			_getch();
 		}
 
-		if (i == 1)
+		while (1)
 		{
-			a.drawBitmap("diary1.bmp", buffer, 50, 0, SCREEN_WIDTH);
-			a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-			if (_kbhit())
+
+			if (i == 0)
 			{
-				break;
+				wt.drawText(L"누군가의 일지가 있다...", 400, 500, 50, RGB(128, 128, 128), L"굴림체");
+				Sleep(1000);
+				i = 1;
+			}
+
+			if (i == 1)
+			{
+				a.drawBitmap("diary1.bmp", buffer, 50, 0, SCREEN_WIDTH);
+				a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+				if (_kbhit())
+				{
+					break;
+				}
 			}
 		}
 	}
+	
 }
 
 void drawStage1::stage1FutureBossDraw(std::vector<char>& buffer)
