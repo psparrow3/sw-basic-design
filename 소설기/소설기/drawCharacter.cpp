@@ -46,34 +46,25 @@ void drawCharacter::characterLeftAttackDraw(int x, int y, std::vector<char>&buff
 void  drawCharacter::characterRightJumpAttackDraw(int x, int y, std::vector<char>& buffer)
 {
 	draw a;
-	a.drawBitmap("character_right_jump.bmp", buffer, x, y, SCREEN_WIDTH);
 	a.drawBitmap("character_right_attack.bmp", buffer, x, y, SCREEN_WIDTH);
 }
 
 void  drawCharacter::characterLeftJumpAttackDraw(int x, int y, std::vector<char>& buffer)
 {
-
 	draw a;
-	a.drawBitmap("character_left_jump.bmp", buffer, x+80, y, SCREEN_WIDTH);
 	a.drawBitmap("character_left_attack.bmp", buffer, x, y, SCREEN_WIDTH);
-  
-
 }
 
 void drawCharacter::characterErase(int x, int y, std::vector<char>& buffer)
 {
 	draw a;
-
-
 	a.eraseBitmap("empty_character.bmp", buffer, x, y, SCREEN_WIDTH);
-
-	
 }
+
 void drawCharacter::characterAttackErase(int x, int y, std::vector<char>& buffer)
 {
 	draw a;
 	a.eraseBitmap("empty_character_attack.bmp", buffer, x, y, SCREEN_WIDTH);
-   
 }
 
 void drawCharacter::characterHeartDraw(std::vector<char>& buffer)
@@ -107,28 +98,25 @@ void drawCharacter::characterHeartDraw(std::vector<char>& buffer)
 
 void drawCharacter::characterInfo(std::vector<char>& buffer)
 {
+	draw a;
+	a.drawBitmap("status_informaition.bmp", buffer, 1600, 0, SCREEN_WIDTH);
 
-    draw a;
-   
-    a.drawBitmap("status_informaition.bmp", buffer, 1600, 0, SCREEN_WIDTH);
-    if (future)
-    {
-       
-        a.drawBitmap("future_text.bmp", buffer, 1670, 20, SCREEN_WIDTH);
-    }
-    else
-    {
-      
-        a.drawBitmap("past_text.bmp", buffer, 1670, 20, SCREEN_WIDTH);
-    }
-
+	if (future)
+	{
+	   
+		a.drawBitmap("future_text.bmp", buffer, 1670, 20, SCREEN_WIDTH);
+	}
+	else
+	{
+	  
+		a.drawBitmap("past_text.bmp", buffer, 1670, 20, SCREEN_WIDTH);
+	}
 }
 
 void drawCharacter::characterDraw(std::vector<char>& buffer) 
 {
-	
-
-	if (facingRight) {
+	if (facingRight) 
+	{
 		if (attacking && isJumping)
 		{
 			characterRightJumpAttackDraw(x, y, buffer);

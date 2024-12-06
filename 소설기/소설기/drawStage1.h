@@ -4,7 +4,8 @@
 #include "Boss1.h"
 #include "drawMoveableBlock.h"
 #include "writeText.h"
-#include "conio.h"
+#include <conio.h>
+
 class drawStage1
 {
 public:

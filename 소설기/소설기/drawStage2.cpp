@@ -14,7 +14,6 @@ int drawStage2::stage2_future[12][20] =
 	{0,0,0,0,0,7,0,0,0,7,0,7,0,1,1,0,0,0,0,0},
 	{0,0,5,0,1,1,0,0,1,1,0,1,1,0,0,0,0,0,0,0},
 	{0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-
 };
 
 int drawStage2::stage2_past[12][20] =
@@ -31,7 +30,6 @@ int drawStage2::stage2_past[12][20] =
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-
 };
 
 int drawStage2::stage2_Future[25][40] =
@@ -478,6 +476,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 
 	int atimeCheck = 0;
 	int ctimeCheck = 0;
+
 	int laser_x = 1380;
 	bool laserAttack = FALSE;
 
@@ -512,8 +511,18 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			ac.x = 0;
 			ac.y = 370;
 			ac.facingRight = 1;
+			ac.attacking = 0;
+			ac.isJumping = 0;
+
 			ctimeCheck = 0;
+			
+			Boss2::Boss2LocationErase(stage);
 			Boss2::hp = 2;
+			Boss2::m_x = 1440;
+			Boss2::m_y = 300;
+
+			checkBossHp = 2;
+			laser_x = 1380;
 
 			ac.gameOverCheck = 0;
 			break;
@@ -540,13 +549,15 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 
 		if (laserAttack)
 		{
-			if (Boss2::hp == 2) {
+			if (Boss2::hp == 2)
+			{
 				for (int i = 0; i < 21; i++)
 				{
 					stage2_Future_Boss[i][laser_x / 40 + 1] = 0;
 				}
 			}
-			if (Boss2::hp == 1) {
+			if (Boss2::hp == 1)
+			{
 				for (int i = 0; i < 21; i++)
 				{
 					stage2_Future_Boss[i][laser_x / 40] = 0;
@@ -554,44 +565,47 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			}
 		}
 
-		if (atimeCheck > attackTime && Boss2::hp)
+		if (atimeCheck > attackTime)
 		{
 			laserAttack = TRUE;
-			if (Boss2::hp == 2) {
+
+			if (Boss2::hp == 2)
+			{
 				laser_x -= 40;
-				if (laser_x <= 0)
+
+				if (laser_x <= 80)
 				{
-					atimeCheck = 0;
-					attackTime = rand() % 11 + 20;
 					laser_x = 1380;
 					laserAttack = FALSE;
-				}
-			}
-			else {
-				
-				laser_x += 40;
-				if (laser_x >= 1600)
-				{
-					
 					atimeCheck = 0;
 					attackTime = rand() % 11 + 20;
-					laser_x = 160;
-					laserAttack = FALSE;
 				}
 			}
-		
+			else if (Boss2::hp == 1)
+			{
+				laser_x += 40;
 
-			
+				if (laser_x >= 1600)
+				{
+					laser_x = 160;
+					laserAttack = FALSE;
+					atimeCheck = 0;
+					attackTime = rand() % 11 + 20;
+				}
+			}			
 		}
 
-		if (laserAttack) {
-			if (Boss2::hp == 2) {
+		if (laserAttack)
+		{
+			if (Boss2::hp == 2)
+			{
 				for (int i = 0; i < 21; i++)
 				{
 					stage2_Future_Boss[i][laser_x / 40 + 1] = 8;
 				}
 			}
-			if (Boss2::hp == 1) {
+			if (Boss2::hp == 1)
+			{
 				for (int i = 0; i < 21; i++)
 				{
 					stage2_Future_Boss[i][laser_x / 40] = 8;
@@ -624,46 +638,62 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		}
 		
 		Boss2::Boss2LocationErase(stage);
+		a.eraseBitmap("Empty_boss.bmp", buffer, Boss2::m_x, Boss2::m_y, SCREEN_WIDTH);
 
 		if (Boss2::hp == 2)
 		{
-			a.eraseBitmap("Empty_boss.bmp", buffer, 1420, 300, SCREEN_WIDTH);
-			a.drawBitmap("stage2_Boss_right.bmp", buffer, 1420, 300, SCREEN_WIDTH);
-			Boss2::m_x = 1420;
-			Boss2::m_y = 300;
+			Boss2::m_x = 1440;
+			a.drawBitmap("stage2_Boss_right.bmp", buffer, Boss2::m_x, Boss2::m_y, SCREEN_WIDTH);
 		}
 		else if (Boss2::hp == 1)
 		{
-			a.eraseBitmap("Empty_boss.bmp", buffer, 0, 300, SCREEN_WIDTH);
-			a.drawBitmap("stage2_Boss_left.bmp", buffer, 0, 300, SCREEN_WIDTH);
+			Boss2::m_x = 0;
+			a.drawBitmap("stage2_Boss_left.bmp", buffer, Boss2::m_x, Boss2::m_y, SCREEN_WIDTH);
+
 			if (checkBossHp == 2) {
 				laser_x = 160;
-				laserAttack = FALSE;
 				checkBossHp--;
 			}
-			Boss2::m_x = 0;
-			Boss2::m_y = 300;
 		}
-		else {
-			laserAttack = FALSE;
+		else
+		{
+			if (laserAttack)
+			{
+				for (int y = 0; y < 11; y++)
+				{
+					a.drawBitmap("laser_length.bmp", buffer, laser_x, y * 40, SCREEN_WIDTH);
+				}
+
+				laserAttack = FALSE;
+			}			
+			
 			for (int i = 0; i < 21; i++)
 			{
 				stage2_Future_Boss[i][laser_x / 40] = 0;
 			}
-			
+
+			stage2_Future_Boss[22][38] = 10;
+			stage2_Future_Boss[22][39] = 10;
+			stage2_Past_Boss[22][38] = 10;
+			stage2_Past_Boss[22][39] = 10;
+
+			atimeCheck = 0;
+			ctimeCheck = 0;
+
+			a.drawBitmap("door.bmp", buffer, 1520, 380, SCREEN_WIDTH);
 		}
-	
-		
+
 		Boss2::Boss2Location(stage);
+
 		if (start)
 			ac.characterMove(stage, buffer);
-		ac.characterDraw(buffer);
-		
 
-		
-		
+		ac.characterDraw(buffer);
+
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-		if (start == 0) {
+
+		if (start == 0)
+		{
 			wt.drawText(L"±× ºÐ¿¡°Õ", 700, 400, 100, RGB(128, 128, 128), L"±¼¸²Ã¼");
 			Sleep(500);
 			wt.drawText(L"º¸³¾ ¼ö ¾ø´Ù.", 700, 500, 100, RGB(128, 128, 128), L"±¼¸²Ã¼");

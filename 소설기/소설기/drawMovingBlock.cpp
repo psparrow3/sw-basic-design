@@ -11,14 +11,15 @@ drawMovingBlock::drawMovingBlock(int x, int y, int height1, int height2)
 void drawMovingBlock::movingBlockDraw(std::vector<char>& buffer)
 {
 	draw a;
-	if (character::future) {
+	
+	if (character::future)
+	{
 		a.drawBitmap("block.bmp", buffer, m_x, m_y, SCREEN_WIDTH);
 	}
-	else {
+	else
+	{
 		a.drawBitmap("past_block.bmp", buffer, m_x, m_y, SCREEN_WIDTH);
 	}
-
-
 }
 
 void drawMovingBlock::movingBlockErase(std::vector<char>& buffer)

@@ -106,7 +106,13 @@
     <Image Include="stage2_lava1.bmp" />
     <Image Include="stage2_lava2.bmp" />
     <Image Include="stage2_lava3.bmp" />
+<<<<<<< HEAD
+    <Image Include="Boss3_meteor.bmp" />
+    <Image Include="stage3_Boss_p1.bmp" />
+    <Image Include="stage3_Boss_p2.bmp" />
+=======
     <Image Include="stage1_Boss_die.bmp" />
+<<<<<<< HEAD
     <Image Include="peaceful_eden.bmp" />
     <Image Include="destroyed_eden.bmp" />
     <Image Include="bitmap69.bmp" />
@@ -115,6 +121,9 @@
     <Image Include="narration1.bmp" />
     <Image Include="diary1.bmp" />
     <Image Include="diary2.bmp" />
+=======
+>>>>>>> origin/stage
+>>>>>>> origin/main
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />

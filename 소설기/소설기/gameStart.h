@@ -12,6 +12,7 @@
 #include "drawStage1.h"
 #include "drawStage2.h"
 #include "drawStage3.h"
+
 class gameStart
 {
 	HANDLE hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -20,4 +21,3 @@ public:
 	gameStart();
 	void startGame();
 };
-

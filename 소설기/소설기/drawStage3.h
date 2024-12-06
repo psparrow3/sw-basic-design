@@ -2,6 +2,7 @@
 #include "drawCharacter.h"
 #include "drawMovingBlock.h"
 #include "writeText.h"
+#include "Boss3.h"
 #include <cstdlib>
 #include <ctime>
 
@@ -10,8 +11,7 @@ class drawStage3
 {
 public:
 	
-	void stage3BossPage1Draw(std::vector<char>& buffer);
-	void stage3BossPage2Draw(std::vector<char>& buffer);
+	void stage3BossDraw(std::vector<char>& buffer);
 	void stage3FutureBossDraw(std::vector<char>& buffer);
 	void stage3PastBossDraw(std::vector<char>& buffer);
 
@@ -22,5 +22,3 @@ public:
 	static int stage3_Past_Boss[25][40];
 
 };
-
-

@@ -76,21 +76,25 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
 			wt.drawText(L"들어가자", 1700, 720, 20, RGB(128, 128, 128), L"굴림체");
 		}
 	}
+
 	int i = 0;
-	while (_kbhit()) {
+
+	while (_kbhit())
+	{
 		_getch();
 	}
+
 	a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 	a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-	while (1) {
 
-
+	while (1)
+	{
 		a.drawBitmap("tutorial_researcher_text.bmp", buffer, 50, 0, SCREEN_WIDTH);
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-		if (_kbhit()) {
+
+		if (_kbhit())
+		{
 			break;
 		}
-
-
 	}
 }

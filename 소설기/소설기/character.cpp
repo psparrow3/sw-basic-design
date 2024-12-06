@@ -16,7 +16,7 @@ int character::seedPiece = 0;
 bool character::seedPlant = 0;
 bool character::nextStage = 0;
 int character::characterHeart = 3;
-bool character::attacking = 1;
+bool character::attacking = 0;
 bool character::facingRight = 1;
 bool character::land = 1;
 int character::clearStage[25][40]     = { 0 };
@@ -62,7 +62,6 @@ void character::switchMap()
 
 void character::attack(int(&stage)[25][40])
 {
-	
 	attacking = 1;
 
 	int atX;
@@ -160,7 +159,8 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 		}
 	}
 
-	if (movingLeft && leftTime >=1) {
+	if (movingLeft && leftTime >=1) 
+	{
 		facingRight = 0;
 		x -= 20;
 		int leftcoll = collision(stage, x, y);
@@ -172,7 +172,8 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 		leftTime = 0;
 	}
 
-	if (movingRight && rightTime >= 1) {
+	if (movingRight && rightTime >= 1) 
+	{
 		facingRight = 1;
 		x += 20;
 		int rightcoll = collision(stage, x + 20, y);
@@ -184,13 +185,17 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 		rightTime = 0;
 	}
 	
-	if (GetAsyncKeyState(VK_UP) & 0x8000) {
+	if (GetAsyncKeyState(VK_UP) & 0x8000)
+	{
 		int upcoll = collision(stage, x, y + 20);
-		if (upcoll == 10) {
+
+		if (upcoll == 10)
+		{
 			nextStage = 1;
 			progress++;
 		}
-		if (upcoll == 11 && getKey == 1) {
+		if (upcoll == 11 && getKey == 1)
+		{
 			nextStage = 1;
 
 			getKey = 0;
@@ -199,8 +204,10 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 		
 	}
 
-	if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
-		if (collision(stage, x, y + 20) == 9 && getSeed) {
+	if (GetAsyncKeyState(VK_DOWN) & 0x8000) 
+	{
+		if (collision(stage, x, y + 20) == 9 && getSeed) 
+		{
 			seedPlant = 1;
 			getSeed = 0;
 		}
@@ -214,7 +221,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 		getSeed = 1;
 	}
 	
-	if (coll == 2 || collision(stage, x, y + 20) == 8  || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15 || collision(stage, x+40, y) == 8)
+	if (coll == 2 || collision(stage, x, y + 20) == 8 || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15 || collision(stage, x + 40, y) == 8)
 	{
 		gameOver(coll, buffer);
 	}
@@ -224,14 +231,11 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	attackCoolTime += 1;
 	leftTime += 1;
 	rightTime += 1;
-
 }
+
 void character::gravity(int(&stage)[25][40], int newX, int newY)
 {
-	
 	int coll = collision(stage, x, y + 20);
-	
-	
 
 	if (coll == 2 || coll == 10 || coll == 11 || coll == 9 || coll == 3 || coll==12) {
 
