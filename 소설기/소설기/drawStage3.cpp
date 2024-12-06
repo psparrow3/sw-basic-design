@@ -251,7 +251,7 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 					}
 					else
 					{
-						if (character::x + 80 > 720 && character::x < 880 && 
+						if (character::x > 720 && character::x - 80 < 880 && 
 							character::y + 60 > Boss3::meteor_y && character::y < Boss3::meteor_y + 120)
 						{
 							timeCheck = 0;

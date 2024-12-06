@@ -135,19 +135,20 @@ void drawCharacter::characterDraw(std::vector<char>& buffer)
 		}
 	}
 	else { // facingLeft
-		if (attacking && isJumping) {
-			characterLeftJumpAttackDraw(x-80, y, buffer); 
+		if (attacking && isJumping) 
+		{
+			characterLeftJumpAttackDraw(x - 80, y, buffer);
 		}
-		else if (attacking) { 
-			characterLeftAttackDraw(x-80, y, buffer); 
+		else if (attacking) 
+		{ 
+			characterLeftAttackDraw(x - 80, y, buffer);
 		}
-		else if (isJumping) {
-			// 점프
-
+		else if (isJumping)  // 점프
+		{
 			characterLeftJumpDraw(x, y, buffer); 
 		}
-		else {
-		  
+		else 
+		{
 			characterLeftDraw(x, y, buffer); 
 		}
 	}

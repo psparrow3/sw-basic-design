@@ -72,7 +72,7 @@ IDB_BITMAP13            BITMAP                  "key.bmp"
 
 IDB_BITMAP14            BITMAP                  "laser1.bmp"
 
-IDB_BITMAP16            BITMAP                  "C:\\Users\\yoons\\OneDrive\\바탕 화면\\sw-basic-design\\소설기\\소설기\\lava2.bmp"
+IDB_BITMAP16            BITMAP                  "lava2.bmp"
 
 IDB_BITMAP17            BITMAP                  "lever_left.bmp"
 
@@ -110,7 +110,7 @@ IDB_BITMAP35            BITMAP                  "full_heart.bmp"
 
 IDB_BITMAP36            BITMAP                  "enter_door.bmp"
 
-IDB_BITMAP37            BITMAP                  "C:\\Users\\yoons\\OneDrive\\바탕 화면\\sw-basic-design\\소설기\\소설기\\seed_block.bmp"
+IDB_BITMAP37            BITMAP                  "seed_block.bmp"
 
 IDB_BITMAP38            BITMAP                  "character_right_attack.bmp"
 
