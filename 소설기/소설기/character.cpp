@@ -225,7 +225,9 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	{
 		gameOver(coll, buffer);
 	}
-
+	if (collision(stage, x, y + 10) == 2 || collision(stage, x, y + 10) == 3) {
+		y -= 10;
+	}
 	sTime += 1;
 	notDamage += 1;
 	attackCoolTime += 1;
