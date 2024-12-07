@@ -217,6 +217,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			if (ac.nextStage) 
 			{
 				ac.nextStage = 0;
+				ac.getSeed = 0;
 				Sleep(1000);
 				a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 				a.eraseBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
@@ -293,38 +294,12 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 		{
 			keyGet = 1;
 
-			if (getfirst == 0)
-				getfirst = 1;
-
 			stage1_Past[4][1] = 0;
 			stage1_Future[4][1] = 0;
 			stage1_past[2][0] = 0;
 			stage1_future[2][0] = 0;			
 
 			a.eraseBitmap("empty_block.bmp", buffer, 2 * 0 * BLOCK_SIZE, 2 * BLOCK_SIZE, SCREEN_WIDTH);
-		}
-
-		if (ac.getKey) 
-		{
-			wt.drawText(L"열쇠", textXkey, 700, 20, RGB(128, 128, 128), L"굴림체");
-
-			if (getfirst == 0) 
-			{
-				getfirst = 1;
-				textXseed += 50;
-			}
-		}
-		
-		if (ac.getSeed)
-		{
-			wt.drawText(L"씨앗", textXseed, 700, 20, RGB(128, 128, 128), L"굴림체");
-
-			if (getfirst == 0)
-			{
-				getfirst = 1;
-				textXkey += 50;
-			}
-
 		}
 
 		if (ac.collision(stage, ac.x, ac.y + 20) == 11 && !character::getKey)
@@ -440,30 +415,6 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			}
 		}
 
-		if (ac.seedPlant)
-		{
-			stage1_past[4][17] = 10;
-			stage1_future[3][17] = 11;
-			stage1_future[3][17] = 11;
-			stage1_Future[7][34] = 2;
-			stage1_Future[6][34] = 2;
-			stage1_Future[5][34] = 2;
-
-			wt.drawText(L"씨앗이 심어졌다!", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
-
-			seed_time += 100;
-		}
-
-		if (seed_time > 1000)
-		{
-			ac.seedPlant = 0;
-		}
-
-		if (ac.collision(stage, ac.x, ac.y + 20) == 9 && ac.getSeed == 1)
-		{
-			wt.drawText(L"↓'키를 눌러", 1650,800,20, RGB(128,128,128), L"굴림체");
-			wt.drawText(L"씨앗을 심어보자!", 1650, 820, 20, RGB(128, 128, 128), L"굴림체");
-		}
 
 		if (ac.getSeed && seedGet == 0) {
 			seedGet = 1;
@@ -487,6 +438,57 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 		ac.characterMove(stage, buffer);
 		ac.characterDraw(buffer);
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+		if (ac.seedPlant)
+		{
+			stage1_past[4][17] = 10;
+			stage1_future[3][17] = 11;
+			stage1_future[3][17] = 11;
+			stage1_Future[7][34] = 2;
+			stage1_Future[6][34] = 2;
+			stage1_Future[5][34] = 2;
+			if (textXkey == 1700) {
+				textXkey -= 50;
+			}
+			wt.drawText(L"씨앗이 심어졌다!", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
+
+			seed_time += 100;
+		}
+
+		if (seed_time > 1000)
+		{
+			ac.seedPlant = 0;
+		}
+
+		if (ac.collision(stage, ac.x, ac.y + 20) == 9 && ac.getSeed == 1)
+		{
+			wt.drawText(L"↓'키를 눌러", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
+			wt.drawText(L"씨앗을 심어보자!", 1650, 820, 20, RGB(128, 128, 128), L"굴림체");
+		}
+		if (ac.getKey)
+		{
+			wt.drawText(L"열쇠", textXkey, 700, 20, RGB(128, 128, 128), L"굴림체");
+
+			if (getfirst == 0)
+			{
+				getfirst = 1;
+				textXseed += 50;
+			}
+		}
+
+		if (ac.getSeed)
+		{
+			wt.drawText(L"씨앗", textXseed, 700, 20, RGB(128, 128, 128), L"굴림체");
+
+			if (getfirst == 0)
+			{
+				getfirst = 1;
+				textXkey += 50;
+			}
+
+		}
+
+		
 		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
 	}
 }
@@ -753,7 +755,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 
 		Boss1::time += 50;
 
-		a.drawBitmap("bottom.bmp", buffer, 0, 480, SCREEN_WIDTH);
+		
 
 		if (start)
 			ac.characterMove(stage, buffer);
@@ -774,19 +776,6 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 			a.drawBitmap("Stage1_Boss.bmp", buffer, Boss1::m_x * 20, Boss1::m_y, SCREEN_WIDTH);
 		}
 
-		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
-
-		if (ac.collision(stage, ac.x, ac.y + 20) == 9 && ac.getSeed == 1)
-		{
-			wt.drawText(L"씨앗을 심을 수 있을 것 같다!", 1600, 800, 20, RGB(128, 128, 128), L"굴림체");
-		}
-		
-
-		if (seedPlantCheck == 0 && ac.seedPlant) 
-		{
-			wt.drawText(L"씨앗이 심어졌다!", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
-			seed_time += 100;
-		}
 
 		if (seed_time > 500)
 		{
@@ -809,12 +798,25 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 			}
 
 			Boss1::time = 0;
-
+			
 			a.drawBitmap("door.bmp", buffer, 1520, 420, SCREEN_WIDTH);
 		}
 
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
+		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
+
+		if (ac.collision(stage, ac.x, ac.y + 20) == 9 && ac.getSeed == 1)
+		{
+			wt.drawText(L"씨앗을 심을 수 있을 것 같다!", 1600, 800, 20, RGB(128, 128, 128), L"굴림체");
+		}
+
+
+		if (seedPlantCheck == 0 && ac.seedPlant)
+		{
+			wt.drawText(L"씨앗이 심어졌다!", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
+			seed_time += 100;
+		}
 		if (ac.getSeed)
 			wt.drawText(L"씨앗", 1650, 700, 20, RGB(128, 128, 128), L"굴림체");
 		switch (ac.seedPiece)
@@ -852,8 +854,6 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 			Sleep(1000);
 			start = 1;
 		}
-
-		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
 	}
 	if (ac.nextStage) {
 		int i = 0;
