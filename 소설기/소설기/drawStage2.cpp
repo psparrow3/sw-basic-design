@@ -78,7 +78,7 @@ int drawStage2::stage2_Past[25][40] =
 	   {2,2,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,4,0,0,0,2,2},
 	   {2,2,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
-	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0},   
+	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0},
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0},
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0},
@@ -87,7 +87,7 @@ int drawStage2::stage2_Past[25][40] =
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	   {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+	   {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 };
 
 int drawStage2::stage2_Future_Boss[25][40] =
@@ -116,7 +116,7 @@ int drawStage2::stage2_Future_Boss[25][40] =
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
 	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
-	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 };
 
 int drawStage2::stage2_Past_Boss[25][40] =
@@ -145,7 +145,7 @@ int drawStage2::stage2_Past_Boss[25][40] =
 	 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	 {8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8},
+	 {8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8}
 };
 
 void drawStage2::stage2Draw(std::vector<char>& buffer)
@@ -226,19 +226,9 @@ void drawStage2::stage2Draw(std::vector<char>& buffer)
 
 		if (ac.getKey && keyGet == 0) {
 			keyGet = 1;
-			
-			textX += 50;
-
 			a.eraseBitmap("empty_block.bmp", buffer, 2 * 0 * BLOCK_SIZE, 2 * BLOCK_SIZE, SCREEN_WIDTH);
 		}
-		if (ac.getKey) {
-			wt.drawText(L"열쇠", textX, 700, 20, RGB(128, 128, 128), L"굴림체");
-			stage2_Future[12][34] = 0;
-			stage2_Past[12][34] = 0;
-			stage2_future[6][17] = 0;
-			stage2_past[6][17] = 0;
-
-		}
+	
 		if (ac.collision(stage, ac.x, ac.y+20) == 14)			//	스위치 제거
 		{
 
@@ -252,8 +242,7 @@ void drawStage2::stage2Draw(std::vector<char>& buffer)
 					for (int j = 0; j < 2; j++) {
 						stage2_Future[20+i][12+j] = 2;
 					}
-					
-				}
+ 				}
 				stage2_future[10][6] = 1;
 			
 			}
@@ -341,7 +330,10 @@ void drawStage2::stage2Draw(std::vector<char>& buffer)
 			}
 			
 		}
-	
+		if (ac.collision(stage, ac.x, ac.y + 20) == 11 && !character::getKey)
+		{
+			wt.drawText(L"문이 잠겨있다", 1650, 800, 20, RGB(128, 128, 128), L"굴림체");
+		}
 		if (ac.future)
 		{
 			memcpy(stage, stage2_Future, sizeof(stage2_Future));
@@ -369,7 +361,16 @@ void drawStage2::stage2Draw(std::vector<char>& buffer)
 		
 		ac.characterDraw(buffer);
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+		if (ac.getKey) {
+			wt.drawText(L"열쇠", textX, 700, 20, RGB(128, 128, 128), L"굴림체");
+			stage2_Future[12][34] = 0;
+			stage2_Past[12][34] = 0;
+			stage2_future[6][17] = 0;
+			stage2_past[6][17] = 0;
+
+		}
 		wt.drawText(L"가지고 있는 아이템:", 1650, 600, 20, RGB(128, 128, 128), L"굴림체");
+	
 		movetime += 1;
 	}
 }
@@ -483,7 +484,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		{
 			if (ac.nextStage)
 			{
-				ac.nextStage = 0;
+				
 				Sleep(1000);
 				a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 				a.eraseBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
@@ -529,7 +530,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		{
 			ac.attacking = 0;
 			ac.characterAttackErase(ac.x, ac.y, buffer);
-			Boss2::Boss2TakeDamage(stage);
+			Boss2::Boss2TakeDamage(stage); 
 		}
 		else
 		{
@@ -667,15 +668,23 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 				stage2_Future_Boss[i][laser_x / 40] = 0;
 			}
 
-			stage2_Future_Boss[22][38] = 10;
-			stage2_Future_Boss[22][39] = 10;
-			stage2_Past_Boss[22][38] = 10;
-			stage2_Past_Boss[22][39] = 10;
+			stage2_Future_Boss[22][18] = 10;
+			stage2_Future_Boss[22][19] = 10;
+			stage2_Future_Boss[22][20] = 10;
+			stage2_Future_Boss[22][21] = 10;
+			stage2_Future_Boss[22][22] = 10;
+			stage2_Future_Boss[22][23] = 10;
+			stage2_Past_Boss[22][18] = 10;
+			stage2_Past_Boss[22][19] = 10;
+			stage2_Past_Boss[22][20] = 10;
+			stage2_Past_Boss[22][21] = 10;
+			stage2_Past_Boss[22][22] = 10;
+			stage2_Past_Boss[22][23] = 10;
 
 			atimeCheck = 0;
 			ctimeCheck = 0;
 
-			a.drawBitmap("door.bmp", buffer, 1520, 380, SCREEN_WIDTH);
+			a.drawBitmap("last_door.bmp", buffer, 640, 140, SCREEN_WIDTH);
 		}
 
 		Boss2::Boss2Location(stage);
@@ -701,6 +710,42 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		atimeCheck++;
 		ctimeCheck++;
 	}
+	if (ac.nextStage) {
+		int i = 0;
+		ac.nextStage = 0;
+
+		a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+		while (_kbhit())
+		{
+			_getch();
+		}
+
+		while (1)
+		{
+
+
+			if (i == 0)
+			{
+				wt.drawText(L"누군가의 일지가 있다...", 400, 500, 50, RGB(128, 128, 128), L"굴림체");
+				Sleep(1000);
+				i = 1;
+			}
+
+			if (i == 1)
+			{
+				a.drawBitmap("diary2.bmp", buffer, 50, 0, SCREEN_WIDTH);
+				a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+				if (_kbhit())
+				{
+					break;
+				}
+			}
+		}
+	}
+	
 }
 
 void drawStage2::stage2FutureBossDraw(std::vector<char>& buffer)

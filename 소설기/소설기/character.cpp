@@ -142,7 +142,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 		for (int i = 0; i < 3; i++) {
 			preY = y;
-
+			preX = x;
 			y -= 20;
 			int jumpcoll;
 
@@ -154,7 +154,9 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 			}
 
 			if (jumpcoll == 2 || y < 0 || jumpcoll == 3) {
+				
 				y = preY;
+				
 			}
 		}
 	}
@@ -221,11 +223,28 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 		getSeed = 1;
 	}
 	
-	if (coll == 2 || collision(stage, x, y + 20) == 8 || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15 || collision(stage, x + 40, y) == 8)
+	if (coll == 2 || collision(stage, x, y + 20) == 8 || GetAsyncKeyState('R') & 0x8000 || coll == 14 || coll == 15)
 	{
 		gameOver(coll, buffer);
 	}
+	else if (progress == 5)
+	{
+		if (collision(stage, x + 20, y) == 8)
+		{
+			gameOver(coll, buffer);
+		}
+	}
+	else if (progress != 5)
+	{
+		if (collision(stage, x + 40, y) == 8)
+		{
+			gameOver(coll, buffer);
+		}
+	}
 
+	if (collision(stage, x, y + 10) == 2 || collision(stage, x, y + 10) == 3) {
+		y -= 10;
+	}
 	sTime += 1;
 	notDamage += 1;
 	attackCoolTime += 1;
@@ -236,9 +255,9 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 void character::gravity(int(&stage)[25][40], int newX, int newY)
 {
 	int coll = collision(stage, x, y + 20);
-
+	
 	if (coll == 2 || coll == 10 || coll == 11 || coll == 9 || coll == 3 || coll==12) {
-
+		
 		y = newY;
 		isJumping = 0;
 		land = 1;
@@ -248,7 +267,6 @@ void character::gravity(int(&stage)[25][40], int newX, int newY)
 	{
 		land = 0;
 	}
-
 }
 
 int character::collision(int(&stage)[25][40], int newX, int newY)
