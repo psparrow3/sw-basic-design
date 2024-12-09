@@ -3,7 +3,7 @@
 int character::x = 0;
 int character::y = 410;
 
-int character::progress = 3;                     // 진행상황
+int character::progress = 2;                     // 진행상황
 
 int character::gameOverCheck = 0;
 bool character::future = 1;
@@ -97,7 +97,7 @@ void character::attack(int(&stage)[25][40])
 
 void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 {
-	drawCharacter ac;
+	
 
 	int preX = x;
 	int preY = y;
@@ -107,8 +107,11 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	bool jumping = GetAsyncKeyState(VK_SPACE) & 0x8000;
 	bool sPress = GetAsyncKeyState('S') & 0x8000;
 	bool aPress = GetAsyncKeyState('A') & 0x8000;
-
-	int coll = collision(stage, x, y);
+	
+	
+	int coll = collision(stage, x + 10, y);
+	
+	
 
 	// 충돌 체크로 점프 상태 해제
 
@@ -127,7 +130,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	if (!land)
 	{
-		int landcoll = collision(stage, ac.x, ac.y + 10);
+		int landcoll = collision(stage, x, y + 10);
 		if (landcoll != 2 && landcoll != 10 && landcoll != 11 && landcoll != 3 && landcoll != 14 && landcoll != 15)
 		{
 			y += 10;
@@ -136,7 +139,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	if (jumping && !isJumping)
 	{
-		isJumping = 0;
+		isJumping = 1;
 
 		land = 0;
 
@@ -147,10 +150,10 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 			int jumpcoll;
 
 			if (facingRight) {
-				jumpcoll = collision(stage, x, y);
+				jumpcoll = collision(stage, x+20, y);
 			}
 			else {
-				jumpcoll = collision(stage, x, y);
+				jumpcoll = collision(stage, x+20, y);
 			}
 
 			if (jumpcoll == 2 || y < 0 || jumpcoll == 3) {
@@ -240,7 +243,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 void character::gravity(int(&stage)[25][40], int newX, int newY)
 {
 
-	int coll = collision(stage, x, y + 20);
+	int coll = collision(stage, x+20, y + 20);
 	
 	
 

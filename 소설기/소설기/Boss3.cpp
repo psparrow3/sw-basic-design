@@ -210,4 +210,11 @@ void Boss3::Boss3TakeDamage(int(&stage)[25][40])
         hp--;
         damaged = TRUE;
     }
+    if (hp == 3)
+    {
+        m_x = 40;
+    }
+    if (hp == 0) {
+        m_x = 1360;
+    }
 }
