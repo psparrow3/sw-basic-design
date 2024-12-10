@@ -165,13 +165,13 @@ int drawStage1::stage1_Past_Boss[25][40] =
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -655,28 +655,28 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 				a.drawBitmap("stage1_boss_tree_lower.bmp", buffer, 600, 300, SCREEN_WIDTH);
 				a.drawBitmap("stage1_boss_tree_upper.bmp", buffer, 600, 120, SCREEN_WIDTH);
 
-				drawStage1::stage1_Future_Boss[9][16] = 3;
-				drawStage1::stage1_Future_Boss[9][17] = 3;
-				drawStage1::stage1_Future_Boss[9][18] = 3;
-				drawStage1::stage1_Future_Boss[9][19] = 3;
-				drawStage1::stage1_Future_Boss[11][21] = 3;
-				drawStage1::stage1_Future_Boss[12][24] = 3;
-				drawStage1::stage1_Future_Boss[12][25] = 3;
-				drawStage1::stage1_Future_Boss[12][26] = 3;
-				drawStage1::stage1_Future_Boss[12][27] = 3;
-				drawStage1::stage1_Future_Boss[15][16] = 3;
-				drawStage1::stage1_Future_Boss[15][17] = 3;
-				drawStage1::stage1_Future_Boss[15][18] = 3;
-				drawStage1::stage1_Future_Boss[15][19] = 3;
-				drawStage1::stage1_Future_Boss[17][21] = 3;
-				drawStage1::stage1_Future_Boss[18][23] = 3;
-				drawStage1::stage1_Future_Boss[18][24] = 3;
-				drawStage1::stage1_Future_Boss[18][25] = 3;
-				drawStage1::stage1_Future_Boss[18][26] = 3;
-				drawStage1::stage1_Future_Boss[21][16] = 3;
-				drawStage1::stage1_Future_Boss[21][17] = 3;
-				drawStage1::stage1_Future_Boss[21][18] = 3;
-				drawStage1::stage1_Future_Boss[21][19] = 3;
+				drawStage1::stage1_Future_Boss[9][16] = 2;
+				drawStage1::stage1_Future_Boss[9][17] = 2;
+				drawStage1::stage1_Future_Boss[9][18] = 2;
+				drawStage1::stage1_Future_Boss[9][19] = 2;
+				drawStage1::stage1_Future_Boss[11][21] = 2;
+				drawStage1::stage1_Future_Boss[12][24] = 2;
+				drawStage1::stage1_Future_Boss[12][25] = 2;
+				drawStage1::stage1_Future_Boss[12][26] = 2;
+				drawStage1::stage1_Future_Boss[12][27] = 2;
+				drawStage1::stage1_Future_Boss[15][16] = 2;
+				drawStage1::stage1_Future_Boss[15][17] = 2;
+				drawStage1::stage1_Future_Boss[15][18] = 2;
+				drawStage1::stage1_Future_Boss[15][19] = 2;
+				drawStage1::stage1_Future_Boss[17][21] = 2;
+				drawStage1::stage1_Future_Boss[18][23] = 2;
+				drawStage1::stage1_Future_Boss[18][24] = 2;
+				drawStage1::stage1_Future_Boss[18][25] = 2;
+				drawStage1::stage1_Future_Boss[18][26] = 2;
+				drawStage1::stage1_Future_Boss[21][16] = 2;
+				drawStage1::stage1_Future_Boss[21][17] = 2;
+				drawStage1::stage1_Future_Boss[21][18] = 2;
+				drawStage1::stage1_Future_Boss[21][19] = 2;
 			}
 		}
 		else
