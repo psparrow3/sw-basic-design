@@ -360,6 +360,7 @@ void drawStage2::stage2Draw(std::vector<char>& buffer)
 		ac.characterMove(stage, buffer);
 		
 		ac.characterDraw(buffer);
+		a.drawBitmap("stage2.bmp", buffer, 1610, 90, SCREEN_WIDTH);
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		if (ac.getKey) {
 			wt.drawText(L"¿­¼è", textX, 700, 20, RGB(128, 128, 128), L"±¼¸²Ã¼");
@@ -693,6 +694,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			ac.characterMove(stage, buffer);
 
 		ac.characterDraw(buffer);
+		a.drawBitmap("stage2.bmp", buffer, 1610, 90, SCREEN_WIDTH);
 
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
