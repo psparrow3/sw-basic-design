@@ -128,6 +128,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	if (!land)
 	{
 		int landcoll = collision(stage, ac.x, ac.y + 10);
+		
 		if (landcoll != 2 && landcoll != 10 && landcoll != 11 && landcoll != 3 && landcoll != 14 && landcoll != 15)
 		{
 			y += 10;

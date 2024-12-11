@@ -164,6 +164,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="A_button.bmp" />
+    <Image Include="stage0.bmp" />
+    <Image Include="stage1.bmp" />
     <Image Include="chat_window_clear1.bmp" />
     <Image Include="chat_window_clear2.bmp" />
     <Image Include="chat_window_p11.bmp" />
@@ -171,6 +173,8 @@
     <Image Include="chat_window_p13.bmp" />
     <Image Include="last_door.bmp" />
     <Image Include="past_block.bmp" />
+    <Image Include="stage2.bmp" />
+    <Image Include="stage3.bmp" />
     <Image Include="tutorial_researcher_text.bmp" />
     <Image Include="narration1.bmp" />
     <Image Include="Boss3_meteor.bmp" />

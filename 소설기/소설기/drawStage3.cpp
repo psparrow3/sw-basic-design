@@ -1,4 +1,4 @@
-#include "drawStage3.h"
+﻿#include "drawStage3.h"
 
 int drawStage3::stage3_future_Boss[12][20] =
 {
@@ -488,6 +488,7 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 
 		ac.characterMove(stage, buffer);
 		ac.characterDraw(buffer);
+		a.drawBitmap("stage3.bmp", buffer, 1610, 90, SCREEN_WIDTH);
 
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 

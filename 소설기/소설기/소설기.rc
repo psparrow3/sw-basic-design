@@ -198,6 +198,14 @@ IDB_BITMAP84            BITMAP                  "chat_window_clear1.bmp"
 
 IDB_BITMAP85            BITMAP                  "chat_window_clear2.bmp"
 
+IDB_BITMAP87            BITMAP                  "stage1.bmp"
+
+IDB_BITMAP88            BITMAP                  "stage0.bmp"
+
+IDB_BITMAP89            BITMAP                  "stage2.bmp"
+
+IDB_BITMAP90            BITMAP                  "stage3.bmp"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

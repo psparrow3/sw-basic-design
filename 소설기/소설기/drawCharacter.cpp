@@ -99,16 +99,15 @@ void drawCharacter::characterHeartDraw(std::vector<char>& buffer)
 void drawCharacter::characterInfo(std::vector<char>& buffer)
 {
 	draw a;
+
 	a.drawBitmap("status_informaition.bmp", buffer, 1600, 0, SCREEN_WIDTH);
 
 	if (future)
 	{
-	   
 		a.drawBitmap("future_text.bmp", buffer, 1670, 20, SCREEN_WIDTH);
 	}
 	else
 	{
-	  
 		a.drawBitmap("past_text.bmp", buffer, 1670, 20, SCREEN_WIDTH);
 	}
 }
