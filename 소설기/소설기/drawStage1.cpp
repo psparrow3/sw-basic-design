@@ -756,8 +756,6 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 
         Boss1::time += 50;
 
-
-
         if (start)
             ac.characterMove(stage, buffer);
 
@@ -778,21 +776,21 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
             a.drawBitmap("Stage1_Boss.bmp", buffer, Boss1::m_x * 20, Boss1::m_y, SCREEN_WIDTH);
         }
 
-
         if (seed_time > 500)
         {
-
             seedPlantCheck = 1;
         }
-
-
-
         if (Boss1::hp == 0)
         {
             stage1_Future_Boss[24][38] = 10;
             stage1_Future_Boss[24][39] = 10;
             stage1_Past_Boss[24][38] = 10;
             stage1_Past_Boss[24][39] = 10;
+
+            for (auto i : Boss1::at)
+            {
+                a.eraseBitmap("empty_boss_attack.bmp", buffer, i.x, i.y, SCREEN_WIDTH);
+            }
 
             if (Boss1::at.size() > 0)
             {
@@ -812,7 +810,6 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
         {
             wt.drawText(L"씨앗을 심을 수 있을 것 같다!", 1600, 800, 20, RGB(128, 128, 128), L"굴림체");
         }
-
 
         if (seedPlantCheck == 0 && ac.seedPlant)
         {
@@ -848,6 +845,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
         default:
             break;
         }
+
         if (start == 0)
         {
             wt.drawText(L"침입자...", 700, 500, 100, RGB(128, 128, 128), L"굴림체");
@@ -857,7 +855,9 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
             start = 1;
         }
     }
-    if (ac.nextStage) {
+
+    if (ac.nextStage)
+    {
         int i = 0;
         ac.nextStage = 0;
 
@@ -890,7 +890,6 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
             }
         }
     }
-
 }
 
 void drawStage1::stage1FutureBossDraw(std::vector<char>& buffer)
