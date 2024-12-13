@@ -55,6 +55,7 @@ void drawStage_prologue::stagePrologueDraw(std::vector<char>& buffer) {
 		ac.characterMove(stage_prologue, buffer);
 
 		ac.characterDraw(buffer);
+		a.drawBitmap("stage0.bmp", buffer, 1610, 90, SCREEN_WIDTH);
 
 		if (ac.collision(stage_prologue, ac.x, ac.y + 20) == 12 && checkHelpText == 0)
 		{

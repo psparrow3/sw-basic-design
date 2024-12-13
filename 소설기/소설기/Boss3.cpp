@@ -77,7 +77,7 @@ void Boss3::Boss3Attack_laser(std::vector<char>& buffer, int(&stage)[25][40], in
         }
     }
 
-    if (phase)
+    if (phase == 1)
     {
         for (int x = 0; x < 20; x++)
         {
@@ -87,7 +87,7 @@ void Boss3::Boss3Attack_laser(std::vector<char>& buffer, int(&stage)[25][40], in
                 {
                     a.drawBitmap("laser_width.bmp", buffer, x * 80, y * 40, SCREEN_WIDTH);
                     stage[y * 2][x * 2] = 8;
-                    stage[y * 2 + 1][x * 2] = 8;
+                    stage[y * 2][x * 2 + 1] = 8;
                 }
             }
         }
@@ -210,11 +210,20 @@ void Boss3::Boss3TakeDamage(int(&stage)[25][40])
         hp--;
         damaged = TRUE;
     }
-    if (hp == 3)
+    
+    if (hp % 2 == 0)
     {
-        m_x = 40;
-    }
-    if (hp == 0) {
         m_x = 1360;
+    }
+    else
+    {
+        if (hp > 3)
+        {
+            m_x = 80;
+        }
+        else
+        {
+            m_x = 40;
+        }
     }
 }

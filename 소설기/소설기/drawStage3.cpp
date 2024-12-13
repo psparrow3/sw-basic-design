@@ -1,4 +1,4 @@
-#include "drawStage3.h"
+Ôªø#include "drawStage3.h"
 
 int drawStage3::stage3_future_Boss[12][20] =
 {
@@ -114,9 +114,8 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
     int laserTime = 0;
     int change = 0;
     int BossAttack = 0;
-
     int pageCheck = 0;
-  
+
     int cx, cy;
     cx = cy = 0;
 
@@ -129,20 +128,19 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
 
     while (1)
     {
-        if (Boss3::hp==0 || ac.gameOverCheck)
+        if (Boss3::hp == 0 || ac.gameOverCheck)
         {
-            if (Boss3::hp == 0 && character::land==1)
+            if (Boss3::hp == 0 && character::land == 1)
             {
-
-              
-                wt.drawText(L"§§°¶≥™°¶≥™¿«..", 600, 100, 50, RGB(128, 128, 128), L"±º∏≤√º");
+                ac.progress+=1;
+                wt.drawText(L"„Ñ¥‚Ä¶ÎÇò‚Ä¶ÎÇòÏùò..", 600, 100, 50, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
                 Sleep(1000);
-                wt.drawText(L"≥™°¶.≥´..øˆ°¶ø¯¿∏°¶..", 600, 150, 50, RGB(128, 128, 128), L"±º∏≤√º");
+                wt.drawText(L"ÎÇò‚Ä¶.ÎÇô..Ïõå‚Ä¶ÏõêÏúº‚Ä¶..", 600, 150, 50, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
 
                 Sleep(2000);
                 a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-                wt.drawText(L"≥´ø¯¿« ¡÷¿Œ¿Ã æ≤∑Ø¡≥Ω¿¥œ¥Ÿ!!", 600, 70, 50, RGB(128, 128, 128), L"±º∏≤√º");
+                wt.drawText(L"ÎÇôÏõêÏùò Ï£ºÏù∏Ïù¥ Ïì∞Îü¨Ï°åÏäµÎãàÎã§!!", 600, 70, 50, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
                 Sleep(2000);
                 a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
                 a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -165,23 +163,22 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
                             a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
                             i = 1;
-
                         }
                     }
+
                     if (i == 1) {
                         while (_kbhit())
                         {
                             _getch();
                         }
-                        wt.drawText(L"ø¨±∏ø¯¿« ∏Ω¿¿Ã ªÁ∂Û¡≥¥Ÿ...", 400, 500, 50, RGB(128, 128, 128), L"±º∏≤√º");
+                        wt.drawText(L"Ïó∞Íµ¨ÏõêÏùò Î™®ÏäµÏù¥ ÏÇ¨ÎùºÏ°åÎã§...", 400, 500, 50, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
                         Sleep(1000);
                         a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
                         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
                         i = 2;
-
-
                     }
+
                     if (i == 2) {
                         while (_kbhit())
                         {
@@ -194,23 +191,16 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
                         {
                             a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
                             a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+                            wt.drawText(L"Ïù¥ ÌèâÌôîÎäî Í≥ÑÏÜç ÏßÄÏÜçÎê† Ïàò ÏûàÏùÑÍπå?", 400, 500, 50, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
+                            Sleep(2000);
+                            a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+                            a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
+                            
                             break;
                         }
                     }
                 }
-                ac.progress += 1;
-                character::characterHeart = 3;
-                a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
-                a.eraseBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
-
-                ac.x = 0;
-                ac.y = 370;
-                ac.facingRight = 1;
-                ac.gameOverCheck = 0;
-                Boss3::hp = 6;
-                Boss3::phase = 0;
-                Boss3::meteor_y = 0;
                 break;
             }
 
@@ -218,9 +208,7 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
             {
                 ac.getKey = 0;
                 ac.isJumping = 0;
-                ac.facingRight = 1;
-                memcpy(stage3_Past_Boss, resetPastStage, sizeof(stage3_Past_Boss));
-                memcpy(stage3_Future_Boss, resetFutureStage, sizeof(stage3_Future_Boss));
+                ac.facingRight = 1; 
                 character::characterHeart = 3;
                 a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
                 a.eraseBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
@@ -232,12 +220,13 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
                 Boss3::hp = 6;
                 Boss3::phase = 0;
                 Boss3::meteor_y = 0;
+
                 break;
+                memcpy(stage3_Past_Boss, resetPastStage, sizeof(stage3_Past_Boss));
+                memcpy(stage3_Future_Boss, resetFutureStage, sizeof(stage3_Future_Boss));
             }
 
-           
-
-            
+          
         }
 
         a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
@@ -245,11 +234,18 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
         if (ac.attacking)
         {
             if (!(BossAttack && change))
-                ac.attacking=0;
+            {
+                ac.attacking = 0;
+            }
+
             ac.characterAttackErase(ac.x, ac.y, buffer);
+
             if (Boss3::hp)
+            {
                 Boss3::Boss3TakeDamage(stage);
-            if (Boss3::hp == 3)
+            }
+
+            if (Boss3::hp <= 3)
             {
                 Boss3::phase = 1;
             }
@@ -258,20 +254,26 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
         {
             ac.characterErase(ac.x, ac.y, buffer);
         }
-       
+
+        if (Boss3::damaged)
+        {
+            Boss3::Boss3LocationErase(stage);
+        }
+
         int charactercoll = ac.collision(stage, ac.x, ac.y);
 
         if (charactercoll != 2 && charactercoll != 10 && charactercoll != 11 && charactercoll != 3 && charactercoll != 14 && charactercoll != 15)
         {
             ac.gravity(stage, ac.x, ac.y);
         }
+
         if (start == 0)
         {
             a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-            wt.drawText(L"≥´ø¯¿ª πÊ«ÿ«œ¥¬ ¿⁄", 500, 400, 100, RGB(128, 128, 128), L"±º∏≤√º");
+            wt.drawText(L"ÎÇôÏõêÏùÑ Î∞©Ìï¥ÌïòÎäî Ïûê", 500, 400, 100, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
             Sleep(1000);
-            wt.drawText(L"øÎº≠ƒ° æ ∞⁄¥Ÿ", 500, 500, 100, RGB(128, 128, 128), L"±º∏≤√º");
+            wt.drawText(L"Ïö©ÏÑúÏπò ÏïäÍ≤†Îã§", 500, 500, 100, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
             Sleep(1000);
             start = 1;
         }
@@ -288,15 +290,39 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
                 stage3PastBossDraw(buffer);
             }
         }
-       
+
+        if (Boss3::hp)
+        {
+            Boss3::Boss3LocationErase(stage);
+
+            if (Boss3::hp > 3)
+            {
+                Boss3::Boss3Draw(buffer);
+            }
+            else
+            {
+                if (pageCheck)
+                {
+                    Boss3::Boss3Draw(buffer);
+                }
+            }
+
+            Boss3::Boss3Location(stage);
+        }
+        else
+        {
+            BossAttack = 0;
+            laserTime = 0;
+        }
+
         if (timeCheck > attackTime && Boss3::hp)
         {
             BossAttack = 1;
             if (Boss3::hp == 3 && pageCheck == 0) {
-                
+
             }
-            else{
-                if (change)            // ∏ﬁ≈◊ø¿
+            else {
+                if (change)            // Î©îÌÖåÏò§
                 {
                     Boss3::Boss3Attack_meteor(buffer);
 
@@ -314,7 +340,7 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
                             Boss3::damaged = FALSE;
                         }
 
-                        if (ac.facingRight)
+                        if (character::facingRight)
                         {
                             if (character::x + 160 > 720 && character::x + 80 < 880 &&
                                 character::y + 60 > Boss3::meteor_y && character::y < Boss3::meteor_y + 120)
@@ -351,31 +377,25 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
                         ac.gameOverCheck = 1;
                     }
                 }
-                else               // ∑π¿Ã¿˙
+                else               // Î†àÏù¥Ï†Ä
                 {
                     laserTime++;
                     if (Boss3::hp && laserTime < 5) {
-                        wt.drawText(L"∞Ê∞Ì!", 700, 100, 100, RGB(128, 128, 128), L"±º∏≤√º");
+                        wt.drawText(L"Í≤ΩÍ≥†!", 700, 100, 100, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
                     }
                 }
             }
-
-
         }
 
         if (laserTime >= 5)
         {
             if (cx == 0 && cy == 0)
             {
-                cx = character::x / 80, cy = character::y / 40;
+                cx = character::x / 80;
+                cy = character::y / 40;
             }
-            if (Boss3::hp == 3 && pageCheck == 0) {
 
-            }
-            else {
-                Boss3::Boss3Attack_laser(buffer, stage, cx, cy);
-            }
-         
+            Boss3::Boss3Attack_laser(buffer, stage, cx, cy);
 
             if (laserTime >= 10)
             {
@@ -388,31 +408,13 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
             }
         }
 
-        if (Boss3::hp)
+        if (pageCheck == 0 && Boss3::hp == 3)
         {
-            Boss3::Boss3LocationErase(stage);
-
-
-            if (Boss3::hp > 3) {
-                Boss3::Boss3Draw(buffer);
-            }
-            else {
-                if (pageCheck) {
-                    Boss3::Boss3Draw(buffer);
-                }
-            }
-            Boss3::Boss3Location(stage);
-
-        }
-        else
-        {
-            BossAttack = 0;
-            laserTime = 0;
-        }
-        if (pageCheck == 0 && Boss3::hp == 3) {
             ac.attacking = 0;
         }
-        if (pageCheck == 0 && Boss3::hp == 3 && character::land == 1) {
+
+        if (pageCheck == 0 && Boss3::hp == 3 && character::land == 1)
+        {
             BossAttack = 0;
             pageCheck = 1;
             int i = 0;
@@ -420,36 +422,46 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
             a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 
             a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-            while (_kbhit()) {
+            while (_kbhit())
+            {
                 _getch();
             }
-            while (1) {
-                if (i == 0) {
+
+            while (1)
+            {
+                if (i == 0)
+                {
                     a.drawBitmap("chat_window_p11.bmp", buffer, 50, 0, SCREEN_WIDTH);
                     a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-                    if (_kbhit()) {
+                    if (_kbhit())
+                    {
                         a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
                         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
                         i = 1;
                     }
                 }
-                if (i == 1) {
-                    while (_kbhit()) {
+                if (i == 1)
+                {
+                    while (_kbhit())
+                    {
                         _getch();
                     }
                     a.drawBitmap("chat_window_p12.bmp", buffer, 50, 0, SCREEN_WIDTH);
                     a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
-                    if (_kbhit()) {
+                    if (_kbhit())
+                    {
                         a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
                         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
                         i = 2;
                     }
                 }
-                if (i == 2) {
+                if (i == 2)
+                {
                     a.drawBitmap("chat_window_p13.bmp", buffer, 50, 0, SCREEN_WIDTH);
                     a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
                     Sleep(1000);
-                    for (int j = 0; j < 20; j++) {
+                    for (int j = 0; j < 20; j++)
+                    {
                         a.drawBitmap("chat_window_p13.bmp", buffer, 50, 0, SCREEN_WIDTH);
                         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
                         a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
@@ -457,37 +469,37 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
                     }
                     i = 3;
                 }
-                if (i == 3) {
-                    wt.drawText(L"≥´", 500, 400, 100, RGB(128, 128, 128), L"±º∏≤√º");
+                if (i == 3)
+                {
+                    wt.drawText(L"ÎÇô", 500, 400, 100, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
                     Sleep(500);
-                    wt.drawText(L"ø¯", 600, 400, 100, RGB(128, 128, 128), L"±º∏≤√º");
+                    wt.drawText(L"Ïõê", 600, 400, 100, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
                     Sleep(500);
-                    wt.drawText(L"¿ª", 700, 400, 100, RGB(128, 128, 128), L"±º∏≤√º");
+                    wt.drawText(L"ÏùÑ", 700, 400, 100, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
                     Sleep(500);
-                    wt.drawText(L"¡ˆ", 900, 400, 100, RGB(128, 128, 128), L"±º∏≤√º");
+                    wt.drawText(L"ÏßÄ", 900, 400, 100, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
                     Sleep(500);
-                    wt.drawText(L"≈≤", 1000, 400, 100, RGB(128, 128, 128), L"±º∏≤√º");
+                    wt.drawText(L"ÌÇ®", 1000, 400, 100, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
                     Sleep(500);
-                    wt.drawText(L"¥Ÿ.", 1100, 400, 100, RGB(128, 128, 128), L"±º∏≤√º");
+                    wt.drawText(L"Îã§.", 1100, 400, 100, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
                     Sleep(500);
+                    timeCheck = 0;
                     break;
                 }
             }
 
         }
-      
 
         ac.characterMove(stage, buffer);
         ac.characterDraw(buffer);
-      
+        a.drawBitmap("stage3.bmp", buffer, 1610, 90, SCREEN_WIDTH);
+
         a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-        wt.drawText(L"∞°¡ˆ∞Ì ¿÷¥¬ æ∆¿Ã≈€:", 1650, 600, 20, RGB(128, 128, 128), L"±º∏≤√º");
+        wt.drawText(L"Í∞ÄÏßÄÍ≥† ÏûàÎäî ÏïÑÏù¥ÌÖú:", 1650, 600, 20, RGB(128, 128, 128), L"Íµ¥Î¶ºÏ≤¥");
 
         timeCheck++;
     }
-    
- 
 }
 
 void drawStage3::stage3FutureBossDraw(std::vector<char>& buffer)

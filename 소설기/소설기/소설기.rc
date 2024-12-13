@@ -160,8 +160,6 @@ IDB_BITMAP62            BITMAP                  "stage2_lava3.bmp"
 
 IDB_BITMAP63            BITMAP                  "stage2_lava.bmp"
 
-IDB_BITMAP64            BITMAP                  "stage2_Boss.bmp"
-
 IDB_BITMAP65            BITMAP                  "stage2_Boss_left.bmp"
 
 IDB_BITMAP66            BITMAP                  "Boss3_meteor.bmp"
@@ -199,6 +197,14 @@ IDB_BITMAP83            BITMAP                  "chat_window_p13.bmp"
 IDB_BITMAP84            BITMAP                  "chat_window_clear1.bmp"
 
 IDB_BITMAP85            BITMAP                  "chat_window_clear2.bmp"
+
+IDB_BITMAP87            BITMAP                  "stage1.bmp"
+
+IDB_BITMAP88            BITMAP                  "stage0.bmp"
+
+IDB_BITMAP89            BITMAP                  "stage2.bmp"
+
+IDB_BITMAP90            BITMAP                  "stage3.bmp"
 
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////

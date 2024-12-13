@@ -78,7 +78,7 @@ int drawStage2::stage2_Past[25][40] =
 	   {2,2,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,4,0,0,0,2,2},
 	   {2,2,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2},
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
-	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0},   
+	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0},
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0},
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0},
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0},
@@ -87,7 +87,7 @@ int drawStage2::stage2_Past[25][40] =
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	   {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+	   {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 };
 
 int drawStage2::stage2_Future_Boss[25][40] =
@@ -116,7 +116,7 @@ int drawStage2::stage2_Future_Boss[25][40] =
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
 	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
-	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+	{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 };
 
 int drawStage2::stage2_Past_Boss[25][40] =
@@ -145,7 +145,7 @@ int drawStage2::stage2_Past_Boss[25][40] =
 	 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	 {8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8},
+	 {8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8}
 };
 
 void drawStage2::stage2Draw(std::vector<char>& buffer)
@@ -242,8 +242,7 @@ void drawStage2::stage2Draw(std::vector<char>& buffer)
 					for (int j = 0; j < 2; j++) {
 						stage2_Future[20+i][12+j] = 2;
 					}
-					
-				}
+ 				}
 				stage2_future[10][6] = 1;
 			
 			}
@@ -361,6 +360,7 @@ void drawStage2::stage2Draw(std::vector<char>& buffer)
 		ac.characterMove(stage, buffer);
 		
 		ac.characterDraw(buffer);
+		a.drawBitmap("stage2.bmp", buffer, 1610, 90, SCREEN_WIDTH);
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 		if (ac.getKey) {
 			wt.drawText(L"¿­¼è", textX, 700, 20, RGB(128, 128, 128), L"±¼¸²Ã¼");
@@ -531,7 +531,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		{
 			ac.attacking = 0;
 			ac.characterAttackErase(ac.x, ac.y, buffer);
-			Boss2::Boss2TakeDamage(stage);
+			Boss2::Boss2TakeDamage(stage); 
 		}
 		else
 		{
@@ -694,6 +694,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 			ac.characterMove(stage, buffer);
 
 		ac.characterDraw(buffer);
+		a.drawBitmap("stage2.bmp", buffer, 1610, 90, SCREEN_WIDTH);
 
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -715,7 +716,7 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 		int i = 0;
 		ac.nextStage = 0;
 
-		a.drawBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+		a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 		a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 		while (_kbhit())
@@ -741,6 +742,9 @@ void drawStage2::stage2BossDraw(std::vector<char>& buffer)
 
 				if (_kbhit())
 				{
+					a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
+					a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
 					break;
 				}
 			}

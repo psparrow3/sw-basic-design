@@ -8,17 +8,17 @@
     <ClCompile Include="draw.cpp" />
     <ClCompile Include="drawCharacter.cpp" />
     <ClCompile Include="drawMoveableBlock.cpp" />
+    <ClCompile Include="drawMovingBlock.cpp" />
     <ClCompile Include="drawStage1.cpp" />
     <ClCompile Include="drawStage2.cpp" />
+    <ClCompile Include="drawStage3.cpp" />
     <ClCompile Include="drawStage_prologue.cpp" />
     <ClCompile Include="gameStart.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="moveableBlock.cpp" />
+    <ClCompile Include="movingBlock.cpp" />
     <ClCompile Include="startScreen.cpp" />
     <ClCompile Include="writeText.cpp" />
-    <ClCompile Include="movingBlock.cpp" />
-    <ClCompile Include="drawMovingBlock.cpp" />
-    <ClCompile Include="drawStage3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Boss1.h" />
@@ -28,24 +28,44 @@
     <ClInclude Include="draw.h" />
     <ClInclude Include="drawCharacter.h" />
     <ClInclude Include="drawMoveableBlock.h" />
+    <ClInclude Include="drawMovingBlock.h" />
     <ClInclude Include="drawStage1.h" />
     <ClInclude Include="drawStage2.h" />
+    <ClInclude Include="drawStage3.h" />
     <ClInclude Include="drawStage_prologue.h" />
     <ClInclude Include="gameStart.h" />
     <ClInclude Include="moveableBlock.h" />
+    <ClInclude Include="movingBlock.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="startScreen.h" />
     <ClInclude Include="writeText.h" />
-    <ClInclude Include="movingBlock.h" />
-    <ClInclude Include="drawMovingBlock.h" />
-    <ClInclude Include="drawStage3.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="소설기.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="A_button.bmp" />
+    <Image Include="chat_window_clear1.bmp" />
+    <Image Include="chat_window_clear2.bmp" />
+    <Image Include="chat_window_p11.bmp" />
+    <Image Include="chat_window_p12.bmp" />
+    <Image Include="chat_window_p13.bmp" />
+    <Image Include="last_door.bmp" />
+    <Image Include="past_block.bmp" />
+    <Image Include="tutorial_researcher_text.bmp" />
+    <Image Include="narration1.bmp" />
+    <Image Include="Boss3_meteor.bmp" />
+    <Image Include="destroyed_eden.bmp" />
+    <Image Include="diary1.bmp" />
+    <Image Include="diary2.bmp" />
+    <Image Include="peaceful_eden.bmp" />
+    <Image Include="stage1_Boss_die.bmp" />
+    <Image Include="stage2_Boss.bmp" />
+    <Image Include="stage2_Boss_left.bmp" />
+    <Image Include="stage2_Boss_right.bmp" />
+    <Image Include="stage2_lava.bmp" />
     <Image Include="bottom.bmp" />
+    <Image Include="bridge.bmp" />
     <Image Include="broken_block.bmp" />
     <Image Include="broken_door.bmp" />
     <Image Include="button1.bmp" />
@@ -69,7 +89,11 @@
     <Image Include="full_heart.bmp" />
     <Image Include="future_text.bmp" />
     <Image Include="key.bmp" />
+    <Image Include="laser_length.bmp" />
     <Image Include="laser1.bmp" />
+    <Image Include="laser_length_bottom.bmp" />
+    <Image Include="laser_width.bmp" />
+    <Image Include="laser_width_bottom.bmp" />
     <Image Include="lava2.bmp" />
     <Image Include="left_button.bmp" />
     <Image Include="lever_left.bmp" />
@@ -85,45 +109,24 @@
     <Image Include="stage1_boss_tree_lower.bmp" />
     <Image Include="stage1_boss_tree_upper.bmp" />
     <Image Include="stage1_tree.bmp" />
+    <Image Include="stage2_lava1.bmp" />
+    <Image Include="stage2_lava2.bmp" />
+    <Image Include="stage2_lava3.bmp" />
+    <Image Include="stage3_Boss_p1_left.bmp" />
+    <Image Include="stage3_Boss_p1_right.bmp" />
+    <Image Include="stage3_Boss_p2_left.bmp" />
+    <Image Include="stage3_Boss_p2_right.bmp" />
     <Image Include="start_screen.bmp" />
     <Image Include="status_informaition.bmp" />
     <Image Include="S_button.bmp" />
-    <Image Include="test_treebottom.bmp" />
-    <Image Include="test_treetop.bmp" />
     <Image Include="triangle_block_down.bmp" />
     <Image Include="triangle_block_right.bmp" />
     <Image Include="triangle_block_up.bmp" />
     <Image Include="tutorial_building.bmp" />
-    <Image Include="laser_length.bmp" />
-    <Image Include="laser_width.bmp" />
-    <Image Include="bridge.bmp" />
-    <Image Include="laser_width_bottom.bmp" />
-    <Image Include="laser_length_bottom.bmp" />
-    <Image Include="stage2_Boss.bmp" />
-    <Image Include="stage2_Boss_left.bmp" />
-    <Image Include="stage2_Boss_right.bmp" />
-    <Image Include="stage2_lava.bmp" />
-    <Image Include="stage2_lava1.bmp" />
-    <Image Include="stage2_lava2.bmp" />
-    <Image Include="stage2_lava3.bmp" />
-<<<<<<< HEAD
-    <Image Include="Boss3_meteor.bmp" />
-    <Image Include="stage3_Boss_p1.bmp" />
-    <Image Include="stage3_Boss_p2.bmp" />
-=======
-    <Image Include="stage1_Boss_die.bmp" />
-<<<<<<< HEAD
-    <Image Include="peaceful_eden.bmp" />
-    <Image Include="destroyed_eden.bmp" />
-    <Image Include="bitmap69.bmp" />
-    <Image Include="peaceful_eden_text.bmp" />
-    <Image Include="destroyed_eden_text.bmp" />
-    <Image Include="narration1.bmp" />
-    <Image Include="diary1.bmp" />
-    <Image Include="diary2.bmp" />
-=======
->>>>>>> origin/stage
->>>>>>> origin/main
+    <Image Include="stage1.bmp" />
+    <Image Include="stage0.bmp" />
+    <Image Include="stage2.bmp" />
+    <Image Include="stage3.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="소설기.vcxproj.filters" />
