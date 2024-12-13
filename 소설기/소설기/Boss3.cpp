@@ -11,6 +11,7 @@ void Boss3::Boss3Draw(std::vector<char>& buffer)
 {
     draw a;
 
+\
     if (hp > 3)
     {
         a.eraseBitmap("empty_boss3_p1.bmp", buffer, m_x, m_y, SCREEN_WIDTH);
@@ -19,6 +20,7 @@ void Boss3::Boss3Draw(std::vector<char>& buffer)
     {
         a.eraseBitmap("empty_boss3_p2.bmp", buffer, m_x, m_y, SCREEN_WIDTH);
     }
+
 
     if (hp % 2 == 0)
     {
@@ -63,6 +65,7 @@ void Boss3::Boss3Draw(std::vector<char>& buffer)
 void Boss3::Boss3Attack_laser(std::vector<char>& buffer, int(&stage)[25][40], int cx, int cy)
 {
     draw a;
+
 
     for (int x = 0; x < 20; x++)
     {
@@ -119,13 +122,14 @@ void Boss3::Boss3Attack_meteor(std::vector<char>& buffer)
 
     a.drawBitmap("Boss3_meteor.bmp", buffer, 800 - 80, meteor_y, SCREEN_WIDTH);
 
-    if (meteor_y < 480 - 120)
-    {
-        if (hp > 3)
-            meteor_y += 5;
-        else
-            meteor_y += 10;
-    }
+	if (meteor_y < 480 - 120)
+	{
+		if (hp > 3)
+			meteor_y += 5;
+		else
+			meteor_y += 10;
+	}
+
 }
 
 void Boss3::Boss3Attack_change()
@@ -209,5 +213,21 @@ void Boss3::Boss3TakeDamage(int(&stage)[25][40])
     {
         hp--;
         damaged = TRUE;
+    }
+    
+    if (hp % 2 == 0)
+    {
+        m_x = 1360;
+    }
+    else
+    {
+        if (hp > 3)
+        {
+            m_x = 80;
+        }
+        else
+        {
+            m_x = 40;
+        }
     }
 }

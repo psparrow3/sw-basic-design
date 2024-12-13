@@ -146,8 +146,6 @@
     <ClInclude Include="drawMoveableBlock.h" />
     <ClInclude Include="drawMovingBlock.h" />
     <ClInclude Include="drawStage1.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="drawStage2.h" />
     <ClInclude Include="drawStage3.h" />

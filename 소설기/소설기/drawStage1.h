@@ -6,6 +6,7 @@
 #include "writeText.h"
 #include <conio.h>
 
+
 class drawStage1
 {
 public:
