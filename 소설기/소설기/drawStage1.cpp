@@ -218,6 +218,9 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 			{
 				ac.nextStage = 0;
 				ac.getSeed = 0;
+				ac.x = 0;
+				ac.y = 410;
+				ac.facingRight = 1;
 				Sleep(1000);
 				a.eraseBitmap("empty_map.bmp", buffer, 0, 0, SCREEN_WIDTH);
 				a.eraseBitmap("empty_character.bmp", buffer, ac.x, ac.y, SCREEN_WIDTH);
@@ -230,7 +233,9 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 				ac.getKey = 0;
 				ac.isLeverPull = 0;
 				ac.gameOverCheck = 0;
-				seed_time = 0;
+				ac.x = 0;
+				ac.y = 410;
+				ac.facingRight = 1;
 				memcpy(stage1_Past, resetPastStage, sizeof(stage1_Past));
 				memcpy(stage1_past, resetpastStage,  sizeof(stage1_past));
 				memcpy(stage1_Future, resetFutureStage, sizeof(stage1_Future));
@@ -243,9 +248,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 
 			character::characterHeart = 3;
 	
-			ac.x = 10;
-			ac.y = 410;
-			ac.facingRight = 1;
+			
 			seed_time = 0;
 
 			break;
@@ -767,23 +770,19 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 			ac.gravity(stage, ac.x, ac.y);
 		}
 
-		ac.characterDraw(buffer);
-
 		b.Boss1AttackMove(buffer, stage);
+
+		ac.characterDraw(buffer);
 
 		if (Boss1::hp)
 		{
 			a.drawBitmap("Stage1_Boss.bmp", buffer, Boss1::m_x * 20, Boss1::m_y, SCREEN_WIDTH);
 		}
 
-
 		if (seed_time > 500)
-		{
-			
+		{			
 			seedPlantCheck = 1;
-		}
-		
-	
+		}	
 
 		if (Boss1::hp == 0)
 		{
@@ -794,6 +793,11 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
 
 			if (Boss1::at.size() > 0)
 			{
+				for (int i = 0; i < Boss1::at.size(); i++)
+				{
+					a.eraseBitmap("empty_boss_attack.bmp", buffer, Boss1::at[i].x, Boss1::at[i].y, SCREEN_WIDTH);
+				}
+
 				Boss1::at.clear();
 			}
 

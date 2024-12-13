@@ -3,7 +3,7 @@
 int character::x = 0;
 int character::y = 410;
 
-int character::progress = 2;                     // 진행상황
+int character::progress = 4;                     // 진행상황
 
 int character::gameOverCheck = 0;
 bool character::future = 1;
@@ -139,7 +139,7 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 
 	if (jumping && !isJumping)
 	{
-		isJumping = 1;
+		isJumping = 0;
 
 		land = 0;
 
@@ -153,9 +153,9 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 				jumpcoll = collision(stage, x+20, y);
 			}
 			else {
-				jumpcoll = collision(stage, x+20, y);
+				jumpcoll = collision(stage, x, y);
 			}
-
+			
 			if (jumpcoll == 2 || y < 0 || jumpcoll == 3) {
 				
 				y = preY;
@@ -230,9 +230,13 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	{
 		gameOver(coll, buffer);
 	}
-	if (collision(stage, x, y + 10) == 2 || collision(stage, x, y + 10) == 3) {
+	if (collision(stage, x, y + 10) == 2 || collision(stage, x, y + 10) == 3 || collision(stage, x, y + 10) == 9) {
 		y -= 10;
 	}
+	if (collision(stage, x+20, y ) == 2 || collision(stage, x+20, y) == 3) {
+		x -= 20;
+	}
+	
 	sTime += 1;
 	notDamage += 1;
 	attackCoolTime += 1;
