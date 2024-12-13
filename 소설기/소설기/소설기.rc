@@ -186,6 +186,7 @@ IDB_BITMAP78            BITMAP                  "tutorial_researcher_text.bmp"
 
 IDB_BITMAP79            BITMAP                  "past_block.bmp"
 
+
 IDB_BITMAP80            BITMAP                  "last_door.bmp"
 
 IDB_BITMAP81            BITMAP                  "chat_window_p11.bmp"
@@ -205,6 +206,7 @@ IDB_BITMAP88            BITMAP                  "stage0.bmp"
 IDB_BITMAP89            BITMAP                  "stage2.bmp"
 
 IDB_BITMAP90            BITMAP                  "stage3.bmp"
+
 
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////

@@ -107,6 +107,7 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
     int resetPastStage[25][40];
     int resetFutureStage[25][40];
 
+
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
     int attackTime = rand() % 21 + 20;
@@ -239,6 +240,7 @@ void drawStage3::stage3BossDraw(std::vector<char>& buffer)
             }
 
             ac.characterAttackErase(ac.x, ac.y, buffer);
+
 
             if (Boss3::hp)
             {

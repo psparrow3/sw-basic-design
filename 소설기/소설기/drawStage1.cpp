@@ -165,13 +165,13 @@ int drawStage1::stage1_Past_Boss[25][40] =
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -204,6 +204,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
     int resetpastStage[12][20];
     int resetFutureStage[25][40];
     int resetfutureStage[12][20];
+
 
     memcpy(resetPastStage, stage1_Past, sizeof(stage1_Past));
     memcpy(resetpastStage, stage1_past, sizeof(stage1_past));
@@ -310,6 +311,7 @@ void drawStage1::stage1Draw(std::vector<char>& buffer)
 
             drawStage1Past(buffer);
             mb1.blockLocationErase(stage, mb1.m_x, mb1.m_y);
+
 
             int block1coll = mb1.collision(stage, mb1.m_x, mb1.m_y);
 
@@ -611,6 +613,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
                 ac.seedPiece = 0;
                 ac.seedPlant = 0;
 
+
                 a.flushBuffer(buffer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
                 Sleep(1000);
@@ -622,6 +625,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
             ac.seedPlant = 0;
             ac.getSeed = 0;
             ac.facingRight = 1;
+            ac.isJumping = 0;
             ac.future = 1;
             seed_time = 0;
             memcpy(stage, character::clearStage, sizeof(character::clearStage));
@@ -761,6 +765,7 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
         if (start)
             ac.characterMove(stage, buffer);
 
+
         int coll = ac.collision(stage, ac.x, ac.y);
 
         if (coll != 2 && coll != 10 && coll != 11 && coll != 3 && coll != 14 && coll != 15)
@@ -899,7 +904,9 @@ void drawStage1::stage1BossDraw(std::vector<char>& buffer)
             }
         }
     }
+
 }
+
 
 void drawStage1::stage1FutureBossDraw(std::vector<char>& buffer)
 {

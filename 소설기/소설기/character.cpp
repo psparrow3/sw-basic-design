@@ -5,6 +5,7 @@ int character::y = 410;
 
 int character::progress = 0;                     // 진행상황
 
+
 int character::gameOverCheck = 0;
 bool character::future = 1;
 bool character::isJumping = 0;
@@ -230,13 +231,14 @@ void character::characterMove(int(&stage)[25][40], std::vector<char>& buffer)
 	{
 		gameOver(coll, buffer);
 	}
+	
 	if (collision(stage, x, y + 10) == 2 || collision(stage, x, y + 10) == 3 || collision(stage, x, y + 10) == 9) {
 		y -= 10;
 	}
 	if (collision(stage, x + 20, y) == 2 || collision(stage, x + 20, y) == 3) {
 		x -= 20;
 	}
-	
+
 	sTime += 1;
 	notDamage += 1;
 	attackCoolTime += 1;
